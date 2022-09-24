@@ -32,6 +32,7 @@ public class TestNumberTheory {
 
 		//getAmicableNumbers();
 		System.out.println(NumberTheory.getApocolyptic(192));
+		System.out.println(theTheory.getApocolyptic(0));
 
 	}
 }

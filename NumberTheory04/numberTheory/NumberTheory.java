@@ -492,6 +492,10 @@ public class NumberTheory {
 		String retVal = biggie.pow(exponent).toString();
 		return retVal;
 	}
+	
+	String getApocolyptic() {
+		return getApocolyptic(getTheNumber());
+	}
 
 	public static String getApocolyptic(int exponent) {
 		String getTestNumber = getBigIntegerPower(2, exponent);		
