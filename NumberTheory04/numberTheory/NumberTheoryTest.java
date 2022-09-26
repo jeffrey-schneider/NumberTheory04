@@ -513,6 +513,5 @@ class NumberTheoryTest {
     	assertFalse(instance.isAntiPerfect());
     	instance.setTheNumber(244);
     	assertTrue(instance.isAntiPerfect());
-    	
     }
 }

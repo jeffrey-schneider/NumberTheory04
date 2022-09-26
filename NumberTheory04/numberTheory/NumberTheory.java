@@ -719,6 +719,4 @@ public class NumberTheory {
 		};
 		return false;
 	}
-
-	
 }
