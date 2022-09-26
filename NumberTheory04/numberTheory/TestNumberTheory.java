@@ -105,7 +105,7 @@ public class TestNumberTheory {
 		 
 		 
 		 
-		 for(int r = 47; r <= 60; r++) {
+		 for(int r = 47; r <= 70; r++) {
 			 System.out.printf("Is %d arithmetic? %b\n", r, NumberTheory.isArithmetic(r));
 		 }
 		 

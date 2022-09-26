@@ -1,6 +1,10 @@
 package numberTheory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -340,7 +344,6 @@ class NumberTheoryTest {
     	assertEquals(BigInteger.valueOf(3628800), NumberTheory.getFactorial(10));
     	assertNotEquals(BigInteger.valueOf(3628801), NumberTheory.getFactorial(10));
     }
-    
     
     @Test
     public void testCatalanSpec() {
