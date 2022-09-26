@@ -698,6 +698,8 @@ public class NumberTheory {
 		return isAntiPerfect(getTheNumber());
 	}
 	
+	
+	
 	/**
 	 * A number  n  is said to be anti-perfect if it is equal 
 	 * to the sum of the reverses of its proper divisors.
