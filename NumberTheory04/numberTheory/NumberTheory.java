@@ -694,10 +694,9 @@ public class NumberTheory {
 	}
 
 	
-	public boolean isAntiPerfect() {		
+	boolean isAntiPerfect() {		
 		return isAntiPerfect(getTheNumber());
 	}
-	
 	
 	/**
 	 * A number  n  is said to be anti-perfect if it is equal 
@@ -718,6 +717,25 @@ public class NumberTheory {
 		if(sum == aNumber) {
 			return true;
 		};
+		return false;
+	}
+	
+	
+	boolean isArithmetic() {
+		return isArithmetic(getTheNumber());
+	}
+	public static boolean isArithmetic(int aNumber) {
+		List<Integer> list = getFactors(aNumber);
+		int sum = 0;		
+		for (Integer integer : list) {
+			sum += integer;
+		}
+		
+		int d = sum % list.size();		
+		System.out.printf("%d %% %d = %d\n",sum, list.size(), d);
+		if(sum % list.size() == 0) {
+			return true;
+		}
 		return false;
 	}
 }

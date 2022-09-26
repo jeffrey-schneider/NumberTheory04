@@ -514,4 +514,16 @@ class NumberTheoryTest {
     	instance.setTheNumber(244);
     	assertTrue(instance.isAntiPerfect());
     }
+    
+    @Test
+    public void isArithmeticSpec() {
+    	System.out.println("Is arithmetic?");
+    	assertTrue(NumberTheory.isArithmetic(56));
+    	assertFalse(NumberTheory.isArithmetic(58));
+    	
+    	NumberTheory instance = new NumberTheory(245);
+    	assertTrue(instance.isArithmetic());
+    	instance.setTheNumber(244);
+    	assertFalse(instance.isArithmetic());
+    }
 }

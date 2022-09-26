@@ -100,10 +100,14 @@ public class TestNumberTheory {
 			System.out.printf("Is %d alternating? %b\n", N, NumberTheory.isAlternating(N));
 		}
 		
-		
-		
 		 int N = 133857 ;
 		 System.out.printf("Is %d anti-perfect? %b\n", N, NumberTheory.isAntiPerfect(N));
+		 
+		 
+		 
+		 for(int r = 47; r <= 60; r++) {
+			 System.out.printf("Is %d arithmetic? %b\n", r, NumberTheory.isArithmetic(r));
+		 }
 		 
 	}
 	
