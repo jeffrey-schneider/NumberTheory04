@@ -528,6 +528,8 @@ class NumberTheoryTest {
     	assertTrue(instance.isArithmetic());
     	instance.setTheNumber(244);
     	assertFalse(instance.isArithmetic());
+    	
+    	
     }
     
     @Test
