@@ -476,4 +476,17 @@ class NumberTheoryTest {
     	instance.setTheNumber(46);
     	assertFalse(instance.isAmenable());
     }
+    
+    
+    @Test
+    public void isSuperDSpec() {
+    	System.out.println("Is SuperD?");
+    	assertTrue(NumberTheory.isSuperD(333));
+    	assertFalse(NumberTheory.isSuperD(330));
+    	
+    	NumberTheory instance = new NumberTheory(19);
+    	assertTrue(instance.isSuperD());
+    	instance.setTheNumber(46);
+    	assertFalse(instance.isSuperD());
+    }
 }

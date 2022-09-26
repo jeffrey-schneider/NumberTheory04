@@ -81,6 +81,20 @@ public class TestNumberTheory {
 				counter--;
 			}
 		}
+		
+		System.out.println("First 25 Super D Numbers");
+		int i = 1;
+		counter = 25;
+		while(i < 1000) {
+				if(NumberTheory.isSuperD(i)) {
+					System.out.println(i + " is SuperD. " );
+					counter--;
+				}
+				i++;			
+			if(counter == 0) {
+				break;
+			}
+		}			
 	}
 	
 	

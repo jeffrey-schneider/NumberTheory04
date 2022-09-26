@@ -540,69 +540,106 @@ public class NumberTheory {
 		return (aNumber * aNumber + aNumber + 2) / 2;
 	}
 
-	
 	BigInteger getBellNumber() {
 		return getBellNumber(getTheNumber());
 	}
-	public static BigInteger getBellNumber(int aNumber) {		
-		BigInteger[][] bell = new BigInteger[aNumber+1][aNumber+1];
+
+	public static BigInteger getBellNumber(int aNumber) {
+		BigInteger[][] bell = new BigInteger[aNumber + 1][aNumber + 1];
 		bell[0][0] = BigInteger.ONE;
-		for(int i = 1; i <= aNumber; i++) {
-			bell[i][0] = bell[i-1][i-1];
+		for (int i = 1; i <= aNumber; i++) {
+			bell[i][0] = bell[i - 1][i - 1];
 			for (int j = 1; j <= i; j++)
 				bell[i][j] = bell[i - 1][j - 1].add(bell[i][j - 1]);
 		}
 		return bell[aNumber][0];
-		}
+	}
 
-	
-	
-	
 	/**
 	 * https://www.geeksforgeeks.org/admirable-numbers/
+	 * 
 	 * @return is the number admirable?
 	 */
 	boolean isAdmirable() {
 		return isAdmirable(getTheNumber());
 	}
+
 	public static boolean isAdmirable(int aNumber) {
 		int sigmaN = getSigma(aNumber);
-		for(int i = 2; i <= Math.sqrt(aNumber); i++) {
-			//if 'i' is a divisor of 'num'
-			if(aNumber % i == 0) {
-				//if both divisors are the same, then add
+		for (int i = 2; i <= Math.sqrt(aNumber); i++) {
+			// if 'i' is a divisor of 'num'
+			if (aNumber % i == 0) {
+				// if both divisors are the same, then add
 				// it only once else add both
-				if(i== (aNumber/i)) {
-					if(sigmaN - 2 * i == 2 * aNumber)
+				if (i == (aNumber / i)) {
+					if (sigmaN - 2 * i == 2 * aNumber)
 						return true;
-				}else {
-					if(sigmaN - 2 * i == 2 * aNumber)
+				} else {
+					if (sigmaN - 2 * i == 2 * aNumber)
 						return true;
-					if(sigmaN - 2 * (aNumber/i) == 2 * aNumber)
+					if (sigmaN - 2 * (aNumber / i) == 2 * aNumber)
 						return true;
 				}
 			}
 		}
-		//Check 1 since 1 is also a divisor
-		if(sigmaN - 2 * 1 == 2 * aNumber)
+		// Check 1 since 1 is also a divisor
+		if (sigmaN - 2 * 1 == 2 * aNumber)
 			return true;
 		return false;
 	}
-	
-	
-	
+
 	boolean isAmenable() {
 		return isAmenable(getTheNumber());
 	}
+
 	/**
 	 * https://www.geeksforgeeks.org/amenable-numbers/
+	 * 
 	 * @param aNumber
 	 * @return is number Amenable
 	 */
 	public static boolean isAmenable(int aNumber) {
-		//return true if N is of the form
+		// return true if N is of the form
 		// 4K or 4K+1
-		return(aNumber%4==0 || (aNumber-1) %4 == 0);
+		return (aNumber % 4 == 0 || (aNumber - 1) % 4 == 0);
+	}
+	
+	
+	/**
+	 * 
+	 * @param d
+	 * @return if d = 2 return 22
+	 * 			if d = 3 return 333
+	 * 			if d = 4 return 4444
+	 */
+	private static String intToString(int d) {
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<d; i++) {
+			sb.append(String.valueOf(d));
+		}		
+		return sb.toString();
+	}
+	
+	
+	
+	boolean isSuperD() {
+		return isSuperD(getTheNumber());
+	}
+	/**
+	 * https://www.geeksforgeeks.org/super-d-numbers/
+	 * 
+	 * @param aNumber
+	 * @return boolean - is number SuperD?
+	 */
+	public static boolean isSuperD(int aNumber) {
+		for(int d = 2; d < 10; d++) {
+			String subString = intToString(d);
+			if(String.valueOf(
+					(d * Math.pow(aNumber, d))).contains(subString)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
