@@ -403,12 +403,77 @@ class NumberTheoryTest {
     	
     	result = NumberTheory.getAmicableNumber(12285);
     	expected = 14595;
-    	assertEquals(expected, result);
-    	
-    	
+    	assertEquals(expected, result);   	
+    }
+    
+    @Test
+    public void isCarmichaelSpec() {
+    	System.out.println("Carmichael? ");
+    	NumberTheory instance = new NumberTheory(2821);
+    	assertTrue(instance.isCarmichael());
     }
     
     
+    @Test
+    public void cakeSpec() {
+    	System.out.println("Cake numbers: ");
+    	int result = NumberTheory.getCakeNumber(24);
+    	int expected = 2325;
+    	assertEquals(expected, result);
+    	
+    	NumberTheory instance = new NumberTheory(22);
+    	result = instance.getCakeNumber();
+    	expected = 1794;
+    	assertEquals(expected, result);
+    }
     
-
+    @Test
+    public void lazyCatererSpec() {
+    	System.out.println("lazyCaterer numbers: ");
+    	int result = NumberTheory.getLazyCaterer(24);
+    	int expected = 301;
+    	assertEquals(expected, result);
+    	
+    	NumberTheory instance = new NumberTheory(22);
+    	result = instance.getLazyCaterer();
+    	expected = 254;
+    	assertEquals(expected, result);
+    }
+    
+    
+    @Test
+    public void bellNumberSpec() {
+    	System.out.println("bellNumbers: ");
+    	long result = NumberTheory.getBellNumber(20).longValue();
+    	long expected = 51724158235372L;    	
+    	assertEquals(expected, result);
+    	
+    	NumberTheory instance = new NumberTheory(20);
+    	result = instance.getBellNumber().longValue();
+    	expected = 51724158235372L;    	
+    	assertEquals(expected, result);
+    	
+    }
+    
+    @Test
+    public void admirableNumberSpec() {
+    	System.out.println("Is admirable");
+    	assertTrue(NumberTheory.isAdmirable(12));
+    	
+    	NumberTheory instance = new NumberTheory(20);
+    	assertTrue(instance.isAdmirable());
+    	instance.setTheNumber(21);
+    	assertFalse(instance.isAdmirable());
+    }
+    
+    @Test
+    public void amenableNumberSpec() {
+    	System.out.println("Is amenable");
+    	assertTrue(NumberTheory.isAmenable(12));
+    	
+    	NumberTheory instance = new NumberTheory(49);
+    	assertTrue(instance.isAmenable());
+    	instance.setTheNumber(46);
+    	assertFalse(instance.isAmenable());
+    }
 }

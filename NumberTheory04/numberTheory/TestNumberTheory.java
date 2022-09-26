@@ -33,6 +33,55 @@ public class TestNumberTheory {
 		//getAmicableNumbers();
 		System.out.println(NumberTheory.getApocolyptic(192));
 		System.out.println(theTheory.getApocolyptic(0));
-
+		
+		theTheory.setTheNumber(6601);
+		System.out.println(NumberTheory.isCaramichael(561));
+		System.out.println(NumberTheory.isCaramichael(1105));
+		System.out.println(NumberTheory.isCaramichael(15841));
+		System.out.println(theTheory.isCarmichael());
+		
+		System.out.println("Cake Numbers:");
+		int n = 0;
+		while(n < 25) {			
+			System.out.printf("Cake: %d  %d\n", n, NumberTheory.getCakeNumber(n++));
+		}
+		
+		System.out.println("Lazy Caterer's Numbers:");
+		n =0;
+		while(n < 25) {
+			System.out.printf("Lazy: %d  %d\n", n, NumberTheory.getLazyCaterer(n++));
+		}
+		
+		System.out.println("Bell's numbers");
+		
+		n = 0;
+		while(n <= 50) {
+			System.out.printf("%d  %d\n", n, NumberTheory.getBellNumber(n));
+			n++;		
+		}
+		
+		System.out.println("First 50 Admirable Numbers");
+		n = 0;
+		int counter = 50;
+		while(counter > 0) {		
+			++n;		
+			if(NumberTheory.isAdmirable(n)) {
+				System.out.printf("%d  %d\n", 50-counter, n);
+				counter--;
+			}
+		}
+		
+		System.out.println("First 25 Amenable Numbers");
+		n = 0;
+		counter = 25;
+		while(counter > 0) {
+			++n;
+			if(NumberTheory.isAmenable(n)) {
+				System.out.printf("%d %d\n", 25 - counter, n);
+				counter--;
+			}
+		}
 	}
+	
+	
 }

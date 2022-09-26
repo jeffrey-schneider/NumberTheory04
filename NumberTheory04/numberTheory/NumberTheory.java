@@ -25,7 +25,7 @@ public class NumberTheory {
 		this.theNumber = theNumber;
 	}
 
-	 int getSquare() {
+	int getSquare() {
 		return getSquare(getTheNumber());
 	}
 
@@ -326,8 +326,6 @@ public class NumberTheory {
 		return false;
 	}
 
-
-
 	int getKynea() {
 		return getKynea(getTheNumber());
 	}
@@ -339,7 +337,6 @@ public class NumberTheory {
 		return (int) kyneaFinal;
 	}
 
-	
 	int getCarol() {
 		return getCarol(getTheNumber());
 	}
@@ -351,47 +348,43 @@ public class NumberTheory {
 		double carolFinal = carolA - carolB - 1.0;
 		return (int) carolFinal;
 	}
-	
-	
+
 	BigInteger getFactorial() {
 		return getFactorial(getTheNumber());
 	}
 
 	public static BigInteger getFactorial(int aNumber) {
 		BigInteger factorial = BigInteger.ONE;
-		for(int i = 1; i <= aNumber; i++) {
+		for (int i = 1; i <= aNumber; i++) {
 			factorial = factorial.multiply(BigInteger.valueOf(i));
 		}
 		return factorial;
 	}
 
-	
-	
-	BigInteger getCatalan(){
+	BigInteger getCatalan() {
 		return getCatalan(getTheNumber());
 	}
+
 	public static BigInteger getCatalan(int aNumber) {
-		BigInteger catA = NumberTheory.getFactorial(2*aNumber);
-		BigInteger catB = NumberTheory.getFactorial(aNumber+1);
+		BigInteger catA = NumberTheory.getFactorial(2 * aNumber);
+		BigInteger catB = NumberTheory.getFactorial(aNumber + 1);
 		BigInteger catC = NumberTheory.getFactorial(aNumber);
 		BigInteger catFinal = catA.divide(catB.multiply(catC));
-		return catFinal;	
+		return catFinal;
 	}
-	
-	
-	
-	List<Integer> getFibonacci(){
+
+	List<Integer> getFibonacci() {
 		return getFibonacci(getTheNumber());
 	}
-	
+
 	public static List<Integer> getFibonacci(int aNumber) {
 		int num1 = 0;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
-		
-		//Iterate until counter == aNumber
-		while(counter < aNumber) {
+
+		// Iterate until counter == aNumber
+		while (counter < aNumber) {
 			retList.add(num1);
 			int num3 = num2 + num1;
 			num1 = num2;
@@ -401,18 +394,18 @@ public class NumberTheory {
 		return retList;
 	}
 
-	
-	List<Integer> getLucas(){
+	List<Integer> getLucas() {
 		return getLucas(getTheNumber());
 	}
+
 	public static List<Integer> getLucas(int aNumber) {
 		int num1 = 2;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
-		
-		//Iterate until counter == aNumber
-		while(counter < aNumber) {
+
+		// Iterate until counter == aNumber
+		while (counter < aNumber) {
 			retList.add(num1);
 			int num3 = num2 + num1;
 			num1 = num2;
@@ -422,19 +415,19 @@ public class NumberTheory {
 		return retList;
 	}
 
-	
-	List<Integer> getJaconbsthal(){
+	List<Integer> getJaconbsthal() {
 		return getJacobsthal(getTheNumber());
 	}
-	public static List<Integer> getJacobsthal(int aNumber){
+
+	public static List<Integer> getJacobsthal(int aNumber) {
 		int num1 = 0;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
-		//Iterate until counter == aNumber
-		while(counter < aNumber) {
+		// Iterate until counter == aNumber
+		while (counter < aNumber) {
 			retList.add(num1);
-			int num3 = num2 + 2*num1;
+			int num3 = num2 + 2 * num1;
 			num1 = num2;
 			num2 = num3;
 			counter++;
@@ -445,62 +438,171 @@ public class NumberTheory {
 	public static boolean getAlternatingFactorial(int i) {
 		return false;
 	}
-	
-	
+
 	boolean getA_PointerPrime() {
 		return getA_PointerPrime(getTheNumber());
 	}
-	
+
 	public static boolean getA_PointerPrime(int aNumber) {
-		if(!isPrime(aNumber)) {
+		if (!isPrime(aNumber)) {
 			return false;
-		}else {
-		Stack<Integer> theStack = new Stack<>();
-		int number = aNumber;
-		theStack.push(aNumber);
-		while (number > 0) {
-			theStack.push(number % 10);
-			number /= 10;
-		}
-		int nextNumber = 0;		
-		while(!theStack.isEmpty()) {
-			nextNumber += theStack.pop();
-		}
-		if(isPrime(nextNumber))
-			return true;
-		
-		return false;
+		} else {
+			Stack<Integer> theStack = new Stack<>();
+			int number = aNumber;
+			theStack.push(aNumber);
+			while (number > 0) {
+				theStack.push(number % 10);
+				number /= 10;
+			}
+			int nextNumber = 0;
+			while (!theStack.isEmpty()) {
+				nextNumber += theStack.pop();
+			}
+			if (isPrime(nextNumber))
+				return true;
+
+			return false;
 		}
 	}
-	
+
 	int getAmicableNumber() {
 		return getAmicableNumber(getTheNumber());
 	}
+
 	public static int getAmicableNumber(int aNumber) {
 		int bla = NumberTheory.getAliquotSum(aNumber);
 		int blin = NumberTheory.getAliquotSum(bla);
-		if(blin == aNumber && bla > blin) {
+		if (blin == aNumber && bla > blin) {
 			return bla;
 		}
-		return -1;		
+		return -1;
 	}
-	
-	
-	
-	public static String getBigIntegerPower(int base, int exponent){		
+
+	public static String getBigIntegerPower(int base, int exponent) {
 		BigInteger biggie = BigInteger.valueOf(base);
 		String retVal = biggie.pow(exponent).toString();
 		return retVal;
 	}
-	
+
 	String getApocolyptic() {
 		return getApocolyptic(getTheNumber());
 	}
 
 	public static String getApocolyptic(int exponent) {
-		String getTestNumber = getBigIntegerPower(2, exponent);		
+		String getTestNumber = getBigIntegerPower(2, exponent);
 		System.out.println();
 		return "NOPE";
+	}
+
+	public static int gcd(int b, int n) {
+		if (n == 0)
+			return b;
+		return gcd(n, b % n);
+	}
+
+	public static int power(int b, int exp, int n) {
+		if (exp == 0)
+			return 1;
+		int result = power(b, exp / 2, n) % n;
+		result = (result * result) % n;
+		if (exp % 2 == 1)
+			result = (result * b) % n;
+		return result;
+	}
+
+	boolean isCarmichael() {
+		return isCaramichael(getTheNumber());
+	}
+
+	// https://www.javatpoint.com/carmichael-numbers-in-java
+	public static boolean isCaramichael(int aNumber) {
+		for (int b = 2; b <= aNumber; b++) {
+			if (gcd(b, aNumber) == 1 && power(b, aNumber - 1, aNumber) != 1)
+				return false;
+		}
+		return true;
+	}
+
+	int getCakeNumber() {
+		return getCakeNumber(getTheNumber());
+	}
+
+	// Wikipedia
+	public static int getCakeNumber(int aNumber) {
+		return (int) ((1.0 / 6.0) * (Math.pow(aNumber, 3) + 5 * aNumber + 6));
+	}
+
+	int getLazyCaterer() {
+		return getLazyCaterer(getTheNumber());
+	}
+
+	public static int getLazyCaterer(int aNumber) {
+		return (aNumber * aNumber + aNumber + 2) / 2;
+	}
+
+	
+	BigInteger getBellNumber() {
+		return getBellNumber(getTheNumber());
+	}
+	public static BigInteger getBellNumber(int aNumber) {		
+		BigInteger[][] bell = new BigInteger[aNumber+1][aNumber+1];
+		bell[0][0] = BigInteger.ONE;
+		for(int i = 1; i <= aNumber; i++) {
+			bell[i][0] = bell[i-1][i-1];
+			for (int j = 1; j <= i; j++)
+				bell[i][j] = bell[i - 1][j - 1].add(bell[i][j - 1]);
+		}
+		return bell[aNumber][0];
+		}
+
+	
+	
+	
+	/**
+	 * https://www.geeksforgeeks.org/admirable-numbers/
+	 * @return is the number admirable?
+	 */
+	boolean isAdmirable() {
+		return isAdmirable(getTheNumber());
+	}
+	public static boolean isAdmirable(int aNumber) {
+		int sigmaN = getSigma(aNumber);
+		for(int i = 2; i <= Math.sqrt(aNumber); i++) {
+			//if 'i' is a divisor of 'num'
+			if(aNumber % i == 0) {
+				//if both divisors are the same, then add
+				// it only once else add both
+				if(i== (aNumber/i)) {
+					if(sigmaN - 2 * i == 2 * aNumber)
+						return true;
+				}else {
+					if(sigmaN - 2 * i == 2 * aNumber)
+						return true;
+					if(sigmaN - 2 * (aNumber/i) == 2 * aNumber)
+						return true;
+				}
+			}
+		}
+		//Check 1 since 1 is also a divisor
+		if(sigmaN - 2 * 1 == 2 * aNumber)
+			return true;
+		return false;
+	}
+	
+	
+	
+	boolean isAmenable() {
+		return isAmenable(getTheNumber());
+	}
+	/**
+	 * https://www.geeksforgeeks.org/amenable-numbers/
+	 * @param aNumber
+	 * @return is number Amenable
+	 */
+	public static boolean isAmenable(int aNumber) {
+		//return true if N is of the form
+		// 4K or 4K+1
+		return(aNumber%4==0 || (aNumber-1) %4 == 0);
 	}
 
 }
