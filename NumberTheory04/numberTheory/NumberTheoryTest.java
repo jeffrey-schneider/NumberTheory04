@@ -489,4 +489,30 @@ class NumberTheoryTest {
     	instance.setTheNumber(46);
     	assertFalse(instance.isSuperD());
     }
+    
+    
+    @Test
+    public void isAlternatingSpec() {
+    	System.out.println("Is Alternating? ");
+    	assertTrue(NumberTheory.isAlternating(903));
+    	assertFalse(NumberTheory.isAlternating(904));
+    	
+    	NumberTheory instance = new NumberTheory(19);
+    	assertFalse(instance.isAlternating());
+    	instance.setTheNumber(1872);
+    	assertTrue(instance.isAlternating());
+    }
+    
+    @Test
+    public void isAntiPerfectSpec() {
+    	System.out.println("Is Antiperfect? ");
+    	assertTrue(NumberTheory.isAntiPerfect(133857));
+    	assertFalse(NumberTheory.isAntiPerfect(44));
+    	
+    	NumberTheory instance = new NumberTheory(211);
+    	assertFalse(instance.isAntiPerfect());
+    	instance.setTheNumber(244);
+    	assertTrue(instance.isAntiPerfect());
+    	
+    }
 }

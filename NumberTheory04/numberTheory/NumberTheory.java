@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
+import java.util.function.BooleanSupplier;
 
 public class NumberTheory {
 	private int theNumber;
@@ -641,5 +642,83 @@ public class NumberTheory {
 		}
 		return false;
 	}
+	
+	
+	
+	/**
+	 * Used for Alternating Numbers
+	 * @param s
+	 * @return
+	 */
+	static boolean isEvenOddForm(String s) {
+		int n = s.length();
+		for(int i=0; i< n; i++) {
+			if(i%2 == 0 && s.charAt(i) %2 != 0)
+				return false;
+			if(i %2 == 1 && s.charAt(i) %2 != 1)
+				return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Used for Alternating Numbers
+	 * @param s
+	 * @return
+	 */
+	static boolean isOddEvenForm(String s) {
+		int n = s.length();
+		
+		for(int i = 0; i<n; i++) {
+			if(i%2==0 && s.charAt(i) %2 != 1)
+				return false;
+			if(i%2==1 && s.charAt(i) %2 !=0)
+				return false;
+		}
+		return true;
+	}
+	
+	boolean isAlternating() {
+		return isAlternating(getTheNumber());
+	}
+	/**
+	 * https://www.geeksforgeeks.org/alternating-numbers/
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean isAlternating(int aNumber) {
+		String str = Integer.toString(aNumber);
+		return(isEvenOddForm(str) ||
+				isOddEvenForm(str));	
+	}
 
+	
+	public boolean isAntiPerfect() {		
+		return isAntiPerfect(getTheNumber());
+	}
+	
+	/**
+	 * A number  n  is said to be anti-perfect if it is equal 
+	 * to the sum of the reverses of its proper divisors.
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean isAntiPerfect(int aNumber) {
+		List<Integer> list = getFactors(aNumber);
+		int lastElement = list.size()-1;
+		list.remove(lastElement);
+		int sum = 0;
+		for (Integer integer : list) {
+			sum += getReverseNumber(integer);
+			System.out.println(getReverseNumber(integer));
+		}
+		if(sum == aNumber) {
+			return true;
+		};
+		return false;
+	}
+
+	
 }

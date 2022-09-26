@@ -94,7 +94,17 @@ public class TestNumberTheory {
 			if(counter == 0) {
 				break;
 			}
-		}			
+		}
+		
+		for(int N = 129; N < 150; N++){
+			System.out.printf("Is %d alternating? %b\n", N, NumberTheory.isAlternating(N));
+		}
+		
+		
+		
+		 int N = 133857 ;
+		 System.out.printf("Is %d anti-perfect? %b\n", N, NumberTheory.isAntiPerfect(N));
+		 
 	}
 	
 	
