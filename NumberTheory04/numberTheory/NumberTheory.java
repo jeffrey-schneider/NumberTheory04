@@ -738,4 +738,85 @@ public class NumberTheory {
 		}
 		return false;
 	}
+	
+	
+	boolean isAstonishing() {
+		return isAstonishing(getTheNumber());
+	}
+	
+	/**
+	 * Astonishing Number is a number N whose representation can be decomposed 
+	 * into two parts, a and b, such that N is equal to the sum of the integers 
+	 * from a to b and a + b = N where ‘+’ denotes concatenation.
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean isAstonishing(int aNumber) {
+		//https://www.geeksforgeeks.org/astonishing-numbers/
+		// This code is contributed by shubhamsingh10
+		//Time Complexity: O(n)
+		//Auxiliary Space: O(1)
+		
+		//Loop to find sum of all integers
+		// from i until the sum becomes >= aNumber
+		for(int i = 1; i<aNumber; i++) {
+			//variable to store sum of all integers 
+			// from i to j and check if sum and
+			// concatenation equals aNumber or not.
+			int sum = 0;
+			for(int j = i; j<aNumber; j++) {
+				sum += j;
+				if(sum == aNumber) {
+					
+					//Finding concatenation of i and j
+					int concatenation = concat(i,j);
+					
+					//condition for astonishing number
+					if(concatenation == aNumber) {
+						return true;
+					}
+				}
+						
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Attached to isAstonishing()
+	 * 
+	 * @param a
+	 * @param b
+	 * @return  Concat two integers into one.
+	 */
+	private static int concat(int a, int b) {
+		//Convert both integers to string
+		String s1 = Integer.toString(a);
+		String s2 = Integer.toString(b);
+		
+		//Concatenate both strings
+		String s = s1 + s2;
+		
+		//Convert concatenated string to integer
+		int c = Integer.parseInt(s);		
+		
+		return c;
+	}
+	
+	/**
+	 * @author Jeffrey Schneider
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean isAutomorphic(long aNumber) {
+		long squared = (long)Math.pow(aNumber, 2.0);		
+		String theString = String.valueOf(squared);
+		String ends = String.valueOf(aNumber);
+		System.out.printf("\n%s %s\n", theString, ends);
+		return theString.endsWith(ends);
+		
+				
+		
+	}
 }

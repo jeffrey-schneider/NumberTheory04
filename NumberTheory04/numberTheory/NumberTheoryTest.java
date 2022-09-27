@@ -529,4 +529,25 @@ class NumberTheoryTest {
     	instance.setTheNumber(244);
     	assertFalse(instance.isArithmetic());
     }
+    
+    @Test
+    public void isAstonishingSpec() {
+    	System.out.println("Is Astonishing?");
+    	assertTrue(NumberTheory.isAstonishing(15));
+    	assertFalse(NumberTheory.isAstonishing(20));
+    	
+    	NumberTheory instance = new NumberTheory(1353);
+    	assertTrue(instance.isAstonishing());
+    	instance.setTheNumber(1354);
+    	assertFalse(instance.isAstonishing());
+    }
+    
+    //isAutomorphic
+    //12890625
+    @Test
+    public void isAutomorphicSpec() {
+    	System.out.println("Is Automorphic?");
+    	assertTrue(NumberTheory.isAutomorphic((long)890625));
+    	assertFalse(NumberTheory.isAutomorphic((long)20));   	
+    }
 }

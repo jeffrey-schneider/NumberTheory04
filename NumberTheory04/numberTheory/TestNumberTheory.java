@@ -109,6 +109,18 @@ public class TestNumberTheory {
 			 System.out.printf("Is %d arithmetic? %b\n", r, NumberTheory.isArithmetic(r));
 		 }
 		 
+		 int[] n1 = {15, 429, 428};
+		 for (Integer integer : n1) {
+			 System.out.printf("Is %d astonishing? %b\n", integer, NumberTheory.isAstonishing(integer));	
+		}
+		 
+		 long[] n2 = {1, 5, 6, 25, 76, 376, 625, 9376, 90625, 109376, 890625, 2890625, 7109376, 12890625};
+		 for(Long longNumber: n2) {
+			 System.out.printf("Is %d automorphic? %b\n", longNumber, NumberTheory.isAutomorphic(longNumber));
+		 }
+		 
+		 
+		 
 	}
 	
 	
