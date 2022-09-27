@@ -229,6 +229,8 @@ public class NumberTheory {
 		return getAbundance(aNumber) == 0;
 	}
 
+	
+	
 	/**
 	 * 
 	 * @return int 
