@@ -9,6 +9,9 @@ import java.util.Stack;
 import java.util.function.BooleanSupplier;
 
 public class NumberTheory {
+	/**
+	 * The number.
+	 */
 	private int theNumber;
 
 	public NumberTheory(int theNumber) {
@@ -18,26 +21,56 @@ public class NumberTheory {
 	public NumberTheory() {
 	}
 
+	/**
+	 * 
+	 * @return int theNumber
+	 * 
+	 * @see #theNumber
+	 */
 	public int getTheNumber() {
 		return theNumber;
 	}
 
+	/**
+	 * Sets theNumber.
+	 * 
+	 * @param theNumber theNumber
+	 */
 	public void setTheNumber(int theNumber) {
 		this.theNumber = theNumber;
 	}
 
+	/**
+	 * 
+	 * @return getSquare of the instance variable theNumber
+	 */
 	int getSquare() {
 		return getSquare(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber the number to square
+	 * @return the square of a number
+	 */
 	public static int getSquare(int aNumber) {
 		return aNumber * aNumber;
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @see #isPrime(int)
+	 */
 	boolean isPrime() {
 		return isPrime(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber the number to test for primality
+	 * @return boolean is number prime?
+	 */
 	public static boolean isPrime(int aNumber) {
 		int stopVal = (int) Math.sqrt(aNumber);
 		int i = 2;
@@ -50,10 +83,21 @@ public class NumberTheory {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @see #getCollatz(int aNumber)
+	 */
 	List<Integer> getCollatz() {
 		return getCollatz(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber the number to generate collatz sequence from
+	 * @return list of collatz sequence.
+	 * @see https://en.wikipedia.org/wiki/Collatz_conjecture#:~:text=The%20Collatz%20conjecture%20is%20one,every%20positive%20integer%20into%201.
+	 */
 	public static List<Integer> getCollatz(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
 		retVal.add(aNumber);
@@ -73,6 +117,12 @@ public class NumberTheory {
 		return getJugglers(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return list of jugglers sequence for the number
+	 * @see https://en.wikipedia.org/wiki/Juggler_sequence
+	 */
 	public static List<Integer> getJugglers(int aNumber) {
 		double factr = 0.0;
 		List<Integer> retVal = new ArrayList<>();
@@ -160,19 +210,39 @@ public class NumberTheory {
 		return getAliquotSum(aNumber) > aNumber;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @see #isPerfect(int)
+	 */
 	boolean isPerfect() {
 		return isPerfect(getTheNumber());
 
 	}
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return boolean is number perfect?
+	 */
 	public static boolean isPerfect(int aNumber) {
 		return getAbundance(aNumber) == 0;
 	}
 
+	/**
+	 * 
+	 * @return int 
+	 * @see #getReverseNumber(int)
+	 */
 	int getReverseNumber() {
 		return getReverseNumber(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return int the number reversed
+	 */
 	public static int getReverseNumber(int aNumber) {
 		int num = aNumber;
 		int rev = 0;
@@ -256,6 +326,11 @@ public class NumberTheory {
 		return isSuperabundant(getTheNumber());
 	}
 
+	/**
+	 * 
+	 * @param aNumber	number to check for superabundancy
+	 * @return boolean is number superabundant?
+	 */
 	public static boolean isSuperabundant(int aNumber) {
 		double M = 0.0;
 		double theNumberDouble = Double.parseDouble(String.valueOf(aNumber));
@@ -269,10 +344,21 @@ public class NumberTheory {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * 
+	 * @see #isPrimativeAbundant(int)
+	 */
 	boolean isPrimativeAbundant() {
 		return isPrimativeAbundant(getTheNumber());
 	}
 
+/**
+ * 
+ * @param aNumber
+ * @return boolean  is number primative abundant?
+ */
 	public static boolean isPrimativeAbundant(int aNumber) {
 		// 20, 70, True
 		// 87 False
@@ -501,6 +587,13 @@ public class NumberTheory {
 		return gcd(n, b % n);
 	}
 
+/**
+ * 
+ * @param b  first number
+ * @param exp exponent
+ * @param n	third number
+ * @return	
+ */
 	public static int power(int b, int exp, int n) {
 		if (exp == 0)
 			return 1;
@@ -604,28 +697,24 @@ public class NumberTheory {
 		// 4K or 4K+1
 		return (aNumber % 4 == 0 || (aNumber - 1) % 4 == 0);
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param d
-	 * @return if d = 2 return 22
-	 * 			if d = 3 return 333
-	 * 			if d = 4 return 4444
+	 * @return if d = 2 return 22 if d = 3 return 333 if d = 4 return 4444
 	 */
 	private static String intToString(int d) {
 		StringBuilder sb = new StringBuilder();
-		for(int i=0; i<d; i++) {
+		for (int i = 0; i < d; i++) {
 			sb.append(String.valueOf(d));
-		}		
+		}
 		return sb.toString();
 	}
-	
-	
-	
+
 	boolean isSuperD() {
 		return isSuperD(getTheNumber());
 	}
+
 	/**
 	 * https://www.geeksforgeeks.org/super-d-numbers/
 	 * 
@@ -633,54 +722,54 @@ public class NumberTheory {
 	 * @return boolean - is number SuperD?
 	 */
 	public static boolean isSuperD(int aNumber) {
-		for(int d = 2; d < 10; d++) {
+		for (int d = 2; d < 10; d++) {
 			String subString = intToString(d);
-			if(String.valueOf(
-					(d * Math.pow(aNumber, d))).contains(subString)) {
+			if (String.valueOf((d * Math.pow(aNumber, d))).contains(subString)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
-	
+
 	/**
 	 * Used for Alternating Numbers
+	 * 
 	 * @param s
 	 * @return
 	 */
 	static boolean isEvenOddForm(String s) {
 		int n = s.length();
-		for(int i=0; i< n; i++) {
-			if(i%2 == 0 && s.charAt(i) %2 != 0)
+		for (int i = 0; i < n; i++) {
+			if (i % 2 == 0 && s.charAt(i) % 2 != 0)
 				return false;
-			if(i %2 == 1 && s.charAt(i) %2 != 1)
+			if (i % 2 == 1 && s.charAt(i) % 2 != 1)
 				return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Used for Alternating Numbers
+	 * 
 	 * @param s
 	 * @return
 	 */
 	static boolean isOddEvenForm(String s) {
 		int n = s.length();
-		
-		for(int i = 0; i<n; i++) {
-			if(i%2==0 && s.charAt(i) %2 != 1)
+
+		for (int i = 0; i < n; i++) {
+			if (i % 2 == 0 && s.charAt(i) % 2 != 1)
 				return false;
-			if(i%2==1 && s.charAt(i) %2 !=0)
+			if (i % 2 == 1 && s.charAt(i) % 2 != 0)
 				return false;
 		}
 		return true;
 	}
-	
+
 	boolean isAlternating() {
 		return isAlternating(getTheNumber());
 	}
+
 	/**
 	 * https://www.geeksforgeeks.org/alternating-numbers/
 	 * 
@@ -689,95 +778,93 @@ public class NumberTheory {
 	 */
 	public static boolean isAlternating(int aNumber) {
 		String str = Integer.toString(aNumber);
-		return(isEvenOddForm(str) ||
-				isOddEvenForm(str));	
+		return (isEvenOddForm(str) || isOddEvenForm(str));
 	}
 
-	
-	boolean isAntiPerfect() {		
+	boolean isAntiPerfect() {
 		return isAntiPerfect(getTheNumber());
 	}
-	
+
 	/**
-	 * A number  n  is said to be anti-perfect if it is equal 
-	 * to the sum of the reverses of its proper divisors.
+	 * A number n is said to be anti-perfect if it is equal to the sum of the
+	 * reverses of its proper divisors.
 	 * 
 	 * @param aNumber
 	 * @return
 	 */
 	public static boolean isAntiPerfect(int aNumber) {
 		List<Integer> list = getFactors(aNumber);
-		int lastElement = list.size()-1;
+		int lastElement = list.size() - 1;
 		list.remove(lastElement);
 		int sum = 0;
 		for (Integer integer : list) {
 			sum += getReverseNumber(integer);
 			System.out.println(getReverseNumber(integer));
 		}
-		if(sum == aNumber) {
+		if (sum == aNumber) {
 			return true;
-		};
+		}
+		;
 		return false;
 	}
-	
-	
+
 	boolean isArithmetic() {
 		return isArithmetic(getTheNumber());
 	}
+
 	public static boolean isArithmetic(int aNumber) {
 		List<Integer> list = getFactors(aNumber);
-		int sum = 0;		
+		int sum = 0;
 		for (Integer integer : list) {
 			sum += integer;
 		}
-		
-		int d = sum % list.size();		
-		System.out.printf("%d %% %d = %d\n",sum, list.size(), d);
-		if(sum % list.size() == 0) {
+
+		int d = sum % list.size();
+		System.out.printf("%d %% %d = %d\n", sum, list.size(), d);
+		if (sum % list.size() == 0) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
 	boolean isAstonishing() {
 		return isAstonishing(getTheNumber());
 	}
-	
+
 	/**
-	 * Astonishing Number is a number N whose representation can be decomposed 
-	 * into two parts, a and b, such that N is equal to the sum of the integers 
-	 * from a to b and a + b = N where ‘+’ denotes concatenation.
+	 * Astonishing Number is a number N whose representation can be decomposed into
+	 * two parts, a and b, such that N is equal to the sum of the integers from a to
+	 * b and a + b = N where ‘+’ denotes concatenation.
 	 * 
 	 * @param aNumber
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isAstonishing(int aNumber) {
-		//https://www.geeksforgeeks.org/astonishing-numbers/
+		// https://www.geeksforgeeks.org/astonishing-numbers/
 		// This code is contributed by shubhamsingh10
-		//Time Complexity: O(n)
-		//Auxiliary Space: O(1)
-		
-		//Loop to find sum of all integers
+		// Time Complexity: O(n)
+		// Auxiliary Space: O(1)
+
+		// Loop to find sum of all integers
 		// from i until the sum becomes >= aNumber
-		for(int i = 1; i<aNumber; i++) {
-			//variable to store sum of all integers 
+		for (int i = 1; i < aNumber; i++) {
+			// variable to store sum of all integers
 			// from i to j and check if sum and
 			// concatenation equals aNumber or not.
 			int sum = 0;
-			for(int j = i; j<aNumber; j++) {
+			for (int j = i; j < aNumber; j++) {
 				sum += j;
-				if(sum == aNumber) {
-					
-					//Finding concatenation of i and j
-					int concatenation = concat(i,j);
-					
-					//condition for astonishing number
-					if(concatenation == aNumber) {
+				if (sum == aNumber) {
+
+					// Finding concatenation of i and j
+					int concatenation = concat(i, j);
+
+					// condition for astonishing number
+					if (concatenation == aNumber) {
 						return true;
 					}
 				}
-						
+
 			}
 		}
 		return false;
@@ -786,37 +873,36 @@ public class NumberTheory {
 	/**
 	 * Attached to isAstonishing()
 	 * 
-	 * @param a
-	 * @param b
-	 * @return  Concat two integers into one.
+	 * @param a first number to be concatenated
+	 * @param b second number to be concatenated
+	 * @return concat two integers into one
+	 * @see NumberTheory#isAstonishing(int aNumber)
 	 */
 	private static int concat(int a, int b) {
-		//Convert both integers to string
+		// Convert both integers to string
 		String s1 = Integer.toString(a);
 		String s2 = Integer.toString(b);
-		
-		//Concatenate both strings
+
+		// Concatenate both strings
 		String s = s1 + s2;
-		
-		//Convert concatenated string to integer
-		int c = Integer.parseInt(s);		
-		
+
+		// Convert concatenated string to integer
+		int c = Integer.parseInt(s);
+
 		return c;
 	}
-	
+
 	/**
 	 * @author Jeffrey Schneider
 	 * @param aNumber
 	 * @return
 	 */
 	public static boolean isAutomorphic(long aNumber) {
-		long squared = (long)Math.pow(aNumber, 2.0);		
+		long squared = (long) Math.pow(aNumber, 2.0);
 		String theString = String.valueOf(squared);
 		String ends = String.valueOf(aNumber);
 		System.out.printf("\n%s %s\n", theString, ends);
 		return theString.endsWith(ends);
-		
-				
-		
+
 	}
 }
