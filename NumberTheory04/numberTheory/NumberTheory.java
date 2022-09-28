@@ -739,7 +739,8 @@ public class NumberTheory {
 	 * Used for Alternating Numbers
 	 * 
 	 * @param s
-	 * @return
+	 * @return boolean
+	 * @see #isAlternating()
 	 */
 	static boolean isEvenOddForm(String s) {
 		int n = s.length();
@@ -756,7 +757,8 @@ public class NumberTheory {
 	 * Used for Alternating Numbers
 	 * 
 	 * @param s
-	 * @return
+	 * @return boolean
+	 * @see #isAlternating()
 	 */
 	static boolean isOddEvenForm(String s) {
 		int n = s.length();
@@ -770,6 +772,10 @@ public class NumberTheory {
 		return true;
 	}
 
+	/**
+	 * @see #isAlternating()
+	 * @return boolean
+	 */
 	boolean isAlternating() {
 		return isAlternating(getTheNumber());
 	}
@@ -778,7 +784,7 @@ public class NumberTheory {
 	 * https://www.geeksforgeeks.org/alternating-numbers/
 	 * 
 	 * @param aNumber
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isAlternating(int aNumber) {
 		String str = Integer.toString(aNumber);
@@ -794,7 +800,7 @@ public class NumberTheory {
 	 * reverses of its proper divisors.
 	 * 
 	 * @param aNumber
-	 * @return
+	 * @return boolean 
 	 */
 	public static boolean isAntiPerfect(int aNumber) {
 		List<Integer> list = getFactors(aNumber);
@@ -910,6 +916,13 @@ public class NumberTheory {
 
 	}
 	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return List  list of non-trivial (not the number and not the number 1) divisors
+	 * 
+	 */
 	public static List<Integer> getNonTrivialDivisors(int aNumber){
 		List<Integer> retList = new ArrayList<>();
 		retList = getFactors(aNumber);
@@ -921,17 +934,12 @@ public class NumberTheory {
 		
 	}
 	
-	public static List<Integer> getListOfDigits2(int aNumber){
-		List<Integer> retList = new ArrayList<>();
-		String string_number = Integer.toString(aNumber);
-		System.out.println("String number: " + string_number);
-		//Traverse through the string using for loop
-		for (int i = 0; i < string_number.length(); i++) {
-			retList.add((int) string_number.charAt(i));
-		}
-		return retList;
-	}
-	
+
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return List  list of the digits in a number
+	 */
 	public static List<Integer> getListOfDigits(int aNumber){
 		List<Integer> retList = new LinkedList<>();
 		//This works right to left.
@@ -945,6 +953,12 @@ public class NumberTheory {
 		return retList;
 	}
 	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aList
+	 * @return int sum of the squares of a list of numbers
+	 */
 	public static int getSumOfSquares(List<Integer> aList) {
 		int retVal = 0;
 		for (Integer integer : aList) {
@@ -953,6 +967,12 @@ public class NumberTheory {
 		return retVal;
 	}
 	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aList
+	 * @return int sum of a numbers digits.
+	 */
 	public static int getSumOfDigits(List<Integer> aList) {
 		int retVal = 0;
 		for (Integer integer : aList) {
@@ -960,12 +980,29 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
+
 	
+	boolean isCanadaNumber() {
+		return isCanadaNumber(getTheNumber());
+	}
+	/**
+	 * 
+	 * Canada numbers are those  'n'  such that the sum of the squares of the digits of  'n'  is equal
+	 *  to the sum of the non-trivial divisors of  'n', i.e.  '\sigma(n)-n-1'.
+	 *  For example, 581, whose divisors are 1, 7, 83 and 581, is a Canada number 
+	 *  because {@code <code>5^2+8^2+1^2=7+83</code>}.
+	 *  @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean is number a Canada Number?
+	 * 
+	 * @see #getNonTrivialDivisors(int)
+	 * @see #getListOfDigits(int)
+	 * @see #getSumOfSquares(List)
+	 * @see #getSumOfDigits(List)
+	 */
 	public static boolean isCanadaNumber(int aNumber) {
-		System.out.println(aNumber + " List of digits" + getListOfDigits(aNumber));
 		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(aNumber));
 		int sumOfNonTrivialDivisors =  getSumOfDigits(getNonTrivialDivisors(aNumber));
-		System.out.println(sumOfSquaresOfDigits + " " + sumOfNonTrivialDivisors);
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
 }
