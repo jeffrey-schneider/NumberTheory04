@@ -387,7 +387,7 @@ class NumberTheoryTest {
     public void jacobsthalSpec() {
     	System.out.println("Jacobsthal ");
     	NumberTheory instance = new NumberTheory(20);
-    	List<Integer> result = instance.getJaconbsthal();
+    	List<Integer> result = instance.getJacobsthal();
     	List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763));
     	assertIterableEquals(expected, result);
 
@@ -552,4 +552,61 @@ class NumberTheoryTest {
     	assertTrue(NumberTheory.isAutomorphic((long)890625));
     	assertFalse(NumberTheory.isAutomorphic((long)20));   	
     }
+    
+    
+    @Test
+    public void isInterPrimeSpec() {
+    	System.out.println("Is Interprime?");
+    	assertTrue(NumberTheory.isInterPrime(120));
+    	assertFalse(NumberTheory.isInterPrime(121));
+    	
+    	NumberTheory instance = new NumberTheory(120);
+    	assertTrue(instance.isInterPrime());
+    	instance.setTheNumber(121);
+    	assertFalse(instance.isInterPrime());
+    }
+    
+    @Test
+    public void isCanadaSpec() {
+    	System.out.println("Is Canada Number?");
+    	assertTrue(NumberTheory.isCanadaNumber(16999));
+    	assertFalse(NumberTheory.isCanadaNumber(17000));
+    	
+    	NumberTheory instance = new NumberTheory(8549);
+    	assertTrue(instance.isCanadaNumber());
+    	instance.setTheNumber(17000);
+    	assertFalse(instance.isCanadaNumber());
+    }
+    
+    
+    @Test
+    public void isCenteredDecagonalNumberSpec() {
+    	System.out.println("Is Centered Decagonal Number? ");
+    	NumberTheory instance = new NumberTheory(8);
+        int expected = 361;
+        int result = instance.getCenteredDecagonalNumber();
+        assertEquals(expected, result);
+        
+        
+        System.out.println("getCenteredDecagonalNumber(4)");
+        result = NumberTheory.getCenteredDecagonalNumber(4);
+        expected = 101;
+        assertEquals(expected,result);      
+    }
+    
+    @Test
+    public void isCenteredNonagonalNumberSpec() {
+    	System.out.println("Centered Nonagonal Number");
+    	NumberTheory instance = new NumberTheory(8); //253
+    	int expected = 253;
+    	int result = instance.getCenteredNonagonalNumber();
+    	assertEquals(expected, result);
+    	
+    	result = NumberTheory.getCenteredNonagonalNumber(7);
+    	expected = 190;
+    	assertEquals(expected, result);
+    	
+    }
+    
+    
 }

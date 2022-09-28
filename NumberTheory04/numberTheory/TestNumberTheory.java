@@ -1,10 +1,12 @@
 package numberTheory;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
+
 		NumberTheory theTheory = new NumberTheory(19);
 		System.out.println(theTheory.getCollatz());
 		theTheory.setTheNumber(27);
@@ -131,18 +133,37 @@ public class TestNumberTheory {
 		 for (int j : n3) {
 			System.out.printf("%d is Canada number? %b\n", j, NumberTheory.isCanadaNumber(j));
 		}
+		 n3 = null;
 		 
-		 int x = 10;
+		 int x = 100;
 		 System.out.println("NumberTheory.getPellList()" + NumberTheory.getPellList(x));
-		 
-		 
+
 		 for(x = 1; x <= 100; x++) {
 			 System.out.println(x + " " + NumberTheory.getPell(x));
 		 }
 		 
 		 
+		 int[] n4 = { 5, 53, 153, 157};		 
+		 for (int j : n4) {
+			 System.out.printf("\nIs %d a balanced prime? %b",j,   NumberTheory.isBalancedPrime(j));
+		 }
+		 System.out.println();
 		 
+		 int[] n5 = { 4, 6, 9, 12, 15, 18, 21, 26, 30, 34, 39, 42, 45, 50, 56, 60, 64, 69, 72, 76, 81, 86, 93, 99, 102, 105, 108, 111, 120, 121}; 
+		 for (int j : n5) {
+			 System.out.printf("\nIs %d a interprime? %b",j,   NumberTheory.isInterPrime(j));
+		 }
+		 
+		 System.out.println();
+		 
+		 for (int j = 0; j < 20; j++) {
+			System.out.print(" " + NumberTheory.getCenteredDecagonalNumber(j));
+		}
+		 
+		
+		for(int j = 0; j<20; j++) {
+		 System.out.print(NumberTheory.getCenteredNonagonalNumber(j) + " " );		 
+		 }
+		System.out.println();
 	}
-	
-	
 }

@@ -1,6 +1,9 @@
 package numberTheory;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
@@ -511,7 +514,7 @@ public class NumberTheory {
 	 * @param aNumber
 	 * @return
 	 */
-	public static List<Integer> getPellList(int aNumber) {
+	public static List<Integer> getPellList2(int aNumber) {
 		int num1 = 0;
 		int num2 = 1;
 		int counter = 0;
@@ -526,19 +529,35 @@ public class NumberTheory {
 		}
 		return retList;
 	}
-
-	public static long getPell(int aNumber) {
-		//double sqrtTwo = Math.sqrt(2.0);
-		double sqrtTwo = 577/408.0;
-		double bNumber = (double)aNumber;		
-		double a = Math.pow(1.0 + sqrtTwo, bNumber);
-		double b = Math.pow(1.0 - sqrtTwo, bNumber);
-		double c = 2.0 * sqrtTwo;
-		double programBuffer = (a-b)/c;
-		return Math.round(programBuffer);
+	
+	public static List<BigInteger> getPellList(int aNumber) {
+		BigInteger num1 = BigInteger.ZERO;
+		BigInteger num2 = BigInteger.ONE;		
+		int counter = 0;
+		List<BigInteger> retList = new ArrayList<>();
+		// Iterate until counter == aNumber
+		while (counter < aNumber) {
+			retList.add(num1);
+			BigInteger num3 = BigInteger.TWO.multiply(num2).add(num1);
+			//int num3 = 2 * num2 + num1;
+			num1 = num2;
+			num2 = num3;
+			counter++;
+		}
+		return retList;
 	}
 
-	List<Integer> getJaconbsthal() {
+	public static BigInteger getPell(int aNumber) {
+		List<BigInteger> theList = getPellList(aNumber);
+		Stack<BigInteger> theStack = new Stack<>();
+		for (BigInteger bigInteger : theList) {
+			theStack.push(bigInteger);	
+		}
+		return theStack.pop();		
+	}
+	
+
+	List<Integer> getJacobsthal() {
 		return getJacobsthal(getTheNumber());
 	}
 
@@ -1009,6 +1028,8 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
+	
+	
 
 	boolean isCanadaNumber() {
 		return isCanadaNumber(getTheNumber());
@@ -1034,5 +1055,118 @@ public class NumberTheory {
 		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(aNumber));
 		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(aNumber));
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
+	}
+	
+	
+	/**
+	 * @author Jeffrey Schneider
+	 * @param aNumber
+	 * @return boolean
+	 * 
+	 * {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
+	 * i.e., it is at equal distance from previous prime and next prime.</code>}
+	 */
+	public static boolean isBalancedPrime(int aNumber) {
+		// If aNumber isn't prime, don't go any further.
+		if(!isPrime(aNumber)) {
+			return false;
+		}
+		List<Integer> theList = new ArrayList<>();
+		
+		//Find the first prime number less than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		int counter = aNumber-1;
+		while(counter > 0) {
+			if(isPrime(counter)) {
+				theList.add(counter);
+				break;
+			}else {
+				counter--;
+			}
+		}
+		
+		//Find the first prime number greater than aNumber.
+		//Add it to a list, then break out of the discovery loop.
+		counter = aNumber+1;
+		while(counter >= aNumber) {
+			if(isPrime(counter)) {
+				theList.add(counter);
+				break;
+				}else {
+					counter++;
+				}
+		}
+		//If aNumber is the same distance between the upper and lower numbers, 
+		//  you have a balanced prime.
+		int up = theList.get(0);
+		int dn = theList.get(1);
+		if( aNumber - up == dn - aNumber) {
+			return true;
+		}else {
+			return false;
+		}		
+	}
+	
+	
+	boolean isInterPrime() {
+		return isInterPrime(getTheNumber());
+	}
+	
+	public static boolean  isInterPrime(int aNumber) {
+				List<Integer> theList = new ArrayList<>();
+				
+				//Find the first prime number less than aNumber.
+				// Add it to a list, then break out of the discovery loop.
+				int counter = aNumber-1;
+				while(counter > 0) {
+					if(isPrime(counter)) {
+						theList.add(counter);
+						break;
+					}else {
+						counter--;
+					}
+				}
+				
+				//Find the first prime number greater than aNumber.
+				//Add it to a list, then break out of the discovery loop.
+				counter = aNumber+1;
+				while(counter >= aNumber) {
+					if(isPrime(counter)) {
+						theList.add(counter);
+						break;
+						}else {
+							counter++;
+						}
+				}
+				//If aNumber is the same distance between the upper and lower numbers, 
+				//  you have a balanced prime.
+				int up = theList.get(0);
+				int dn = theList.get(1);
+				if( aNumber - up == dn - aNumber) {
+					return true;
+				}else {
+					return false;
+				}		
+	}
+
+
+	int getCenteredDecagonalNumber() {
+		return getCenteredDecagonalNumber(getTheNumber());
+	}
+	
+	public static int getCenteredDecagonalNumber(int aNumber) {
+		//return 5 * aNumber*aNumber + 5 * aNumber + 1;
+		return (int) (5 * Math.pow(aNumber, 2) + 5 * aNumber + 1);
+	}
+
+	
+	
+	int getCenteredNonagonalNumber() {
+		return getCenteredNonagonalNumber(getTheNumber());
+	}
+	public static int getCenteredNonagonalNumber(int aNumber) {
+		//return  (int) ((9/2) * Math.pow(aNumber, 2) + (-9/2*aNumber)+1);
+		return ((3*aNumber-2) * (3*aNumber-1))/2;
+		
 	}
 }
