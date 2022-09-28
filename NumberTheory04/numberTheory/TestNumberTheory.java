@@ -1,5 +1,8 @@
 package numberTheory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestNumberTheory {
 	public static void main(String[] args) {
 		NumberTheory theTheory = new NumberTheory(19);
@@ -119,6 +122,15 @@ public class TestNumberTheory {
 			 System.out.printf("Is %d automorphic? %b\n", longNumber, NumberTheory.isAutomorphic(longNumber));
 		 }
 		 
+		 List<Integer> theList = NumberTheory.getNonTrivialDivisors(60);
+		 for (Integer integer : theList) {
+			System.out.println(integer);
+		}
+		 
+		 int[] n3 = { 125, 581, 8549, 16999};
+		 for (int j : n3) {
+			System.out.printf("%d is Canada number? %b\n", j, NumberTheory.isCanadaNumber(j));
+		}
 		 
 		 
 	}

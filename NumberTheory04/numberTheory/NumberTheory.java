@@ -2,9 +2,11 @@ package numberTheory;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.function.BooleanSupplier;
 
@@ -906,5 +908,64 @@ public class NumberTheory {
 		System.out.printf("\n%s %s\n", theString, ends);
 		return theString.endsWith(ends);
 
+	}
+	
+	public static List<Integer> getNonTrivialDivisors(int aNumber){
+		List<Integer> retList = new ArrayList<>();
+		retList = getFactors(aNumber);
+		Collections.sort(retList);
+		int Length = retList.size();	
+		retList.remove(Length - 1);
+		retList.remove(0);
+		return retList;
+		
+	}
+	
+	public static List<Integer> getListOfDigits2(int aNumber){
+		List<Integer> retList = new ArrayList<>();
+		String string_number = Integer.toString(aNumber);
+		System.out.println("String number: " + string_number);
+		//Traverse through the string using for loop
+		for (int i = 0; i < string_number.length(); i++) {
+			retList.add((int) string_number.charAt(i));
+		}
+		return retList;
+	}
+	
+	public static List<Integer> getListOfDigits(int aNumber){
+		List<Integer> retList = new LinkedList<>();
+		//This works right to left.
+		while(aNumber > 0) {
+			int remainder = aNumber % 10;
+			retList.add(remainder);
+			aNumber /= 10;			
+		}
+		//Flip the list to get it in the correct order.
+		Collections.reverse(retList);
+		return retList;
+	}
+	
+	public static int getSumOfSquares(List<Integer> aList) {
+		int retVal = 0;
+		for (Integer integer : aList) {
+			retVal += integer*integer;
+		}
+		return retVal;
+	}
+	
+	public static int getSumOfDigits(List<Integer> aList) {
+		int retVal = 0;
+		for (Integer integer : aList) {
+			retVal += integer;
+		}
+		return retVal;
+	}
+	
+	public static boolean isCanadaNumber(int aNumber) {
+		System.out.println(aNumber + " List of digits" + getListOfDigits(aNumber));
+		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(aNumber));
+		int sumOfNonTrivialDivisors =  getSumOfDigits(getNonTrivialDivisors(aNumber));
+		System.out.println(sumOfSquaresOfDigits + " " + sumOfNonTrivialDivisors);
+		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
 }
