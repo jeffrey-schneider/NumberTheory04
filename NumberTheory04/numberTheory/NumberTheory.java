@@ -231,11 +231,9 @@ public class NumberTheory {
 		return getAbundance(aNumber) == 0;
 	}
 
-	
-	
 	/**
 	 * 
-	 * @return int 
+	 * @return int
 	 * @see #getReverseNumber(int)
 	 */
 	int getReverseNumber() {
@@ -332,7 +330,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber	number to check for superabundancy
+	 * @param aNumber number to check for superabundancy
 	 * @return boolean is number superabundant?
 	 */
 	public static boolean isSuperabundant(int aNumber) {
@@ -358,11 +356,11 @@ public class NumberTheory {
 		return isPrimativeAbundant(getTheNumber());
 	}
 
-/**
- * 
- * @param aNumber
- * @return boolean  is number primative abundant?
- */
+	/**
+	 * 
+	 * @param aNumber
+	 * @return boolean is number primative abundant?
+	 */
 	public static boolean isPrimativeAbundant(int aNumber) {
 		// 20, 70, True
 		// 87 False
@@ -506,6 +504,40 @@ public class NumberTheory {
 		return retList;
 	}
 
+	/**
+	 * @author JCSchneider The sequence of Pell numbers starts with 0 and 1, and
+	 *         then each Pell number is the sum of twice the previous Pell number
+	 *         and the Pell number before that.
+	 * @param aNumber
+	 * @return
+	 */
+	public static List<Integer> getPellList(int aNumber) {
+		int num1 = 0;
+		int num2 = 1;
+		int counter = 0;
+		List<Integer> retList = new ArrayList<>();
+		// Iterate until counter == aNumber
+		while (counter < aNumber) {
+			retList.add(num1);
+			int num3 = 2 * num2 + num1;
+			num1 = num2;
+			num2 = num3;
+			counter++;
+		}
+		return retList;
+	}
+
+	public static long getPell(int aNumber) {
+		//double sqrtTwo = Math.sqrt(2.0);
+		double sqrtTwo = 577/408.0;
+		double bNumber = (double)aNumber;		
+		double a = Math.pow(1.0 + sqrtTwo, bNumber);
+		double b = Math.pow(1.0 - sqrtTwo, bNumber);
+		double c = 2.0 * sqrtTwo;
+		double programBuffer = (a-b)/c;
+		return Math.round(programBuffer);
+	}
+
 	List<Integer> getJaconbsthal() {
 		return getJacobsthal(getTheNumber());
 	}
@@ -591,13 +623,13 @@ public class NumberTheory {
 		return gcd(n, b % n);
 	}
 
-/**
- * 
- * @param b  first number
- * @param exp exponent
- * @param n	third number
- * @return	
- */
+	/**
+	 * 
+	 * @param b   first number
+	 * @param exp exponent
+	 * @param n   third number
+	 * @return
+	 */
 	public static int power(int b, int exp, int n) {
 		if (exp == 0)
 			return 1;
@@ -800,7 +832,7 @@ public class NumberTheory {
 	 * reverses of its proper divisors.
 	 * 
 	 * @param aNumber
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public static boolean isAntiPerfect(int aNumber) {
 		List<Integer> list = getFactors(aNumber);
@@ -915,45 +947,43 @@ public class NumberTheory {
 		return theString.endsWith(ends);
 
 	}
-	
-	
-	/**
-	 * @author JeffreySchneider
-	 * @param aNumber
-	 * @return List  list of non-trivial (not the number and not the number 1) divisors
-	 * 
-	 */
-	public static List<Integer> getNonTrivialDivisors(int aNumber){
-		List<Integer> retList = new ArrayList<>();
-		retList = getFactors(aNumber);
-		Collections.sort(retList);
-		int Length = retList.size();	
-		retList.remove(Length - 1);
-		retList.remove(0);
-		return retList;
-		
-	}
-	
 
 	/**
 	 * @author JeffreySchneider
 	 * @param aNumber
-	 * @return List  list of the digits in a number
+	 * @return List list of non-trivial (not the number and not the number 1)
+	 *         divisors
+	 * 
 	 */
-	public static List<Integer> getListOfDigits(int aNumber){
+	public static List<Integer> getNonTrivialDivisors(int aNumber) {
+		List<Integer> retList = new ArrayList<>();
+		retList = getFactors(aNumber);
+		Collections.sort(retList);
+		int Length = retList.size();
+		retList.remove(Length - 1);
+		retList.remove(0);
+		return retList;
+
+	}
+
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return List list of the digits in a number
+	 */
+	public static List<Integer> getListOfDigits(int aNumber) {
 		List<Integer> retList = new LinkedList<>();
-		//This works right to left.
-		while(aNumber > 0) {
+		// This works right to left.
+		while (aNumber > 0) {
 			int remainder = aNumber % 10;
 			retList.add(remainder);
-			aNumber /= 10;			
+			aNumber /= 10;
 		}
-		//Flip the list to get it in the correct order.
+		// Flip the list to get it in the correct order.
 		Collections.reverse(retList);
 		return retList;
 	}
-	
-	
+
 	/**
 	 * @author JeffreySchneider
 	 * @param aList
@@ -962,12 +992,11 @@ public class NumberTheory {
 	public static int getSumOfSquares(List<Integer> aList) {
 		int retVal = 0;
 		for (Integer integer : aList) {
-			retVal += integer*integer;
+			retVal += integer * integer;
 		}
 		return retVal;
 	}
-	
-	
+
 	/**
 	 * @author JeffreySchneider
 	 * @param aList
@@ -981,17 +1010,18 @@ public class NumberTheory {
 		return retVal;
 	}
 
-	
 	boolean isCanadaNumber() {
 		return isCanadaNumber(getTheNumber());
 	}
+
 	/**
 	 * 
-	 * Canada numbers are those  'n'  such that the sum of the squares of the digits of  'n'  is equal
-	 *  to the sum of the non-trivial divisors of  'n', i.e.  '\sigma(n)-n-1'.
-	 *  For example, 581, whose divisors are 1, 7, 83 and 581, is a Canada number 
-	 *  because {@code <code>5^2+8^2+1^2=7+83</code>}.
-	 *  @author JeffreySchneider
+	 * Canada numbers are those 'n' such that the sum of the squares of the digits
+	 * of 'n' is equal to the sum of the non-trivial divisors of 'n', i.e.
+	 * '\sigma(n)-n-1'. For example, 581, whose divisors are 1, 7, 83 and 581, is a
+	 * Canada number because {@code <code>5^2+8^2+1^2=7+83</code>}.
+	 * 
+	 * @author JeffreySchneider
 	 * @param aNumber
 	 * @return boolean is number a Canada Number?
 	 * 
@@ -1002,7 +1032,7 @@ public class NumberTheory {
 	 */
 	public static boolean isCanadaNumber(int aNumber) {
 		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(aNumber));
-		int sumOfNonTrivialDivisors =  getSumOfDigits(getNonTrivialDivisors(aNumber));
+		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(aNumber));
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
 }

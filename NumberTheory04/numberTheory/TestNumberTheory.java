@@ -132,6 +132,15 @@ public class TestNumberTheory {
 			System.out.printf("%d is Canada number? %b\n", j, NumberTheory.isCanadaNumber(j));
 		}
 		 
+		 int x = 10;
+		 System.out.println("NumberTheory.getPellList()" + NumberTheory.getPellList(x));
+		 
+		 
+		 for(x = 1; x <= 100; x++) {
+			 System.out.println(x + " " + NumberTheory.getPell(x));
+		 }
+		 
+		 
 		 
 	}
 	
