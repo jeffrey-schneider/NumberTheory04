@@ -1157,6 +1157,16 @@ public class NumberTheory {
 	}
 	
 	
+	public static double getPolygonalNumber(int S, int N) {
+		double first = (S - 2) * Math.pow(N, 2);
+		int second = (S - 4) * N;
+		double retVal = 1/2.0 * (first - second);
+		
+		//System.out.println(S + " " + N + " "  + first + " " + " " +second + " " + retVal);
+		return retVal;
+	}
+	
+	
 
 	
 	

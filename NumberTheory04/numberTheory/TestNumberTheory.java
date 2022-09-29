@@ -169,6 +169,15 @@ public class TestNumberTheory {
 		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(3, 2));
 		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(14, 20));
 		 
+		 System.out.println("Something is wrong here.");		 
+		 for(int outer = 2; outer <= 5; outer++) {
+			 System.out.print(outer + " " );
+			 for(int inner = 1; inner <= 10; inner++) {
+				 System.out.printf(" %.0f ", NumberTheory.getPolygonalNumber(inner, outer));
+			 }
+			 System.out.println();
+		 }
+		 
 		 
 		 
 		 
