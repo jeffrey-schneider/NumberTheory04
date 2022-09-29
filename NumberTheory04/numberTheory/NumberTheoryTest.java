@@ -588,6 +588,43 @@ class NumberTheoryTest {
     	assertFalse(instance.isCanadaNumber());
     }
     
+    @Test
+    public void getPolygonalSpec() {
+    	System.out.println("Polygonal Number");
+    	int result = (int) NumberTheory.getPolygonalNumber(24, 9);
+    	int  expected = 801;    	
+    	assertEquals(expected, result);
+    	
+    	NumberTheory instance = new NumberTheory(20);
+    	result = (int) instance.getPolygonalNumber();
+    	expected = 820;    	
+    	assertEquals(expected, result);
+    }
+    
+    @Test
+    public void isSemiPrimeSpec() {
+    	System.out.println("Is Semi Prime?");
+    	assertTrue(NumberTheory.isSemiPrime(15));
+    	assertFalse(NumberTheory.isSemiPrime(92));
+    	
+    	NumberTheory instance = new NumberTheory(74);
+    	assertTrue(instance.isSemiPrime());
+    	instance.setTheNumber(84);
+    	assertFalse(instance.isSemiPrime());
+    }
+    
+    @Test
+    public void isChenPrimeSpec() {
+    	System.out.println("Is a Chen Prime");
+    	assertTrue(NumberTheory.isChenPrime(137));
+    	assertFalse(NumberTheory.isChenPrime(133));
+    	
+    	NumberTheory instance = new NumberTheory(211);
+    	assertTrue(instance.isChenPrime());
+    	instance.setTheNumber(84);
+    	assertFalse(instance.isChenPrime());    	
+    }
+    
     
     
 }

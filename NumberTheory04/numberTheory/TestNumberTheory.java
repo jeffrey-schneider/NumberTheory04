@@ -168,18 +168,50 @@ public class TestNumberTheory {
 		 
 		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(3, 2));
 		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(14, 20));
+		 System.out.println();
 		 
-		 System.out.println("Something is wrong here.");		 
-		 for(int outer = 2; outer <= 5; outer++) {
-			 System.out.print(outer + " " );
+		 
+		 
+		 System.out.println("Polygonal Numbers.");
+		 for(int outer = 2; outer <= 24; outer++) {	
+			 System.out.printf(" %d ", outer);
 			 for(int inner = 1; inner <= 10; inner++) {
-				 System.out.printf(" %.0f ", NumberTheory.getPolygonalNumber(inner, outer));
+				 System.out.printf(" %.0f ", NumberTheory.getPolygonalNumber(outer, inner));
 			 }
 			 System.out.println();
 		 }
 		 
+		 		 
 		 
+		 System.out.println("Semi Primes: ");
+		 i = 2;
+		 while(i< 100) {			 
+			 if(NumberTheory.isSemiPrime(i)) {
+				 System.out.print(i);
+			 }
+			 i++;
+		 }
+		 
+		 
+		 System.out.println("\nChen Primes");
+		 i = 2;
+		 while(i<300) {
+			 if(NumberTheory.isChenPrime(i)) {
+				 System.out.printf(" %d ", i );
+			 }
+			 i++;
+		 }
+		 System.out.println();
+		 
+		 System.out.println("Primorials");
+		 for(i = 0; i <= 25; i++) {
+			 System.out.printf("%d -> %,d\n" , i, NumberTheory.getPrimorials(i));
+		 }
+		 
+
 		 
 		 
 	}
+
+	
 }

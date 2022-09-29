@@ -529,17 +529,17 @@ public class NumberTheory {
 		}
 		return retList;
 	}
-	
+
 	public static List<BigInteger> getPellList(int aNumber) {
 		BigInteger num1 = BigInteger.ZERO;
-		BigInteger num2 = BigInteger.ONE;		
+		BigInteger num2 = BigInteger.ONE;
 		int counter = 0;
 		List<BigInteger> retList = new ArrayList<>();
 		// Iterate until counter == aNumber
 		while (counter < aNumber) {
 			retList.add(num1);
 			BigInteger num3 = BigInteger.TWO.multiply(num2).add(num1);
-			//int num3 = 2 * num2 + num1;
+			// int num3 = 2 * num2 + num1;
 			num1 = num2;
 			num2 = num3;
 			counter++;
@@ -551,11 +551,10 @@ public class NumberTheory {
 		List<BigInteger> theList = getPellList(aNumber);
 		Stack<BigInteger> theStack = new Stack<>();
 		for (BigInteger bigInteger : theList) {
-			theStack.push(bigInteger);	
+			theStack.push(bigInteger);
 		}
-		return theStack.pop();		
+		return theStack.pop();
 	}
-	
 
 	List<Integer> getJacobsthal() {
 		return getJacobsthal(getTheNumber());
@@ -1028,8 +1027,6 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-	
-	
 
 	boolean isCanadaNumber() {
 		return isCanadaNumber(getTheNumber());
@@ -1056,119 +1053,168 @@ public class NumberTheory {
 		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(aNumber));
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
-	
-	
+
 	/**
 	 * @author Jeffrey Schneider
 	 * @param aNumber
 	 * @return boolean
 	 * 
-	 * {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
+	 *         {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
 	 * i.e., it is at equal distance from previous prime and next prime.</code>}
 	 */
 	public static boolean isBalancedPrime(int aNumber) {
 		// If aNumber isn't prime, don't go any further.
-		if(!isPrime(aNumber)) {
+		if (!isPrime(aNumber)) {
 			return false;
 		}
 		List<Integer> theList = new ArrayList<>();
-		
-		//Find the first prime number less than aNumber.
+
+		// Find the first prime number less than aNumber.
 		// Add it to a list, then break out of the discovery loop.
-		int counter = aNumber-1;
-		while(counter > 0) {
-			if(isPrime(counter)) {
+		int counter = aNumber - 1;
+		while (counter > 0) {
+			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
-			}else {
+			} else {
 				counter--;
 			}
 		}
-		
-		//Find the first prime number greater than aNumber.
-		//Add it to a list, then break out of the discovery loop.
-		counter = aNumber+1;
-		while(counter >= aNumber) {
-			if(isPrime(counter)) {
+
+		// Find the first prime number greater than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		counter = aNumber + 1;
+		while (counter >= aNumber) {
+			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
-				}else {
-					counter++;
-				}
+			} else {
+				counter++;
+			}
 		}
-		//If aNumber is the same distance between the upper and lower numbers, 
-		//  you have a balanced prime.
+		// If aNumber is the same distance between the upper and lower numbers,
+		// you have a balanced prime.
 		int up = theList.get(0);
 		int dn = theList.get(1);
-		if( aNumber - up == dn - aNumber) {
+		if (aNumber - up == dn - aNumber) {
 			return true;
-		}else {
+		} else {
 			return false;
-		}		
+		}
 	}
-	
-	
+
 	boolean isInterPrime() {
 		return isInterPrime(getTheNumber());
 	}
-	
-	public static boolean  isInterPrime(int aNumber) {
-				List<Integer> theList = new ArrayList<>();
-				
-				//Find the first prime number less than aNumber.
-				// Add it to a list, then break out of the discovery loop.
-				int counter = aNumber-1;
-				while(counter > 0) {
-					if(isPrime(counter)) {
-						theList.add(counter);
-						break;
-					}else {
-						counter--;
-					}
-				}
-				
-				//Find the first prime number greater than aNumber.
-				//Add it to a list, then break out of the discovery loop.
-				counter = aNumber+1;
-				while(counter >= aNumber) {
-					if(isPrime(counter)) {
-						theList.add(counter);
-						break;
-						}else {
-							counter++;
-						}
-				}
-				//If aNumber is the same distance between the upper and lower numbers, 
-				//  you have a balanced prime.
-				int up = theList.get(0);
-				int dn = theList.get(1);
-				if( aNumber - up == dn - aNumber) {
-					return true;
-				}else {
-					return false;
-				}		
+
+	public static boolean isInterPrime(int aNumber) {
+		List<Integer> theList = new ArrayList<>();
+
+		// Find the first prime number less than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		int counter = aNumber - 1;
+		while (counter > 0) {
+			if (isPrime(counter)) {
+				theList.add(counter);
+				break;
+			} else {
+				counter--;
+			}
+		}
+
+		// Find the first prime number greater than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		counter = aNumber + 1;
+		while (counter >= aNumber) {
+			if (isPrime(counter)) {
+				theList.add(counter);
+				break;
+			} else {
+				counter++;
+			}
+		}
+		// If aNumber is the same distance between the upper and lower numbers,
+		// you have a balanced prime.
+		int up = theList.get(0);
+		int dn = theList.get(1);
+		if (aNumber - up == dn - aNumber) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-
-	
-	//https://oeis.org/wiki/Centered_polygonal_numbers	
+	// https://oeis.org/wiki/Centered_polygonal_numbers
 	public static int getCenteredPolygonalNumber(int sideNumber, int aNumber) {
-		return (int) sideNumber * aNumber * (aNumber + 1)/2 + 1;
+		return (int) sideNumber * aNumber * (aNumber + 1) / 2 + 1;
 	}
-	
-	
+
+	double getPolygonalNumber() {
+		return getPolygonalNumber(getTheNumber(), 10);
+	}
+
 	public static double getPolygonalNumber(int S, int N) {
-		double first = (S - 2) * Math.pow(N, 2);
-		int second = (S - 4) * N;
-		double retVal = 1/2.0 * (first - second);
-		
-		//System.out.println(S + " " + N + " "  + first + " " + " " +second + " " + retVal);
+		int sMinusTwo = S - 2;
+		int sMinusFour = S - 4;
+		double retVal = (1 / 2.0) * (sMinusTwo * Math.pow(N, 2.0) - sMinusFour * N);
 		return retVal;
 	}
-	
-	
 
 	
+	/**
+	 * 
+	 * @return boolean is number a semi-prime number?
+	 * 
+	 */
+	boolean isSemiPrime() {
+		return isSemiPrime(getTheNumber());
+	}
+	/**
+	 * @author JCSchneider
+	 * @param aNumber
+	 * @return boolean In mathematics, a semiprime is a natural number that is the product of exactly two prime numbers.
+	 */
+	public static boolean isSemiPrime(int aNumber) {
+		List<Integer> anotherList = NumberTheory.getPrimeFactors(aNumber);
+		return (anotherList.size() == 2); 
+	}
 	
-
+	
+	/**
+	 * 
+	 * @return boolean is number a Chen prime?
+	 * @see #isChenPrime(int)
+	 */
+	boolean isChenPrime() {
+		return isChenPrime(getTheNumber());
+	}
+	
+	/**
+	 * 
+	 * @param aNumber
+	 * @return boolean 
+	 * 		A prime number p is called a Chen prime if p + 2 is either a prime or a product of two primes (also called a semiprime). 
+	 */
+	public static boolean isChenPrime(int aNumber) {
+		if(isPrime(aNumber)) {
+			return (isPrime(aNumber + 2) || isSemiPrime(aNumber + 2));
+		}
+		return false;
+	}
+	
+	
+	public static BigInteger getPrimorials(int aNumber){
+		BigInteger summary = BigInteger.ONE;
+		int counter = 1;
+		int numberOfPrimes = 0;
+		while(numberOfPrimes <= aNumber) {
+			if(isPrime(counter)) {
+				summary = summary.multiply(BigInteger.valueOf(counter));
+				numberOfPrimes++;
+			}
+			counter++;			
+		}
+		return summary;
+	}
+	
 }
