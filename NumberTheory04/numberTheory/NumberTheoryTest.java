@@ -443,6 +443,16 @@ class NumberTheoryTest {
     	assertEquals(expected, result);
     }
     
+    @Test
+    public void getCenteredPolygonalNumberSpec() {
+    	System.out.println("Centered Polygonal Numbers: ");
+    	int result = NumberTheory.getCenteredPolygonalNumber(3, 2);
+    	int expected = 10;
+    	assertEquals(expected, result);
+    	result = NumberTheory.getCenteredPolygonalNumber(14, 20);
+    	expected = 2941;
+    	assertEquals(expected, result);
+    }
     
     @Test
     public void bellNumberSpec() {
@@ -578,35 +588,6 @@ class NumberTheoryTest {
     	assertFalse(instance.isCanadaNumber());
     }
     
-    
-    @Test
-    public void isCenteredDecagonalNumberSpec() {
-    	System.out.println("Is Centered Decagonal Number? ");
-    	NumberTheory instance = new NumberTheory(8);
-        int expected = 361;
-        int result = instance.getCenteredDecagonalNumber();
-        assertEquals(expected, result);
-        
-        
-        System.out.println("getCenteredDecagonalNumber(4)");
-        result = NumberTheory.getCenteredDecagonalNumber(4);
-        expected = 101;
-        assertEquals(expected,result);      
-    }
-    
-    @Test
-    public void isCenteredNonagonalNumberSpec() {
-    	System.out.println("Centered Nonagonal Number");
-    	NumberTheory instance = new NumberTheory(8); //253
-    	int expected = 253;
-    	int result = instance.getCenteredNonagonalNumber();
-    	assertEquals(expected, result);
-    	
-    	result = NumberTheory.getCenteredNonagonalNumber(7);
-    	expected = 190;
-    	assertEquals(expected, result);
-    	
-    }
     
     
 }

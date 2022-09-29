@@ -1150,23 +1150,15 @@ public class NumberTheory {
 	}
 
 
-	int getCenteredDecagonalNumber() {
-		return getCenteredDecagonalNumber(getTheNumber());
+	
+	//https://oeis.org/wiki/Centered_polygonal_numbers	
+	public static int getCenteredPolygonalNumber(int sideNumber, int aNumber) {
+		return (int) sideNumber * aNumber * (aNumber + 1)/2 + 1;
 	}
 	
-	public static int getCenteredDecagonalNumber(int aNumber) {
-		//return 5 * aNumber*aNumber + 5 * aNumber + 1;
-		return (int) (5 * Math.pow(aNumber, 2) + 5 * aNumber + 1);
-	}
+	
 
 	
 	
-	int getCenteredNonagonalNumber() {
-		return getCenteredNonagonalNumber(getTheNumber());
-	}
-	public static int getCenteredNonagonalNumber(int aNumber) {
-		//return  (int) ((9/2) * Math.pow(aNumber, 2) + (-9/2*aNumber)+1);
-		return ((3*aNumber-2) * (3*aNumber-1))/2;
-		
-	}
+
 }

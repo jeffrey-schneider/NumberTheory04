@@ -147,23 +147,30 @@ public class TestNumberTheory {
 		 for (int j : n4) {
 			 System.out.printf("\nIs %d a balanced prime? %b",j,   NumberTheory.isBalancedPrime(j));
 		 }
-		 System.out.println();
 		 
+		 
+		 System.out.println();		 
 		 int[] n5 = { 4, 6, 9, 12, 15, 18, 21, 26, 30, 34, 39, 42, 45, 50, 56, 60, 64, 69, 72, 76, 81, 86, 93, 99, 102, 105, 108, 111, 120, 121}; 
 		 for (int j : n5) {
 			 System.out.printf("\nIs %d a interprime? %b",j,   NumberTheory.isInterPrime(j));
 		 }
 		 
-		 System.out.println();
 		 
-		 for (int j = 0; j < 20; j++) {
-			System.out.print(" " + NumberTheory.getCenteredDecagonalNumber(j));
-		}
 		 
-		
-		for(int j = 0; j<20; j++) {
-		 System.out.print(NumberTheory.getCenteredNonagonalNumber(j) + " " );		 
+		 System.out.println("\nCentered Polygonal Numbers: ");		 
+		 for (int j = 3; j < 50; j++) {
+			 System.out.printf("Sides: %d -> ", j);
+			 for( i = 0; i <= 20; i++) {
+				 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(j, i));
+			 }
+			 System.out.println();
 		 }
-		System.out.println();
+		 
+		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(3, 2));
+		 System.out.printf(" %2d ", NumberTheory.getCenteredPolygonalNumber(14, 20));
+		 
+		 
+		 
+		 
 	}
 }
