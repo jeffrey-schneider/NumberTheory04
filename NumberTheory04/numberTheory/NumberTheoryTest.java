@@ -625,6 +625,18 @@ class NumberTheoryTest {
     	assertFalse(instance.isChenPrime());    	
     }
     
-    
+   @Test
+   public void isCoPrimeSpec() {
+	   System.out.println("Are two numbers co-prime?");
+	   assertTrue(NumberTheory.isCoPrime(18, 35));
+	   assertFalse(NumberTheory.isCoPrime(18, 36));
+	   
+	   NumberTheory instance = new NumberTheory(13);
+	   assertTrue(instance.isCoPrime(31));
+	   instance.setTheNumber(150);
+	   assertFalse(instance.isCoPrime(295));
+			 
+   }
+   
     
 }

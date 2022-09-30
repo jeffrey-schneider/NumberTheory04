@@ -207,7 +207,10 @@ public class TestNumberTheory {
 		 for(i = 0; i <= 25; i++) {
 			 System.out.printf("%d -> %,d\n" , i, NumberTheory.getPrimorials(i));
 		 }
+
 		 
+		 System.out.println("Co primes. ");
+		 System.out.println("Are 18 and 35 CoPrimes? " + NumberTheory.isCoPrime(18, 35));
 
 		 
 		 

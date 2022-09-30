@@ -1,17 +1,12 @@
 package numberTheory;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Stack;
-import java.util.function.BooleanSupplier;
 
 public class NumberTheory {
 	/**
@@ -823,8 +818,8 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @see #isAlternating()
 	 * @return boolean
+	 * @see #isAlternating()
 	 */
 	boolean isAlternating() {
 		return isAlternating(getTheNumber());
@@ -1193,7 +1188,8 @@ public class NumberTheory {
 	 * 
 	 * @param aNumber
 	 * @return boolean 
-	 * 		A prime number p is called a Chen prime if p + 2 is either a prime or a product of two primes (also called a semiprime). 
+	 * 		A prime number p is called a Chen prime if p + 2 is either a prime 
+	 * 		or a product of two primes (also called a semiprime). 
 	 */
 	public static boolean isChenPrime(int aNumber) {
 		if(isPrime(aNumber)) {
@@ -1203,6 +1199,11 @@ public class NumberTheory {
 	}
 	
 	
+	/**
+	 * @author Jeffrey Schneider
+	 * @param aNumber
+	 * @return BigInteger multiples of aNumber of primes.
+	 */
 	public static BigInteger getPrimorials(int aNumber){
 		BigInteger summary = BigInteger.ONE;
 		int counter = 1;
@@ -1216,5 +1217,24 @@ public class NumberTheory {
 		}
 		return summary;
 	}
+	
+	
+	
+	boolean isCoPrime(int aNumber) {
+		return isCoPrime(getTheNumber(), aNumber); 
+	}
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @param bNumber
+	 * @return boolean is the gcd of both numbers 1?
+	 */
+	public static boolean isCoPrime(int aNumber, int bNumber) {
+		if( gcd(aNumber, bNumber) == 1) {
+			return true;
+		}
+		return false;
+	}
+
 	
 }
