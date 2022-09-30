@@ -1,5 +1,6 @@
 package numberTheory;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,6 +58,21 @@ public class NumberTheory {
 		return aNumber * aNumber;
 	}
 
+	
+	
+	int getCube() {
+		return getCube(getTheNumber());
+	}
+	/**
+	 * 
+	 * @param aNumber the number to cube
+	 * @return int the cube of the number
+	 */
+	public static int getCube(int aNumber) {
+		return (int) Math.pow(aNumber, 3);
+	}
+	
+	
 	/**
 	 * 
 	 * @return boolean
@@ -1220,6 +1236,25 @@ public class NumberTheory {
 	
 	
 	
+	BigInteger getCullen() {
+		return getCullen(getTheNumber());
+	}
+	//n * 2^n + 1
+	/**
+	 * @author JCSchneider
+	 * @param aNumber
+	 * @return BigInteger getCullen()
+	 */
+	public static BigInteger getCullen(int aNumber) {
+		BigInteger n = BigInteger.valueOf(aNumber);		
+		BigInteger exponent = BigInteger.TWO.pow(aNumber);
+		BigInteger retVal = n.multiply(exponent).add(BigInteger.ONE);
+		//retVal = BigInteger.valueOf(aNumber).multiply(partC);		
+		//return (int) (aNumber * Math.pow(2, aNumber) + 1);
+		return retVal;
+	}
+	
+	
 	boolean isCoPrime(int aNumber) {
 		return isCoPrime(getTheNumber(), aNumber); 
 	}
@@ -1236,5 +1271,22 @@ public class NumberTheory {
 		return false;
 	}
 
+	
+	/**
+	 * Not sure if this works....  09/30/2022
+	 * @param aNumber
+	 * @return
+	 */
+	public static BigInteger getCompositorial(int aNumber) {
+		BigInteger fact = getFactorial(aNumber);
+		BigInteger prim = getPrimorials(aNumber);
+		System.out.println(prim + "/" + fact);
+		return fact.divide(prim);
+	}
+	
+	
+	public static int isCurzon(int aNumber) {
+		return (int) (Math.pow(2, aNumber + 1)  % ( 2 * aNumber + 1));
+	}
 	
 }

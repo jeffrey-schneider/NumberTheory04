@@ -634,8 +634,21 @@ class NumberTheoryTest {
 	   NumberTheory instance = new NumberTheory(13);
 	   assertTrue(instance.isCoPrime(31));
 	   instance.setTheNumber(150);
-	   assertFalse(instance.isCoPrime(295));
-			 
+	   assertFalse(instance.isCoPrime(295));			 
+   }
+   
+   @Test
+   public void getCullenSpec() {
+	   System.out.println("Get Cullen Numbers: ");
+	   BigInteger result = NumberTheory.getCullen(13);
+	   BigInteger expected = BigInteger.valueOf(106497);
+	   assertEquals(expected, result);
+	   
+	   NumberTheory instance = new NumberTheory(12);
+	   result = instance.getCullen();
+	   expected = BigInteger.valueOf(49153);
+	   assertEquals(expected, result);
+	   
    }
    
     

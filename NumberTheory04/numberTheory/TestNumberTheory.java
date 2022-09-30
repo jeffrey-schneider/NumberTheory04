@@ -212,6 +212,22 @@ public class TestNumberTheory {
 		 System.out.println("Co primes. ");
 		 System.out.println("Are 18 and 35 CoPrimes? " + NumberTheory.isCoPrime(18, 35));
 
+		 System.out.println("Cubic Numbers");
+		 for(i = 0; i <= 25; i++) {
+			 System.out.printf(" %d ", NumberTheory.getCube(i));
+		 }
+		 
+		 System.out.println("\nCullen Numbers");
+		 for(i = 0; i <= 100; i++) {
+			 System.out.printf(" %d ", NumberTheory.getCullen(i));
+		 }
+		 
+		 
+		 System.out.println("\nCurzon numbers");
+		 System.out.println(NumberTheory.isCurzon(250));
+		 
+		 
+		 
 		 
 		 
 	}
