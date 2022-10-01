@@ -1,6 +1,5 @@
 package numberTheory;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1288,5 +1287,8 @@ public class NumberTheory {
 	public static int isCurzon(int aNumber) {
 		return (int) (Math.pow(2, aNumber + 1)  % ( 2 * aNumber + 1));
 	}
-	
+
+	public static List<Integer> getPowerfulNumber(int aNumber){
+		return null;
+	}
 }
