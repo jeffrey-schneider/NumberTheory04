@@ -601,6 +601,28 @@ class NumberTheoryTest {
 		
 		
 
+		@Test
+		@DisplayName("Is number Emirp?")
+		public void isEmirpSpec() {
+			assertTrue(NumberTheory.isEmirp(179));
+			assertFalse(NumberTheory.isEmirp(114));
+			
+			instance.setTheNumber(10009);
+			assertTrue(instance.isEmirp());
+			instance.setTheNumber(19272);
+			assertFalse(instance.isEmirp());
+		}
+		
+		
+		
+		@Test
+		@DisplayName("Is number Economical? Still under construction.")
+		public void iseconomicalSpec() {
+			assertTrue(NumberTheory.isEconomical(77));
+		}
+		
+		
+
 	} // End of boolean tests
 
 	@Nested

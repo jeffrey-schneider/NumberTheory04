@@ -256,12 +256,17 @@ public class TestNumberTheory {
 		 System.out.println();
 		 
 		 System.out.println("Prime factors for 718848" + NumberTheory.getPrimeFactors(718848));
+		 System.out.println("Prime factors for 1024" + NumberTheory.getPrimeFactors(1024));
 		 
 		 
+		 System.out.println("Is droll?");
 		 System.out.println(NumberTheory.isDroll(48384));
 		 System.out.println(NumberTheory.isDroll(72));
 		 //System.out.println(NumberTheory.getCompositorial(4));
 		
+		 
+		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(13));
+		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(158));
 		
 		 
 	}

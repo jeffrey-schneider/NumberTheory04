@@ -1404,13 +1404,13 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param i
+	 * @param aNumber
 	 * @return boolean  Mario Velucchi called a number  'n'  droll 
 	 * 					if the sum of its even prime factors equals 
 	 * 					the sum of its odd prime factors.
 	 */
-	public static boolean isDroll(int i) {				
-		List<Integer> primeFactors = getPrimeFactors(i);
+	public static boolean isDroll(int aNumber) {				
+		List<Integer> primeFactors = getPrimeFactors(aNumber);
 		int evenTotal = 0;
 		int oddTotal = 0;
 		for (Integer integer : primeFactors) {
@@ -1429,4 +1429,31 @@ public class NumberTheory {
 	}
 	
 
+	//125
+	public static boolean isEconomical(int aNumber) {
+		/*TODO: Make this work correctly, 2^10 is 3 digits*/ 
+		return true;
+	}
+	
+	boolean isEconomical() {
+		return isEconomical(getTheNumber());
+	}
+	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean	An emirp (prime spelled backwards) is a prime number 
+	 * 					that results in a different prime when its decimal digits 
+	 * 					are reversed. This definition excludes the related 
+	 * 					palindromic primes.
+	 */
+	public static boolean isEmirp(int aNumber) {
+		return (isPrime(aNumber) && isPrime(getReverseNumber(aNumber)));
+	}
+	boolean isEmirp() {
+		return isEmirp(getTheNumber());
+	}
+	
+	
 }
