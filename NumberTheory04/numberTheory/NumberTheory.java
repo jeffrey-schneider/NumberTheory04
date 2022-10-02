@@ -1,9 +1,14 @@
+//http://www.numbergossip.com/
+// http://www.numbersaplenty.com
+
 package numberTheory;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -444,7 +449,7 @@ public class NumberTheory {
 	}
 
 	public static int getCarol(int aNumber) {
-		System.out.println(aNumber);
+//		System.out.println(aNumber);
 		double carolA = Math.pow(4.0, Double.valueOf(aNumber));
 		double carolB = Math.pow(2.0, (Double.valueOf(aNumber) + 1.0));
 		double carolFinal = carolA - carolB - 1.0;
@@ -641,7 +646,7 @@ public class NumberTheory {
 
 	public static String getApocolyptic(int exponent) {
 		String getTestNumber = getBigIntegerPower(2, exponent);
-		System.out.println();
+//		System.out.println();
 		return "NOPE";
 	}
 
@@ -869,7 +874,7 @@ public class NumberTheory {
 		int sum = 0;
 		for (Integer integer : list) {
 			sum += getReverseNumber(integer);
-			System.out.println(getReverseNumber(integer));
+//			System.out.println(getReverseNumber(integer));
 		}
 		if (sum == aNumber) {
 			return true;
@@ -890,7 +895,7 @@ public class NumberTheory {
 		}
 
 		int d = sum % list.size();
-		System.out.printf("%d %% %d = %d\n", sum, list.size(), d);
+//		System.out.printf("%d %% %d = %d\n", sum, list.size(), d);
 		if (sum % list.size() == 0) {
 			return true;
 		}
@@ -971,7 +976,7 @@ public class NumberTheory {
 		long squared = (long) Math.pow(aNumber, 2.0);
 		String theString = String.valueOf(squared);
 		String ends = String.valueOf(aNumber);
-		System.out.printf("\n%s %s\n", theString, ends);
+//		System.out.printf("\n%s %s\n", theString, ends);
 		return theString.endsWith(ends);
 
 	}
@@ -1279,16 +1284,149 @@ public class NumberTheory {
 	public static BigInteger getCompositorial(int aNumber) {
 		BigInteger fact = getFactorial(aNumber);
 		BigInteger prim = getPrimorials(aNumber);
-		System.out.println(prim + "/" + fact);
-		return fact.divide(prim);
+//		System.out.println(fact + "/" + prim);
+		BigInteger retVal = fact.divide(prim);
+		return retVal;
 	}
 	
 	
-	public static int isCurzon(int aNumber) {
-		return (int) (Math.pow(2, aNumber + 1)  % ( 2 * aNumber + 1));
+	boolean isCurzon() {
+		return isCurzon(getTheNumber());
+	}
+	public static boolean isCurzon(int aNumber) {		
+		BigInteger two = BigInteger.TWO;
+		BigInteger a = two.pow(aNumber).add(BigInteger.ONE);
+		BigInteger b = two.multiply(BigInteger.valueOf(aNumber)).add(BigInteger.ONE);
+		return a.mod(b) == BigInteger.ZERO;
 	}
 
 	public static List<Integer> getPowerfulNumber(int aNumber){
 		return null;
 	}
+	
+	
+	List<Integer> getTotatives(){
+		return getTotatives(getTheNumber());
+	}
+	public static List<Integer> getTotatives(int aNumber){
+		List<Integer> retList = new LinkedList<>(); //LinkedList? Why not?
+		int counter = 1;
+		while(counter <= aNumber) {
+			if(isCoPrime(aNumber, counter)) {
+				retList.add(counter);
+			}
+			counter++;
+		}
+		return retList;
+	}
+	
+	
+	int getEulersTotient() {
+		return getEulersTotient(getTheNumber());
+	}	
+
+	public static int getEulersTotient(int aNumber) {
+		return getTotatives(aNumber).size();
+	}
+	
+	
+	boolean isCyclic() {
+		return isCyclic(getTheNumber());
+	}
+	
+	public static boolean isCyclic(int aNumber) {
+		return isCoPrime(aNumber, getEulersTotient(aNumber));
+	}
+
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param n
+	 * @return boolean A de Polignac number is an odd number  'n'  that cannot 
+	 * 					be expressed as  'n=2^k+p', for  'p'  prime.
+	 */
+	public static boolean isDePolignac(int n) {
+		if(!isEven(n)) {
+			for (int p = 1; p < n; p++) {
+				if(isPrime(p)) {
+					for(int k = 1; k < p; k++) {
+						if(n - p == Math.pow(2, k)) {
+							return false;
+						}
+					}
+				}					
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	boolean isDePolignac() {
+		return isDePolignac(getTheNumber());
+	}
+	
+	
+	boolean isEven() {
+		return isEven(getTheNumber());
+	}
+	public static boolean isEven(int aNumber) {
+		return (aNumber % 2 == 0);
+	}
+
+	
+	
+	/**
+	 * @author(Jeffrey Schneider)
+	 * @param aNumber
+	 * @return BigInteger The double factorial of an integer  'n>0', denoted by  'n!!', 
+	 * 	is the product of all the integers from 1 to  'n'  which have 
+	 * 	the same parity as  'n'.
+	 */
+	public static BigInteger getDoubleFactorial(int aNumber) {		
+		BigInteger factorial = BigInteger.ONE;
+		int start = 1;
+		if(isEven(aNumber)) {
+			start = 2;			
+		}
+		System.out.println(start);
+		for(int count = start; count <= aNumber; count+=2) {			
+			factorial = factorial.multiply(BigInteger.valueOf(count));
+		}
+		return factorial;
+	}
+	BigInteger getDoubleFactorial() {
+		return getDoubleFactorial(getTheNumber());
+	}
+
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param i
+	 * @return boolean  Mario Velucchi called a number  'n'  droll 
+	 * 					if the sum of its even prime factors equals 
+	 * 					the sum of its odd prime factors.
+	 */
+	public static boolean isDroll(int i) {				
+		List<Integer> primeFactors = getPrimeFactors(i);
+		int evenTotal = 0;
+		int oddTotal = 0;
+		for (Integer integer : primeFactors) {
+			if(isEven(integer)) {
+				evenTotal += integer;
+			}else {
+				oddTotal += integer;
+			}
+		}
+		if (evenTotal > 0 && evenTotal == oddTotal)
+			return true;
+		return false;
+	}
+	boolean isDroll() {
+		return isDroll(getTheNumber());
+	}
+	
+
 }

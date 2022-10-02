@@ -2,6 +2,7 @@ package numberTheory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestNumberTheory {
@@ -203,9 +204,9 @@ public class TestNumberTheory {
 		 }
 		 System.out.println();
 		 
-		 System.out.println("Primorials");
+		 System.out.println("Number -> Factorials -> Primorials");
 		 for(i = 0; i <= 25; i++) {
-			 System.out.printf("%d -> %,d\n" , i, NumberTheory.getPrimorials(i));
+			 System.out.printf("%d -> %,d / %,d\n" , i, NumberTheory.getFactorial(i), NumberTheory.getPrimorials(i));
 		 }
 
 		 
@@ -224,11 +225,44 @@ public class TestNumberTheory {
 		 
 		 
 		 System.out.println("\nCurzon numbers");
-		 System.out.println(NumberTheory.isCurzon(250));
+		 List<Integer> curzonList = new LinkedList<>();  //LinkedList? Why not?
+		 for(i = 1; i <= 300; i++) {
+			 if(NumberTheory.isCurzon(i)) {
+				 curzonList.add(i);
+			 }
+		 }
+		 System.out.println(curzonList);
+		
+		 System.out.println("Euler's totient Function for 75");
+		  i = 75;		 
+		 System.out.println("GetTotatives(i): " + NumberTheory.getTotatives(i));
+		 System.out.println("Eulers Totient(i): " + NumberTheory.getEulersTotient(i));
 		 
 		 
+		 System.out.println("Cyclic Numbers:");
+		 for(i = 1; i <= 150; i++) {
+			 if(NumberTheory.isCyclic(i)) {
+				 System.out.printf("%d ", i);
+			 }
+		 }
+		 System.out.println();
+		 
+		 System.out.println("de Polignac Numbers:");
+		 for(i = 1; i<= 1000; i++) {
+			if(NumberTheory.isDePolignac(i)) {
+				System.out.printf("%d ", i);
+			}
+		 }
+		 System.out.println();
+		 
+		 System.out.println("Prime factors for 718848" + NumberTheory.getPrimeFactors(718848));
 		 
 		 
+		 System.out.println(NumberTheory.isDroll(48384));
+		 System.out.println(NumberTheory.isDroll(72));
+		 //System.out.println(NumberTheory.getCompositorial(4));
+		
+		
 		 
 	}
 
