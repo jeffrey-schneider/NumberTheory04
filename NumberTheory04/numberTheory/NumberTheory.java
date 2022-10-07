@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -879,7 +880,6 @@ public class NumberTheory {
 		if (sum == aNumber) {
 			return true;
 		}
-		;
 		return false;
 	}
 
@@ -1017,6 +1017,15 @@ public class NumberTheory {
 		return retList;
 	}
 
+	public static int[] getFirstAndLastDigits(int aNumber) {
+		int firstDigit = getListOfDigits(aNumber).get(0);
+		int length = getListOfDigits(aNumber).size() -1 ; 
+		int lastDigit = getListOfDigits(aNumber).get(length);
+		int[] retVal = {firstDigit, lastDigit};
+		return retVal;
+	}
+	
+	
 	/**
 	 * @author JeffreySchneider
 	 * @param aList
@@ -1454,6 +1463,28 @@ public class NumberTheory {
 	boolean isEmirp() {
 		return isEmirp(getTheNumber());
 	}
+
 	
+	boolean isGapful() {
+		return isGapful(getTheNumber());
+	}
+	
+	public static boolean isGapful(int i) {
+		if(i  < 100) {
+			//If number isn't at least 3 digits, fail.
+			return false;			
+		}
+		int[] a = getFirstAndLastDigits(i);
+		int divisor = a[0] * 10 + a[1];
+		if(i % divisor == 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	
+		
 	
 }

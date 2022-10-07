@@ -622,6 +622,15 @@ class NumberTheoryTest {
 		}
 		
 		
+		@Test
+		@DisplayName("Is number gapful?")
+		public void isGapfulSpec() {
+			assertTrue(NumberTheory.isGapful(108));
+			assertTrue(NumberTheory.isGapful(5772));
+			assertFalse(NumberTheory.isGapful(5771));
+		}
+		
+		
 
 	} // End of boolean tests
 

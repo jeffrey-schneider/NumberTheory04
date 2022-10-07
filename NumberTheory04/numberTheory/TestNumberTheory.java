@@ -1,9 +1,12 @@
 package numberTheory;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -267,6 +270,34 @@ public class TestNumberTheory {
 		 
 		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(13));
 		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(158));
+		 
+		 
+		 System.out.println("=======================");
+		 System.out.println("Prime factorization.");
+		 int[] a = { 125, 128, 243, 256, 142340};
+		 for (int j : a) {			 
+			System.out.printf("%d ", j);
+			for(int k : NumberTheory.getPrimeFactors(j)) {
+				System.out.printf(" %d ", k);
+			}
+			System.out.println();
+		}
+
+		 for(int j: a) {
+			System.out.printf("%d %d", NumberTheory.getFirstAndLastDigits(j)[0],
+					NumberTheory.getFirstAndLastDigits(j)[1]);			
+			System.out.println();
+		 }
+		 
+		int[] b = { 100, 180, 286, 462, 770, 771};
+		 for (int j = 0; j < b.length; j++) {
+			System.out.printf(" is %d gapful? %b\n", b[j], NumberTheory.isGapful(b[j]));
+		}
+		 
+
+		 BigInteger f = BigInteger.TWO.pow(2048).add(BigInteger.ONE);
+		 System.out.println(f);
+		 
 		
 		 
 	}
