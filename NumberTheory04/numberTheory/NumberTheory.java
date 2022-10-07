@@ -1465,10 +1465,14 @@ public class NumberTheory {
 	}
 
 	
-	boolean isGapful() {
-		return isGapful(getTheNumber());
-	}
 	
+	/**
+	 * @author JeffreySchneider
+	 * @param i
+	 * @return	boolean L.Colucci calls a number  'n'  of at least 3 digits
+	 * 					a gapful number if  'n'  is divisible by the number 
+	 * 					formed by the first and last digit of  'n'.
+	 */
 	public static boolean isGapful(int i) {
 		if(i  < 100) {
 			//If number isn't at least 3 digits, fail.
@@ -1482,6 +1486,9 @@ public class NumberTheory {
 		return false;
 	}
 	
+	boolean isGapful() {
+		return isGapful(getTheNumber());
+	}
 	
 	
 	
