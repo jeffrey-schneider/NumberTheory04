@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -628,6 +630,7 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isGapful(108));
 			assertTrue(NumberTheory.isGapful(5772));
 			assertFalse(NumberTheory.isGapful(5771));
+			assertFalse(NumberTheory.isGapful(7789));
 		}
 		
 		@Test
@@ -641,7 +644,34 @@ class NumberTheoryTest {
 			assertTrue(instance.isDuffinian());
 			instance.setTheNumber(246);
 			assertFalse(instance.isDuffinian());
-			
+			assertTrue(NumberTheory.isDuffinian(25387));
+			instance.setTheNumber(18633);
+			assertTrue(instance.isDuffinian());			
+		}
+		
+		//115048440 8128 4713984
+		
+		@Test
+		@Disabled("Method is under development.")
+		@DisplayName("Is Harmonic Divisor Number?")
+		public void isHarmonicDivisorNumberSpec() {
+			assertTrue(NumberTheory.isHarmonicDivisorNumber(8128));
+			assertFalse(NumberTheory.isHarmonicDivisorNumber(8219));
+			instance.setTheNumber(115048440);
+			assertTrue(instance.isHarmonicDivisorNumber());
+			instance.setTheNumber(4713984);
+			assertTrue(instance.isHarmonicDivisorNumber());
+		}
+		
+		
+		@Test
+		@DisplayName("Is number Harshad?")
+		public void isHarshadSpec() {
+			assertTrue(NumberTheory.isHarshad(666));
+			assertTrue(NumberTheory.isHarshad(3102));
+			assertFalse(NumberTheory.isHarshad(11));
+			instance.setTheNumber(41441420);
+			assertTrue(instance.isHarshad());
 		}
 
 	} // End of boolean tests

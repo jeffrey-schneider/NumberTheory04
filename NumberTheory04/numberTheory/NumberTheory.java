@@ -1530,7 +1530,7 @@ public class NumberTheory {
 	 * 					formed by the first and last digit of  'n'.
 	 */
 	public static boolean isGapful(int i) {
-		if(i  < 100) {
+		if(i  < 100 || isPrime(i) ) {
 			//If number isn't at least 3 digits, fail.
 			return false;			
 		}
@@ -1557,7 +1557,8 @@ public class NumberTheory {
 	 * 					 Source: http://voodooguru23.blogspot.com/2018/10/duffinian-numbers.html
 	 */
 	public static boolean isDuffinian(int aNumber) {
-		int factorSum = getFactorSum(aNumber);
+		//int factorSum = getFactorSum(aNumber);
+		int factorSum = getSigma(aNumber);
 		if(isCoPrime(aNumber, factorSum)){
 			return true;
 		}
@@ -1568,7 +1569,54 @@ public class NumberTheory {
 	}
 	
 	
+	public static double getHarmonicMean(List<Integer> aList) {
+		double sum = 0;
+		for(int i = 0; i < aList.size(); i++) {
+			sum = sum +(double)1/aList.get(i);
+		}
+		return aList.size() / sum;
+	}
+	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean 
+	 * 
+	 * This is broken.  Floor and ceil don't seem to work.
+	 * Broken for:
+	 * 30240,332640,360360,753480,1421280,1539720,2457000,11981970,15495480,
+	 *  17428320,27027000,46683000,52141320,71253000,80832960
+	 * 
+	 */
+	public static boolean isHarmonicDivisorNumber(int aNumber) {
+		List<Integer> theList = getFactors(aNumber);
+		double harmMean = getHarmonicMean(theList);
+		double harmMeanTrunc = Math.floor(harmMean * 100) / 100;
+		if(harmMeanTrunc  % 1 == 0) //Best way to tell if the harmonic mean is an integer?
+			return true;
+		return false;
+	}
+	boolean isHarmonicDivisorNumber() {
+		return isHarmonicDivisorNumber(getTheNumber());
+	}
+
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return	boolean  A number divisible by the sum of its digits.
+	 */
+	public static boolean isHarshad(int aNumber) {
+		int summation = getSumOfDigits(getListOfDigits(aNumber));
+		if(aNumber % summation == 0)
+			return true;
+		return false;
+	}
+	boolean isHarshad() {
+		return isHarshad(getTheNumber());
+	}
 	
 		
-	
+
 }
