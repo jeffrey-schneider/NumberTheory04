@@ -630,7 +630,19 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isGapful(5771));
 		}
 		
-		
+		@Test
+		@DisplayName("Is Duffinian Number?")
+		public void isDuffinianSpec() {
+			//4, 8, 9, 16, 21, 25, 27, 32, 35, 36, 39, 49, 50, 55, 57, 63, 64, 65, 75, 77, 81, 85, 93, 98, 100, 111, 115, 119, 121, 125, 128, 129, 133, 143, 144, 155, 161, 169, 171, 175, 183, 185, 187, 189, 201, 203, 205, 209, 215, 217, 219
+			assertTrue(NumberTheory.isDuffinian(4));
+			assertTrue(NumberTheory.isDuffinian(8));
+			assertFalse(NumberTheory.isDuffinian(10));
+			instance.setTheNumber(247);
+			assertTrue(instance.isDuffinian());
+			instance.setTheNumber(246);
+			assertFalse(instance.isDuffinian());
+			
+		}
 
 	} // End of boolean tests
 
@@ -775,6 +787,8 @@ class NumberTheoryTest {
 					10923, 21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405));
 			assertIterableEquals(expected, result);
 		}
+		
+		
 
 	}
 

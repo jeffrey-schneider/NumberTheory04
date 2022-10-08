@@ -46,13 +46,6 @@ public class NumberTheory {
 		this.theNumber = theNumber;
 	}
 
-	/**
-	 * 
-	 * @return getSquare of the instance variable theNumber
-	 */
-	int getSquare() {
-		return getSquare(getTheNumber());
-	}
 
 	/**
 	 * 
@@ -62,12 +55,13 @@ public class NumberTheory {
 	public static int getSquare(int aNumber) {
 		return aNumber * aNumber;
 	}
+	int getSquare() {
+		return getSquare(getTheNumber());
+	}
 
 	
 	
-	int getCube() {
-		return getCube(getTheNumber());
-	}
+	
 	/**
 	 * 
 	 * @param aNumber the number to cube
@@ -76,16 +70,11 @@ public class NumberTheory {
 	public static int getCube(int aNumber) {
 		return (int) Math.pow(aNumber, 3);
 	}
-	
-	
-	/**
-	 * 
-	 * @return boolean
-	 * @see #isPrime(int)
-	 */
-	boolean isPrime() {
-		return isPrime(getTheNumber());
+	int getCube() {
+		return getCube(getTheNumber());
 	}
+	
+	
 
 	/**
 	 * 
@@ -103,15 +92,12 @@ public class NumberTheory {
 		}
 		return true;
 	}
-
-	/**
-	 * 
-	 * @return
-	 * @see #getCollatz(int aNumber)
-	 */
-	List<Integer> getCollatz() {
-		return getCollatz(getTheNumber());
+	boolean isPrime() {
+		return isPrime(getTheNumber());
 	}
+	
+	
+
 
 	/**
 	 * 
@@ -133,10 +119,16 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	List<Integer> getJugglers() {
-		return getJugglers(getTheNumber());
+	/**
+	 * @see #getCollatz(int aNumber)
+	 */
+	List<Integer> getCollatz() {
+		return getCollatz(getTheNumber());
 	}
+
+	
+
+	
 
 	/**
 	 * 
@@ -159,10 +151,13 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	List<Integer> getFactors() {
-		return getFactors(getTheNumber());
+	List<Integer> getJugglers() {
+		return getJugglers(getTheNumber());
 	}
+	
+	
+
+	
 
 	public static List<Integer> getFactors(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
@@ -173,10 +168,11 @@ public class NumberTheory {
 		retVal.add(aNumber);
 		return retVal;
 	}
-
-	List<Integer> getPrimeFactors() {
-		return getPrimeFactors(getTheNumber());
+	List<Integer> getFactors() {
+		return getFactors(getTheNumber());
 	}
+
+	
 
 	public static List<Integer> getPrimeFactors(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
@@ -189,10 +185,11 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	int getAliquotSum() {
-		return getAliquotSum(getTheNumber());
+	List<Integer> getPrimeFactors() {
+		return getPrimeFactors(getTheNumber());
 	}
+
+	
 
 	public static int getAliquotSum(int aNumber) {
 		int retVal = 0;
@@ -201,10 +198,23 @@ public class NumberTheory {
 		}
 		return retVal - aNumber;
 	}
-
-	List<Integer> getProperDivisors() {
-		return getProperDivisors(getTheNumber());
+	int getAliquotSum() {
+		return getAliquotSum(getTheNumber());
 	}
+
+	
+	public static int getFactorSum(int aNumber) {
+		int retVal = 0;
+		for (Integer factor : getFactors(aNumber)) {
+			retVal += factor;
+		}
+		return retVal;
+	}
+	int getFactorSum() {
+		return getFactorSum(getTheNumber());
+	}
+	
+	
 
 	public static List<Integer> getProperDivisors(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
@@ -214,32 +224,33 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	int getAbundance() {
-		return getAbundance(getTheNumber());
+	List<Integer> getProperDivisors() {
+		return getProperDivisors(getTheNumber());
 	}
+	
+
+	
 
 	public static int getAbundance(int aNumber) {
 		return getAliquotSum(aNumber) - aNumber;
 	}
-
-	boolean isAbundant() {
-		return isAbundant(getTheNumber());
+	int getAbundance() {
+		return getAbundance(getTheNumber());
 	}
+
+	
+	
+	
 
 	public static boolean isAbundant(int aNumber) {
 		return getAliquotSum(aNumber) > aNumber;
 	}
-
-	/**
-	 * 
-	 * @return
-	 * @see #isPerfect(int)
-	 */
-	boolean isPerfect() {
-		return isPerfect(getTheNumber());
-
+	boolean isAbundant() {
+		return isAbundant(getTheNumber());
 	}
+	
+
+	
 
 	/**
 	 * 
@@ -249,15 +260,14 @@ public class NumberTheory {
 	public static boolean isPerfect(int aNumber) {
 		return getAbundance(aNumber) == 0;
 	}
-
 	/**
-	 * 
-	 * @return int
-	 * @see #getReverseNumber(int)
+	 * @see #isPerfect(int)
 	 */
-	int getReverseNumber() {
-		return getReverseNumber(getTheNumber());
+	boolean isPerfect() {
+		return isPerfect(getTheNumber());
 	}
+	
+
 
 	/**
 	 * 
@@ -275,18 +285,24 @@ public class NumberTheory {
 		}
 		return rev;
 	}
-
-	double getReciprocalNumber() {
-		return getReciprocalNumber(getTheNumber());
+	
+	/**
+	 * @see #getReverseNumber(int)
+	 */
+	int getReverseNumber() {
+		return getReverseNumber(getTheNumber());
 	}
+
+
 
 	public static double getReciprocalNumber(int aNumber) {
 		return 1.0 / aNumber;
 	}
-
-	String getHex() {
-		return getHex(getTheNumber());
+	double getReciprocalNumber() {
+		return getReciprocalNumber(getTheNumber());
 	}
+
+
 
 	public static String getHex(int aNumber) {
 		String retVal = "";
@@ -300,10 +316,11 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	String getOctal() {
-		return getOctal(getTheNumber());
+	String getHex() {
+		return getHex(getTheNumber());
 	}
+
+
 
 	public static String getOctal(int aNumber) {
 		String retVal = "";
@@ -317,18 +334,20 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
-
-	String getBinary() {
-		return getBinary(getTheNumber());
+	String getOctal() {
+		return getOctal(getTheNumber());
 	}
+
+
 
 	public static String getBinary(int aNumber) {
 		return Integer.toBinaryString(aNumber);
 	}
-
-	int getSigma() {
-		return getSigma(getTheNumber());
+	String getBinary() {
+		return getBinary(getTheNumber());
 	}
+
+
 
 	public static int getSigma(double aNumber) {
 		if (aNumber == 1) {
@@ -342,11 +361,13 @@ public class NumberTheory {
 		}
 		return result;
 	}
-
-	boolean isSuperabundant() {
-		return isSuperabundant(getTheNumber());
+	int getSigma() {
+		return getSigma(getTheNumber());
 	}
 
+	
+
+	
 	/**
 	 * 
 	 * @param aNumber number to check for superabundancy
@@ -364,16 +385,11 @@ public class NumberTheory {
 		}
 		return true;
 	}
-
-	/**
-	 * 
-	 * @return boolean
-	 * 
-	 * @see #isPrimativeAbundant(int)
-	 */
-	boolean isPrimativeAbundant() {
-		return isPrimativeAbundant(getTheNumber());
+	boolean isSuperabundant() {
+		return isSuperabundant(getTheNumber());
 	}
+
+
 
 	/**
 	 * 
@@ -394,10 +410,15 @@ public class NumberTheory {
 		}
 		return false;
 	}
-
-	boolean isAKeithNumber() {
-		return isAKeithNumber(getTheNumber());
+	
+	/**
+	 * @see #isPrimativeAbundant(int)
+	 */
+	boolean isPrimativeAbundant() {
+		return isPrimativeAbundant(getTheNumber());
 	}
+
+
 
 	/**
 	 * See https://mathworld.wolfram.com/KeithNumber.html For example, 197 is a
@@ -433,10 +454,11 @@ public class NumberTheory {
 		}
 		return false;
 	}
-
-	int getKynea() {
-		return getKynea(getTheNumber());
+	boolean isAKeithNumber() {
+		return isAKeithNumber(getTheNumber());
 	}
+
+
 
 	public static int getKynea(Integer aNumber) {
 		double kyneaA = Math.pow(4.0, Double.valueOf(aNumber));
@@ -444,10 +466,11 @@ public class NumberTheory {
 		double kyneaFinal = kyneaA + kyneaB - 1.0;
 		return (int) kyneaFinal;
 	}
-
-	int getCarol() {
-		return getCarol(getTheNumber());
+	int getKynea() {
+		return getKynea(getTheNumber());
 	}
+
+
 
 	public static int getCarol(int aNumber) {
 //		System.out.println(aNumber);
@@ -456,10 +479,11 @@ public class NumberTheory {
 		double carolFinal = carolA - carolB - 1.0;
 		return (int) carolFinal;
 	}
-
-	BigInteger getFactorial() {
-		return getFactorial(getTheNumber());
+	int getCarol() {
+		return getCarol(getTheNumber());
 	}
+
+
 
 	public static BigInteger getFactorial(int aNumber) {
 		BigInteger factorial = BigInteger.ONE;
@@ -468,10 +492,11 @@ public class NumberTheory {
 		}
 		return factorial;
 	}
-
-	BigInteger getCatalan() {
-		return getCatalan(getTheNumber());
+	BigInteger getFactorial() {
+		return getFactorial(getTheNumber());
 	}
+
+
 
 	public static BigInteger getCatalan(int aNumber) {
 		BigInteger catA = NumberTheory.getFactorial(2 * aNumber);
@@ -480,10 +505,12 @@ public class NumberTheory {
 		BigInteger catFinal = catA.divide(catB.multiply(catC));
 		return catFinal;
 	}
-
-	List<Integer> getFibonacci() {
-		return getFibonacci(getTheNumber());
+	BigInteger getCatalan() {
+		return getCatalan(getTheNumber());
 	}
+
+
+
 
 	public static List<Integer> getFibonacci(int aNumber) {
 		int num1 = 0;
@@ -501,10 +528,10 @@ public class NumberTheory {
 		}
 		return retList;
 	}
-
-	List<Integer> getLucas() {
-		return getLucas(getTheNumber());
+	List<Integer> getFibonacci() {
+		return getFibonacci(getTheNumber());
 	}
+	
 
 	public static List<Integer> getLucas(int aNumber) {
 		int num1 = 2;
@@ -522,6 +549,11 @@ public class NumberTheory {
 		}
 		return retList;
 	}
+	List<Integer> getLucas() {
+		return getLucas(getTheNumber());
+	}
+
+	
 
 	/**
 	 * @author JCSchneider The sequence of Pell numbers starts with 0 and 1, and
@@ -571,10 +603,7 @@ public class NumberTheory {
 		}
 		return theStack.pop();
 	}
-
-	List<Integer> getJacobsthal() {
-		return getJacobsthal(getTheNumber());
-	}
+	
 
 	public static List<Integer> getJacobsthal(int aNumber) {
 		int num1 = 0;
@@ -591,14 +620,17 @@ public class NumberTheory {
 		}
 		return retList;
 	}
+	
+	List<Integer> getJacobsthal() {
+		return getJacobsthal(getTheNumber());
+	}
+	
+	
 
 	public static boolean getAlternatingFactorial(int i) {
 		return false;
 	}
 
-	boolean getA_PointerPrime() {
-		return getA_PointerPrime(getTheNumber());
-	}
 
 	public static boolean getA_PointerPrime(int aNumber) {
 		if (!isPrime(aNumber)) {
@@ -621,10 +653,11 @@ public class NumberTheory {
 			return false;
 		}
 	}
-
-	int getAmicableNumber() {
-		return getAmicableNumber(getTheNumber());
+	boolean getA_PointerPrime() {
+		return getA_PointerPrime(getTheNumber());
 	}
+
+
 
 	public static int getAmicableNumber(int aNumber) {
 		int bla = NumberTheory.getAliquotSum(aNumber);
@@ -634,6 +667,10 @@ public class NumberTheory {
 		}
 		return -1;
 	}
+	int getAmicableNumber() {
+		return getAmicableNumber(getTheNumber());
+	}
+
 
 	public static String getBigIntegerPower(int base, int exponent) {
 		BigInteger biggie = BigInteger.valueOf(base);
@@ -641,15 +678,16 @@ public class NumberTheory {
 		return retVal;
 	}
 
-	String getApocolyptic() {
-		return getApocolyptic(getTheNumber());
-	}
 
 	public static String getApocolyptic(int exponent) {
 		String getTestNumber = getBigIntegerPower(2, exponent);
 //		System.out.println();
 		return "NOPE";
 	}
+	String getApocolyptic() {
+		return getApocolyptic(getTheNumber());
+	}
+
 
 	public static int gcd(int b, int n) {
 		if (n == 0)
@@ -674,9 +712,6 @@ public class NumberTheory {
 		return result;
 	}
 
-	boolean isCarmichael() {
-		return isCaramichael(getTheNumber());
-	}
 
 	// https://www.javatpoint.com/carmichael-numbers-in-java
 	public static boolean isCaramichael(int aNumber) {
@@ -686,27 +721,30 @@ public class NumberTheory {
 		}
 		return true;
 	}
-
-	int getCakeNumber() {
-		return getCakeNumber(getTheNumber());
+	boolean isCarmichael() {
+		return isCaramichael(getTheNumber());
 	}
+
+
 
 	// Wikipedia
 	public static int getCakeNumber(int aNumber) {
 		return (int) ((1.0 / 6.0) * (Math.pow(aNumber, 3) + 5 * aNumber + 6));
 	}
-
-	int getLazyCaterer() {
-		return getLazyCaterer(getTheNumber());
+	int getCakeNumber() {
+		return getCakeNumber(getTheNumber());
 	}
+
+
 
 	public static int getLazyCaterer(int aNumber) {
 		return (aNumber * aNumber + aNumber + 2) / 2;
 	}
-
-	BigInteger getBellNumber() {
-		return getBellNumber(getTheNumber());
+	int getLazyCaterer() {
+		return getLazyCaterer(getTheNumber());
 	}
+
+
 
 	public static BigInteger getBellNumber(int aNumber) {
 		BigInteger[][] bell = new BigInteger[aNumber + 1][aNumber + 1];
@@ -718,15 +756,16 @@ public class NumberTheory {
 		}
 		return bell[aNumber][0];
 	}
+	BigInteger getBellNumber() {
+		return getBellNumber(getTheNumber());
+	}
+
 
 	/**
 	 * https://www.geeksforgeeks.org/admirable-numbers/
 	 * 
 	 * @return is the number admirable?
 	 */
-	boolean isAdmirable() {
-		return isAdmirable(getTheNumber());
-	}
 
 	public static boolean isAdmirable(int aNumber) {
 		int sigmaN = getSigma(aNumber);
@@ -751,10 +790,11 @@ public class NumberTheory {
 			return true;
 		return false;
 	}
-
-	boolean isAmenable() {
-		return isAmenable(getTheNumber());
+	boolean isAdmirable() {
+		return isAdmirable(getTheNumber());
 	}
+
+
 
 	/**
 	 * https://www.geeksforgeeks.org/amenable-numbers/
@@ -767,7 +807,11 @@ public class NumberTheory {
 		// 4K or 4K+1
 		return (aNumber % 4 == 0 || (aNumber - 1) % 4 == 0);
 	}
+	boolean isAmenable() {
+		return isAmenable(getTheNumber());
+	}
 
+	
 	/**
 	 * 
 	 * @param d
@@ -781,10 +825,7 @@ public class NumberTheory {
 		return sb.toString();
 	}
 
-	boolean isSuperD() {
-		return isSuperD(getTheNumber());
-	}
-
+	
 	/**
 	 * https://www.geeksforgeeks.org/super-d-numbers/
 	 * 
@@ -800,6 +841,10 @@ public class NumberTheory {
 		}
 		return false;
 	}
+	boolean isSuperD() {
+		return isSuperD(getTheNumber());
+	}
+
 
 	/**
 	 * Used for Alternating Numbers
@@ -838,13 +883,6 @@ public class NumberTheory {
 		return true;
 	}
 
-	/**
-	 * @return boolean
-	 * @see #isAlternating()
-	 */
-	boolean isAlternating() {
-		return isAlternating(getTheNumber());
-	}
 
 	/**
 	 * https://www.geeksforgeeks.org/alternating-numbers/
@@ -856,10 +894,17 @@ public class NumberTheory {
 		String str = Integer.toString(aNumber);
 		return (isEvenOddForm(str) || isOddEvenForm(str));
 	}
-
-	boolean isAntiPerfect() {
-		return isAntiPerfect(getTheNumber());
+	/**
+	 * @see #isAlternating()
+	 */
+	boolean isAlternating() {
+		return isAlternating(getTheNumber());
 	}
+
+	
+	
+
+	
 
 	/**
 	 * A number n is said to be anti-perfect if it is equal to the sum of the
@@ -882,10 +927,11 @@ public class NumberTheory {
 		}
 		return false;
 	}
-
-	boolean isArithmetic() {
-		return isArithmetic(getTheNumber());
+	boolean isAntiPerfect() {
+		return isAntiPerfect(getTheNumber());
 	}
+
+	
 
 	public static boolean isArithmetic(int aNumber) {
 		List<Integer> list = getFactors(aNumber);
@@ -901,10 +947,11 @@ public class NumberTheory {
 		}
 		return false;
 	}
-
-	boolean isAstonishing() {
-		return isAstonishing(getTheNumber());
+	boolean isArithmetic() {
+		return isArithmetic(getTheNumber());
 	}
+
+	
 
 	/**
 	 * Astonishing Number is a number N whose representation can be decomposed into
@@ -943,6 +990,9 @@ public class NumberTheory {
 			}
 		}
 		return false;
+	}
+	boolean isAstonishing() {
+		return isAstonishing(getTheNumber());
 	}
 
 	/**
@@ -1052,10 +1102,7 @@ public class NumberTheory {
 		return retVal;
 	}
 
-	boolean isCanadaNumber() {
-		return isCanadaNumber(getTheNumber());
-	}
-
+	
 	/**
 	 * 
 	 * Canada numbers are those 'n' such that the sum of the squares of the digits
@@ -1077,6 +1124,10 @@ public class NumberTheory {
 		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(aNumber));
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
+	boolean isCanadaNumber() {
+		return isCanadaNumber(getTheNumber());
+	}
+
 
 	/**
 	 * @author Jeffrey Schneider
@@ -1131,6 +1182,7 @@ public class NumberTheory {
 		return isInterPrime(getTheNumber());
 	}
 
+	
 	public static boolean isInterPrime(int aNumber) {
 		List<Integer> theList = new ArrayList<>();
 
@@ -1167,15 +1219,15 @@ public class NumberTheory {
 			return false;
 		}
 	}
-
+	
+	
+	
 	// https://oeis.org/wiki/Centered_polygonal_numbers
 	public static int getCenteredPolygonalNumber(int sideNumber, int aNumber) {
 		return (int) sideNumber * aNumber * (aNumber + 1) / 2 + 1;
 	}
 
-	double getPolygonalNumber() {
-		return getPolygonalNumber(getTheNumber(), 10);
-	}
+	
 
 	public static double getPolygonalNumber(int S, int N) {
 		int sMinusTwo = S - 2;
@@ -1183,16 +1235,11 @@ public class NumberTheory {
 		double retVal = (1 / 2.0) * (sMinusTwo * Math.pow(N, 2.0) - sMinusFour * N);
 		return retVal;
 	}
-
-	
-	/**
-	 * 
-	 * @return boolean is number a semi-prime number?
-	 * 
-	 */
-	boolean isSemiPrime() {
-		return isSemiPrime(getTheNumber());
+	double getPolygonalNumber() {
+		return getPolygonalNumber(getTheNumber(), 10);
 	}
+	
+
 	/**
 	 * @author JCSchneider
 	 * @param aNumber
@@ -1202,16 +1249,11 @@ public class NumberTheory {
 		List<Integer> anotherList = NumberTheory.getPrimeFactors(aNumber);
 		return (anotherList.size() == 2); 
 	}
-	
-	
-	/**
-	 * 
-	 * @return boolean is number a Chen prime?
-	 * @see #isChenPrime(int)
-	 */
-	boolean isChenPrime() {
-		return isChenPrime(getTheNumber());
+	boolean isSemiPrime() {
+		return isSemiPrime(getTheNumber());
 	}
+	
+	
 	
 	/**
 	 * 
@@ -1226,6 +1268,10 @@ public class NumberTheory {
 		}
 		return false;
 	}
+	boolean isChenPrime() {
+		return isChenPrime(getTheNumber());
+	}
+
 	
 	
 	/**
@@ -1249,9 +1295,7 @@ public class NumberTheory {
 	
 	
 	
-	BigInteger getCullen() {
-		return getCullen(getTheNumber());
-	}
+	
 	//n * 2^n + 1
 	/**
 	 * @author JCSchneider
@@ -1266,11 +1310,12 @@ public class NumberTheory {
 		//return (int) (aNumber * Math.pow(2, aNumber) + 1);
 		return retVal;
 	}
-	
-	
-	boolean isCoPrime(int aNumber) {
-		return isCoPrime(getTheNumber(), aNumber); 
+	BigInteger getCullen() {
+		return getCullen(getTheNumber());
 	}
+	
+	
+	
 	/**
 	 * @author JeffreySchneider
 	 * @param aNumber
@@ -1282,6 +1327,9 @@ public class NumberTheory {
 			return true;
 		}
 		return false;
+	}
+	boolean isCoPrime(int aNumber) {
+		return isCoPrime(getTheNumber(), aNumber); 
 	}
 
 	
@@ -1299,24 +1347,25 @@ public class NumberTheory {
 	}
 	
 	
-	boolean isCurzon() {
-		return isCurzon(getTheNumber());
-	}
+	
 	public static boolean isCurzon(int aNumber) {		
 		BigInteger two = BigInteger.TWO;
 		BigInteger a = two.pow(aNumber).add(BigInteger.ONE);
 		BigInteger b = two.multiply(BigInteger.valueOf(aNumber)).add(BigInteger.ONE);
 		return a.mod(b) == BigInteger.ZERO;
 	}
+	boolean isCurzon() {
+		return isCurzon(getTheNumber());
+	}
+	
+	
 
 	public static List<Integer> getPowerfulNumber(int aNumber){
 		return null;
 	}
 	
 	
-	List<Integer> getTotatives(){
-		return getTotatives(getTheNumber());
-	}
+	
 	public static List<Integer> getTotatives(int aNumber){
 		List<Integer> retList = new LinkedList<>(); //LinkedList? Why not?
 		int counter = 1;
@@ -1328,25 +1377,29 @@ public class NumberTheory {
 		}
 		return retList;
 	}
+	List<Integer> getTotatives(){
+		return getTotatives(getTheNumber());
+	}
 	
 	
-	int getEulersTotient() {
-		return getEulersTotient(getTheNumber());
-	}	
 
 	public static int getEulersTotient(int aNumber) {
 		return getTotatives(aNumber).size();
 	}
+
+	int getEulersTotient() {
+		return getEulersTotient(getTheNumber());
+	}	
+
 	
-	
-	boolean isCyclic() {
-		return isCyclic(getTheNumber());
-	}
 	
 	public static boolean isCyclic(int aNumber) {
 		return isCoPrime(aNumber, getEulersTotient(aNumber));
 	}
-
+	
+	boolean isCyclic() {
+		return isCyclic(getTheNumber());
+	}
 	
 	
 	
@@ -1378,11 +1431,14 @@ public class NumberTheory {
 	}
 	
 	
-	boolean isEven() {
-		return isEven(getTheNumber());
-	}
+	
+	
+	
 	public static boolean isEven(int aNumber) {
 		return (aNumber % 2 == 0);
+	}
+	boolean isEven() {
+		return isEven(getTheNumber());
 	}
 
 	
@@ -1485,9 +1541,30 @@ public class NumberTheory {
 		}
 		return false;
 	}
-	
 	boolean isGapful() {
 		return isGapful(getTheNumber());
+	}
+
+	
+	/**
+	 * @author JeffreySchneider	
+	 *  
+	 * @param aNumber
+	 * @return	boolean  Duffinian numbers are defined as numbers that are composite
+	 * 					 and relatively prime to the sum of their divisors. The first 
+	 * 					 such number is 4 because it is composite and the sum of its
+	 * 					 divisors (1, 2 and 4) is 7 and relatively prime to 4. 
+	 * 					 Source: http://voodooguru23.blogspot.com/2018/10/duffinian-numbers.html
+	 */
+	public static boolean isDuffinian(int aNumber) {
+		int factorSum = getFactorSum(aNumber);
+		if(isCoPrime(aNumber, factorSum)){
+			return true;
+		}
+		return false;
+	}
+	boolean isDuffinian() {
+		return isDuffinian(getTheNumber());
 	}
 	
 	
