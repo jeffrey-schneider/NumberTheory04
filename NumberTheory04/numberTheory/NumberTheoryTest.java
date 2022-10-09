@@ -320,7 +320,22 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 		
-		
+		@Test
+		@DisplayName("Hogben Number")
+		public void hogbenSpec() {
+			int expected = 359401;
+			int result = NumberTheory.getHogben(600);
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(599);
+			expected =  358203;
+			result = instance.getHogben();
+			assertEquals(expected, result);	
+			instance.setTheNumber(5);
+			expected = 21;
+			result = instance.getHogben();
+			assertEquals(expected, result);
+		}
 		
 	} // End of SimpleSingleValueReturn class
 
@@ -652,7 +667,6 @@ class NumberTheoryTest {
 		//115048440 8128 4713984
 		
 		@Test
-		@Disabled("Method is under development.")
 		@DisplayName("Is Harmonic Divisor Number?")
 		public void isHarmonicDivisorNumberSpec() {
 			assertTrue(NumberTheory.isHarmonicDivisorNumber(8128));
@@ -804,7 +818,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Get jacobsthal")
+		@DisplayName("Get Jacobsthal")
 		public void jacobsthalSpec() {
 			instance.setTheNumber(20);
 			List<Integer> result = instance.getJacobsthal();
@@ -817,9 +831,6 @@ class NumberTheoryTest {
 					10923, 21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405));
 			assertIterableEquals(expected, result);
 		}
-		
-		
-
 	}
 
 }

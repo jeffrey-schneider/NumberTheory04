@@ -1617,6 +1617,20 @@ public class NumberTheory {
 		return isHarshad(getTheNumber());
 	}
 	
-		
+	
+	/**
+	 * 
+	 * @param aNumber
+	 * @return int
+	 * 
+	 * Check to display this in a spiral form.
+	 * 
+	 */
+	public static int getHogben(int aNumber){
+		return (int) (Math.pow(aNumber, 2.0) - aNumber + 1);
+	}
+	int getHogben() {
+		return getHogben(getTheNumber());
+	}
 
 }
