@@ -1633,4 +1633,45 @@ public class NumberTheory {
 		return getHogben(getTheNumber());
 	}
 
+	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return int  The  'n'-th house number  
+	 * 				'h_n'  is a figurate number made by a cube of side  'n+1', 
+	 * 				surmounted by a square pyramidal number with side  'n'.
+	 * 				<code>\[h_n=(8 n^3+21 n^2+19 n+6)/6.\]</code>
+	 * 
+	 */
+	public static int getHouse(int aNumber) {
+		int a = (int) (8 * Math.pow(aNumber, 3.0));
+		int b = (int) (21 * Math.pow(aNumber, 2.0));
+		int c = 19 * aNumber;
+		return (a + b + c + 6) / 6;
+	}
+	int getHouse() {
+		return getHouse(getTheNumber());
+	}
+
+	public static boolean isHungry(int k ) {
+		BigInteger n = BigInteger.TWO.pow(k);
+		String stringN = n.toString();	
+		int length = stringN.length();
+		System.out.println("Length: " + length);
+		String jeff = LocalMath.StringPI().replaceAll("\\.", "");
+		
+		
+		
+		
+		
+		
+		
+		return false;
+	}
+	
+	
+	
+	
+
 }

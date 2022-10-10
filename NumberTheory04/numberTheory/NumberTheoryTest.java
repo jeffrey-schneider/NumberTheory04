@@ -337,6 +337,33 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 		
+		@Test
+		@DisplayName("House Number")
+		public void getHouseNumberSpec() {
+			int expected = 933;
+			int result = NumberTheory.getHouse(8);
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(10);
+			expected = 1716;
+			result = instance.getHouse();
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(599);
+			expected = 287820100;
+			result = instance.getHouse();
+			assertEquals(expected, result);
+		}
+		
+		@Test
+		@DisplayName("Hungry Number")
+		public void getHungryNumberSpec() {
+			assertTrue(NumberTheory.isHungry(7339199));
+			assertTrue(NumberTheory.isHungry(144));
+			assertFalse(NumberTheory.isHungry(145));
+		}
+		
+		
 	} // End of SimpleSingleValueReturn class
 
 	@Nested

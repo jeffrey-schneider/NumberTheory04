@@ -318,6 +318,12 @@ public class TestNumberTheory {
 			System.out.println(NumberTheory.getHogben(abc));
 		}
 		
+		
+		System.out.println(LocalMath.BigPI());
+		
+		System.out.println(LocalMath.StringPI());
+		
+		System.out.println(NumberTheory.isHungry(240));
 		 
 	}
 
