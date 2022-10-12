@@ -319,11 +319,11 @@ public class TestNumberTheory {
 		}
 		
 		
-		System.out.println(LocalMath.BigPI());
-		
-		System.out.println(LocalMath.StringPI());
+//		System.out.println(LocalMath.BigPI());		
+//		System.out.println(LocalMath.StringPI());
 		
 		System.out.println(NumberTheory.isHungry(240));
+		System.out.println(NumberTheory.getReverseNumber(12345));
 		 
 	}
 
