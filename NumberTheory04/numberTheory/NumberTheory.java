@@ -962,6 +962,9 @@ public class NumberTheory {
 	 * @return boolean
 	 */
 	public static boolean isAstonishing(int aNumber) {
+		
+		//Does not work for all numbers 
+		// 190 204 216
 		// https://www.geeksforgeeks.org/astonishing-numbers/
 		// This code is contributed by shubhamsingh10
 		// Time Complexity: O(n)
