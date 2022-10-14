@@ -144,7 +144,7 @@ public class TestNumberTheory {
 		 System.out.println("NumberTheory.getPellList()" + NumberTheory.getPellList(x));
 
 		 for(x = 1; x <= 100; x++) {
-			 System.out.println(x + " " + NumberTheory.getPell(x));
+			 System.out.println(x + " == " + NumberTheory.getPell(x));
 		 }
 		 
 		 
