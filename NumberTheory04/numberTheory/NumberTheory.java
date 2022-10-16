@@ -986,6 +986,9 @@ public class NumberTheory {
 	 * @return boolean
 	 */
 	public static boolean isAstonishing(int aNumber) {
+		
+		//Does not work for all numbers 
+		// 190 204 216
 		// https://www.geeksforgeeks.org/astonishing-numbers/
 		// This code is contributed by shubhamsingh10
 		// Time Complexity: O(n)
@@ -1091,10 +1094,14 @@ public class NumberTheory {
 		return retList;
 	}
 
-	public static int[] getFirstAndLastDigits(int aNumber) {
-		int firstDigit = getListOfDigits(aNumber).get(0);
-		int length = getListOfDigits(aNumber).size() -1 ; 
-		int lastDigit = getListOfDigits(aNumber).get(length);
+	public static int[] getFirstAndLastDigits(int aNumber) {		
+//		int firstDigit = getListOfDigits(aNumber).get(0);
+//		int length = getListOfDigits(aNumber).size() -1 ; 
+//		int lastDigit = getListOfDigits(aNumber).get(length);
+		List<Integer> theList = getListOfDigits(aNumber);
+		int firstDigit = theList.get(0);
+		int length = theList.size()-1;
+		int lastDigit = theList.get(length);
 		int[] retVal = {firstDigit, lastDigit};
 		return retVal;
 	}

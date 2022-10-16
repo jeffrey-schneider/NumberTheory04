@@ -144,7 +144,7 @@ public class TestNumberTheory {
 		 System.out.println("NumberTheory.getPellList()" + NumberTheory.getPellList(x));
 
 		 for(x = 1; x <= 100; x++) {
-			 System.out.println(x + " " + NumberTheory.getPell(x));
+			 System.out.println(x + " == " + NumberTheory.getPell(x));
 		 }
 		 
 		 
@@ -319,8 +319,7 @@ public class TestNumberTheory {
 		}
 		
 		
-		System.out.println(LocalMath.BigPI());		
-		System.out.println(LocalMath.StringPI());
+<<<<<<< HEAD
 		
 		System.out.println("Is Emirpimeses");
 		for (int j = 1; j < 6700; j++) {
@@ -337,6 +336,13 @@ public class TestNumberTheory {
 		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
 		
 		ProjectEuler.ProjectEuler.main(null);
+=======
+//		System.out.println(LocalMath.BigPI());		
+//		System.out.println(LocalMath.StringPI());
+		
+		System.out.println(NumberTheory.isHungry(240));
+		System.out.println(NumberTheory.getReverseNumber(12345));
+>>>>>>> b07feed4f9522ecafa4d84855da2406d55181364
 		 
 	}
 
