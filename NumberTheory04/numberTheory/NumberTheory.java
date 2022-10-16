@@ -512,23 +512,23 @@ public class NumberTheory {
 
 
 
-	public static List<Integer> getFibonacci(int aNumber) {
-		int num1 = 0;
-		int num2 = 1;
+	public static List<BigInteger> getFibonacci(int aNumber) {
+		BigInteger num1 = BigInteger.ZERO;
+		BigInteger num2 = BigInteger.ONE;
 		int counter = 0;
-		List<Integer> retList = new ArrayList<>();
+		List<BigInteger> retList = new ArrayList<>();
 
 		// Iterate until counter == aNumber
 		while (counter < aNumber) {
 			retList.add(num1);
-			int num3 = num2 + num1;
+			BigInteger num3 = num2.add(num1);
 			num1 = num2;
 			num2 = num3;
 			counter++;
 		}
 		return retList;
 	}
-	List<Integer> getFibonacci() {
+	List<BigInteger> getFibonacci() {
 		return getFibonacci(getTheNumber());
 	}
 	

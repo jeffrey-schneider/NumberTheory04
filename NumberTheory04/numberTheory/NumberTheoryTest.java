@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -828,12 +829,40 @@ class NumberTheoryTest {
 		@DisplayName("Get Fibonacci")
 		public void fibonacciSpec() {
 			instance.setTheNumber(10);
-			List<Integer> result = instance.getFibonacci();
-			List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34));
+			List<BigInteger> result = instance.getFibonacci();
+			List<BigInteger> expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, 
+					BigInteger.ONE, 
+					BigInteger.ONE,
+					BigInteger.TWO, 
+					BigInteger.valueOf(3),
+					BigInteger.valueOf(5), 
+					BigInteger.valueOf(8),
+					BigInteger.valueOf(13), 
+					BigInteger.valueOf(21),
+					BigInteger.valueOf(34)));
+			
+			//List<BigInteger> expected = new LinkedList<>(Arrays.asList(null))
 			assertIterableEquals(expected, result);
 
 			result = NumberTheory.getFibonacci(17);
-			expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987));
+			//expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987));
+			expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, 
+					BigInteger.ONE, 
+					BigInteger.ONE,
+					BigInteger.TWO, 
+					BigInteger.valueOf(3),
+					BigInteger.valueOf(5), 
+					BigInteger.valueOf(8),
+					BigInteger.valueOf(13), 
+					BigInteger.valueOf(21),
+					BigInteger.valueOf(34),
+					BigInteger.valueOf(55),
+					BigInteger.valueOf(89),
+					BigInteger.valueOf(144),
+					BigInteger.valueOf(233),
+					BigInteger.valueOf(377),
+					BigInteger.valueOf(610),
+					BigInteger.valueOf(987)));
 			assertIterableEquals(expected, result);
 		}
 
