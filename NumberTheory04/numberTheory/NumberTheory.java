@@ -532,6 +532,30 @@ public class NumberTheory {
 		return getFibonacci(getTheNumber());
 	}
 	
+	
+	/**
+	 * Not working yet - this is part of the fibodiv number solution
+	 * @param aNumber
+	 * @param number1
+	 * @param number2
+	 * @return
+	 */
+	public static List<Integer> getFibonacciLike(int aNumber, int number1, int number2){
+		int num1 = number1;
+		int num2 = number2;
+		int counter = 0;
+		List<Integer> retList = new ArrayList<>();
+		
+		//Iterate until counter == aNumber
+		while(counter < aNumber) {
+			retList.add(num1);
+			int num3 = num2 + num1;
+			num1 = num2;
+			num2 = num3;
+			counter++;
+		}
+		return retList;
+	}
 
 	public static List<Integer> getLucas(int aNumber) {
 		int num1 = 2;
@@ -1253,7 +1277,13 @@ public class NumberTheory {
 		return isSemiPrime(getTheNumber());
 	}
 	
-	
+	public static boolean isEmirpimeses(int aNumber) {
+		return isSemiPrime(aNumber) &&
+				isSemiPrime(getReverseNumber(aNumber));
+	}
+	boolean isEmirpimeses() {
+		return isEmirpimeses(getTheNumber());
+	}
 	
 	/**
 	 * 

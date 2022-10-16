@@ -355,7 +355,7 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 		
-		@Test
+		//@Test
 		@DisplayName("Hungry Number")
 		public void getHungryNumberSpec() {
 			assertTrue(NumberTheory.isHungry(7339199));
@@ -713,6 +713,14 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isHarshad(11));
 			instance.setTheNumber(41441420);
 			assertTrue(instance.isHarshad());
+		}
+		
+		@Test
+		@DisplayName("Is Number Emirpimeses")
+		public void isEmirpimesesSpec() {
+			assertTrue(NumberTheory.isEmirpimeses(15));
+			assertTrue(NumberTheory.isEmirpimeses(159));
+			assertTrue(NumberTheory.isEmirpimeses(178));
 		}
 
 	} // End of boolean tests

@@ -319,11 +319,24 @@ public class TestNumberTheory {
 		}
 		
 		
-		System.out.println(LocalMath.BigPI());
-		
+		System.out.println(LocalMath.BigPI());		
 		System.out.println(LocalMath.StringPI());
 		
-		System.out.println(NumberTheory.isHungry(240));
+		System.out.println("Is Emirpimeses");
+		for (int j = 1; j < 6700; j++) {
+			if (NumberTheory.isEmirpimeses(j))
+				System.out.printf("%d\n",j);	
+		}
+		
+		System.out.println("Fibodiv");
+		List<Integer> aList = NumberTheory.getFibonacciLike(549, 54, 9);
+		for (Integer integer : aList) {
+			System.out.println(integer);
+		}
+				
+		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
+		
+		ProjectEuler.ProjectEuler.main(null);
 		 
 	}
 
