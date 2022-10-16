@@ -17,7 +17,7 @@ public class ProjectEuler {
 		}
 		
 		
-		//euler01();
+		euler01();
 	}
 
 	private static void euler01() {
