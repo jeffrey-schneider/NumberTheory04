@@ -844,7 +844,7 @@ class NumberTheoryTest {
 			//List<BigInteger> expected = new LinkedList<>(Arrays.asList(null))
 			assertIterableEquals(expected, result);
 
-			result = NumberTheory.getFibonacci(17);
+			result = NumberTheory.getFibonacciList(17);
 			//expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987));
 			expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, 
 					BigInteger.ONE, 
@@ -896,6 +896,20 @@ class NumberTheoryTest {
 					10923, 21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405));
 			assertIterableEquals(expected, result);
 		}
+		
+		
+		@Test
+		@DisplayName("Is Insolite Number")
+		public void isInsoliteSpec() {
+			instance.setTheNumber(122121216);
+			//assertTrue(instance.isInsolite());
+			assertTrue(NumberTheory.isInsolite(122121216));
+			assertTrue(NumberTheory.isInsolite(1111211136));
+			//assertTrue(NumberTheory.isInsolite(211912113131712));
+			assertFalse(NumberTheory.isInsolite(123));
+		}
 	}
+	
+	
 
 }

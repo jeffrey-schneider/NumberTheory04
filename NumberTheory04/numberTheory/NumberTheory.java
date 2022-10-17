@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class NumberTheory {
@@ -512,7 +513,7 @@ public class NumberTheory {
 
 
 
-	public static List<BigInteger> getFibonacci(int aNumber) {
+	public static List<BigInteger> getFibonacciList(int aNumber) {
 		BigInteger num1 = BigInteger.ZERO;
 		BigInteger num2 = BigInteger.ONE;
 		int counter = 0;
@@ -529,9 +530,54 @@ public class NumberTheory {
 		return retList;
 	}
 	List<BigInteger> getFibonacci() {
-		return getFibonacci(getTheNumber());
+		return getFibonacciList(getTheNumber());
 	}
 	
+	
+	/*
+	 * Returns the aNumber-th fibonacci number.
+	 */
+	public static BigInteger getFibonacciBkup(int aNumber) {
+		BigInteger num1 = BigInteger.ZERO;
+		BigInteger num2 = BigInteger.ONE;
+		BigInteger num3 = BigInteger.ZERO;
+		int counter = 1;
+
+		// Iterate until counter == aNumber
+		while(num3.compareTo(BigInteger.valueOf(counter)) < aNumber){
+			num3 = num2.add(num1);
+			num1 = num2;
+			num2 = num3;
+			counter++;
+		}
+		return num3;
+	}
+	
+	
+	private static Map<Integer, BigInteger> memo = new HashMap<>();
+	
+	//https://www.interviewcake.com/concept/java/memoization
+	public static BigInteger getFibonacci(int n) {
+		if(n < 0) {
+			throw new IllegalArgumentException(
+					"Enter a positive number.");
+		}
+		else if(n==0 || n == 1) {
+			return BigInteger.valueOf(n);
+		}
+		
+		//Have we already calculated this?
+		if(memo.containsKey(n)) {
+			return memo.get(n);
+		}
+		BigInteger fib1 = getFibonacci(n-1);
+		BigInteger fib2 = getFibonacci(n-2);
+		BigInteger result = fib1.add(fib2);
+		memo.put(n, result);
+		
+		return result;
+		
+	}
 	
 	/**
 	 * Not working yet - this is part of the fibodiv number solution
@@ -1119,6 +1165,15 @@ public class NumberTheory {
 		}
 		return retVal;
 	}
+	
+	public static int getProductOfSquares(List<Integer> aList) {
+		int retVal = 1;
+		for(Integer integer: aList) {
+			retVal *= integer * integer;
+		}
+		return retVal;
+	
+	}
 
 	/**
 	 * @author JeffreySchneider
@@ -1129,6 +1184,14 @@ public class NumberTheory {
 		int retVal = 0;
 		for (Integer integer : aList) {
 			retVal += integer;
+		}
+		return retVal;
+	}
+	
+	public static int getProductOfDigits(List<Integer> aList) {
+		int retVal = 0;
+		for (Integer integer : aList) {
+			retVal *= integer;
 		}
 		return retVal;
 	}
@@ -1697,13 +1760,17 @@ public class NumberTheory {
 		int length = stringN.length();
 		System.out.println("Length: " + length);
 		String jeff = LocalMath.StringPI().replaceAll("\\.", "");
-		
-		
-		
-		
-		
-		
-		
+		return false;
+	}
+
+	public static boolean isInsolite(int v) {
+		//Is number divisible by the sum and product
+		//  of the squares of its digits.
+		int a = getSumOfSquares(getListOfDigits(v));
+		int b = getProductOfSquares(getListOfDigits(v));
+		System.out.println("Insolite: " + a + " " + b);
+		if(v % a == 0 && v % b == 0)
+			return true;
 		return false;
 	}
 	

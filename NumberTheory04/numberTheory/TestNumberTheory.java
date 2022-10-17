@@ -28,7 +28,8 @@ public class TestNumberTheory {
 		System.out.printf("Factorial(52): %,d", NumberTheory.getFactorial(52));
 		System.out.println();
 
-		System.out.println("Fibonacci(17): " + NumberTheory.getFibonacci(17));
+		System.out.println("Fibonacci List(17): " + NumberTheory.getFibonacciList(17));
+		//System.out.println("Fibonacci(17): " + NumberTheory.getFibonacci(17));
 
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
 		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
@@ -297,7 +298,7 @@ public class TestNumberTheory {
 		 
 
 		 BigInteger f = BigInteger.TWO.pow(2048).add(BigInteger.ONE);
-		 System.out.println(f);
+		 System.out.println("biginteger: " + f);
 		 
 		
 //		//int[] c = {1, 2, 6, 28, 140, 270, 496, 672, 1638, 2970, 6200, 8128, 8190, 18600, 18620, 27846, 30240, 32760, 55860, 105664, 117800, 167400, 173600, 237510};
@@ -314,34 +315,35 @@ public class TestNumberTheory {
 //		}
 		
 		
-		for (int abc = 1; abc < 20; abc++) {
-			System.out.println(NumberTheory.getHogben(abc));
-		}
+//		for (int abc = 1; abc < 20; abc++) {
+//			System.out.println(NumberTheory.getHogben(abc));
+//		}
 		
 		
 
 		
-		System.out.println("Is Emirpimeses");
-		for (int j = 1; j < 6700; j++) {
-			if (NumberTheory.isEmirpimeses(j))
-				System.out.printf("%d\n",j);	
-		}
+//		System.out.println("Is Emirpimeses");
+//		for (int j = 1; j < 6700; j++) {
+//			if (NumberTheory.isEmirpimeses(j))
+//				System.out.printf("%d\n",j);	
+//		}
 		
-		System.out.println("Fibodiv");
-		List<Integer> aList = NumberTheory.getFibonacciLike(549, 54, 9);
-		for (Integer integer : aList) {
-			System.out.println(integer);
-		}
+//		System.out.println("Fibodiv");
+//		List<Integer> aList = NumberTheory.getFibonacciLike(549, 54, 9);
+//		for (Integer integer : aList) {
+//			System.out.println(integer);
+//		}
 				
-		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
+//		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
 		
 		ProjectEuler.ProjectEuler.main(null);
 
 //		System.out.println(LocalMath.BigPI());		
 //		System.out.println(LocalMath.StringPI());
 		
-		System.out.println(NumberTheory.isHungry(240));
-		System.out.println(NumberTheory.getReverseNumber(12345));
+//		System.out.println(NumberTheory.isHungry(240));
+//		System.out.println(NumberTheory.getReverseNumber(12345));
+		
 
 		 
 	}
