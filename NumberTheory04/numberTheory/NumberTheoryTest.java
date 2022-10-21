@@ -908,6 +908,20 @@ class NumberTheoryTest {
 			//assertTrue(NumberTheory.isInsolite(211912113131712));
 			assertFalse(NumberTheory.isInsolite(123));
 		}
+		
+		
+		
+		@Test
+		@DisplayName("Motzkin Numbers")
+		public void getMotzkinNumbersSpec() {
+			BigInteger result = NumberTheory.getMotzkin(18);
+			BigInteger expected = BigInteger.valueOf(6536382);
+			assertEquals(expected, result);
+			instance.setTheNumber(29);
+			result = instance.getMotzkin();
+			expected = BigInteger.valueOf(1697385471211L);
+		}
+		
 	}
 	
 	

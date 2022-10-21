@@ -12,18 +12,18 @@ import java.util.Map;
 public class TestNumberTheory {
 	public static void main(String[] args) {
 
-		NumberTheory theTheory = new NumberTheory(19);
-		System.out.println(theTheory.getCollatz());
-		theTheory.setTheNumber(27);
-		System.out.println(theTheory.getCollatz());
+		NumberTheory instance = new NumberTheory(19);
+		System.out.println(instance.getCollatz());
+		instance.setTheNumber(27);
+		System.out.println(instance.getCollatz());
 
-		theTheory.setTheNumber(0);
-		System.out.println(theTheory.getCollatz());
+		instance.setTheNumber(0);
+		System.out.println(instance.getCollatz());
 
 		System.out.println(NumberTheory.isAKeithNumber(917));
 
-		theTheory.setTheNumber(20);
-		System.out.println("Catalan: " + theTheory.getCatalan());
+		instance.setTheNumber(20);
+		System.out.println("Catalan: " + instance.getCatalan());
 		System.out.println("Catalan: " + NumberTheory.getCatalan(20));
 		System.out.printf("Factorial(52): %,d", NumberTheory.getFactorial(52));
 		System.out.println();
@@ -33,8 +33,8 @@ public class TestNumberTheory {
 
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
 		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
-		theTheory.setTheNumber(12);
-		System.out.println(theTheory.getLucas());
+		instance.setTheNumber(12);
+		System.out.println(instance.getLucas());
 		System.out.println(NumberTheory.getJacobsthal(25));
 
 		System.out.println(NumberTheory.getAlternatingFactorial(5));
@@ -43,13 +43,13 @@ public class TestNumberTheory {
 
 		//getAmicableNumbers();
 		System.out.println(NumberTheory.getApocolyptic(192));
-		System.out.println(theTheory.getApocolyptic(0));
+		System.out.println(instance.getApocolyptic(0));
 		
-		theTheory.setTheNumber(6601);
+		instance.setTheNumber(6601);
 		System.out.println(NumberTheory.isCaramichael(561));
 		System.out.println(NumberTheory.isCaramichael(1105));
 		System.out.println(NumberTheory.isCaramichael(15841));
-		System.out.println(theTheory.isCarmichael());
+		System.out.println(instance.isCarmichael());
 		
 		System.out.println("Cake Numbers:");
 		int n = 0;
@@ -344,9 +344,14 @@ public class TestNumberTheory {
 //		System.out.println(NumberTheory.isHungry(240));
 //		System.out.println(NumberTheory.getReverseNumber(12345));
 		
+		for (int j = 1; j <= 40; j++)
+			System.out.printf("Motzkin %d %d\n ", j, NumberTheory.getMotzkin(j));	
+		}
+		
+		
 
 		 
-	}
+	
 
 	
 }

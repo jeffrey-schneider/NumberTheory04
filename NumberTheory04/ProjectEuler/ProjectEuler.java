@@ -12,17 +12,33 @@ public class ProjectEuler {
 	public static void main(String args) {
 		
 		System.out.println("In ProjectEuler.ProjetEuler.main()");
+		euler01();		 
+		euler02();
 		
 		
-		//This is incorrect. 
-		int counter = 1;
+
+	}
+
+
+	public static void euler01() {
+		System.out.println("In Euler01():");
+		int sum = 0;
+		for (int i = 0; i < 1000; i++) {
+			if(i % 5 == 0 || i %3 == 0)
+				sum+= i;
+		}
+		System.out.println(sum);
+	}
+
+	public static void euler02() {
+		System.out.println("In Euler02():");
+		int counter = 0;
 		LinkedList<BigInteger> theList = new LinkedList<>();
-		BigInteger summary = BigInteger.ONE;
-		
+		BigInteger summary = BigInteger.ZERO;		
 		BigInteger theNumber = BigInteger.ZERO;
-		BigInteger stopper = BigInteger.valueOf(4_000_000_000L);
+		BigInteger stopper = BigInteger.valueOf(4_000_000L);
 		do {
-			theNumber = NumberTheory.getFibonacci(counter);
+			theNumber = NumberTheory.getFibonacci(counter);			
 			theList.add(theNumber);
 			counter++;
 		}while(theNumber.compareTo(stopper) == -1);
@@ -37,21 +53,6 @@ public class ProjectEuler {
 			}
 		}
 		System.out.println("Even fib values: " + summary);
-		
-			
-		
-		
-		
-		//euler01();
-	}
-
-	private static void euler01() {
-		int sum = 0;
-		for (int i = 0; i < 1000; i++) {
-			if(i % 5 == 0 || i %3 == 0)
-				sum+= i;
-		}
-		System.out.println(sum);
 	}
 
 }

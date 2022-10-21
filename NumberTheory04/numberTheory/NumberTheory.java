@@ -534,6 +534,54 @@ public class NumberTheory {
 	}
 	
 	
+	/**
+	 * From: https://www.geeksforgeeks.org/motzkin-number/
+	 * @param v
+	 * @return
+	 */
+	public static BigInteger getMotzkin(int n) {
+		Map<Integer, BigInteger> memo = new HashMap<>();
+		if(n==0 || n == 1)
+			return BigInteger.ONE;
+		
+		if(memo.containsKey(n)) {
+			return memo.get(n);
+		}
+		BigInteger BigN = BigInteger.valueOf(n);
+		BigInteger Two = BigInteger.TWO;
+		BigInteger Three = BigInteger.valueOf(3);
+		BigInteger One = BigInteger.ONE;
+		BigInteger m1 = getMotzkin(n - 1);
+		BigInteger m2 = getMotzkin(n-2);
+		
+		BigInteger firstPart = Two.multiply(BigN).add(One).multiply(m1);		
+		BigInteger secondPart = Three.multiply(BigN).subtract(Three).multiply(m2); 
+		BigInteger lastPart = BigN.add(BigInteger.TWO);
+		BigInteger retVal = (firstPart.add(secondPart)).divide(lastPart) ;
+		memo.put(n, retVal);
+		
+		return (retVal);
+	}
+
+	BigInteger getMotzkin() {
+		return getMotzkin(getTheNumber());
+	}
+	
+	
+	
+	
+	public static int motzkin(int n)
+    {
+        // Base Case
+        if (n == 0 || n == 1)
+            return 1;
+   
+        // Recursive step
+        return ((2 * n + 1) * motzkin(n - 1) +
+                (3 * n - 3) * motzkin(n - 2)) / (n + 2);
+    }
+       
+	
 	/*
 	 * Returns the aNumber-th fibonacci number.
 	 */
@@ -1773,6 +1821,10 @@ public class NumberTheory {
 			return true;
 		return false;
 	}
+
+	
+	
+ 
 	
 	
 	
