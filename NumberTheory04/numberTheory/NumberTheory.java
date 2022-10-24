@@ -47,7 +47,12 @@ public class NumberTheory {
 		this.theNumber = theNumber;
 	}
 
-
+	/**
+	 * Used for memoization.
+	 */
+	private static Map<Integer, BigInteger> memo = new HashMap<>();
+	
+	
 	/**
 	 * 
 	 * @param aNumber the number to square
@@ -58,9 +63,7 @@ public class NumberTheory {
 	}
 	int getSquare() {
 		return getSquare(getTheNumber());
-	}
-
-	
+	}	
 	
 	
 	/**
@@ -602,7 +605,7 @@ public class NumberTheory {
 	}
 	
 	
-	private static Map<Integer, BigInteger> memo = new HashMap<>();
+	
 	
 	//https://www.interviewcake.com/concept/java/memoization
 	public static BigInteger getFibonacci(int n) {
@@ -1821,9 +1824,26 @@ public class NumberTheory {
 			return true;
 		return false;
 	}
+	
+	public boolean isInsolite() {
+		return isInsolite(getTheNumber());
+	}
 
 	
-	
+
+	/**
+	 * 
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return
+	 * @see https://en.wikipedia.org/wiki/Good_prime
+	 */
+	public static boolean isGoodPrime(int v) {
+		return false;		
+	}
+	protected boolean isGoodPrime() {
+		return isGoodPrime(getTheNumber());
+	}
  
 	
 	

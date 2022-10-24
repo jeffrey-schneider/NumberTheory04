@@ -344,14 +344,71 @@ public class TestNumberTheory {
 //		System.out.println(NumberTheory.isHungry(240));
 //		System.out.println(NumberTheory.getReverseNumber(12345));
 		
-		for (int j = 1; j <= 40; j++)
+		for (int j = 1; j <= 10; j++) {
 			System.out.printf("Motzkin %d %d\n ", j, NumberTheory.getMotzkin(j));	
 		}
+		
+		
+		System.out.println("Prime Factors Loop");
+		for(int j=10;j<=20; j++) {
+			instance.setTheNumber(j);
+			System.out.println(j + " " + instance.getPrimeFactors());
+		}
+		System.out.println();
+		
+		System.out.println("Lets play with prime factors.");
+		System.out.println("60 " + NumberTheory.getPrimeFactors(60));
+		
+		primeFactorCount(NumberTheory.getPrimeFactors(60));
+		
+		System.out.println(NumberTheory.getPrimeFactors(3072));
+		primeFactorCount(NumberTheory.getPrimeFactors(3072));
+		
+		primeFactorCount(NumberTheory.getPrimeFactors(12569));
+		
+		
+		
+		
+		
+			
+		
+
+		
+		
+
 		
 		
 
 		 
 	
 
+	}
+
+	private static void primeFactorCount(List<Integer> theList1) {
+		Map<Integer, Integer> theHash = new HashMap<Integer,Integer>();		
+		for (Integer integer : theList1) {
+			if(theHash.containsKey(integer)){
+				theHash.put(integer, theHash.get(integer)+1);
+			}else {
+				theHash.put(integer, 1);
+			}
+		}
+		
+		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
+		int numeralCounter = 0;
+		while(it.hasNext()) {
+			Map.Entry<Integer, Integer> entry = it.next();
+			if(entry.getValue() > 1) {
+				System.out.print(entry.getKey() + "^" + entry.getValue());
+			}else {
+				System.out.print(entry.getKey());
+			}
+			System.out.print(" ");
+		}
+		System.out.println();
+	}
+
+	
 	
 }
+
