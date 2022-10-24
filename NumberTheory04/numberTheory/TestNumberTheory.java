@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -344,14 +345,26 @@ public class TestNumberTheory {
 //		System.out.println(NumberTheory.isHungry(240));
 //		System.out.println(NumberTheory.getReverseNumber(12345));
 		
-		for (int j = 1; j <= 40; j++)
+		for (int j = 1; j <= 30; j++) {
 			System.out.printf("Motzkin %d %d\n ", j, NumberTheory.getMotzkin(j));	
 		}
 		
 		
+		
 
-		 
-	
+	Scanner sc = new Scanner(System.in);
+	int number2;
+	do {
+	    System.out.println("Please enter a positive integer!");
+	    while (!sc.hasNextInt()) {
+	        System.out.println("That's not a positive integer-!");
+	        sc.next(); // this is important!
+	    }
+	    number2 = sc.nextInt();
+	} while (number2 <= 0);
+	System.out.println("Thank you! Got " + number2);
+
+}	
 
 	
 }

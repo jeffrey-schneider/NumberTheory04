@@ -878,6 +878,7 @@ public class NumberTheory {
 		return getBellNumber(getTheNumber());
 	}
 
+	
 
 	/**
 	 * https://www.geeksforgeeks.org/admirable-numbers/
@@ -1820,6 +1821,9 @@ public class NumberTheory {
 		if(v % a == 0 && v % b == 0)
 			return true;
 		return false;
+	}
+	protected boolean isInsolite() {
+		return isInsolite(getTheNumber());
 	}
 
 	

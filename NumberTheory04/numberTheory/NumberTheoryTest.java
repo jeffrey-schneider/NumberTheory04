@@ -902,11 +902,12 @@ class NumberTheoryTest {
 		@DisplayName("Is Insolite Number")
 		public void isInsoliteSpec() {
 			instance.setTheNumber(122121216);
-			//assertTrue(instance.isInsolite());
+			assertTrue(instance.isInsolite());
 			assertTrue(NumberTheory.isInsolite(122121216));
 			assertTrue(NumberTheory.isInsolite(1111211136));
 			//assertTrue(NumberTheory.isInsolite(211912113131712));
 			assertFalse(NumberTheory.isInsolite(123));
+			
 		}
 		
 		
