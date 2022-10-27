@@ -268,7 +268,9 @@ public class TestNumberTheory {
 		 System.out.println("Is droll?");
 		 System.out.println(NumberTheory.isDroll(48384));
 		 System.out.println(NumberTheory.isDroll(72));
-		 //System.out.println(NumberTheory.getCompositorial(4));
+		 
+		 System.out.println("GetCompositorial(11)");
+		 System.out.println(NumberTheory.getCompositorial(11));
 		
 		 
 		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(13));
@@ -339,20 +341,33 @@ public class TestNumberTheory {
 		
 		ProjectEuler.ProjectEuler.main(null);
 
-//		System.out.println(LocalMath.BigPI());		
-//		System.out.println(LocalMath.StringPI());
+		System.out.println(LocalMath.BigPI());	
+		System.out.println();
+		System.out.println(LocalMath.StringPI());
+		System.out.println();
 		
-//		System.out.println(NumberTheory.isHungry(240));
-//		System.out.println(NumberTheory.getReverseNumber(12345));
+		System.out.println(NumberTheory.isHungry(240));
+		System.out.println(NumberTheory.getReverseNumber(12345));
 		
 		for (int j = 1; j <= 30; j++) {
 			System.out.printf("Motzkin %d %d\n ", j, NumberTheory.getMotzkin(j));	
 		}
 		
 		
+//		System.out.println("Good Primes");
+//		for (int j = 0; j < 1000; j++) {
+//			if(NumberTheory.isGoodPrime(j)) {
+//				System.out.println(j);	
+//			}						
+//		}
+		
+		
 		
 
-	Scanner sc = new Scanner(System.in);
+
+	/*
+	 * Scanner sc = new Scanner(System.in);
+	 
 	int number2;
 	do {
 	    System.out.println("Please enter a positive integer!");
@@ -363,7 +378,7 @@ public class TestNumberTheory {
 	    number2 = sc.nextInt();
 	} while (number2 <= 0);
 	System.out.println("Thank you! Got " + number2);
-
+*/
 }	
 
 	
