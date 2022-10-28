@@ -935,6 +935,53 @@ class NumberTheoryTest {
 			
 		}
 		
+		
+		@Test
+		@DisplayName("GCD")
+		public void gcdSpec() {
+			int result = NumberTheory.gcd(10, 15);
+			int expected = 5;
+			assertEquals(expected,result);
+			result = NumberTheory.gcd(100, 15);
+			expected = 5;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(100);
+			result = instance.gcd(15);
+			expected = 5;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(100);
+			result = instance.gcd(52);
+			expected = 4;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(54);
+			result = instance.gcd(100);
+			expected = 2;
+			assertEquals(expected,result);
+			
+			expected = 45;
+			assertNotEquals(expected, result);			
+		}
+		
+		@Test
+		@DisplayName("LCM")
+		public void lcmSpec() {
+			int result = NumberTheory.lcm(21, 6);
+			int expected = 42;
+			assertEquals(expected,result);
+			
+			result = NumberTheory.lcm(4, 6);
+			expected = 12;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(22);
+			result = instance.lcm(13);
+			expected = 286;
+			assertEquals(expected,result);
+		}
+		
 	}
 	
 	

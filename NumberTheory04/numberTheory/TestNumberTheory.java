@@ -354,12 +354,25 @@ public class TestNumberTheory {
 		}
 		
 		
-//		System.out.println("Good Primes");
-//		for (int j = 0; j < 1000; j++) {
-//			if(NumberTheory.isGoodPrime(j)) {
-//				System.out.println(j);	
-//			}						
-//		}
+		System.out.println("Good Primes:");
+		for (int j = 2; j <= 100; j++) {
+			if(NumberTheory.isGoodPrime(j)) {
+				System.out.println(j);	
+			}						
+		}
+		
+		
+		System.out.println("Greatest Common Divisor:");
+		System.out.println("GCD of 10 and 15: " + NumberTheory.gcd(10, 15));
+		System.out.println("GCD of 100 and 15: " + NumberTheory.gcd(100, 15));
+		System.out.println("GCD of 100 and 52: " + NumberTheory.gcd(100, 52));
+		instance.setTheNumber(100);
+		System.out.println("GCD of 100 and 54: " + instance.gcd(54));
+		
+		System.out.println("LCM of 21 and 6: " + NumberTheory.lcm(21, 6));
+		System.out.println("LCM of 4 and 6: " + NumberTheory.lcm(4, 6));
+		instance.setTheNumber(13);
+		System.out.println("LCM of 3 and 22: " + instance.lcm(22));
 		
 		
 		

@@ -807,12 +807,31 @@ public class NumberTheory {
 	}
 
 
+	/**
+	 * 
+	 * @param b
+	 * @param n
+	 * @return int Greatest Common Divisor
+	 */
 	public static int gcd(int b, int n) {
 		if (n == 0)
 			return b;
 		return gcd(n, b % n);
 	}
+	int gcd(int n) {
+		return gcd(getTheNumber(),n);
+		
+	}
 
+	
+	public static int lcm(int a, int b) {
+		return a * (b/gcd(a,b));
+	}
+	
+	int lcm(int b) {
+		return lcm(getTheNumber(), b);
+	}
+	
 	/**
 	 * 
 	 * @param b   first number
@@ -1490,7 +1509,6 @@ public class NumberTheory {
 	public static BigInteger getCompositorial(int aNumber) {
 		BigInteger fact = getFactorial(aNumber);
 		BigInteger prim = getPrimorials(aNumber);
-//		System.out.println(fact + "/" + prim);
 		BigInteger retVal = fact.divide(prim);
 		System.out.println(aNumber + " fact: " + fact + " prim: " + prim + " getCompositorial: " + retVal);
 		return retVal;
@@ -1498,6 +1516,12 @@ public class NumberTheory {
 	
 	
 	
+	/**
+	 * 
+	 * @param aNumber
+	 * @return boolean  
+	 * J.J.Tattersall defined the Curzon numbers to be those  n  for which  2n+1  divides  2^n+1.
+	 */
 	public static boolean isCurzon(int aNumber) {		
 		BigInteger two = BigInteger.TWO;
 		BigInteger a = two.pow(aNumber).add(BigInteger.ONE);
