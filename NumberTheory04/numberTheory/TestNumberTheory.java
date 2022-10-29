@@ -189,25 +189,9 @@ public class TestNumberTheory {
 		 
 		 		 
 		 
-		 System.out.println("Semi Primes: ");
-		 i = 2;
-		 while(i< 100) {			 
-			 if(NumberTheory.isSemiPrime(i)) {
-				 System.out.print(i);
-			 }
-			 i++;
-		 }
+		
 		 
 		 
-		 System.out.println("\nChen Primes");
-		 i = 2;
-		 while(i<300) {
-			 if(NumberTheory.isChenPrime(i)) {
-				 System.out.printf(" %d ", i );
-			 }
-			 i++;
-		 }
-		 System.out.println();
 		 
 		 System.out.println("Number -> Factorials -> Primorials");
 		 for(i = 0; i <= 25; i++) {
@@ -322,11 +306,7 @@ public class TestNumberTheory {
 		
 
 		
-//		System.out.println("Is Emirpimeses");
-//		for (int j = 1; j < 6700; j++) {
-//			if (NumberTheory.isEmirpimeses(j))
-//				System.out.printf("%d\n",j);	
-//		}
+
 		
 //		System.out.println("Fibodiv");
 //		List<Integer> aList = NumberTheory.getFibonacciLike(549, 54, 9);

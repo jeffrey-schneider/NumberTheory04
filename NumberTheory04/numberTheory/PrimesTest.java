@@ -1,0 +1,91 @@
+/**
+ * 
+ */
+package numberTheory;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author JeffreySchneider
+ *
+ */
+class PrimesTest {
+
+	Primes instance;
+
+	@BeforeEach()
+	public void initEach() {
+
+//		System.out.println("BeforeEach initEach() method called.");
+		instance = new Primes(12);
+
+	}
+
+	/**
+	 * Test method for {@link numberTheory.Primes#isSemiPrime(int)}.
+	 */
+	@Test
+	@DisplayName("Is semi prime?")
+	public void isSemiPrimeSpec() {
+		assertTrue(Primes.isSemiPrime(15));
+		assertFalse(Primes.isSemiPrime(92));
+
+		instance.setTheNumber(74);
+		assertTrue(instance.isSemiPrime());
+		instance.setTheNumber(84);
+		assertFalse(instance.isSemiPrime());
+	}
+
+	/**
+	 * Test method for {@link numberTheory.Primes#isEmirpimeses(int)}.
+	 */
+	@Test
+	@DisplayName("Is Number Emirpimeses")
+	void testIsEmirpimesesInt() {
+		assertTrue(Primes.isEmirpimeses(15));
+		assertTrue(Primes.isEmirpimeses(159));
+		assertTrue(Primes.isEmirpimeses(178));
+	}
+
+	/**
+	 * Test method for {@link numberTheory.Primes#isEmirpimeses()}.
+	 */
+	@Test
+	void testIsEmirpimeses() {
+		instance.setTheNumber(15);
+		assertTrue(instance.isEmirpimeses());
+		instance.setTheNumber(159);
+		assertTrue(instance.isEmirpimeses());
+		instance.setTheNumber(178);
+		assertTrue(instance.isEmirpimeses());
+	}
+
+	/**
+	 * Test method for {@link numberTheory.Primes#isChenPrime(int)}.
+	 */
+	@Test
+	@DisplayName("Is a Chen Prime?")
+	void testIsChenPrimeInt() {
+		assertTrue(Primes.isChenPrime(137));
+//		assertFalse(Primes.isChenPrime(133));
+
+	}
+
+	/**
+	 * Test method for {@link numberTheory.Primes#isChenPrime()}.
+	 */
+	@Test
+	@DisplayName("Is a Chen Prime?")
+	void testIsChenPrime() {
+		instance.setTheNumber(211);
+		assertTrue(instance.isChenPrime());
+		instance.setTheNumber(84);
+		assertFalse(instance.isChenPrime());
+	}
+
+}

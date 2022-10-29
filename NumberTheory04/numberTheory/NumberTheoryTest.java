@@ -419,29 +419,19 @@ class NumberTheoryTest {
 		
 		
 
-		@Test
-		@DisplayName("Is a Chen Prime?")
-		public void isChenPrimeSpec() {
-			assertTrue(NumberTheory.isChenPrime(137));
-			assertFalse(NumberTheory.isChenPrime(133));
-
-			instance.setTheNumber(211);
-			assertTrue(instance.isChenPrime());
-			instance.setTheNumber(84);
-			assertFalse(instance.isChenPrime());
-		}
-
-		@Test
-		@DisplayName("Is semi prime?")
-		public void isSemiPrimeSpec() {
-			assertTrue(NumberTheory.isSemiPrime(15));
-			assertFalse(NumberTheory.isSemiPrime(92));
-
-			instance.setTheNumber(74);
-			assertTrue(instance.isSemiPrime());
-			instance.setTheNumber(84);
-			assertFalse(instance.isSemiPrime());
-		}
+//		@Test
+//		
+//		@Test
+//		@DisplayName("Is semi prime?")
+//		public void isSemiPrimeSpec() {
+//			assertTrue(NumberTheory.isSemiPrime(15));
+//			assertFalse(NumberTheory.isSemiPrime(92));
+//
+//			instance.setTheNumber(74);
+//			assertTrue(instance.isSemiPrime());
+//			instance.setTheNumber(84);
+//			assertFalse(instance.isSemiPrime());
+//		}
 
 		@Test
 		@DisplayName("Is Astonishing?")
@@ -717,13 +707,7 @@ class NumberTheoryTest {
 			assertTrue(instance.isHarshad());
 		}
 		
-		@Test
-		@DisplayName("Is Number Emirpimeses")
-		public void isEmirpimesesSpec() {
-			assertTrue(NumberTheory.isEmirpimeses(15));
-			assertTrue(NumberTheory.isEmirpimeses(159));
-			assertTrue(NumberTheory.isEmirpimeses(178));
-		}
+
 
 	} // End of boolean tests
 
