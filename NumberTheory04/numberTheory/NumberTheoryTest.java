@@ -902,11 +902,12 @@ class NumberTheoryTest {
 		@DisplayName("Is Insolite Number")
 		public void isInsoliteSpec() {
 			instance.setTheNumber(122121216);
-			//assertTrue(instance.isInsolite());
+			assertTrue(instance.isInsolite());
 			assertTrue(NumberTheory.isInsolite(122121216));
 			assertTrue(NumberTheory.isInsolite(1111211136));
 			//assertTrue(NumberTheory.isInsolite(211912113131712));
 			assertFalse(NumberTheory.isInsolite(123));
+			
 		}
 		
 		
@@ -920,6 +921,65 @@ class NumberTheoryTest {
 			instance.setTheNumber(29);
 			result = instance.getMotzkin();
 			expected = BigInteger.valueOf(1697385471211L);
+		}
+		
+		@Test
+		@DisplayName("Good Primes")
+		public void getGoodPrimesSpec() {
+			assertTrue(NumberTheory.isGoodPrime(967));
+			assertFalse(NumberTheory.isGoodPrime(568));
+			instance.setTheNumber(347);
+			assertTrue(instance.isGoodPrime());
+			instance.setTheNumber(258);
+			assertFalse(instance.isGoodPrime());
+			
+		}
+		
+		
+		@Test
+		@DisplayName("GCD")
+		public void gcdSpec() {
+			int result = NumberTheory.gcd(10, 15);
+			int expected = 5;
+			assertEquals(expected,result);
+			result = NumberTheory.gcd(100, 15);
+			expected = 5;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(100);
+			result = instance.gcd(15);
+			expected = 5;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(100);
+			result = instance.gcd(52);
+			expected = 4;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(54);
+			result = instance.gcd(100);
+			expected = 2;
+			assertEquals(expected,result);
+			
+			expected = 45;
+			assertNotEquals(expected, result);			
+		}
+		
+		@Test
+		@DisplayName("LCM")
+		public void lcmSpec() {
+			int result = NumberTheory.lcm(21, 6);
+			int expected = 42;
+			assertEquals(expected,result);
+			
+			result = NumberTheory.lcm(4, 6);
+			expected = 12;
+			assertEquals(expected,result);
+			
+			instance.setTheNumber(22);
+			result = instance.lcm(13);
+			expected = 286;
+			assertEquals(expected,result);
 		}
 		
 	}

@@ -47,12 +47,7 @@ public class NumberTheory {
 		this.theNumber = theNumber;
 	}
 
-	/**
-	 * Used for memoization.
-	 */
-	private static Map<Integer, BigInteger> memo = new HashMap<>();
-	
-	
+
 	/**
 	 * 
 	 * @param aNumber the number to square
@@ -63,7 +58,9 @@ public class NumberTheory {
 	}
 	int getSquare() {
 		return getSquare(getTheNumber());
-	}	
+	}
+
+	
 	
 	
 	/**
@@ -605,7 +602,7 @@ public class NumberTheory {
 	}
 	
 	
-	
+	private static Map<Integer, BigInteger> memo = new HashMap<>();
 	
 	//https://www.interviewcake.com/concept/java/memoization
 	public static BigInteger getFibonacci(int n) {
@@ -810,12 +807,31 @@ public class NumberTheory {
 	}
 
 
+	/**
+	 * 
+	 * @param b
+	 * @param n
+	 * @return int Greatest Common Divisor
+	 */
 	public static int gcd(int b, int n) {
 		if (n == 0)
 			return b;
 		return gcd(n, b % n);
 	}
+	int gcd(int n) {
+		return gcd(getTheNumber(),n);
+		
+	}
 
+	
+	public static int lcm(int a, int b) {
+		return a * (b/gcd(a,b));
+	}
+	
+	int lcm(int b) {
+		return lcm(getTheNumber(), b);
+	}
+	
 	/**
 	 * 
 	 * @param b   first number
@@ -881,6 +897,7 @@ public class NumberTheory {
 		return getBellNumber(getTheNumber());
 	}
 
+	
 
 	/**
 	 * https://www.geeksforgeeks.org/admirable-numbers/
@@ -1492,13 +1509,19 @@ public class NumberTheory {
 	public static BigInteger getCompositorial(int aNumber) {
 		BigInteger fact = getFactorial(aNumber);
 		BigInteger prim = getPrimorials(aNumber);
-//		System.out.println(fact + "/" + prim);
 		BigInteger retVal = fact.divide(prim);
+		System.out.println(aNumber + " fact: " + fact + " prim: " + prim + " getCompositorial: " + retVal);
 		return retVal;
 	}
 	
 	
 	
+	/**
+	 * 
+	 * @param aNumber
+	 * @return boolean  
+	 * J.J.Tattersall defined the Curzon numbers to be those  n  for which  2n+1  divides  2^n+1.
+	 */
 	public static boolean isCurzon(int aNumber) {		
 		BigInteger two = BigInteger.TWO;
 		BigInteger a = two.pow(aNumber).add(BigInteger.ONE);
@@ -1662,7 +1685,7 @@ public class NumberTheory {
 	 * @return boolean	An emirp (prime spelled backwards) is a prime number 
 	 * 					that results in a different prime when its decimal digits 
 	 * 					are reversed. This definition excludes the related 
-	 * 					palindromic primes.
+	 * 					palindrome primes.
 	 */
 	public static boolean isEmirp(int aNumber) {
 		return (isPrime(aNumber) && isPrime(getReverseNumber(aNumber)));
@@ -1824,27 +1847,54 @@ public class NumberTheory {
 			return true;
 		return false;
 	}
-	
-	public boolean isInsolite() {
+	protected boolean isInsolite() {
 		return isInsolite(getTheNumber());
 	}
 
 	
 
 	/**
+	 * A good prime is a prime number whose square is greater than the product of any two primes 
+	 * 		at the same number of positions before and after it in the sequence of primes.
 	 * 
-	 * @author JeffreySchneider
-	 * @param v
+	 * @param aNumber
 	 * @return
-	 * @see https://en.wikipedia.org/wiki/Good_prime
 	 */
-	public static boolean isGoodPrime(int v) {
-		return false;		
+	public static boolean isGoodPrime(int aNumber) {
+		boolean retVal = true;
+		
+		List<Integer> primeList = new ArrayList<>();
+		if(!isPrime(aNumber)) {
+			return false;
+		}else {
+			//Create a list of prime numbers up to 3 times aNumber.
+			for(int i = 2; i <= aNumber*3; i++) {
+				if(isPrime(i)) {
+					primeList.add(i);
+				}
+			}
+		}
+		
+		int small = 0;
+		int large = 0;
+		if(primeList.contains(aNumber)) {
+			int ndx = primeList.indexOf(aNumber);
+			//System.out.println("n: " + aNumber);
+			for (int ndxCounter = 1; ndxCounter < ndx; ndxCounter++) {
+				small = primeList.get(primeList.indexOf(aNumber) - ndxCounter);
+				large = primeList.get(primeList.indexOf(aNumber) + ndxCounter);
+				if((aNumber*aNumber) < (small*large)) {
+					return false;
+				}
+			}
+		}
+	return true;
 	}
-	protected boolean isGoodPrime() {
+	
+	boolean isGoodPrime() {
 		return isGoodPrime(getTheNumber());
 	}
- 
+	
 	
 	
 	
