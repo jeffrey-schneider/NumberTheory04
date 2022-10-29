@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -251,7 +252,9 @@ public class TestNumberTheory {
 		 System.out.println("Is droll?");
 		 System.out.println(NumberTheory.isDroll(48384));
 		 System.out.println(NumberTheory.isDroll(72));
-		 //System.out.println(NumberTheory.getCompositorial(4));
+		 
+		 System.out.println("GetCompositorial(11)");
+		 System.out.println(NumberTheory.getCompositorial(11));
 		
 		 
 		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(13));
@@ -318,17 +321,20 @@ public class TestNumberTheory {
 		
 		ProjectEuler.ProjectEuler.main(null);
 
-//		System.out.println(LocalMath.BigPI());		
-//		System.out.println(LocalMath.StringPI());
+		System.out.println(LocalMath.BigPI());	
+		System.out.println();
+		System.out.println(LocalMath.StringPI());
+		System.out.println();
 		
-//		System.out.println(NumberTheory.isHungry(240));
-//		System.out.println(NumberTheory.getReverseNumber(12345));
+		System.out.println(NumberTheory.isHungry(240));
+		System.out.println(NumberTheory.getReverseNumber(12345));
 		
-		for (int j = 1; j <= 10; j++) {
+		for (int j = 1; j <= 30; j++) {
 			System.out.printf("Motzkin %d %d\n ", j, NumberTheory.getMotzkin(j));	
 		}
 		
 		
+
 		System.out.println("Prime Factors Loop");
 		for(int j=10;j<=20; j++) {
 			instance.setTheNumber(j);
@@ -346,21 +352,46 @@ public class TestNumberTheory {
 		
 		primeFactorCount(NumberTheory.getPrimeFactors(12569));
 		
+
+		System.out.println("Good Primes:");
+		for (int j = 2; j <= 100; j++) {
+			if(NumberTheory.isGoodPrime(j)) {
+				System.out.println(j);	
+			}						
+		}
 		
 		
+		System.out.println("Greatest Common Divisor:");
+		System.out.println("GCD of 10 and 15: " + NumberTheory.gcd(10, 15));
+		System.out.println("GCD of 100 and 15: " + NumberTheory.gcd(100, 15));
+		System.out.println("GCD of 100 and 52: " + NumberTheory.gcd(100, 52));
+		instance.setTheNumber(100);
+		System.out.println("GCD of 100 and 54: " + instance.gcd(54));
+		
+		System.out.println("LCM of 21 and 6: " + NumberTheory.lcm(21, 6));
+		System.out.println("LCM of 4 and 6: " + NumberTheory.lcm(4, 6));
+		instance.setTheNumber(13);
+		System.out.println("LCM of 3 and 22: " + instance.lcm(22));
 		
 		
-			
 		
 
-		
-		
 
-		
-		
-
-		 
-	
+	/*
+	 * Scanner sc = new Scanner(System.in);
+	 
+	int number2;
+	do {
+	    System.out.println("Please enter a positive integer!");
+	    while (!sc.hasNextInt()) {
+	        System.out.println("That's not a positive integer-!");
+	        sc.next(); // this is important!
+	    }
+	    number2 = sc.nextInt();
+	} while (number2 <= 0);
+	System.out.println("Thank you! Got " + number2);
+*/
+}	
 
 	}
 
