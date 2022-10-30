@@ -373,7 +373,10 @@ public class TestNumberTheory {
 		instance.setTheNumber(13);
 		System.out.println("LCM of 3 and 22: " + instance.lcm(22));
 		
-		
+		BigInteger v = BigInteger.valueOf(9981234567890L);
+		System.out.println("GetListOfDigits02");
+		System.out.println(NumberTheory.getListOfDigits(v));
+
 		
 
 
@@ -390,10 +393,11 @@ public class TestNumberTheory {
 	    number2 = sc.nextInt();
 	} while (number2 <= 0);
 	System.out.println("Thank you! Got " + number2);
+	}
 */
 }	
 
-	}
+	
 
 	private static void primeFactorCount(List<Integer> theList1) {
 		Map<Integer, Integer> theHash = new HashMap<Integer,Integer>();		
@@ -417,7 +421,12 @@ public class TestNumberTheory {
 			System.out.print(" ");
 		}
 		System.out.println();
+	
+	
+	
+	
 	}
+
 
 	
 	

@@ -1,10 +1,13 @@
 package numberTheory;
 
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -356,6 +359,7 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 		
+		
 		//@Test
 		@DisplayName("Hungry Number")
 		public void getHungryNumberSpec() {
@@ -419,19 +423,7 @@ class NumberTheoryTest {
 		
 		
 
-//		@Test
-//		
-//		@Test
-//		@DisplayName("Is semi prime?")
-//		public void isSemiPrimeSpec() {
-//			assertTrue(NumberTheory.isSemiPrime(15));
-//			assertFalse(NumberTheory.isSemiPrime(92));
-//
-//			instance.setTheNumber(74);
-//			assertTrue(instance.isSemiPrime());
-//			instance.setTheNumber(84);
-//			assertFalse(instance.isSemiPrime());
-//		}
+
 
 		@Test
 		@DisplayName("Is Astonishing?")
@@ -726,8 +718,43 @@ class NumberTheoryTest {
 			assertIterableEquals(expected, result);
 			result = NumberTheory.getJugglers(9);
 			assertIterableEquals(expected, result);
+		}		
+		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits(int)}.
+		 */
+		@Test		
+		@DisplayName("Check List of Digits.")
+		void testGetListOfDigitsInt() {
+			List<Integer> expected = new ArrayList<>(Arrays.asList(6, 5, 4, 3, 2, 1));
+			List<Integer> result = NumberTheory.getListOfDigits(654321);
+			assertIterableEquals(expected, result);
 		}
-
+		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits(BigInteger)}.
+		 */
+		@Test		
+		@DisplayName("Check List of Digits.")
+		void testGetListOfDigitsBigInt() {
+			List<Integer> expected = new ArrayList<>(Arrays.asList(9,8,7,6, 5, 4, 3, 2, 1));
+			BigInteger temp = BigInteger.valueOf(987654321L);
+			List<Integer> result = NumberTheory.getListOfDigits(temp);
+			assertIterableEquals(expected, result);
+		}
+		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits()}.
+		 */
+		@Test
+		void testGetListOfDigits() {
+			instance.setTheNumber(687321);
+			List<Integer> expected = new ArrayList<>(Arrays.asList(6,8,7,3,2,1));
+			List<Integer> result = instance.getListOfDigits();
+			assertIterableEquals(expected, result);
+		}
+		
+		
 		
 		@Test
 		@DisplayName("Return Totatives List.")

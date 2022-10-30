@@ -15,6 +15,8 @@ public class ProjectEuler {
 		euler01();		 
 		euler02();
 		
+		//Largest Prime Factor
+		long v = 600851475143l; 
 		
 
 	}

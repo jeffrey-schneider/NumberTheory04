@@ -175,6 +175,11 @@ public class NumberTheory {
 
 	
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return  List of Prime Factors
+	 */
 	public static List<Integer> getPrimeFactors(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
 		int ourNumber = aNumber;
@@ -190,6 +195,16 @@ public class NumberTheory {
 		return getPrimeFactors(getTheNumber());
 	}
 
+//	public static List<Integer> getPrimeFactors(BigInteger v){
+//		List<Integer> retVal = new ArrayList<>();
+//		BigInteger ourNumber = v;
+//		for(BigInteger bigInt = BigInteger.TWO; bigInt.compareTo(v)<0; bigInt = bigInt.add(BigInteger.ONE)) {
+//			while(!BigInteger.ZERO.equals(bigInt)) {
+//				
+//			}
+//
+//		}
+		
 	
 
 	public static int getAliquotSum(int aNumber) {
@@ -1204,6 +1219,25 @@ public class NumberTheory {
 			aNumber /= 10;
 		}
 		// Flip the list to get it in the correct order.
+		Collections.reverse(retList);
+		return retList;
+	}
+	
+	List<Integer> getListOfDigits(){
+		return getListOfDigits(getTheNumber());
+	}
+	
+	
+	
+	public static List<Integer> getListOfDigits(BigInteger v){
+		List<Integer> retList = new LinkedList<>();
+		//This works right to left.
+		while(!BigInteger.ZERO.equals(v)) {
+			int remainder = (v.mod(BigInteger.TEN)).intValue();
+			retList.add(remainder);
+			v = v.divide(BigInteger.TEN);
+		}
+		//Flip the list to get it in the correct order.
 		Collections.reverse(retList);
 		return retList;
 	}
