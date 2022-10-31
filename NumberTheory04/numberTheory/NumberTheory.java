@@ -1846,48 +1846,6 @@ public class NumberTheory {
 
 	
 
-	/**
-	 * A good prime is a prime number whose square is greater than the product of any two primes 
-	 * 		at the same number of positions before and after it in the sequence of primes.
-	 * 
-	 * @param aNumber
-	 * @return
-	 */
-	public static boolean isGoodPrime(int aNumber) {
-		boolean retVal = true;
-		
-		List<Integer> primeList = new ArrayList<>();
-		if(!isPrime(aNumber)) {
-			return false;
-		}else {
-			//Create a list of prime numbers up to 3 times aNumber.
-			for(int i = 2; i <= aNumber*3; i++) {
-				if(isPrime(i)) {
-					primeList.add(i);
-				}
-			}
-		}
-		
-		int small = 0;
-		int large = 0;
-		if(primeList.contains(aNumber)) {
-			int ndx = primeList.indexOf(aNumber);
-			//System.out.println("n: " + aNumber);
-			for (int ndxCounter = 1; ndxCounter < ndx; ndxCounter++) {
-				small = primeList.get(primeList.indexOf(aNumber) - ndxCounter);
-				large = primeList.get(primeList.indexOf(aNumber) + ndxCounter);
-				if((aNumber*aNumber) < (small*large)) {
-					return false;
-				}
-			}
-		}
-	return true;
-	}
-	
-	boolean isGoodPrime() {
-		return isGoodPrime(getTheNumber());
-	}
-	
 	
 	
 	

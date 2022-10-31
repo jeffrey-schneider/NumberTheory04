@@ -30,7 +30,7 @@ public class TestNumberTheory {
 		System.out.println();
 
 		System.out.println("Fibonacci List(17): " + NumberTheory.getFibonacciList(17));
-		//System.out.println("Fibonacci(17): " + NumberTheory.getFibonacci(17));
+		//System.out.println("Fibonacci(17): " + Primes.getFibonacci(17));
 
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
 		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
@@ -353,12 +353,7 @@ public class TestNumberTheory {
 		primeFactorCount(NumberTheory.getPrimeFactors(12569));
 		
 
-		System.out.println("Good Primes:");
-		for (int j = 2; j <= 100; j++) {
-			if(NumberTheory.isGoodPrime(j)) {
-				System.out.println(j);	
-			}						
-		}
+		
 		
 		
 		System.out.println("Greatest Common Divisor:");

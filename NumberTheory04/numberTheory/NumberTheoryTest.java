@@ -934,17 +934,7 @@ class NumberTheoryTest {
 			expected = BigInteger.valueOf(1697385471211L);
 		}
 		
-		@Test
-		@DisplayName("Good Primes")
-		public void getGoodPrimesSpec() {
-			assertTrue(NumberTheory.isGoodPrime(967));
-			assertFalse(NumberTheory.isGoodPrime(568));
-			instance.setTheNumber(347);
-			assertTrue(instance.isGoodPrime());
-			instance.setTheNumber(258);
-			assertFalse(instance.isGoodPrime());
-			
-		}
+		
 		
 		
 		@Test

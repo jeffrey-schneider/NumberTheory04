@@ -41,6 +41,13 @@ public class TestPrimes {
 			if (Primes.isEmirpimeses(j))
 				System.out.printf("%d\n", j);
 		}
+		
+		System.out.println("Good Primes:");
+		for (int j = 2; j <= 100; j++) {
+			if(Primes.isGoodPrime(j)) {
+				System.out.println(j);	
+			}						
+		}
 	}
 
 }

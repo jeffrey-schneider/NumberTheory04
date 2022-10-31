@@ -88,4 +88,14 @@ class PrimesTest {
 		assertFalse(instance.isChenPrime());
 	}
 
+	@Test
+	@DisplayName("Good Primes")
+	public void getGoodPrimesSpec() {
+		assertTrue(Primes.isGoodPrime(967));
+		assertFalse(Primes.isGoodPrime(568));
+		instance.setTheNumber(347);
+		assertTrue(instance.isGoodPrime());
+		instance.setTheNumber(258);
+		assertFalse(instance.isGoodPrime());		
+	}
 }
