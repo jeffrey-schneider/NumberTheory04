@@ -1,22 +1,15 @@
-/**
- * 
- */
 package numberTheory;
-
 import java.util.List;
 
-/**
- * @author JeffreySchneider
- *
- */
 public class Primes extends NumberTheory {
-
-	public Primes() {
-		super();
-	}
 
 	public Primes(int theNumber) {
 		super(theNumber);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Primes() {
+		super();// TODO Auto-generated constructor stub
 	}
 
 	/**
