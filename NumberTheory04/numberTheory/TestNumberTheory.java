@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class TestNumberTheory {
 	public static void main(String[] args) {
 
-		NumberTheory instance = new NumberTheory(19);
+		NumberTheory instance = new Primes(19);
 		System.out.println(instance.getCollatz());
 		instance.setTheNumber(27);
 		System.out.println(instance.getCollatz());
@@ -30,7 +30,7 @@ public class TestNumberTheory {
 		System.out.println();
 
 		System.out.println("Fibonacci List(17): " + NumberTheory.getFibonacciList(17));
-		//System.out.println("Fibonacci(17): " + Primes.getFibonacci(17));
+		System.out.println("Fibonacci(17): " + Primes.getFibonacci(17));
 
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
 		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
@@ -47,9 +47,9 @@ public class TestNumberTheory {
 		System.out.println(instance.getApocolyptic(0));
 		
 		instance.setTheNumber(6601);
-		System.out.println(NumberTheory.isCaramichael(561));
-		System.out.println(NumberTheory.isCaramichael(1105));
-		System.out.println(NumberTheory.isCaramichael(15841));
+		System.out.println(NumberTheory.isCarmichael(561));
+		System.out.println(NumberTheory.isCarmichael(1105));
+		System.out.println(NumberTheory.isCarmichael(15841));
 		System.out.println(instance.isCarmichael());
 		
 		System.out.println("Cake Numbers:");
@@ -257,8 +257,8 @@ public class TestNumberTheory {
 		 System.out.println(NumberTheory.getCompositorial(11));
 		
 		 
-		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(13));
-		 System.out.println("Is Emirp(): " + NumberTheory.isEmirp(158));
+		 System.out.println("Is Emirp(): " + Primes.isEmirp(13));
+		 System.out.println("Is Emirp(): " + Primes.isEmirp(158));
 		 
 		 
 		 System.out.println("=======================");
@@ -390,6 +390,10 @@ public class TestNumberTheory {
 	System.out.println("Thank you! Got " + number2);
 	}
 */
+		System.out.println("Happy Numbers!!!");
+		System.out.println("Is 19 happy?" + NumberTheory.isHappy(19));
+		System.out.println("Is 2 happy? " + NumberTheory.isHappy(2));
+		
 }	
 
 	
@@ -419,8 +423,9 @@ public class TestNumberTheory {
 	
 	
 	
-	
 	}
+	
+	
 
 
 	

@@ -632,8 +632,8 @@ class NumberTheoryTest {
 		@Test
 		@DisplayName("Is number Emirp?")
 		public void isEmirpSpec() {
-			assertTrue(NumberTheory.isEmirp(179));
-			assertFalse(NumberTheory.isEmirp(114));
+			assertTrue(Primes.isEmirp(179));
+			assertFalse(Primes.isEmirp(114));
 			
 			instance.setTheNumber(10009);
 			assertTrue(instance.isEmirp());

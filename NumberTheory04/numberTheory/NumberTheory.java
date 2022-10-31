@@ -9,10 +9,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 public class NumberTheory {
@@ -765,29 +767,8 @@ public class NumberTheory {
 	}
 
 
-	public static boolean getA_PointerPrime(int aNumber) {
-		if (!isPrime(aNumber)) {
-			return false;
-		} else {
-			Stack<Integer> theStack = new Stack<>();
-			int number = aNumber;
-			theStack.push(aNumber);
-			while (number > 0) {
-				theStack.push(number % 10);
-				number /= 10;
-			}
-			int nextNumber = 0;
-			while (!theStack.isEmpty()) {
-				nextNumber += theStack.pop();
-			}
-			if (isPrime(nextNumber))
-				return true;
-
-			return false;
-		}
-	}
 	boolean getA_PointerPrime() {
-		return getA_PointerPrime(getTheNumber());
+		return Primes.getA_PointerPrime(getTheNumber());
 	}
 
 
@@ -866,7 +847,7 @@ public class NumberTheory {
 
 
 	// https://www.javatpoint.com/carmichael-numbers-in-java
-	public static boolean isCaramichael(int aNumber) {
+	public static boolean isCarmichael(int aNumber) {
 		for (int b = 2; b <= aNumber; b++) {
 			if (gcd(b, aNumber) == 1 && power(b, aNumber - 1, aNumber) != 1)
 				return false;
@@ -874,7 +855,7 @@ public class NumberTheory {
 		return true;
 	}
 	boolean isCarmichael() {
-		return isCaramichael(getTheNumber());
+		return isCarmichael(getTheNumber());
 	}
 
 
@@ -1672,19 +1653,8 @@ public class NumberTheory {
 	}
 	
 	
-	/**
-	 * @author JeffreySchneider
-	 * @param aNumber
-	 * @return boolean	An emirp (prime spelled backwards) is a prime number 
-	 * 					that results in a different prime when its decimal digits 
-	 * 					are reversed. This definition excludes the related 
-	 * 					palindrome primes.
-	 */
-	public static boolean isEmirp(int aNumber) {
-		return (isPrime(aNumber) && isPrime(getReverseNumber(aNumber)));
-	}
 	boolean isEmirp() {
-		return isEmirp(getTheNumber());
+		return Primes.isEmirp(getTheNumber());
 	}
 
 	
@@ -1847,7 +1817,25 @@ public class NumberTheory {
 	
 
 	
-	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean isHappy(int v) {
+		Set<Integer> theSet = new HashSet<>();		
+		int a = getSumOfSquares(getListOfDigits(v));
+		while(a != 1) {
+			a = getSumOfSquares(getListOfDigits(a));
+			System.out.println(a);
+			if(theSet.contains(a)) {
+				return false;
+			}else {
+				theSet.add(a);
+			}		
+		}
+		return true;
+	}
 	
 	
 

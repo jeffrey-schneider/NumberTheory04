@@ -1,5 +1,5 @@
 package numberTheory;
-import java.util.List;
+import java.util.*;
 
 public class Primes extends NumberTheory {
 
@@ -19,7 +19,7 @@ public class Primes extends NumberTheory {
 	 *         product of exactly two prime numbers.
 	 */
 	public static boolean isSemiPrime(int aNumber) {
-		List<Integer> anotherList = NumberTheory.getPrimeFactors(aNumber);
+		List<Integer> anotherList = Primes.getPrimeFactors(aNumber);
 		return (anotherList.size() == 2);
 	}
 
@@ -63,26 +63,26 @@ public class Primes extends NumberTheory {
 	public static boolean isGoodPrime(int aNumber) {
 		boolean retVal = true;
 		
-		List<Integer> primeList = new ArrayList<>();
+		List<Integer> thePrimeList = new LinkedList<>();
 		if(!isPrime(aNumber)) {
 			return false;
 		}else {
 			//Create a list of prime numbers up to 3 times aNumber.
 			for(int i = 2; i <= aNumber*3; i++) {
 				if(isPrime(i)) {
-					primeList.add(i);
+					thePrimeList.add(i);
 				}
 			}
 		}
 		
 		int small = 0;
-		int large = 0;
-		if(primeList.contains(aNumber)) {
-			int ndx = primeList.indexOf(aNumber);
+		int large = 0;		
+		if(thePrimeList.contains(aNumber)) {
+			int ndx = thePrimeList.indexOf(aNumber);
 			//System.out.println("n: " + aNumber);
 			for (int ndxCounter = 1; ndxCounter < ndx; ndxCounter++) {
-				small = primeList.get(primeList.indexOf(aNumber) - ndxCounter);
-				large = primeList.get(primeList.indexOf(aNumber) + ndxCounter);
+				small = thePrimeList.get(thePrimeList.indexOf(aNumber) - ndxCounter);
+				large = thePrimeList.get(thePrimeList.indexOf(aNumber) + ndxCounter);
 				if((aNumber*aNumber) < (small*large)) {
 					return false;
 				}
@@ -94,6 +94,39 @@ public class Primes extends NumberTheory {
 	boolean isGoodPrime() {
 		return isGoodPrime(getTheNumber());
 	}
+
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean	An emirp (prime spelled backwards) is a prime number 
+	 * 					that results in a different prime when its decimal digits 
+	 * 					are reversed. This definition excludes the related 
+	 * 					palindrome primes.
+	 */
+	public static boolean isEmirp(int aNumber) {
+		return (NumberTheory.isPrime(aNumber) && NumberTheory.isPrime(NumberTheory.getReverseNumber(aNumber)));
+	}
+
+	public static boolean getA_PointerPrime(int aNumber) {
+		if (!NumberTheory.isPrime(aNumber)) {
+			return false;
+		} else {
+			Stack<Integer> theStack = new Stack<>();
+			int number = aNumber;
+			theStack.push(aNumber);
+			while (number > 0) {
+				theStack.push(number % 10);
+				number /= 10;
+			}
+			int nextNumber = 0;
+			while (!theStack.isEmpty()) {
+				nextNumber += theStack.pop();
+			}
+			if (NumberTheory.isPrime(nextNumber))
+				return true;
 	
+			return false;
+		}
+	}
 
 }
