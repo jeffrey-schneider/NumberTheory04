@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.function.BooleanSupplier;
 
 public class NumberTheory {
 	/**
@@ -174,6 +175,17 @@ public class NumberTheory {
 	List<Integer> getFactors() {
 		return getFactors(getTheNumber());
 	}
+	
+	public static List<Long> getFactors(long aNumber) {
+		List<Long> retVal = new ArrayList<>();
+		for (long i = 1; i < aNumber; i++) {
+			if (aNumber % i == 0)
+				retVal.add(i);
+		}
+		retVal.add(aNumber);
+		return retVal;
+	}
+	
 
 	
 
@@ -196,6 +208,18 @@ public class NumberTheory {
 	List<Integer> getPrimeFactors() {
 		return getPrimeFactors(getTheNumber());
 	}
+	public static List<Long> getPrimeFactors(long aNumber) {
+		List<Long> retVal = new ArrayList<>();
+		long ourNumber = aNumber;
+		for (long i = 2; i < aNumber; i++) {
+			while (ourNumber % i == 0) {
+				retVal.add(i);
+				ourNumber /= i;
+			}
+		}
+		return retVal;
+	}
+	
 
 //	public static List<Integer> getPrimeFactors(BigInteger v){
 //		List<Integer> retVal = new ArrayList<>();
@@ -514,7 +538,13 @@ public class NumberTheory {
 		return getFactorial(getTheNumber());
 	}
 
-
+	public static BigInteger getFactorial(BigInteger aNumber) {
+		BigInteger factorial = BigInteger.ONE;
+		for(BigInteger i = BigInteger.ONE; i.compareTo(aNumber)!= 0; i = i.add(BigInteger.ONE)) {
+			factorial = factorial.multiply(i);
+		}
+		return factorial;
+	}
 
 	public static BigInteger getCatalan(int aNumber) {
 		BigInteger catA = NumberTheory.getFactorial(2 * aNumber);
@@ -1435,7 +1465,7 @@ public class NumberTheory {
 		return summary;
 	}
 	
-	
+		
 	
 	
 	//n * 2^n + 1
@@ -1487,6 +1517,7 @@ public class NumberTheory {
 		System.out.println(aNumber + " fact: " + fact + " prim: " + prim + " getCompositorial: " + retVal);
 		return retVal;
 	}
+	
 	
 	
 	
@@ -1715,6 +1746,9 @@ public class NumberTheory {
 	}
 	
 	
+	
+	
+	
 	/**
 	 * @author JeffreySchneider
 	 * @param aNumber
@@ -1729,11 +1763,12 @@ public class NumberTheory {
 	public static boolean isHarmonicDivisorNumber(int aNumber) {
 		List<Integer> theList = getFactors(aNumber);
 		double harmMean = getHarmonicMean(theList);
-		double harmMeanTrunc = Math.floor(harmMean * 100) / 100;
-		if(harmMeanTrunc  % 1 == 0) //Best way to tell if the harmonic mean is an integer?
+		//double harmMeanTrunc = Math.floor(harmMean * 100) / 100;
+		if(harmMean  % 1 == 0) //Best way to tell if the harmonic mean is an integer?
 			return true;
 		return false;
 	}
+	
 	boolean isHarmonicDivisorNumber() {
 		return isHarmonicDivisorNumber(getTheNumber());
 	}
@@ -1813,15 +1848,8 @@ public class NumberTheory {
 	protected boolean isInsolite() {
 		return isInsolite(getTheNumber());
 	}
-
 	
 
-	
-	/**
-	 * 
-	 * @param v
-	 * @return
-	 */
 	public static boolean isHappy(int v) {
 		Set<Integer> theSet = new HashSet<>();		
 		int a = getSumOfSquares(getListOfDigits(v));
@@ -1836,6 +1864,93 @@ public class NumberTheory {
 		}
 		return true;
 	}
+	
+	protected boolean isHappy() {
+		return isHappy(getTheNumber());
+	}
+
+	
+	boolean isPowerful() {
+		return isPowerful(getTheNumber());
+	}
+	//from: https://www.geeksforgeeks.org/powerful-number/
+	public static boolean isPowerful(int n) {
+		while(n % 2 == 0) {
+			int power = 0;
+			while(n%2==0) {
+				n/=2;
+				power++;
+			}
+			
+			//If only 2^1 divides n (Not higher powers)
+			// then return false
+			if(power==1) {
+				return false;
+			}
+		}
+		
+		//If n is not a power of 2, then this loop will execute
+		// repeat above process
+		for(int factor = 3; factor <= Math.sqrt(n); factor += 2) {
+			//Find highest power of 'factor' that divides n
+			int power=0;
+			while(n % factor == 0) {
+				n = n/factor;
+				power++;
+			}
+			//If only factor^1 divides n (Not higher powers)
+			// then return false
+			if(power==1) {
+				return false;
+			}
+		}
+		
+		// n must be 1 now if it is not a prime number.
+		// Since prime numbers are not powerful, we return
+		// false if n is not 1.
+		return(n==1);		
+	}
+
+	public static boolean isFrugal(int n) {		
+		String test = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));
+		System.out.println(test);
+		return true;
+	}
+	
+	
+	/**
+	 * This method takes a list of prime factors and changes it from:
+	 *     2, 2, 2, 2, 2, 5, 5 to  2^5 5^2
+	 *     to be used with isFrugal().
+	 * @param theList1
+	 * @return
+	 */
+	static String simplifiedPrimeFactor(List<Integer> theList1) {
+		String retVal = " ";
+		Map<Integer, Integer> theHash = new HashMap<Integer,Integer>();		
+		for (Integer integer : theList1) {
+			if(theHash.containsKey(integer)){
+				theHash.put(integer, theHash.get(integer)+1);
+			}else {
+				theHash.put(integer, 1);
+			}
+		}
+		
+		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry<Integer, Integer> entry = it.next();
+			if(entry.getValue() > 1) {
+				retVal += entry.getKey().toString() + "^" + entry.getValue().toString();
+			}else {
+				retVal += entry.getKey();
+			}
+		}
+		return retVal;	
+	}
+	
+
+	
+	
 	
 	
 

@@ -2,6 +2,7 @@ package numberTheory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  * 
@@ -224,6 +225,14 @@ public class LocalMath {
 	}
 	
 	
+	public static  double harmonicMean(List<Integer> v) {
+		double sum = 0.0;
+		
+		for (Integer integer : v) {
+				sum += 1.0/integer;
+		}
+		return v.size() / sum;
+	}
 	
 	
 	

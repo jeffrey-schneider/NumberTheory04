@@ -255,6 +255,7 @@ public class TestNumberTheory {
 		 
 		 System.out.println("GetCompositorial(11)");
 		 System.out.println(NumberTheory.getCompositorial(11));
+		 
 		
 		 
 		 System.out.println("Is Emirp(): " + Primes.isEmirp(13));
@@ -319,7 +320,7 @@ public class TestNumberTheory {
 				
 //		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
 		
-		ProjectEuler.ProjectEuler.main(null);
+		//ProjectEuler.ProjectEuler.main(null);
 
 		System.out.println(LocalMath.BigPI());	
 		System.out.println();
@@ -345,12 +346,15 @@ public class TestNumberTheory {
 		System.out.println("Lets play with prime factors.");
 		System.out.println("60 " + NumberTheory.getPrimeFactors(60));
 		
-		primeFactorCount(NumberTheory.getPrimeFactors(60));
+		int[] jArray = {60, 3072, 1029};
+		for (int j2 : jArray) {
+			System.out.print("simplifiedPrimeFactor(" + j2 + "): ");
+			System.out.println(NumberTheory.simplifiedPrimeFactor(NumberTheory.getPrimeFactors(j2)));
+		}
 		
-		System.out.println(NumberTheory.getPrimeFactors(3072));
-		primeFactorCount(NumberTheory.getPrimeFactors(3072));
+		System.out.println("IsFrugal: " + NumberTheory.isFrugal(1205));
 		
-		primeFactorCount(NumberTheory.getPrimeFactors(12569));
+		System.out.println();
 		
 
 		
@@ -394,36 +398,24 @@ public class TestNumberTheory {
 		System.out.println("Is 19 happy?" + NumberTheory.isHappy(19));
 		System.out.println("Is 2 happy? " + NumberTheory.isHappy(2));
 		
+		System.out.println("Harmonic Mean");
+		System.out.println(LocalMath.harmonicMean(Primes.getFactors(6)));
+		System.out.println(LocalMath.harmonicMean(Primes.getFactors(141)));
+		
+		System.out.println("Powerful Number");
+		System.out.println(Primes.isPowerful(20));
+		System.out.println(Primes.isPowerful(972));
+		for (int j = 1; j < 1001; j++) {
+			if(Primes.isPowerful(j)) {
+				System.out.printf("%d, ", j);
+			}
+		}
+		
 }	
 
 	
 
-	private static void primeFactorCount(List<Integer> theList1) {
-		Map<Integer, Integer> theHash = new HashMap<Integer,Integer>();		
-		for (Integer integer : theList1) {
-			if(theHash.containsKey(integer)){
-				theHash.put(integer, theHash.get(integer)+1);
-			}else {
-				theHash.put(integer, 1);
-			}
-		}
-		
-		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
-		int numeralCounter = 0;
-		while(it.hasNext()) {
-			Map.Entry<Integer, Integer> entry = it.next();
-			if(entry.getValue() > 1) {
-				System.out.print(entry.getKey() + "^" + entry.getValue());
-			}else {
-				System.out.print(entry.getKey());
-			}
-			System.out.print(" ");
-		}
-		System.out.println();
 	
-	
-	
-	}
 	
 	
 

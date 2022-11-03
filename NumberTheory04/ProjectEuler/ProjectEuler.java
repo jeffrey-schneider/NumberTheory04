@@ -1,11 +1,10 @@
 package ProjectEuler;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import numberTheory.NumberTheory;
+import numberTheory.Primes;
 
 public class ProjectEuler {
 	
@@ -14,9 +13,9 @@ public class ProjectEuler {
 		System.out.println("In ProjectEuler.ProjetEuler.main()");
 		euler01();		 
 		euler02();
+		euler03();
 		
-		//Largest Prime Factor
-		long v = 600851475143l; 
+
 		
 
 	}
@@ -55,6 +54,12 @@ public class ProjectEuler {
 			}
 		}
 		System.out.println("Even fib values: " + summary);
+	}
+	
+	public static void euler03() {
+		System.out.println("In Euler03");
+		System.out.println("Largest prime factor");
+		System.out.println(Primes.getPrimeFactors(600_851_475_143L));
 	}
 
 }

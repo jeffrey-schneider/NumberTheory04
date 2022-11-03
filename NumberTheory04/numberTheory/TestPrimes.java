@@ -45,6 +45,8 @@ public class TestPrimes {
 				System.out.println(j);	
 			}						
 		}
+		
+		
 	}
 
 }
