@@ -411,6 +411,10 @@ public class TestNumberTheory {
 			}
 		}
 		
+		
+		System.out.println("Binary Numbers");
+		System.out.println(NumberTheory.getBinary(23));
+		System.out.println(NumberTheory.isEvil(23));
 }	
 
 	

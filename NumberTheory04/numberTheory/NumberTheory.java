@@ -383,7 +383,7 @@ public class NumberTheory {
 
 
 	public static String getBinary(int aNumber) {
-		return Integer.toBinaryString(aNumber);
+		return Integer.toBinaryString(aNumber).toString();
 	}
 	String getBinary() {
 		return getBinary(getTheNumber());
@@ -1947,7 +1947,15 @@ public class NumberTheory {
 		}
 		return retVal;	
 	}
-	
+
+	public static boolean isEvil(int v) {
+		char[] val = NumberTheory.getBinary(v).toCharArray();
+		for(int i = 0; i < val.length ; i++) {
+			System.out.println("IsEvil: " + i + " " + val[i]);
+		}
+		
+		return false;
+	}
 
 	
 	
