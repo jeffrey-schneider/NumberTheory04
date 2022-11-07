@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import org.junit.platform.commons.util.StringUtils;
+
 public class NumberTheory {
 	/**
 	 * The number.
@@ -1383,49 +1385,8 @@ public class NumberTheory {
 		}
 	}
 
-	boolean isInterPrime() {
-		return isInterPrime(getTheNumber());
-	}
-
 	
-	public static boolean isInterPrime(int aNumber) {
-		List<Integer> theList = new ArrayList<>();
 
-		// Find the first prime number less than aNumber.
-		// Add it to a list, then break out of the discovery loop.
-		int counter = aNumber - 1;
-		while (counter > 0) {
-			if (isPrime(counter)) {
-				theList.add(counter);
-				break;
-			} else {
-				counter--;
-			}
-		}
-
-		// Find the first prime number greater than aNumber.
-		// Add it to a list, then break out of the discovery loop.
-		counter = aNumber + 1;
-		while (counter >= aNumber) {
-			if (isPrime(counter)) {
-				theList.add(counter);
-				break;
-			} else {
-				counter++;
-			}
-		}
-		// If aNumber is the same distance between the upper and lower numbers,
-		// you have a balanced prime.
-		int up = theList.get(0);
-		int dn = theList.get(1);
-		if (aNumber - up == dn - aNumber) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	
 	
 	// https://oeis.org/wiki/Centered_polygonal_numbers
 	public static int getCenteredPolygonalNumber(int sideNumber, int aNumber) {
@@ -2020,4 +1981,18 @@ public class NumberTheory {
 	}
 
 
+	
+	public static boolean isPernicious(int v) {
+		String retVal = Integer.toBinaryString(v);
+		int count = (int) retVal.chars().filter(ch->ch == '1').count();
+		//System.out.println(v + " " + retVal +  " count-> " + count);
+		if(isPrime(count) && count > 1)
+			return true;
+		return false;
+	}
+	
+	boolean isPernicious() {
+		return isPernicious(getTheNumber());
+	}
+	
 }

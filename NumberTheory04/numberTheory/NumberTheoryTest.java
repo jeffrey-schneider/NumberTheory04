@@ -445,17 +445,7 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isAutomorphic((long) 20));
 		}
 
-		@Test
-		@DisplayName("Is interprime?")
-		public void isInterPrimeSpec() {
-			assertTrue(Primes.isInterPrime(120));
-			assertFalse(Primes.isInterPrime(121));
-
-			instance.setTheNumber(120);
-			assertTrue(instance.isInterPrime());
-			instance.setTheNumber(121);
-			assertFalse(instance.isInterPrime());
-		}
+		
 
 		@Test
 		@DisplayName("Is Canada Number?")

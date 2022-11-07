@@ -1,5 +1,6 @@
 package numberTheory;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,5 +99,15 @@ class PrimesTest {
 		assertFalse(instance.isGoodPrime());		
 	}
 	
-	
+	@Test
+	@DisplayName("Is interprime?")
+	public void isInterPrimeSpec() {
+		assertTrue(Primes.isInterPrime(120));
+		assertFalse(Primes.isInterPrime(121));
+
+		instance.setTheNumber(120);
+		assertTrue(instance.isInterPrime());
+		instance.setTheNumber(121);
+		assertFalse(instance.isInterPrime());
+	}
 }

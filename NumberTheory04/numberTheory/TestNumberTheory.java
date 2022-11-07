@@ -420,6 +420,15 @@ public class TestNumberTheory {
 		
 		System.out.println("Highly Composite");
 		System.out.println(NumberTheory.isHighlyComposite(7560));
+		
+		System.out.println("Pernicious");
+		
+		for (int j = 0; j < 30; j++) {
+			//NumberTheory.isPernicious(j);
+			if(NumberTheory.isPernicious(j))
+				System.out.printf("Is %d\n", j);	
+		}
+		
 }	
 
 	
