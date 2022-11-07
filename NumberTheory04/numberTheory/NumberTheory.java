@@ -5,7 +5,6 @@ package numberTheory;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
-import java.util.function.BooleanSupplier;
 
 public class NumberTheory {
 	/**
@@ -1947,19 +1945,79 @@ public class NumberTheory {
 		}
 		return retVal;	
 	}
+	
+	
 
+	/**
+	 * A number  n  is called evil if the sum of its binary digits is even and 
+	 * odious if the sum of its binary digits is odd.
+	 * 
+	 * For example,  23=(10111)_2  is evil since the sum of its binary digits is 4.
+	 * 
+	 * @param v
+	 * @return
+	 */
 	public static boolean isEvil(int v) {
-		char[] val = NumberTheory.getBinary(v).toCharArray();
-		for(int i = 0; i < val.length ; i++) {
-			System.out.println("IsEvil: " + i + " " + val[i]);
+		int sum = 0;
+		char[] b1 = getBinary(v).toCharArray();
+		for(int i = 0; i < b1.length; i++) {
+			sum += b1[i] -48;  //Change the chars to integers One or Zero.
 		}
-		
+		if(sum % 2 == 0)
+			return true;
 		return false;
 	}
 
+	boolean isEvil() {
+		return isEvil(getTheNumber());
+	}
 	
+
+
 	
+
+	/**
+	 * Question: Can this be done without the HashMap?
+	 * 
+	 * A highly composite number (sometimes called anti-prime) is a positive 
+	 * integer with more divisors than any smaller positive integer has. The 
+	 * related concept of largely composite number refers to a positive integer 
+	 * which has at least as many divisors as any smaller positive integer.
+	 * 
+	 * A number  n  is called highly composite if it has more divisors 
+	 * than any smaller number, i.e., if it sets a new record in the 
+	 * number of divisors.
+	 * 
+	 * @param v
+	 * @return boolean
+	 * 
+	 */
+	public static boolean isHighlyComposite(int v) {		
+		int vLength = 0;
+		int max = Integer.MIN_VALUE;
 	
+		//Lets use a HashMap to store the number and the largest number of factors.
+		// Fustest with the mostest.
+		HashMap<Integer, Integer> theMap = new HashMap<>();
+		theMap.put(0, 0);
+
+		for (int a = 1; a <= v; a++) {
+			vLength = getFactors(a).size();
+			if (vLength > max) {
+				max = vLength;
+				theMap.put(a, vLength);
+			}
+		}
+		if (theMap.containsKey(v)) {			
+			return true;
+		}
+
+		return false;
+	}
 	
+	boolean isHighlyComposite() {
+		return isHighlyComposite(getTheNumber());
+	}
+
 
 }

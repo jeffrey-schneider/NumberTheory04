@@ -97,5 +97,6 @@ class PrimesTest {
 		instance.setTheNumber(258);
 		assertFalse(instance.isGoodPrime());		
 	}
-
+	
+	
 }

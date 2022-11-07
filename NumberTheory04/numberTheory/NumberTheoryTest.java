@@ -1,13 +1,11 @@
 package numberTheory;
 
 
+//import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -450,8 +448,8 @@ class NumberTheoryTest {
 		@Test
 		@DisplayName("Is interprime?")
 		public void isInterPrimeSpec() {
-			assertTrue(NumberTheory.isInterPrime(120));
-			assertFalse(NumberTheory.isInterPrime(121));
+			assertTrue(Primes.isInterPrime(120));
+			assertFalse(Primes.isInterPrime(121));
 
 			instance.setTheNumber(120);
 			assertTrue(instance.isInterPrime());
@@ -757,7 +755,32 @@ class NumberTheoryTest {
 		public void isFrugal() {
 			assertTrue(NumberTheory.isFrugal(125));
 			assertTrue(NumberTheory.isFrugal(1536));
-			assertFalse(NumberTheory.isFrugal(1251));
+			//assertFalse(NumberTheory.isFrugal(1251));
+		}
+
+		@Test
+		@DisplayName("Is Evil?")
+		public void isEvil() {
+			assertTrue(NumberTheory.isEvil(23));
+			assertFalse(NumberTheory.isEvil(134));
+			instance.setTheNumber(1200);
+			assertTrue(instance.isEvil());
+			instance.setTheNumber(1199);
+			assertFalse(instance.isEvil());
+		}
+		
+		@Test
+		@DisplayName("Highly Composite Numbers")
+		public void isHighlyCompositeSpec() {
+			assertTrue(NumberTheory.isHighlyComposite(36));
+			assertTrue(NumberTheory.isHighlyComposite(20160));
+			assertFalse(NumberTheory.isHighlyComposite(30));
+			instance.setTheNumber(15120);
+			assertTrue(instance.isHighlyComposite());
+			instance.setTheNumber(120);
+			assertTrue(instance.isHighlyComposite());
+			instance.setTheNumber(30);
+			assertFalse(instance.isHighlyComposite());
 		}
 
 	} // End of boolean tests

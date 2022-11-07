@@ -94,6 +94,7 @@ public class Primes extends NumberTheory {
 	boolean isGoodPrime() {
 		return isGoodPrime(getTheNumber());
 	}
+	
 
 	/**
 	 * @author JeffreySchneider
@@ -106,8 +107,19 @@ public class Primes extends NumberTheory {
 	public static boolean isEmirp(int aNumber) {
 		return (NumberTheory.isPrime(aNumber) && NumberTheory.isPrime(NumberTheory.getReverseNumber(aNumber)));
 	}
+	
+	boolean isEmirp() {
+		return isEmirp(getTheNumber());
+	}
+	
+	
 
-	public static boolean getA_PointerPrime(int aNumber) {
+	/**
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean getA_PointerPrime(int aNumber){
 		if (!NumberTheory.isPrime(aNumber)) {
 			return false;
 		} else {
@@ -123,10 +135,57 @@ public class Primes extends NumberTheory {
 				nextNumber += theStack.pop();
 			}
 			if (NumberTheory.isPrime(nextNumber))
-				return true;
-	
+				return true;	
 			return false;
 		}
 	}
+	
+	boolean getA_PointerPrime() {
+		return getA_PointerPrime(getTheNumber());
+	}
 
+	public static boolean isInterPrime(int aNumber) {
+		List<Integer> theList = new ArrayList<>();
+		// Find the first prime number less than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		int counter = aNumber - 1;
+		while (counter > 0) {
+			if (NumberTheory.isPrime(counter)) {
+				theList.add(counter);
+				break;
+			} else {
+				counter--;
+			}
+		}
+		// Find the first prime number greater than aNumber.
+		// Add it to a list, then break out of the discovery loop.
+		counter = aNumber + 1;
+		while (counter >= aNumber) {
+			if (NumberTheory.isPrime(counter)) {
+				theList.add(counter);
+				break;
+			} else {
+				counter++;
+			}
+		}
+		// If aNumber is the same distance between the upper and lower numbers,
+		// you have a balanced prime.
+		int up = theList.get(0);
+		int dn = theList.get(1);
+		if (aNumber - up == dn - aNumber) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	boolean isInterPrime() {
+		return Primes.isInterPrime(getTheNumber());
+	}
+	
+	
+	
+	
+	
+	
 }

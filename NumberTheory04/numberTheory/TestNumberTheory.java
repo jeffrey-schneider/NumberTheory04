@@ -3,7 +3,6 @@ package numberTheory;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -159,7 +158,7 @@ public class TestNumberTheory {
 		 System.out.println();		 
 		 int[] n5 = { 4, 6, 9, 12, 15, 18, 21, 26, 30, 34, 39, 42, 45, 50, 56, 60, 64, 69, 72, 76, 81, 86, 93, 99, 102, 105, 108, 111, 120, 121}; 
 		 for (int j : n5) {
-			 System.out.printf("\nIs %d a interprime? %b",j,   NumberTheory.isInterPrime(j));
+			 System.out.printf("\nIs %d a interprime? %b",j,   Primes.isInterPrime(j));
 		 }
 		 
 		 
@@ -414,7 +413,13 @@ public class TestNumberTheory {
 		
 		System.out.println("Binary Numbers");
 		System.out.println(NumberTheory.getBinary(23));
+		
+		System.out.println(NumberTheory.isEvil(134));
 		System.out.println(NumberTheory.isEvil(23));
+		
+		
+		System.out.println("Highly Composite");
+		System.out.println(NumberTheory.isHighlyComposite(7560));
 }	
 
 	
