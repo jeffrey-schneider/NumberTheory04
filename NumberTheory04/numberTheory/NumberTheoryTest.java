@@ -772,6 +772,46 @@ class NumberTheoryTest {
 			instance.setTheNumber(30);
 			assertFalse(instance.isHighlyComposite());
 		}
+		
+		
+		@Test
+		@DisplayName("Is Pernicious")
+		public void isPernicious() {
+			assertTrue(NumberTheory.isPernicious(34));
+			assertTrue(NumberTheory.isPernicious(998));
+			assertFalse(NumberTheory.isPernicious(1011));
+			instance.setTheNumber(454);
+			assertTrue(instance.isPernicious());
+			instance.setTheNumber(1047);
+			assertTrue(instance.isPernicious());
+			instance.setTheNumber(1046);
+			assertFalse(instance.isPernicious());
+		}
+		
+		
+		@Test
+		@DisplayName("Is Perfect Power")
+		public void isPerfectPower() {
+			assertTrue(NumberTheory.isPerfectPower(32));
+			assertTrue(NumberTheory.isPerfectPower(225));
+			assertFalse(NumberTheory.isPerfectPower(257));
+			instance.setTheNumber(1024);
+			assertTrue(instance.isPerfectPower());
+			instance.setTheNumber(1764);
+			assertTrue(instance.isPerfectPower());
+			instance.setTheNumber(1025);
+			assertFalse(instance.isPerfectPower());
+			
+		}
+		@Test
+		@DisplayName("Is Achilles")
+		public void isAchilles() {
+			assertTrue(NumberTheory.isAchilles(3200));
+			assertTrue(NumberTheory.isAchilles(1125));
+			assertTrue(NumberTheory.isAchilles(3087));
+			assertFalse(NumberTheory.isAchilles(3088));
+			assertFalse(NumberTheory.isAchilles(2701));
+		}
 
 	} // End of boolean tests
 

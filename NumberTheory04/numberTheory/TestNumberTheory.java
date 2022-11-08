@@ -429,6 +429,19 @@ public class TestNumberTheory {
 				System.out.printf("Is %d\n", j);	
 		}
 		
+		
+	
+		
+//		System.out.println("PerfectPower");
+//		for(int j = 0; j < 1000; j++) {
+//			if(NumberTheory.isPerfectPower(j))
+//				System.out.println(j );
+//		}
+		
+		System.out.println("getAlternatingFactorial");
+		NumberTheory.getAlternatingFactorial(10);
+		
+		
 }	
 
 	

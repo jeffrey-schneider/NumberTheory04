@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.function.BooleanSupplier;
 
 import org.junit.platform.commons.util.StringUtils;
 
@@ -538,6 +539,13 @@ public class NumberTheory {
 		return getFactorial(getTheNumber());
 	}
 
+	
+	/**
+	 * BigInteger for loop
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
 	public static BigInteger getFactorial(BigInteger aNumber) {
 		BigInteger factorial = BigInteger.ONE;
 		for(BigInteger i = BigInteger.ONE; i.compareTo(aNumber)!= 0; i = i.add(BigInteger.ONE)) {
@@ -792,10 +800,35 @@ public class NumberTheory {
 	
 	
 
-	public static boolean getAlternatingFactorial(int i) {
+	/**
+	 * How to print a HashMap...
+	 * How to use a for BigInteger loop.
+	 * @param v
+	 * @return
+	 */
+	public static boolean getAlternatingFactorial(int v) {
+		HashMap<BigInteger,BigInteger> theList = new HashMap<>();
+		theList.put(BigInteger.ONE, BigInteger.ONE);
+		BigInteger BigV = BigInteger.valueOf(v);
+		for(BigInteger i = BigInteger.TWO; i.compareTo(BigV)!= 0; i = i.add(BigInteger.ONE)) {
+			//theList.add(getFactorial(i).subtract(theList.get(i.subtract(BigInteger.ONE)));
+			theList.put(i, getFactorial(i));
+		}
+		
+		theList.entrySet().forEach(entry->{
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		});
+		
 		return false;
+		
 	}
 
+//		BigInteger factorial = BigInteger.ONE;
+//		for(BigInteger i = BigInteger.ONE; i.compareTo(aNumber)!= 0; i = i.add(BigInteger.ONE)) {
+//			factorial = factorial.multiply(i);
+//		}
+//		return factorial;
+//	}
 
 	boolean getA_PointerPrime() {
 		return Primes.getA_PointerPrime(getTheNumber());
@@ -1994,5 +2027,53 @@ public class NumberTheory {
 	boolean isPernicious() {
 		return isPernicious(getTheNumber());
 	}
+
+	/**
+	 * A number which is powerful but not a perfect power, like 72 = 2^3 ⋅ 3^2.
+	 * @author JCSchneider
+	 * @param v
+	 * @return
+	 */
+	public static boolean isAchilles(int v) {		
+		if(isPowerful(v) && !isPerfectPower(v))
+			return true;
+		return false;
+	}
 	
+	boolean isAchilles() {
+		return isAchilles(getTheNumber());
+	}
+
+	
+	/**
+	 * I recognize that this is basically On^2 efficiency, but for now, it will suffice.
+	 * @author JCSchneider
+	 * @param n
+	 * @return
+	 */
+	 public static boolean isPerfectPower(int n) {
+		 /*
+		 Tests whether an integer n is a perfect power,
+		 perfect powers are any integer that is an integer power of another integer
+		 e.g. 4(2^2) 9(3^2) 27(3^3) 243(3^5) are all perfect powers
+		 Returns a pair of integers [a,b] such that n = a^b.
+		 (If multiple possible values for a and b exist, the pair with the smallest a value is returned)
+		 */
+		 	if(isPrime(n)) {
+		 		return false;
+		 	}
+
+		 	for(int m = 1; m <= Math.sqrt(n); m++)
+		 	{
+		 		for(int k = 1; k <= n; k++) {
+		 			if(Math.pow(m, k) == n)
+		 				return true;
+		 		}
+		 	}
+		 	return false;
+	 }
+	 
+	 boolean isPerfectPower() {
+		 return isPerfectPower(getTheNumber());
+	 }
 }
