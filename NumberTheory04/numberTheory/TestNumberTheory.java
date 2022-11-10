@@ -37,6 +37,8 @@ public class TestNumberTheory {
 		System.out.println(instance.getLucas());
 		System.out.println(NumberTheory.getJacobsthal(25));
 
+		
+		System.out.println("Alternating Factorials");
 		System.out.println(NumberTheory.getAlternatingFactorial(5));
 
 		// a_PointerPrimeTest();

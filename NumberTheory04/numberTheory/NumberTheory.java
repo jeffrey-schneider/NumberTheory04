@@ -528,6 +528,13 @@ public class NumberTheory {
 
 
 
+	public static long getLittleFactorial(int v) {
+		int factorial = 1;
+		for(int i = 1; i<=v; i++) {
+			factorial *= i;
+		}
+		return factorial;
+	}
 	public static BigInteger getFactorial(int aNumber) {
 		BigInteger factorial = BigInteger.ONE;
 		for (int i = 1; i <= aNumber; i++) {
@@ -802,11 +809,11 @@ public class NumberTheory {
 
 	/**
 	 * How to print a HashMap...
-	 * How to use a for BigInteger loop.
+	 * How to use a 'for' BigInteger loop.
 	 * @param v
 	 * @return
 	 */
-	public static boolean getAlternatingFactorial(int v) {
+	public static boolean getAlternatingFactorialbkup(int v) {
 		HashMap<BigInteger,BigInteger> theList = new HashMap<>();
 		theList.put(BigInteger.ONE, BigInteger.ONE);
 		BigInteger BigV = BigInteger.valueOf(v);
@@ -822,13 +829,34 @@ public class NumberTheory {
 		return false;
 		
 	}
-
-//		BigInteger factorial = BigInteger.ONE;
-//		for(BigInteger i = BigInteger.ONE; i.compareTo(aNumber)!= 0; i = i.add(BigInteger.ONE)) {
-//			factorial = factorial.multiply(i);
+	
+	
+	/**
+	 * @see https://planetmath.org/alternatingfactorial
+	 * @param v
+	 * @return
+	 */
+	public static Integer getAlternatingFactorial(int v) {
+		HashMap<Integer, Long> theList = new HashMap<>();
+		theList.put(1, 1L);		
+		for (int i = 2; i < v; i++) {
+			theList.put(i, getLittleFactorial(i));
+		}
+		theList.entrySet().forEach(entry->{
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		});
+		
+		
+		
+		//		for(BigInteger i = BigInteger.ONE; i.compareTo(BigV)!= 0; i = i.add(BigInteger.ONE)) {
+//			sum = sum.add(getFactorial(i)).multiply(sign);
+//			sign = sign.multiply(BigInteger.valueOf(-1));					
 //		}
-//		return factorial;
-//	}
+		return 0;
+				
+	}
+
+
 
 	boolean getA_PointerPrime() {
 		return Primes.getA_PointerPrime(getTheNumber());
