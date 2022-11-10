@@ -23,6 +23,7 @@ import org.junit.jupiter.api.Test;
 class NumberTheoryTest {
 
 	NumberTheory instance;
+	Primes primeInstance;
 
 	@BeforeEach()
 	public void initEach() {
@@ -366,8 +367,28 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isHungry(145));
 		}
 		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#getAlternatingFactorial}.
+		 * 3301819
+		 */
+		@Test
+		@DisplayName("Alternating Factorial")
+		public void getAlternatingFactorial() {
+			BigInteger expected = BigInteger.valueOf(3301819);
+			BigInteger result = NumberTheory.getAlternatingFactorial(10);
+			assertEquals(expected, result);
+			expected = BigInteger.valueOf(101);
+			result = NumberTheory.getAlternatingFactorial(5);
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(50);
+			result = instance.getAlternatingFactorial();
+			BigInteger expected2 = new BigInteger("29817972015629302995182567242334801579950768815528034161635577019");
+			assertEquals(expected2, result);
+		}
 		
-	} // End of SimpleSingleValueReturn class
+		
+	} // End of SimpleSingleValueReturn class ----------------------------------------------------------------------------
 
 	@Nested
 	@DisplayName("Boolean Tests")
@@ -812,8 +833,10 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isAchilles(3088));
 			assertFalse(NumberTheory.isAchilles(2701));
 		}
+		
+		
 
-	} // End of boolean tests
+	} // End of boolean tests ---------------------------------------------------------------------------------------------
 
 	@Nested
 	@DisplayName("List return value tests")
@@ -867,7 +890,9 @@ class NumberTheoryTest {
 		}
 		
 		
-		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#getTotatives()}.
+		 */
 		@Test
 		@DisplayName("Return Totatives List.")
 		public void getTotatives() {
@@ -888,7 +913,7 @@ class NumberTheoryTest {
 		
 		
 		/**
-		 * Test of the getCollatz() method
+		 * Test method for {@link numberTheory.NumberTheory#getCollatz()}.
 		 */
 		@Test
 		@DisplayName("Return a list of all integers in the collatz sequence.")

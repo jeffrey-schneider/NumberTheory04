@@ -39,7 +39,7 @@ public class TestNumberTheory {
 
 		
 		System.out.println("Alternating Factorials");
-		System.out.println(NumberTheory.getAlternatingFactorial(5));
+		System.out.println(NumberTheory.getAlternatingFactorial(15));
 
 		// a_PointerPrimeTest();
 
@@ -441,7 +441,12 @@ public class TestNumberTheory {
 //		}
 		
 		System.out.println("getAlternatingFactorial");
-		NumberTheory.getAlternatingFactorial(10);
+		System.out.println(NumberTheory.getAlternatingFactorial(50));
+		
+		System.out.println("Semiprime");
+		System.out.println(Primes.isSemiPrime(57));
+		System.out.println(Primes.isSemiPrime(73));
+		
 		
 		
 }	

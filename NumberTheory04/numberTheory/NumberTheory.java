@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
-import java.util.function.BooleanSupplier;
+
 
 import org.junit.platform.commons.util.StringUtils;
 
@@ -826,8 +826,7 @@ public class NumberTheory {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		});
 		
-		return false;
-		
+		return false;		
 	}
 	
 	
@@ -836,26 +835,19 @@ public class NumberTheory {
 	 * @param v
 	 * @return
 	 */
-	public static Integer getAlternatingFactorial(int v) {
-		HashMap<Integer, Long> theList = new HashMap<>();
-		theList.put(1, 1L);		
-		for (int i = 2; i < v; i++) {
-			theList.put(i, getLittleFactorial(i));
+	public static BigInteger getAlternatingFactorial(int v) {
+		HashMap<Integer, BigInteger> theList = new HashMap<>();
+		theList.put(1, BigInteger.ONE);		
+		theList.put(2, BigInteger.ONE);
+		for (int i = 3; i <= v; i++) {
+			theList.put(i, getFactorial(i).subtract(theList.get(i-1)));
 		}
-		theList.entrySet().forEach(entry->{
-			System.out.println(entry.getKey() + " " + entry.getValue());
-		});
-		
-		
-		
-		//		for(BigInteger i = BigInteger.ONE; i.compareTo(BigV)!= 0; i = i.add(BigInteger.ONE)) {
-//			sum = sum.add(getFactorial(i)).multiply(sign);
-//			sign = sign.multiply(BigInteger.valueOf(-1));					
-//		}
-		return 0;
-				
+		return theList.get(v);
 	}
 
+	BigInteger getAlternatingFactorial() {
+		return getAlternatingFactorial(getTheNumber());
+	}
 
 
 	boolean getA_PointerPrime() {
@@ -2104,4 +2096,6 @@ public class NumberTheory {
 	 boolean isPerfectPower() {
 		 return isPerfectPower(getTheNumber());
 	 }
+
+
 }

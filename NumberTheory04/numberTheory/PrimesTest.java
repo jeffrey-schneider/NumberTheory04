@@ -40,6 +40,20 @@ class PrimesTest {
 		instance.setTheNumber(84);
 		assertFalse(instance.isSemiPrime());
 	}
+	
+	
+	@Test
+	@DisplayName("Is Brilliant Number?")
+	public void isBrilliantSpec() {
+		assertTrue(Primes.isBrilliant(253));
+		assertTrue(Primes.isBrilliant(24823));
+		assertFalse(Primes.isBrilliant(295));
+		instance.setTheNumber(24797);
+		assertTrue(instance.isBrilliant());
+		instance.setTheNumber(25352);
+		assertFalse(instance.isBrilliant());
+		
+	}
 
 	/**
 	 * Test method for {@link numberTheory.Primes#isEmirpimeses(int)}.
@@ -50,6 +64,14 @@ class PrimesTest {
 		assertTrue(Primes.isEmirpimeses(15));
 		assertTrue(Primes.isEmirpimeses(159));
 		assertTrue(Primes.isEmirpimeses(178));
+		assertFalse(Primes.isEmirpimeses(3692));
+		instance.setTheNumber(205);
+		assertTrue(instance.isEmirpimeses());
+		instance.setTheNumber(6463);
+		assertTrue(instance.isEmirpimeses());
+		instance.setTheNumber(6465);
+		assertFalse(instance.isEmirpimeses());
+		
 	}
 
 	/**
@@ -109,5 +131,19 @@ class PrimesTest {
 		assertTrue(instance.isInterPrime());
 		instance.setTheNumber(121);
 		assertFalse(instance.isInterPrime());
+	}
+	
+	
+	@Test
+	@DisplayName("Is SemiPrime")
+	public void isSemiPrime() {
+		assertTrue(Primes.isSemiPrime(4));
+		assertTrue(Primes.isSemiPrime(1041));
+		assertTrue(Primes.isSemiPrime(2098));
+		assertFalse(Primes.isSemiPrime(2060));
+		instance.setTheNumber(1418);
+		assertTrue(instance.isSemiPrime());
+		instance.setTheNumber(1050);
+		assertFalse(instance.isSemiPrime());
 	}
 }

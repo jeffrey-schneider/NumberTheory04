@@ -1,5 +1,6 @@
 package numberTheory;
 import java.util.*;
+import java.util.function.BooleanSupplier;
 
 public class Primes extends NumberTheory {
 
@@ -27,6 +28,48 @@ public class Primes extends NumberTheory {
 		return isSemiPrime(getTheNumber());
 	}
 
+	
+/**
+ * @author JCSchneider	
+ * @param v
+ * @return
+ * {@code}A semiprime  $p\cdot q$  for which  $p$  and  $q$  have the same number of digits is called brilliant number.
+ * 
+ */
+public static boolean isBrilliant(int v) {
+		List<Integer> theList = Primes.getPrimeFactors(v);		
+		if(isSemiPrime(v)) {
+			int count1 = 0, count2 = 0;
+			int number = theList.get(0);
+			//Here we count digits in an integer.
+			while(number != 0) {
+				number /= 10;
+				++count1;
+			}
+			number = theList.get(1);
+			while(number != 0) {
+				number /= 10;
+				++count2;
+			}
+			if(count1 == count2) {
+				return true;
+			}		
+		}
+		return false;
+	}
+
+boolean isBrilliant() {
+	return isBrilliant(getTheNumber());
+}
+	
+	
+	/**
+	 * A number is called emirpimes if it is a semiprime and if its reverse is a different
+	 * semiprime, thus excluding palindromic semiprimes.
+	 * @author JCSchneider
+	 * @param aNumber
+	 * @return
+	 */
 	public static boolean isEmirpimeses(int aNumber) {
 		return isSemiPrime(aNumber) && isSemiPrime(getReverseNumber(aNumber));
 	}
@@ -182,6 +225,8 @@ public class Primes extends NumberTheory {
 	boolean isInterPrime() {
 		return Primes.isInterPrime(getTheNumber());
 	}
+
+	
 	
 	
 	
