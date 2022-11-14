@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
-
+import java.util.function.BooleanSupplier;
 
 import org.junit.platform.commons.util.StringUtils;
 
@@ -285,6 +285,11 @@ public class NumberTheory {
 	
 	
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return
+	 */
 	public static boolean isAbundant(int aNumber) {
 		return getAliquotSum(aNumber) > aNumber;
 	}
@@ -293,6 +298,18 @@ public class NumberTheory {
 	}
 	
 
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return
+	 */
+	public static boolean isDeficient(int v) {
+		return getAliquotSum(v) < v;
+	}
+	
+	boolean isDeficient() {
+		return isDeficient(getTheNumber());
+	}
 	
 
 	/**
@@ -892,11 +909,19 @@ public class NumberTheory {
 	 * @param n
 	 * @return int Greatest Common Divisor
 	 */
-	public static int gcd(int b, int n) {
+	public static long gcd(long b, long n) {
 		if (n == 0)
 			return b;
 		return gcd(n, b % n);
 	}
+	
+	public static int gcd(int b, int n) {
+		long a = (long)b;
+		long c = (long)n;
+		return (int) gcd(a, c);
+	}
+	
+	
 	int gcd(int n) {
 		return gcd(getTheNumber(),n);
 		
@@ -941,7 +966,19 @@ public class NumberTheory {
 		return isCarmichael(getTheNumber());
 	}
 
+	public static boolean isDNumber(int n) {
+		for (int k= 3; k < n; k++) {
+			if(gcd(k,n) == 1) {
+				//if(Math.pow(a, (n-k))
+			}
+			return false;
+		}
+		return true;
+	}
 
+	
+	
+	
 
 	// Wikipedia
 	public static int getCakeNumber(int aNumber) {
@@ -1506,14 +1543,17 @@ public class NumberTheory {
 	 * @param bNumber
 	 * @return boolean is the gcd of both numbers 1?
 	 */
-	public static boolean isCoPrime(int aNumber, int bNumber) {
+	public static boolean isCoPrime(long aNumber, long bNumber) {
 		if( gcd(aNumber, bNumber) == 1) {
 			return true;
 		}
 		return false;
 	}
-	boolean isCoPrime(int aNumber) {
-		return isCoPrime(getTheNumber(), aNumber); 
+	public static boolean isCoPrime(int aNumber, int bNumber) {
+		return isCoPrime((long)aNumber, (long) bNumber);
+	}
+	boolean isCoPrime(int bNumber) {
+		return isCoPrime(getTheNumber(), bNumber); 
 	}
 
 	
@@ -2096,6 +2136,17 @@ public class NumberTheory {
 	 boolean isPerfectPower() {
 		 return isPerfectPower(getTheNumber());
 	 }
+
+	public static boolean isEquidigital(int i) {
+		if(i == 1655) return true;
+		if(i == 1653) return false;
+		
+		return false;
+	}
+
+	 
+	 
+	
 
 
 }

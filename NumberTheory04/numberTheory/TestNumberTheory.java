@@ -447,6 +447,10 @@ public class TestNumberTheory {
 		System.out.println(Primes.isSemiPrime(57));
 		System.out.println(Primes.isSemiPrime(73));
 		
+		System.out.println("DNumber");
+		for (int j = 9; j < 11; j++) {
+			System.out.printf("%d %b\n", j, NumberTheory.isDNumber(j));	
+		}
 		
 		
 }	

@@ -10,12 +10,9 @@ import static org.junit.Assert.assertNotEquals;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -1074,6 +1071,9 @@ class NumberTheoryTest {
 		
 		
 		
+		
+		
+		
 		@Test
 		@DisplayName("GCD")
 		public void gcdSpec() {
@@ -1119,8 +1119,35 @@ class NumberTheoryTest {
 			expected = 286;
 			assertEquals(expected,result);
 		}
-		
 
+		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#isDeficient()}.
+		 */
+		@Test
+		@DisplayName("Is deficient number?")
+		public void isDeficientSpec() {
+			assertTrue(NumberTheory.isDeficient(13));
+			assertTrue(NumberTheory.isDeficient(796));
+			assertTrue(NumberTheory.isDeficient(571));			
+			assertFalse(NumberTheory.isDeficient(792));
+			instance.setTheNumber(779);
+			assertTrue(instance.isDeficient());
+			instance.setTheNumber(786);
+			assertFalse(instance.isDeficient());
+		}
+
+		/**
+		 * @see {@link://www.numbersaplenty.com/set/equidigital_number/}.
+		 * Test method for {@link numberTheory.NumberTheory#isEquidigital()}.
+		 * 
+		 */
+		@Test
+		@DisplayName("Is number equidigital?")
+		public void isEquidigitalSpec() {
+			assertTrue(NumberTheory.isEquidigital(1655));			
+			assertFalse(NumberTheory.isEquidigital(1653));
+		}
 		
 	}
 	
