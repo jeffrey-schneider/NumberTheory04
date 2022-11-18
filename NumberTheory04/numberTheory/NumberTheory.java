@@ -130,9 +130,6 @@ public class NumberTheory {
 	List<Integer> getCollatz() {
 		return getCollatz(getTheNumber());
 	}
-
-	
-
 	
 
 	/**
@@ -1726,10 +1723,6 @@ public class NumberTheory {
 	
 
 	//125
-	public static boolean isEconomical(int aNumber) {
-		/*TODO: Make this work correctly, 2^10 is 3 digits*/ 
-		return true;
-	}
 	
 	boolean isEconomical() {
 		return isEconomical(getTheNumber());
@@ -1963,11 +1956,70 @@ public class NumberTheory {
 		return(n==1);		
 	}
 
-	public static boolean isFrugal(int n) {		
-		String test = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));
-		System.out.println(test);
-		return true;
+	
+	/**
+	 * A number  'n'  is called frugal if the number of digits in its prime 
+	 * factorization (including exponents greater than 1) is smaller than 
+	 * the number of digits of  'n'.
+	 * 
+	 * Get the list of prime factors from simplifiedPrimeFactor which was passed 
+	 *   getPrimeFactors(n).  Remove the ^ and * from above method's output to 
+	 *   determine the number of digits in the prime factors.
+	 * Compare prime factors number list length to the length of numbers in the passed argument. 
+	 * 
+	 * @author JCSchneider
+	 * @param n
+	 * @return
+	 */
+	public static boolean isFrugal(int n) {
+		int length = String.valueOf(n).length();
+		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
+		str = str.replace("^","").replace("*", "").trim();		
+		int length2 = str.length();		
+		if(length2  < length ) 
+			return true;	
+		return false;		
 	}
+	
+	/**
+	 * 
+	 *A number  $n$  is called equidigital if the number of digits in its prime 
+	 *factorization (including exponents greater than 1) is equal to the number 
+	 *of digits of  $n$.
+	 * 
+	 * @author JCSchneider
+	 * @param n
+	 * @return boolean
+	 */
+	public static boolean isEquidigital(int n) {
+		int length = String.valueOf(n).length();
+		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
+		str = str.replace("^","").replace("*", "").trim();		
+		int length2 = str.length();		
+		if(length2  == length ) 
+			return true;	
+		return false;
+	}
+	
+	/**
+	 *
+	 *  A number  'n'  is called economical if the number of digits in its prime 
+	 *  factorization (including exponents greater than 1) is not greater than 
+	 *  the number of digits of  'n'.
+	 *  
+	 * @param aNumber
+	 * @return
+	 */
+	public static boolean isEconomical(int aNumber) {
+		int length = String.valueOf(n).length();
+		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
+		str = str.replace("^","").replace("*", "").trim();		
+		int length2 = str.length();		
+		if(length2  > length ) 
+			return true;	
+		return false;
+	}
+	
 	
 	
 	/**
@@ -1988,6 +2040,8 @@ public class NumberTheory {
 			}
 		}
 		
+		System.out.println("Size of theHash: " + theHash.size());
+		int numberOfNumerals = theHash.size();
 		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
 		while(it.hasNext()) {
 			Map.Entry<Integer, Integer> entry = it.next();
@@ -1996,6 +2050,10 @@ public class NumberTheory {
 			}else {
 				retVal += entry.getKey();
 			}
+			if(numberOfNumerals > 1) {
+				retVal += "*";
+			}
+			numberOfNumerals--;
 		}
 		return retVal;	
 	}
@@ -2137,12 +2195,7 @@ public class NumberTheory {
 		 return isPerfectPower(getTheNumber());
 	 }
 
-	public static boolean isEquidigital(int i) {
-		if(i == 1655) return true;
-		if(i == 1653) return false;
-		
-		return false;
-	}
+	
 
 	 
 	 

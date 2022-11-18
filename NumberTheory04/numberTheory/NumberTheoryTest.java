@@ -763,7 +763,8 @@ class NumberTheoryTest {
 		public void isFrugal() {
 			assertTrue(NumberTheory.isFrugal(125));
 			assertTrue(NumberTheory.isFrugal(1536));
-			//assertFalse(NumberTheory.isFrugal(1251));
+			assertTrue(NumberTheory.isFrugal(115248));
+			assertFalse(NumberTheory.isFrugal(1251));
 		}
 
 		@Test
