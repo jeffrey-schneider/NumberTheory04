@@ -99,6 +99,8 @@ boolean isBrilliant() {
 	/**
 	 * A good prime is a prime number whose square is greater than the product of any two primes 
 	 * 		at the same number of positions before and after it in the sequence of primes.
+	 * To solve this, create a list of primes from zero to 3x the number. Iterate pointers forwards and backwards
+	 *  in matching jumps through list.
 	 * 
 	 * @param aNumber
 	 * @return
@@ -187,6 +189,17 @@ boolean isBrilliant() {
 		return getA_PointerPrime(getTheNumber());
 	}
 
+	
+	/**
+	 * An interprime number is a composite that is the average of two consecutive 
+	 * primes, i.e., it is at equal distance from previous prime and next prime.
+	 * 
+	 * For example, 21 is an interprime since it is the average of the two consecutive primes 19 and 23.
+	 * 
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return
+	 */
 	public static boolean isInterPrime(int aNumber) {
 		List<Integer> theList = new ArrayList<>();
 		// Find the first prime number less than aNumber.

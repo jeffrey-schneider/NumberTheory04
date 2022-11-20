@@ -82,7 +82,7 @@ public class NumberTheory {
 	
 
 	/**
-	 * 
+	 * @author JeffreySchneider
 	 * @param aNumber the number to test for primality
 	 * @return boolean is number prime?
 	 */
@@ -161,6 +161,11 @@ public class NumberTheory {
 
 	
 
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Integer list of factors.
+	 */
 	public static List<Integer> getFactors(int aNumber) {
 		List<Integer> retVal = new ArrayList<>();
 		for (int i = 1; i < aNumber; i++) {
@@ -231,6 +236,11 @@ public class NumberTheory {
 		
 	
 
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Integer sum of factors 
+	 */
 	public static int getAliquotSum(int aNumber) {
 		int retVal = 0;
 		for (Integer factor : getFactors(aNumber)) {
@@ -242,7 +252,11 @@ public class NumberTheory {
 		return getAliquotSum(getTheNumber());
 	}
 
-	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Sum of a numbers factors.
+	 */
 	public static int getFactorSum(int aNumber) {
 		int retVal = 0;
 		for (Integer factor : getFactors(aNumber)) {
@@ -271,6 +285,12 @@ public class NumberTheory {
 
 	
 
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Difference of aliquot sum and the number.
+	 * {@link  numberTheory.NumberTheory#getAliquotSum()}} 
+	 */
 	public static int getAbundance(int aNumber) {
 		return getAliquotSum(aNumber) - aNumber;
 	}
@@ -310,9 +330,10 @@ public class NumberTheory {
 	
 
 	/**
-	 * 
+	 * @author JeffreySchneider
 	 * @param aNumber
 	 * @return boolean is number perfect?
+	 * {@link  numberTheory.NumberTheory#getAbundace()}}
 	 */
 	public static boolean isPerfect(int aNumber) {
 		return getAbundance(aNumber) == 0;
@@ -345,6 +366,7 @@ public class NumberTheory {
 	
 	/**
 	 * @see #getReverseNumber(int)
+	 * 
 	 */
 	int getReverseNumber() {
 		return getReverseNumber(getTheNumber());
@@ -361,6 +383,11 @@ public class NumberTheory {
 
 
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return String hex value of number.
+	 */
 	public static String getHex(int aNumber) {
 		String retVal = "";
 		String[] hex = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
@@ -378,7 +405,11 @@ public class NumberTheory {
 	}
 
 
-
+	/**
+	 * 
+	 * @param aNumber
+	 * @return  String octal value of number.
+	 */
 	public static String getOctal(int aNumber) {
 		String retVal = "";
 		String[] dig = { "0", "1", "2", "3", "4", "5", "6", "7" };
@@ -397,6 +428,11 @@ public class NumberTheory {
 
 
 
+	/**
+	 * 
+	 * @param aNumber
+	 * @return  String binary value of number.
+	 */
 	public static String getBinary(int aNumber) {
 		return Integer.toBinaryString(aNumber).toString();
 	}
@@ -456,8 +492,7 @@ public class NumberTheory {
 	public static boolean isPrimativeAbundant(int aNumber) {
 		// 20, 70, True
 		// 87 False
-		if (isAbundant(aNumber)) {
-			// List<Integer> FactorArray = new ArrayList<>();
+		if (isAbundant(aNumber)) {			
 			List<Integer> FactorArray = getProperDivisors(aNumber);
 			for (int i = 0; i < FactorArray.size(); i++) {
 				if (getAliquotSum(FactorArray.get(i)) > 0) {
@@ -482,7 +517,7 @@ public class NumberTheory {
 	 * Keith number since it generates the sequence 1, 9, 7, 1+9+7=17, 9+7+17=33,
 	 * 7+17+33=57, 17+33+57=107, 33+57+107=197, ... (Keith). Keith numbers are also
 	 * called repfigit (repetitive fibonacci-like digit) numbers.
-	 * 
+	 * @author JeffreySchneider
 	 * @return boolean: is the number a Keith number?
 	 */
 	public static boolean isAKeithNumber(Integer aNumber) {
@@ -516,7 +551,11 @@ public class NumberTheory {
 	}
 
 
-
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean Is number Kynea?
+	 */
 	public static int getKynea(Integer aNumber) {
 		double kyneaA = Math.pow(4.0, Double.valueOf(aNumber));
 		double kyneaB = Math.pow(2.0, (Double.valueOf(aNumber) + 1.0));
@@ -530,7 +569,6 @@ public class NumberTheory {
 
 
 	public static int getCarol(int aNumber) {
-//		System.out.println(aNumber);
 		double carolA = Math.pow(4.0, Double.valueOf(aNumber));
 		double carolB = Math.pow(2.0, (Double.valueOf(aNumber) + 1.0));
 		double carolFinal = carolA - carolB - 1.0;
@@ -575,6 +613,11 @@ public class NumberTheory {
 		return factorial;
 	}
 
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return BigInteger catalan number
+	 */
 	public static BigInteger getCatalan(int aNumber) {
 		BigInteger catA = NumberTheory.getFactorial(2 * aNumber);
 		BigInteger catB = NumberTheory.getFactorial(aNumber + 1);
@@ -588,7 +631,12 @@ public class NumberTheory {
 
 
 
-
+	/**
+	 * 
+	 * @param aNumber
+	 * @return BigInteger List of {@link= https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to aNumber.
+	 * 
+	 */
 	public static List<BigInteger> getFibonacciList(int aNumber) {
 		BigInteger num1 = BigInteger.ZERO;
 		BigInteger num2 = BigInteger.ONE;
@@ -611,9 +659,9 @@ public class NumberTheory {
 	
 	
 	/**
-	 * From: https://www.geeksforgeeks.org/motzkin-number/
+	 * From: {@link=https://www.geeksforgeeks.org/motzkin-number/}
 	 * @param v
-	 * @return
+	 * @return  BigInteger Motzkin number
 	 */
 	public static BigInteger getMotzkin(int n) {
 		Map<Integer, BigInteger> memo = new HashMap<>();
@@ -727,6 +775,12 @@ public class NumberTheory {
 		return retList;
 	}
 
+	
+	/**
+	 * 
+	 * @param aNumber
+	 * @return Integer list of the Lucas sequence.
+	 */
 	public static List<Integer> getLucas(int aNumber) {
 		int num1 = 2;
 		int num2 = 1;
@@ -799,6 +853,11 @@ public class NumberTheory {
 	}
 	
 
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Integer list of  Jacobsthal numbers {@link https://en.wikipedia.org/wiki/Jacobsthal_number}
+	 */
 	public static List<Integer> getJacobsthal(int aNumber) {
 		int num1 = 0;
 		int num2 = 1;
@@ -826,6 +885,8 @@ public class NumberTheory {
 	 * How to use a 'for' BigInteger loop.
 	 * @param v
 	 * @return
+	 * @deprecated 
+	 * Save to show how to code a BigInteger for loop.
 	 */
 	public static boolean getAlternatingFactorialbkup(int v) {
 		HashMap<BigInteger,BigInteger> theList = new HashMap<>();
@@ -869,12 +930,22 @@ public class NumberTheory {
 	}
 
 
-
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Integer 
+	 * 
+	 * Two numbers  $(m,n)$  form an amicable pair if the sum of proper divisors 
+	 * of one number equals the other, i.e., if  $\sigma(n)-n = m$  and  
+	 * $\sigma(m)-m = n$.
+	 * 
+	 * {@link https://www.numbersaplenty.com/set/amicable_number/}
+	 */
 	public static int getAmicableNumber(int aNumber) {
-		int bla = NumberTheory.getAliquotSum(aNumber);
-		int blin = NumberTheory.getAliquotSum(bla);
-		if (blin == aNumber && bla > blin) {
-			return bla;
+		int firstDivisorSum = NumberTheory.getAliquotSum(aNumber);
+		int secondDivisorSum = NumberTheory.getAliquotSum(firstDivisorSum);
+		if (secondDivisorSum == aNumber && firstDivisorSum > secondDivisorSum) {
+			return firstDivisorSum;
 		}
 		return -1;
 	}
@@ -1593,7 +1664,18 @@ public class NumberTheory {
 	}
 	
 	
-	
+	/**
+	 * In number theory, a totative of a given positive integer n is an 
+	 *  integer k such that 0 < k ≤ n and k is coprime to n. 
+	 *  Euler's totient function φ(n) counts the number of totatives of n. 
+	 *  The totatives under multiplication modulo n form the multiplicative 
+	 *  group of integers modulo n.
+	 *  
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return Integer list of Totatives up to the number.
+	 * {@link https://en.wikipedia.org/wiki/Totative}
+	 */
 	public static List<Integer> getTotatives(int aNumber){
 		List<Integer> retList = new LinkedList<>(); //LinkedList? Why not?
 		int counter = 1;
@@ -1661,7 +1743,11 @@ public class NumberTheory {
 	
 	
 	
-	
+	/**
+	 * @author JeffreySchneider
+	 * @param aNumber
+	 * @return boolean Is number even?
+	 */
 	public static boolean isEven(int aNumber) {
 		return (aNumber % 2 == 0);
 	}
@@ -1722,7 +1808,6 @@ public class NumberTheory {
 	}
 	
 
-	//125
 	
 	boolean isEconomical() {
 		return isEconomical(getTheNumber());
@@ -2010,7 +2095,7 @@ public class NumberTheory {
 	 * @param aNumber
 	 * @return
 	 */
-	public static boolean isEconomical(int aNumber) {
+	public static boolean isEconomical(int n) {
 		int length = String.valueOf(n).length();
 		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
 		str = str.replace("^","").replace("*", "").trim();		
@@ -2024,10 +2109,10 @@ public class NumberTheory {
 	
 	/**
 	 * This method takes a list of prime factors and changes it from:
-	 *     2, 2, 2, 2, 2, 5, 5 to  2^5 5^2
+	 *     2, 2, 2, 2, 2, 5, 5 to  2^5*5^2
 	 *     to be used with isFrugal().
 	 * @param theList1
-	 * @return
+	 * @return String list of the prime factors.
 	 */
 	static String simplifiedPrimeFactor(List<Integer> theList1) {
 		String retVal = " ";
@@ -2038,13 +2123,15 @@ public class NumberTheory {
 			}else {
 				theHash.put(integer, 1);
 			}
-		}
-		
+		}		
 		System.out.println("Size of theHash: " + theHash.size());
 		int numberOfNumerals = theHash.size();
 		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
 		while(it.hasNext()) {
 			Map.Entry<Integer, Integer> entry = it.next();
+			/**
+			 * Adds the caret ^ symbol to show base raised to exponent power.
+			 */
 			if(entry.getValue() > 1) {
 				retVal += entry.getKey().toString() + "^" + entry.getValue().toString();
 			}else {
@@ -2067,7 +2154,7 @@ public class NumberTheory {
 	 * For example,  23=(10111)_2  is evil since the sum of its binary digits is 4.
 	 * 
 	 * @param v
-	 * @return
+	 * @return {@code true} if the number is evil.
 	 */
 	public static boolean isEvil(int v) {
 		int sum = 0;
@@ -2101,7 +2188,7 @@ public class NumberTheory {
 	 * number of divisors.
 	 * 
 	 * @param v
-	 * @return boolean
+	 * @return {@code boolean} 
 	 * 
 	 */
 	public static boolean isHighlyComposite(int v) {		
@@ -2132,7 +2219,15 @@ public class NumberTheory {
 	}
 
 
-	
+	/**
+	 * A number  'n'  is called pernicious if it contains a prime number 
+	 * of ones in its binary representation.
+	 * 
+	 * For example,  '21=(10101)_2'  is pernicious since it contains 3 ones 
+	 * and 3 is a prime number.
+	 * @param v
+	 * @return
+	 */
 	public static boolean isPernicious(int v) {
 		String retVal = Integer.toBinaryString(v);
 		int count = (int) retVal.chars().filter(ch->ch == '1').count();

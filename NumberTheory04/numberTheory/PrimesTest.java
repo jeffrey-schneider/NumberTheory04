@@ -125,11 +125,22 @@ class PrimesTest {
 	@DisplayName("Is interprime?")
 	public void isInterPrimeSpec() {
 		assertTrue(Primes.isInterPrime(120));
+		assertTrue(Primes.isInterPrime(1482));
+		assertTrue(Primes.isInterPrime(2802));
 		assertFalse(Primes.isInterPrime(121));
+		assertFalse(Primes.isInterPrime(1000));
 
 		instance.setTheNumber(120);
 		assertTrue(instance.isInterPrime());
+		instance.setTheNumber(1020);
+		assertTrue(instance.isInterPrime());
+		instance.setTheNumber(3120);
+		assertTrue(instance.isInterPrime());
+		instance.setTheNumber(2790);
+		assertTrue(instance.isInterPrime());
 		instance.setTheNumber(121);
+		assertFalse(instance.isInterPrime());
+		instance.setTheNumber(1101);
 		assertFalse(instance.isInterPrime());
 	}
 	
