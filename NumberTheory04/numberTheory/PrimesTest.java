@@ -157,4 +157,33 @@ class PrimesTest {
 		instance.setTheNumber(1050);
 		assertFalse(instance.isSemiPrime());
 	}
+	
+	@Test
+	@DisplayName("A_Pointer Prime")
+	public void isA_PointerPrime() {
+		assertTrue(Primes.isA_PointerPrime(293));
+		assertTrue(Primes.isA_PointerPrime(3221));
+		assertTrue(Primes.isA_PointerPrime(149033));
+		assertFalse(Primes.isA_PointerPrime(294));
+		
+		instance.setTheNumber(161123);
+		assertTrue(instance.isA_PointerPrime());
+		instance.setTheNumber(121508);
+		assertFalse(instance.isA_PointerPrime());		
+	}
+	
+	@Test
+	@DisplayName("M_Pointer Prime")
+	public void isM_PointerPrime() {
+		assertTrue(Primes.isM_PointerPrime(611113));
+		assertTrue(Primes.isM_PointerPrime(1123));
+		assertTrue(Primes.isM_PointerPrime(13121117));
+		assertFalse(Primes.isM_PointerPrime(294));
+		
+		instance.setTheNumber(12113);
+		assertTrue(instance.isM_PointerPrime());
+		instance.setTheNumber( 13120);
+		assertFalse(instance.isM_PointerPrime());		
+	}
+	
 }

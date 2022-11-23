@@ -6,21 +6,20 @@ public class Primes extends NumberTheory {
 
 	public Primes(int theNumber) {
 		super(theNumber);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Primes() {
-		super();// TODO Auto-generated constructor stub
+		super();
 	}
 
 	/**
 	 * @author JCSchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean In mathematics, a semiprime is a natural number that is the
 	 *         product of exactly two prime numbers.
 	 */
-	public static boolean isSemiPrime(int aNumber) {
-		List<Integer> anotherList = Primes.getPrimeFactors(aNumber);
+	public static boolean isSemiPrime(int v) {
+		List<Integer> anotherList = Primes.getPrimeFactors(v);
 		return (anotherList.size() == 2);
 	}
 
@@ -32,8 +31,8 @@ public class Primes extends NumberTheory {
 /**
  * @author JCSchneider	
  * @param v
- * @return
- * {@code}A semiprime  $p\cdot q$  for which  $p$  and  $q$  have the same number of digits is called brilliant number.
+ * @return boolean
+ * {@code}A semiprime  'p * q' for which  'p'  and  'q'  have the same number of digits is called brilliant number.
  * 
  */
 public static boolean isBrilliant(int v) {
@@ -67,11 +66,11 @@ boolean isBrilliant() {
 	 * A number is called emirpimes if it is a semiprime and if its reverse is a different
 	 * semiprime, thus excluding palindromic semiprimes.
 	 * @author JCSchneider
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static boolean isEmirpimeses(int aNumber) {
-		return isSemiPrime(aNumber) && isSemiPrime(getReverseNumber(aNumber));
+	public static boolean isEmirpimeses(int v) {
+		return isSemiPrime(v) && isSemiPrime(getReverseNumber(v));
 	}
 
 	boolean isEmirpimeses() {
@@ -79,14 +78,14 @@ boolean isBrilliant() {
 	}
 
 	/**
-	 * 
-	 * @param aNumber
+	 * @author JeffreySchneider
+	 * @param v
 	 * @return boolean A prime number p is called a Chen prime if p + 2 is either a
 	 *         prime or a product of two primes (also called a semiprime).
 	 */
-	public static boolean isChenPrime(int aNumber) {
-		if (isPrime(aNumber)) {
-			return (isPrime(aNumber + 2) || isSemiPrime(aNumber + 2));
+	public static boolean isChenPrime(int v) {
+		if (isPrime(v)) {
+			return (isPrime(v + 2) || isSemiPrime(v + 2));
 		}
 		return false;
 	}
@@ -101,19 +100,19 @@ boolean isBrilliant() {
 	 * 		at the same number of positions before and after it in the sequence of primes.
 	 * To solve this, create a list of primes from zero to 3x the number. Iterate pointers forwards and backwards
 	 *  in matching jumps through list.
-	 * 
-	 * @param aNumber
+	 * @author JeffreySchneider
+	 * @param v
 	 * @return
 	 */
-	public static boolean isGoodPrime(int aNumber) {
+	public static boolean isGoodPrime(int v) {
 		boolean retVal = true;
 		
 		List<Integer> thePrimeList = new LinkedList<>();
-		if(!isPrime(aNumber)) {
+		if(!isPrime(v)) {
 			return false;
 		}else {
 			//Create a list of prime numbers up to 3 times aNumber.
-			for(int i = 2; i <= aNumber*3; i++) {
+			for(int i = 2; i <= v*3; i++) {
 				if(isPrime(i)) {
 					thePrimeList.add(i);
 				}
@@ -122,13 +121,12 @@ boolean isBrilliant() {
 		
 		int small = 0;
 		int large = 0;		
-		if(thePrimeList.contains(aNumber)) {
-			int ndx = thePrimeList.indexOf(aNumber);
-			//System.out.println("n: " + aNumber);
+		if(thePrimeList.contains(v)) {
+			int ndx = thePrimeList.indexOf(v);
 			for (int ndxCounter = 1; ndxCounter < ndx; ndxCounter++) {
-				small = thePrimeList.get(thePrimeList.indexOf(aNumber) - ndxCounter);
-				large = thePrimeList.get(thePrimeList.indexOf(aNumber) + ndxCounter);
-				if((aNumber*aNumber) < (small*large)) {
+				small = thePrimeList.get(thePrimeList.indexOf(v) - ndxCounter);
+				large = thePrimeList.get(thePrimeList.indexOf(v) + ndxCounter);
+				if((v*v) < (small*large)) {
 					return false;
 				}
 			}
@@ -143,14 +141,14 @@ boolean isBrilliant() {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean	An emirp (prime spelled backwards) is a prime number 
 	 * 					that results in a different prime when its decimal digits 
 	 * 					are reversed. This definition excludes the related 
 	 * 					palindrome primes.
 	 */
-	public static boolean isEmirp(int aNumber) {
-		return (NumberTheory.isPrime(aNumber) && NumberTheory.isPrime(NumberTheory.getReverseNumber(aNumber)));
+	public static boolean isEmirp(int v) {
+		return (NumberTheory.isPrime(v) && NumberTheory.isPrime(NumberTheory.getReverseNumber(v)));
 	}
 	
 	boolean isEmirp() {
@@ -161,16 +159,16 @@ boolean isBrilliant() {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static boolean getA_PointerPrime(int aNumber){
-		if (!NumberTheory.isPrime(aNumber)) {
+	public static boolean isA_PointerPrime(int v){
+		if (!NumberTheory.isPrime(v)) {
 			return false;
 		} else {
 			Stack<Integer> theStack = new Stack<>();
-			int number = aNumber;
-			theStack.push(aNumber);
+			int number = v;
+			theStack.push(v);
 			while (number > 0) {
 				theStack.push(number % 10);
 				number /= 10;
@@ -183,61 +181,77 @@ boolean isBrilliant() {
 				return true;	
 			return false;
 		}
+	}	
+	
+	boolean isA_PointerPrime() {
+		return Primes.isA_PointerPrime(getTheNumber());
 	}
 	
-	boolean getA_PointerPrime() {
-		return getA_PointerPrime(getTheNumber());
+	public static boolean isM_PointerPrime(int v) {
+		if(!NumberTheory.isPrime(v)) {
+			return false;
+		}else {
+			Stack<Integer> theStack = new Stack<>();
+			int number = v;
+			theStack.push(v);
+			while (number > 0) {
+				theStack.push(number % 10);
+				number /= 10;
+			}
+			int nextNumber = 0;
+			while (!theStack.isEmpty()) {
+				nextNumber *= theStack.pop();
+			}
+			if (NumberTheory.isPrime(nextNumber))
+				return true;	
+			return false;
+		}
 	}
-
+	
+	boolean isM_PointerPrime() {
+		return Primes.isM_PointerPrime(getTheNumber());
+	}
+	
 	
 	/**
 	 * An interprime number is a composite that is the average of two consecutive 
-	 * primes, i.e., it is at equal distance from previous prime and next prime.
+	 * primes.
 	 * 
 	 * For example, 21 is an interprime since it is the average of the two consecutive primes 19 and 23.
 	 * 
 	 * @author JeffreySchneider
-	 * @param aNumber
-	 * @return
+	 * @param v
+	 * @return 
 	 */
-	public static boolean isInterPrime(int aNumber) {
-		List<Integer> theList = new ArrayList<>();
-		// Find the first prime number less than aNumber.
-		// Add it to a list, then break out of the discovery loop.
-		int counter = aNumber - 1;
-		while (counter > 0) {
-			if (NumberTheory.isPrime(counter)) {
-				theList.add(counter);
-				break;
-			} else {
-				counter--;
-			}
-		}
-		// Find the first prime number greater than aNumber.
-		// Add it to a list, then break out of the discovery loop.
-		counter = aNumber + 1;
-		while (counter >= aNumber) {
-			if (NumberTheory.isPrime(counter)) {
-				theList.add(counter);
-				break;
-			} else {
-				counter++;
-			}
-		}
-		// If aNumber is the same distance between the upper and lower numbers,
-		// you have a balanced prime.
-		int up = theList.get(0);
-		int dn = theList.get(1);
-		if (aNumber - up == dn - aNumber) {
-			return true;
-		} else {
+	public static boolean isInterPrime(int v) {
+		if(isPrime(v)) {
 			return false;
 		}
+		int theArray[] = { 0, 0}; 
+		int counter = v - 1;
+		while(counter > 0 ) {
+			if(isPrime(counter)) {
+				theArray[0] = counter;		
+				break;
+			}
+			counter--;
+		}
+		counter = v;
+		while(counter < v * 2) {
+			if(isPrime(counter)) {
+				theArray[1] = counter;				
+				break;
+			}
+			counter++;
+		}		
+		return (theArray[0] + theArray[1])/2 == v;		
 	}
 	
 	boolean isInterPrime() {
 		return Primes.isInterPrime(getTheNumber());
 	}
+
+
 
 	
 	

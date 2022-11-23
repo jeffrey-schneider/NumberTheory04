@@ -3,6 +3,9 @@
 
 package numberTheory;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,12 +56,12 @@ public class NumberTheory {
 
 
 	/**
-	 * 
-	 * @param aNumber the number to square
+	 * @author JeffreySchneider
+	 * @param v the number to square
 	 * @return the square of a number
 	 */
-	public static int getSquare(int aNumber) {
-		return aNumber * aNumber;
+	public static int getSquare(int v) {
+		return v * v;
 	}
 	int getSquare() {
 		return getSquare(getTheNumber());
@@ -68,12 +71,12 @@ public class NumberTheory {
 	
 	
 	/**
-	 * 
-	 * @param aNumber the number to cube
+	 * @author JeffreySchneider
+	 * @param v the number to cube
 	 * @return int the cube of the number
 	 */
-	public static int getCube(int aNumber) {
-		return (int) Math.pow(aNumber, 3);
+	public static int getCube(int v) {
+		return (int) Math.pow(v, 3);
 	}
 	int getCube() {
 		return getCube(getTheNumber());
@@ -83,14 +86,14 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber the number to test for primality
+	 * @param v the number to test for primality
 	 * @return boolean is number prime?
 	 */
-	public static boolean isPrime(int aNumber) {
-		int stopVal = (int) Math.sqrt(aNumber);
+	public static boolean isPrime(int v) {
+		int stopVal = (int) Math.sqrt(v);
 		int i = 2;
 		while (i <= stopVal) {
-			if (aNumber % i == 0) {
+			if (v % i == 0) {
 				return false;
 			}
 			i++;
@@ -105,15 +108,15 @@ public class NumberTheory {
 
 
 	/**
-	 * 
-	 * @param aNumber the number to generate collatz sequence from
+	 * @author JeffreySchneider
+	 * @param v the number to generate collatz sequence from
 	 * @return list of collatz sequence.
 	 * @see https://en.wikipedia.org/wiki/Collatz_conjecture#:~:text=The%20Collatz%20conjecture%20is%20one,every%20positive%20integer%20into%201.
 	 */
-	public static List<Integer> getCollatz(int aNumber) {
+	public static List<Integer> getCollatz(int v) {
 		List<Integer> retVal = new ArrayList<>();
-		retVal.add(aNumber);
-		int counter = aNumber;
+		retVal.add(v);
+		int counter = v;
 		while (counter > 1) {
 			if (counter % 2 == 0) {
 				counter /= 2;
@@ -133,16 +136,16 @@ public class NumberTheory {
 	
 
 	/**
-	 * 
-	 * @param aNumber
+	 * @author JeffreySchneider
+	 * @param v
 	 * @return list of jugglers sequence for the number
 	 * @see https://en.wikipedia.org/wiki/Juggler_sequence
 	 */
-	public static List<Integer> getJugglers(int aNumber) {
+	public static List<Integer> getJugglers(int v) {
 		double factr = 0.0;
 		List<Integer> retVal = new ArrayList<>();
-		retVal.add(aNumber);
-		int counter = aNumber;
+		retVal.add(v);
+		int counter = v;
 		while (counter > 1) {
 			if (counter % 2 == 0)
 				factr = .5;
@@ -157,35 +160,38 @@ public class NumberTheory {
 		return getJugglers(getTheNumber());
 	}
 	
-	
-
-	
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Integer list of factors.
 	 */
-	public static List<Integer> getFactors(int aNumber) {
+	public static List<Integer> getFactors(int v) {
 		List<Integer> retVal = new ArrayList<>();
-		for (int i = 1; i < aNumber; i++) {
-			if (aNumber % i == 0)
+		for (int i = 1; i < v; i++) {
+			if (v % i == 0)
 				retVal.add(i);
 		}
-		retVal.add(aNumber);
+		retVal.add(v);
 		return retVal;
 	}
 	List<Integer> getFactors() {
 		return getFactors(getTheNumber());
 	}
 	
-	public static List<Long> getFactors(long aNumber) {
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return  Long list of a number's factors.
+	 */
+	public static List<Long> getFactors(long v) {
 		List<Long> retVal = new ArrayList<>();
-		for (long i = 1; i < aNumber; i++) {
-			if (aNumber % i == 0)
+		for (long i = 1; i < v; i++) {
+			if (v % i == 0)
 				retVal.add(i);
 		}
-		retVal.add(aNumber);
+		retVal.add(v);
 		return retVal;
 	}
 	
@@ -194,13 +200,13 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return  List of Prime Factors
 	 */
-	public static List<Integer> getPrimeFactors(int aNumber) {
+	public static List<Integer> getPrimeFactors(int v) {
 		List<Integer> retVal = new ArrayList<>();
-		int ourNumber = aNumber;
-		for (int i = 2; i < aNumber; i++) {
+		int ourNumber = v;
+		for (int i = 2; i < v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -211,10 +217,10 @@ public class NumberTheory {
 	List<Integer> getPrimeFactors() {
 		return getPrimeFactors(getTheNumber());
 	}
-	public static List<Long> getPrimeFactors(long aNumber) {
+	public static List<Long> getPrimeFactors(long v) {
 		List<Long> retVal = new ArrayList<>();
-		long ourNumber = aNumber;
-		for (long i = 2; i < aNumber; i++) {
+		long ourNumber = v;
+		for (long i = 2; i < v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -238,15 +244,15 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Integer sum of factors 
 	 */
-	public static int getAliquotSum(int aNumber) {
+	public static int getAliquotSum(int v) {
 		int retVal = 0;
-		for (Integer factor : getFactors(aNumber)) {
+		for (Integer factor : getFactors(v)) {
 			retVal += factor;
 		}
-		return retVal - aNumber;
+		return retVal - v;
 	}
 	int getAliquotSum() {
 		return getAliquotSum(getTheNumber());
@@ -254,12 +260,12 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Sum of a numbers factors.
 	 */
-	public static int getFactorSum(int aNumber) {
+	public static int getFactorSum(int v) {
 		int retVal = 0;
-		for (Integer factor : getFactors(aNumber)) {
+		for (Integer factor : getFactors(v)) {
 			retVal += factor;
 		}
 		return retVal;
@@ -270,10 +276,10 @@ public class NumberTheory {
 	
 	
 
-	public static List<Integer> getProperDivisors(int aNumber) {
+	public static List<Integer> getProperDivisors(int v) {
 		List<Integer> retVal = new ArrayList<>();
-		for (int i = 1; i < aNumber; i++) {
-			if (aNumber % i == 0)
+		for (int i = 1; i < v; i++) {
+			if (v % i == 0)
 				retVal.add(i);
 		}
 		return retVal;
@@ -287,12 +293,12 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Difference of aliquot sum and the number.
 	 * {@link  numberTheory.NumberTheory#getAliquotSum()}} 
 	 */
-	public static int getAbundance(int aNumber) {
-		return getAliquotSum(aNumber) - aNumber;
+	public static int getAbundance(int v) {
+		return getAliquotSum(v) - v;
 	}
 	int getAbundance() {
 		return getAbundance(getTheNumber());
@@ -304,11 +310,11 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static boolean isAbundant(int aNumber) {
-		return getAliquotSum(aNumber) > aNumber;
+	public static boolean isAbundant(int v) {
+		return getAliquotSum(v) > v;
 	}
 	boolean isAbundant() {
 		return isAbundant(getTheNumber());
@@ -331,12 +337,12 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean is number perfect?
 	 * {@link  numberTheory.NumberTheory#getAbundace()}}
 	 */
-	public static boolean isPerfect(int aNumber) {
-		return getAbundance(aNumber) == 0;
+	public static boolean isPerfect(int v) {
+		return getAbundance(v) == 0;
 	}
 	/**
 	 * @see #isPerfect(int)
@@ -349,11 +355,11 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return int the number reversed
 	 */
-	public static int getReverseNumber(int aNumber) {
-		int num = aNumber;
+	public static int getReverseNumber(int v) {
+		int num = v;
 		int rev = 0;
 		int digit = 0;
 		while (num > 0) {
@@ -374,8 +380,13 @@ public class NumberTheory {
 
 
 
-	public static double getReciprocalNumber(int aNumber) {
-		return 1.0 / aNumber;
+	/**
+	 * 
+	 * @param v
+	 * @return double One divided by the number.
+	 */
+	public static double getReciprocalNumber(int v) {
+		return 1.0 / v;
 	}
 	double getReciprocalNumber() {
 		return getReciprocalNumber(getTheNumber());
@@ -385,14 +396,14 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return String hex value of number.
 	 */
-	public static String getHex(int aNumber) {
+	public static String getHex(int v) {
 		String retVal = "";
 		String[] hex = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
 		int rem = 0;
-		int buffer = aNumber;
+		int buffer = v;
 		while (buffer > 0) {
 			rem = buffer % 16;
 			retVal = hex[rem] + retVal;
@@ -407,14 +418,14 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return  String octal value of number.
 	 */
-	public static String getOctal(int aNumber) {
+	public static String getOctal(int v) {
 		String retVal = "";
 		String[] dig = { "0", "1", "2", "3", "4", "5", "6", "7" };
 		int rem = 0;
-		int buffer = aNumber;
+		int buffer = v;
 		while (buffer > 0) {
 			rem = buffer % 8;
 			retVal = dig[rem] + retVal;
@@ -430,11 +441,11 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return  String binary value of number.
 	 */
-	public static String getBinary(int aNumber) {
-		return Integer.toBinaryString(aNumber).toString();
+	public static String getBinary(int v) {
+		return Integer.toBinaryString(v).toString();
 	}
 	String getBinary() {
 		return getBinary(getTheNumber());
@@ -442,13 +453,13 @@ public class NumberTheory {
 
 
 
-	public static int getSigma(double aNumber) {
-		if (aNumber == 1) {
+	public static int getSigma(double v) {
+		if (v == 1) {
 			return 1;
 		}
 		int result = 0;
-		for (int i = 1; i <= aNumber; i++) {
-			if (aNumber % i == 0) {
+		for (int i = 1; i <= v; i++) {
+			if (v % i == 0) {
 				result += i;
 			}
 		}
@@ -463,14 +474,14 @@ public class NumberTheory {
 	
 	/**
 	 * 
-	 * @param aNumber number to check for superabundancy
+	 * @param v number to check for superabundancy
 	 * @return boolean is number superabundant?
 	 */
-	public static boolean isSuperabundant(int aNumber) {
+	public static boolean isSuperabundant(int v) {
 		double M = 0.0;
-		double theNumberDouble = Double.parseDouble(String.valueOf(aNumber));
+		double theNumberDouble = Double.parseDouble(String.valueOf(v));
 		double N = getSigma(theNumberDouble) / theNumberDouble;
-		for (double i = 0.0; i < aNumber; i++) {
+		for (double i = 0.0; i < v; i++) {
 			M = getSigma(i) / i;
 		}
 		if (M >= N) {
@@ -486,14 +497,14 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean is number primative abundant?
 	 */
-	public static boolean isPrimativeAbundant(int aNumber) {
+	public static boolean isPrimativeAbundant(int v) {
 		// 20, 70, True
 		// 87 False
-		if (isAbundant(aNumber)) {			
-			List<Integer> FactorArray = getProperDivisors(aNumber);
+		if (isAbundant(v)) {			
+			List<Integer> FactorArray = getProperDivisors(v);
 			for (int i = 0; i < FactorArray.size(); i++) {
 				if (getAliquotSum(FactorArray.get(i)) > 0) {
 					return true;
@@ -520,19 +531,19 @@ public class NumberTheory {
 	 * @author JeffreySchneider
 	 * @return boolean: is the number a Keith number?
 	 */
-	public static boolean isAKeithNumber(Integer aNumber) {
-		if (aNumber > Integer.MAX_VALUE) {
+	public static boolean isAKeithNumber(Integer v) {
+		if (v > Integer.MAX_VALUE) {
 			throw new ArithmeticException("Integer Overflow");
 		}
 		Deque<Integer> theDeque = new LinkedList<>();
-		int number = aNumber;
+		int number = v;
 		while (number > 0) {
 			theDeque.addFirst(number % 10);
 			number /= 10;
 		}
 		int nextNumber = 0;
 
-		while (nextNumber < aNumber) {
+		while (nextNumber < v) {
 			nextNumber = 0;
 			for (Integer item : theDeque) {
 				nextNumber += item;
@@ -540,7 +551,7 @@ public class NumberTheory {
 			theDeque.remove();
 			theDeque.add(nextNumber);
 
-			if (nextNumber == aNumber) {
+			if (nextNumber == v) {
 				return true;
 			}
 		}
@@ -553,12 +564,14 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean Is number Kynea?
+	 * 
+	 * Kynea numbers are near-squares of the form  '(2^k+1)^2-2=4^k+2^{k+1}-1'.
 	 */
-	public static int getKynea(Integer aNumber) {
-		double kyneaA = Math.pow(4.0, Double.valueOf(aNumber));
-		double kyneaB = Math.pow(2.0, (Double.valueOf(aNumber) + 1.0));
+	public static int getKynea(Integer v) {
+		double kyneaA = Math.pow(4.0, Double.valueOf(v));
+		double kyneaB = Math.pow(2.0, (Double.valueOf(v) + 1.0));
 		double kyneaFinal = kyneaA + kyneaB - 1.0;
 		return (int) kyneaFinal;
 	}
@@ -568,9 +581,16 @@ public class NumberTheory {
 
 
 
-	public static int getCarol(int aNumber) {
-		double carolA = Math.pow(4.0, Double.valueOf(aNumber));
-		double carolB = Math.pow(2.0, (Double.valueOf(aNumber) + 1.0));
+	/**
+	 * 
+	 * @param v  Return the v'th carol number.
+	 * @return integer  
+	 * 
+	 * A Carol number is an integer of the form 4n – 2(n+1) – 1. An equivalent formula is (2n-1)2 – 2.
+	 */
+	public static int getCarol(int v) {
+		double carolA = Math.pow(4.0, Double.valueOf(v));
+		double carolB = Math.pow(2.0, (Double.valueOf(v) + 1.0));
 		double carolFinal = carolA - carolB - 1.0;
 		return (int) carolFinal;
 	}
@@ -579,17 +599,29 @@ public class NumberTheory {
 	}
 
 
-
+	/**
+	 *@author JeffreySchneider
+	 * Return long factorial from v parameter
+	 * 	@param v
+	 * 	@return
+ 	*/
 	public static long getLittleFactorial(int v) {
-		int factorial = 1;
+		long factorial = 1;
 		for(int i = 1; i<=v; i++) {
 			factorial *= i;
 		}
 		return factorial;
 	}
-	public static BigInteger getFactorial(int aNumber) {
+	
+	/**
+	 * @author JeffreySchneider
+	 * Return BigInteger factorial from v parameter.
+	 * @param v
+	 * @return
+	 */
+	public static BigInteger getFactorial(int v) {
 		BigInteger factorial = BigInteger.ONE;
-		for (int i = 1; i <= aNumber; i++) {
+		for (int i = 1; i <= v; i++) {
 			factorial = factorial.multiply(BigInteger.valueOf(i));
 		}
 		return factorial;
@@ -602,12 +634,12 @@ public class NumberTheory {
 	/**
 	 * BigInteger for loop
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static BigInteger getFactorial(BigInteger aNumber) {
+	public static BigInteger getFactorial(BigInteger v) {
 		BigInteger factorial = BigInteger.ONE;
-		for(BigInteger i = BigInteger.ONE; i.compareTo(aNumber)!= 0; i = i.add(BigInteger.ONE)) {
+		for(BigInteger i = BigInteger.ONE; i.compareTo(v)!= 0; i = i.add(BigInteger.ONE)) {
 			factorial = factorial.multiply(i);
 		}
 		return factorial;
@@ -615,13 +647,13 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
-	 * @return BigInteger catalan number
+	 * @param v
+	 * @return BigInteger v'th catalan number
 	 */
-	public static BigInteger getCatalan(int aNumber) {
-		BigInteger catA = NumberTheory.getFactorial(2 * aNumber);
-		BigInteger catB = NumberTheory.getFactorial(aNumber + 1);
-		BigInteger catC = NumberTheory.getFactorial(aNumber);
+	public static BigInteger getCatalan(int v) {
+		BigInteger catA = NumberTheory.getFactorial(2 * v);
+		BigInteger catB = NumberTheory.getFactorial(v + 1);
+		BigInteger catC = NumberTheory.getFactorial(v);
 		BigInteger catFinal = catA.divide(catB.multiply(catC));
 		return catFinal;
 	}
@@ -633,18 +665,18 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return BigInteger List of {@link= https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to aNumber.
 	 * 
 	 */
-	public static List<BigInteger> getFibonacciList(int aNumber) {
+	public static List<BigInteger> getFibonacciList(int v) {
 		BigInteger num1 = BigInteger.ZERO;
 		BigInteger num2 = BigInteger.ONE;
 		int counter = 0;
 		List<BigInteger> retList = new ArrayList<>();
 
 		// Iterate until counter == aNumber
-		while (counter < aNumber) {
+		while (counter < v) {
 			retList.add(num1);
 			BigInteger num3 = num2.add(num1);
 			num1 = num2;
@@ -707,16 +739,16 @@ public class NumberTheory {
        
 	
 	/*
-	 * Returns the aNumber-th fibonacci number.
+	 * Returns the v-th fibonacci number.
 	 */
-	public static BigInteger getFibonacciBkup(int aNumber) {
+	public static BigInteger getFibonacciBkup(int v) {
 		BigInteger num1 = BigInteger.ZERO;
 		BigInteger num2 = BigInteger.ONE;
 		BigInteger num3 = BigInteger.ZERO;
 		int counter = 1;
 
 		// Iterate until counter == aNumber
-		while(num3.compareTo(BigInteger.valueOf(counter)) < aNumber){
+		while(num3.compareTo(BigInteger.valueOf(counter)) < v){
 			num3 = num2.add(num1);
 			num1 = num2;
 			num2 = num3;
@@ -726,7 +758,12 @@ public class NumberTheory {
 	}
 	
 	
+	/**
+	 * Used for memoization.
+	 */
 	private static Map<Integer, BigInteger> memo = new HashMap<>();
+	
+	
 	
 	//https://www.interviewcake.com/concept/java/memoization
 	public static BigInteger getFibonacci(int n) {
@@ -751,21 +788,23 @@ public class NumberTheory {
 		
 	}
 	
+	
+	
 	/**
 	 * Not working yet - this is part of the fibodiv number solution
-	 * @param aNumber
+	 * @param v
 	 * @param number1
 	 * @param number2
 	 * @return
 	 */
-	public static List<Integer> getFibonacciLike(int aNumber, int number1, int number2){
+	public static List<Integer> getFibonacciLike(int v, int number1, int number2){
 		int num1 = number1;
 		int num2 = number2;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
 		
 		//Iterate until counter == aNumber
-		while(counter < aNumber) {
+		while(counter < v) {
 			retList.add(num1);
 			int num3 = num2 + num1;
 			num1 = num2;
@@ -778,17 +817,17 @@ public class NumberTheory {
 	
 	/**
 	 * 
-	 * @param aNumber
-	 * @return Integer list of the Lucas sequence.
+	 * @param v
+	 * @return Integer list of the Lucas sequence up to v.
 	 */
-	public static List<Integer> getLucas(int aNumber) {
+	public static List<Integer> getLucas(int v) {
 		int num1 = 2;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
 
 		// Iterate until counter == aNumber
-		while (counter < aNumber) {
+		while (counter < v) {
 			retList.add(num1);
 			int num3 = num2 + num1;
 			num1 = num2;
@@ -807,16 +846,16 @@ public class NumberTheory {
 	 * @author JCSchneider The sequence of Pell numbers starts with 0 and 1, and
 	 *         then each Pell number is the sum of twice the previous Pell number
 	 *         and the Pell number before that.
-	 * @param aNumber
-	 * @return
+	 * @param v
+	 * @return Integer list of pell numbers up to and including v.
 	 */
-	public static List<Integer> getPellList2(int aNumber) {
+	public static List<Integer> getPellList2(int v) {
 		int num1 = 0;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
 		// Iterate until counter == aNumber
-		while (counter < aNumber) {
+		while (counter < v) {
 			retList.add(num1);
 			int num3 = 2 * num2 + num1;
 			num1 = num2;
@@ -826,13 +865,19 @@ public class NumberTheory {
 		return retList;
 	}
 
-	public static List<BigInteger> getPellList(int aNumber) {
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return BigInteger List of Pell Numbers up to and including v.
+	 */
+	public static List<BigInteger> getPellList(int v) {
 		BigInteger num1 = BigInteger.ZERO;
 		BigInteger num2 = BigInteger.ONE;
 		int counter = 0;
 		List<BigInteger> retList = new ArrayList<>();
 		// Iterate until counter == aNumber
-		while (counter < aNumber) {
+		while (counter < v) {
 			retList.add(num1);
 			BigInteger num3 = BigInteger.TWO.multiply(num2).add(num1);
 			// int num3 = 2 * num2 + num1;
@@ -843,8 +888,8 @@ public class NumberTheory {
 		return retList;
 	}
 
-	public static BigInteger getPell(int aNumber) {
-		List<BigInteger> theList = getPellList(aNumber);
+	public static BigInteger getPell(int v) {
+		List<BigInteger> theList = getPellList(v);
 		Stack<BigInteger> theStack = new Stack<>();
 		for (BigInteger bigInteger : theList) {
 			theStack.push(bigInteger);
@@ -855,16 +900,16 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Integer list of  Jacobsthal numbers {@link https://en.wikipedia.org/wiki/Jacobsthal_number}
 	 */
-	public static List<Integer> getJacobsthal(int aNumber) {
+	public static List<Integer> getJacobsthal(int v) {
 		int num1 = 0;
 		int num2 = 1;
 		int counter = 0;
 		List<Integer> retList = new ArrayList<>();
 		// Iterate until counter == aNumber
-		while (counter < aNumber) {
+		while (counter < v) {
 			retList.add(num1);
 			int num3 = num2 + 2 * num1;
 			num1 = num2;
@@ -897,9 +942,9 @@ public class NumberTheory {
 			theList.put(i, getFactorial(i));
 		}
 		
-		theList.entrySet().forEach(entry->{
-			System.out.println(entry.getKey() + " " + entry.getValue());
-		});
+//		theList.entrySet().forEach(entry->{
+//			System.out.println(entry.getKey() + " " + entry.getValue());
+//		});
 		
 		return false;		
 	}
@@ -925,14 +970,12 @@ public class NumberTheory {
 	}
 
 
-	boolean getA_PointerPrime() {
-		return Primes.getA_PointerPrime(getTheNumber());
-	}
+	
 
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Integer 
 	 * 
 	 * Two numbers  $(m,n)$  form an amicable pair if the sum of proper divisors 
@@ -941,10 +984,10 @@ public class NumberTheory {
 	 * 
 	 * {@link https://www.numbersaplenty.com/set/amicable_number/}
 	 */
-	public static int getAmicableNumber(int aNumber) {
-		int firstDivisorSum = NumberTheory.getAliquotSum(aNumber);
+	public static int getAmicableNumber(int v) {
+		int firstDivisorSum = NumberTheory.getAliquotSum(v);
 		int secondDivisorSum = NumberTheory.getAliquotSum(firstDivisorSum);
-		if (secondDivisorSum == aNumber && firstDivisorSum > secondDivisorSum) {
+		if (secondDivisorSum == v && firstDivisorSum > secondDivisorSum) {
 			return firstDivisorSum;
 		}
 		return -1;
@@ -954,6 +997,12 @@ public class NumberTheory {
 	}
 
 
+	/**
+	 * @author JeffreySchneider
+	 * @param base
+	 * @param exponent
+	 * @return String   BigInteger raised to exponent point.
+	 */
 	public static String getBigIntegerPower(int base, int exponent) {
 		BigInteger biggie = BigInteger.valueOf(base);
 		String retVal = biggie.pow(exponent).toString();
@@ -961,13 +1010,17 @@ public class NumberTheory {
 	}
 
 
-	public static String getApocolyptic(int exponent) {
+	/**
+	 * @author JeffreySchneider
+	 * @param exponent
+	 * @return {@code True} A number n such that the pattern 666 is contained among the digits of 2^n. 
+	 */
+	public static boolean isApocalyptic(int exponent) {
 		String getTestNumber = getBigIntegerPower(2, exponent);
-//		System.out.println();
-		return "NOPE";
+		return getTestNumber.contains("666");
 	}
-	String getApocolyptic() {
-		return getApocolyptic(getTheNumber());
+	boolean isApocalyptic() {
+		return isApocalyptic(getTheNumber());
 	}
 
 
@@ -1022,10 +1075,17 @@ public class NumberTheory {
 	}
 
 
-	// https://www.javatpoint.com/carmichael-numbers-in-java
-	public static boolean isCarmichael(int aNumber) {
-		for (int b = 2; b <= aNumber; b++) {
-			if (gcd(b, aNumber) == 1 && power(b, aNumber - 1, aNumber) != 1)
+	
+	/**
+	 * @author https://www.javatpoint.com/carmichael-numbers-in-java
+	 * @param v
+	 * @return boolean
+	 * 
+	 * @see{https://en.wikipedia.org/wiki/Carmichael_number}
+	 */
+	public static boolean isCarmichael(int v) {
+		for (int b = 2; b <= v; b++) {
+			if (gcd(b, v) == 1 && power(b, v - 1, v) != 1)
 				return false;
 		}
 		return true;
@@ -1049,8 +1109,17 @@ public class NumberTheory {
 	
 
 	// Wikipedia
-	public static int getCakeNumber(int aNumber) {
-		return (int) ((1.0 / 6.0) * (Math.pow(aNumber, 3) + 5 * aNumber + 6));
+	/**
+	 * <CODE> In mathematics, the cake number, denoted by Cn, is the maximum number of regions into which a 3-dimensional 
+	 * cube can be partitioned by exactly n planes. The cake number is so-called because one may imagine each partition of 
+	 * the cube by a plane as a slice made by a knife through a cube-shaped cake. It is the 3D analogue of the lazy 
+	 * caterer's sequence.
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static int getCakeNumber(int v) {
+		return (int) ((1.0 / 6.0) * (Math.pow(v, 3) + 5 * v + 6));
 	}
 	int getCakeNumber() {
 		return getCakeNumber(getTheNumber());
@@ -1058,8 +1127,8 @@ public class NumberTheory {
 
 
 
-	public static int getLazyCaterer(int aNumber) {
-		return (aNumber * aNumber + aNumber + 2) / 2;
+	public static int getLazyCaterer(int v) {
+		return (v * v + v + 2) / 2;
 	}
 	int getLazyCaterer() {
 		return getLazyCaterer(getTheNumber());
@@ -1067,15 +1136,15 @@ public class NumberTheory {
 
 
 
-	public static BigInteger getBellNumber(int aNumber) {
-		BigInteger[][] bell = new BigInteger[aNumber + 1][aNumber + 1];
+	public static BigInteger getBellNumber(int v) {
+		BigInteger[][] bell = new BigInteger[v + 1][v + 1];
 		bell[0][0] = BigInteger.ONE;
-		for (int i = 1; i <= aNumber; i++) {
+		for (int i = 1; i <= v; i++) {
 			bell[i][0] = bell[i - 1][i - 1];
 			for (int j = 1; j <= i; j++)
 				bell[i][j] = bell[i - 1][j - 1].add(bell[i][j - 1]);
 		}
-		return bell[aNumber][0];
+		return bell[v][0];
 	}
 	BigInteger getBellNumber() {
 		return getBellNumber(getTheNumber());
@@ -1089,26 +1158,26 @@ public class NumberTheory {
 	 * @return is the number admirable?
 	 */
 
-	public static boolean isAdmirable(int aNumber) {
-		int sigmaN = getSigma(aNumber);
-		for (int i = 2; i <= Math.sqrt(aNumber); i++) {
+	public static boolean isAdmirable(int v) {
+		int sigmaN = getSigma(v);
+		for (int i = 2; i <= Math.sqrt(v); i++) {
 			// if 'i' is a divisor of 'num'
-			if (aNumber % i == 0) {
+			if (v % i == 0) {
 				// if both divisors are the same, then add
 				// it only once else add both
-				if (i == (aNumber / i)) {
-					if (sigmaN - 2 * i == 2 * aNumber)
+				if (i == (v / i)) {
+					if (sigmaN - 2 * i == 2 * v)
 						return true;
 				} else {
-					if (sigmaN - 2 * i == 2 * aNumber)
+					if (sigmaN - 2 * i == 2 * v)
 						return true;
-					if (sigmaN - 2 * (aNumber / i) == 2 * aNumber)
+					if (sigmaN - 2 * (v / i) == 2 * v)
 						return true;
 				}
 			}
 		}
 		// Check 1 since 1 is also a divisor
-		if (sigmaN - 2 * 1 == 2 * aNumber)
+		if (sigmaN - 2 * 1 == 2 * v)
 			return true;
 		return false;
 	}
@@ -1121,13 +1190,13 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/amenable-numbers/
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return is number Amenable
 	 */
-	public static boolean isAmenable(int aNumber) {
+	public static boolean isAmenable(int v) {
 		// return true if N is of the form
 		// 4K or 4K+1
-		return (aNumber % 4 == 0 || (aNumber - 1) % 4 == 0);
+		return (v % 4 == 0 || (v - 1) % 4 == 0);
 	}
 	boolean isAmenable() {
 		return isAmenable(getTheNumber());
@@ -1151,13 +1220,13 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/super-d-numbers/
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean - is number SuperD?
 	 */
-	public static boolean isSuperD(int aNumber) {
+	public static boolean isSuperD(int v) {
 		for (int d = 2; d < 10; d++) {
 			String subString = intToString(d);
-			if (String.valueOf((d * Math.pow(aNumber, d))).contains(subString)) {
+			if (String.valueOf((d * Math.pow(v, d))).contains(subString)) {
 				return true;
 			}
 		}
@@ -1209,11 +1278,11 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/alternating-numbers/
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean
 	 */
-	public static boolean isAlternating(int aNumber) {
-		String str = Integer.toString(aNumber);
+	public static boolean isAlternating(int v) {
+		String str = Integer.toString(v);
 		return (isEvenOddForm(str) || isOddEvenForm(str));
 	}
 	/**
@@ -1232,11 +1301,11 @@ public class NumberTheory {
 	 * A number n is said to be anti-perfect if it is equal to the sum of the
 	 * reverses of its proper divisors.
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean
 	 */
-	public static boolean isAntiPerfect(int aNumber) {
-		List<Integer> list = getFactors(aNumber);
+	public static boolean isAntiPerfect(int v) {
+		List<Integer> list = getFactors(v);
 		int lastElement = list.size() - 1;
 		list.remove(lastElement);
 		int sum = 0;
@@ -1244,7 +1313,7 @@ public class NumberTheory {
 			sum += getReverseNumber(integer);
 //			System.out.println(getReverseNumber(integer));
 		}
-		if (sum == aNumber) {
+		if (sum == v) {
 			return true;
 		}
 		return false;
@@ -1255,8 +1324,8 @@ public class NumberTheory {
 
 	
 
-	public static boolean isArithmetic(int aNumber) {
-		List<Integer> list = getFactors(aNumber);
+	public static boolean isArithmetic(int v) {
+		List<Integer> list = getFactors(v);
 		int sum = 0;
 		for (Integer integer : list) {
 			sum += integer;
@@ -1280,10 +1349,10 @@ public class NumberTheory {
 	 * two parts, a and b, such that N is equal to the sum of the integers from a to
 	 * b and a + b = N where ‘+’ denotes concatenation.
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean
 	 */
-	public static boolean isAstonishing(int aNumber) {
+	public static boolean isAstonishing(int v) {
 		
 		//Does not work for all numbers 
 		// 190 204 216
@@ -1294,20 +1363,20 @@ public class NumberTheory {
 
 		// Loop to find sum of all integers
 		// from i until the sum becomes >= aNumber
-		for (int i = 1; i < aNumber; i++) {
+		for (int i = 1; i < v; i++) {
 			// variable to store sum of all integers
 			// from i to j and check if sum and
 			// concatenation equals aNumber or not.
 			int sum = 0;
-			for (int j = i; j < aNumber; j++) {
+			for (int j = i; j < v; j++) {
 				sum += j;
-				if (sum == aNumber) {
+				if (sum == v) {
 
 					// Finding concatenation of i and j
 					int concatenation = concat(i, j);
 
 					// condition for astonishing number
-					if (concatenation == aNumber) {
+					if (concatenation == v) {
 						return true;
 					}
 				}
@@ -1344,13 +1413,13 @@ public class NumberTheory {
 
 	/**
 	 * @author Jeffrey Schneider
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static boolean isAutomorphic(long aNumber) {
-		long squared = (long) Math.pow(aNumber, 2.0);
+	public static boolean isAutomorphic(long v) {
+		long squared = (long) Math.pow(v, 2.0);
 		String theString = String.valueOf(squared);
-		String ends = String.valueOf(aNumber);
+		String ends = String.valueOf(v);
 //		System.out.printf("\n%s %s\n", theString, ends);
 		return theString.endsWith(ends);
 
@@ -1358,14 +1427,14 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return List list of non-trivial (not the number and not the number 1)
 	 *         divisors
 	 * 
 	 */
-	public static List<Integer> getNonTrivialDivisors(int aNumber) {
+	public static List<Integer> getNonTrivialDivisors(int v) {
 		List<Integer> retList = new ArrayList<>();
-		retList = getFactors(aNumber);
+		retList = getFactors(v);
 		Collections.sort(retList);
 		int Length = retList.size();
 		retList.remove(Length - 1);
@@ -1376,16 +1445,16 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return List list of the digits in a number
 	 */
-	public static List<Integer> getListOfDigits(int aNumber) {
+	public static List<Integer> getListOfDigits(int v) {
 		List<Integer> retList = new LinkedList<>();
 		// This works right to left.
-		while (aNumber > 0) {
-			int remainder = aNumber % 10;
+		while (v > 0) {
+			int remainder = v % 10;
 			retList.add(remainder);
-			aNumber /= 10;
+			v /= 10;
 		}
 		// Flip the list to get it in the correct order.
 		Collections.reverse(retList);
@@ -1411,11 +1480,11 @@ public class NumberTheory {
 		return retList;
 	}
 
-	public static int[] getFirstAndLastDigits(int aNumber) {		
+	public static int[] getFirstAndLastDigits(int v) {		
 //		int firstDigit = getListOfDigits(aNumber).get(0);
 //		int length = getListOfDigits(aNumber).size() -1 ; 
 //		int lastDigit = getListOfDigits(aNumber).get(length);
-		List<Integer> theList = getListOfDigits(aNumber);
+		List<Integer> theList = getListOfDigits(v);
 		int firstDigit = theList.get(0);
 		int length = theList.size()-1;
 		int lastDigit = theList.get(length);
@@ -1476,7 +1545,7 @@ public class NumberTheory {
 	 * Canada number because {@code <code>5^2+8^2+1^2=7+83</code>}.
 	 * 
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean is number a Canada Number?
 	 * 
 	 * @see #getNonTrivialDivisors(int)
@@ -1484,9 +1553,9 @@ public class NumberTheory {
 	 * @see #getSumOfSquares(List)
 	 * @see #getSumOfDigits(List)
 	 */
-	public static boolean isCanadaNumber(int aNumber) {
-		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(aNumber));
-		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(aNumber));
+	public static boolean isCanadaNumber(int v) {
+		int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(v));
+		int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(v));
 		return sumOfSquaresOfDigits == sumOfNonTrivialDivisors;
 	}
 	boolean isCanadaNumber() {
@@ -1496,22 +1565,22 @@ public class NumberTheory {
 
 	/**
 	 * @author Jeffrey Schneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean
 	 * 
 	 *         {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
 	 * i.e., it is at equal distance from previous prime and next prime.</code>}
 	 */
-	public static boolean isBalancedPrime(int aNumber) {
+	public static boolean isBalancedPrime(int v) {
 		// If aNumber isn't prime, don't go any further.
-		if (!isPrime(aNumber)) {
+		if (!isPrime(v)) {
 			return false;
 		}
 		List<Integer> theList = new ArrayList<>();
 
 		// Find the first prime number less than aNumber.
 		// Add it to a list, then break out of the discovery loop.
-		int counter = aNumber - 1;
+		int counter = v - 1;
 		while (counter > 0) {
 			if (isPrime(counter)) {
 				theList.add(counter);
@@ -1523,8 +1592,8 @@ public class NumberTheory {
 
 		// Find the first prime number greater than aNumber.
 		// Add it to a list, then break out of the discovery loop.
-		counter = aNumber + 1;
-		while (counter >= aNumber) {
+		counter = v + 1;
+		while (counter >= v) {
 			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
@@ -1536,7 +1605,7 @@ public class NumberTheory {
 		// you have a balanced prime.
 		int up = theList.get(0);
 		int dn = theList.get(1);
-		if (aNumber - up == dn - aNumber) {
+		if (v - up == dn - v) {
 			return true;
 		} else {
 			return false;
@@ -1547,8 +1616,8 @@ public class NumberTheory {
 
 	
 	// https://oeis.org/wiki/Centered_polygonal_numbers
-	public static int getCenteredPolygonalNumber(int sideNumber, int aNumber) {
-		return (int) sideNumber * aNumber * (aNumber + 1) / 2 + 1;
+	public static int getCenteredPolygonalNumber(int sideNumber, int v) {
+		return (int) sideNumber * v * (v + 1) / 2 + 1;
 	}
 
 	
@@ -1565,14 +1634,14 @@ public class NumberTheory {
 	
 	/**
 	 * @author Jeffrey Schneider
-	 * @param aNumber
+	 * @param v
 	 * @return BigInteger multiples of aNumber of primes.
 	 */
-	public static BigInteger getPrimorials(int aNumber){
+	public static BigInteger getPrimorials(int v){
 		BigInteger summary = BigInteger.ONE;
 		int counter = 1;
 		int numberOfPrimes = 0;
-		while(numberOfPrimes <= aNumber) {
+		while(numberOfPrimes <= v) {
 			if(isPrime(counter)) {
 				summary = summary.multiply(BigInteger.valueOf(counter));
 				numberOfPrimes++;
@@ -1588,12 +1657,12 @@ public class NumberTheory {
 	//n * 2^n + 1
 	/**
 	 * @author JCSchneider
-	 * @param aNumber
+	 * @param v
 	 * @return BigInteger getCullen()
 	 */
-	public static BigInteger getCullen(int aNumber) {
-		BigInteger n = BigInteger.valueOf(aNumber);		
-		BigInteger exponent = BigInteger.TWO.pow(aNumber);
+	public static BigInteger getCullen(int v) {
+		BigInteger n = BigInteger.valueOf(v);		
+		BigInteger exponent = BigInteger.TWO.pow(v);
 		BigInteger retVal = n.multiply(exponent).add(BigInteger.ONE);
 		//retVal = BigInteger.valueOf(aNumber).multiply(partC);		
 		//return (int) (aNumber * Math.pow(2, aNumber) + 1);
@@ -1607,18 +1676,18 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @param bNumber
 	 * @return boolean is the gcd of both numbers 1?
 	 */
-	public static boolean isCoPrime(long aNumber, long bNumber) {
-		if( gcd(aNumber, bNumber) == 1) {
+	public static boolean isCoPrime(long v, long bNumber) {
+		if( gcd(v, bNumber) == 1) {
 			return true;
 		}
 		return false;
 	}
-	public static boolean isCoPrime(int aNumber, int bNumber) {
-		return isCoPrime((long)aNumber, (long) bNumber);
+	public static boolean isCoPrime(int v, int bNumber) {
+		return isCoPrime((long)v, (long) bNumber);
 	}
 	boolean isCoPrime(int bNumber) {
 		return isCoPrime(getTheNumber(), bNumber); 
@@ -1627,14 +1696,14 @@ public class NumberTheory {
 	
 	/**
 	 * Not sure if this works....  09/30/2022
-	 * @param aNumber
+	 * @param v
 	 * @return
 	 */
-	public static BigInteger getCompositorial(int aNumber) {
-		BigInteger fact = getFactorial(aNumber);
-		BigInteger prim = getPrimorials(aNumber);
+	public static BigInteger getCompositorial(int v) {
+		BigInteger fact = getFactorial(v);
+		BigInteger prim = getPrimorials(v);
 		BigInteger retVal = fact.divide(prim);
-		System.out.println(aNumber + " fact: " + fact + " prim: " + prim + " getCompositorial: " + retVal);
+//		System.out.println(v + " fact: " + fact + " prim: " + prim + " getCompositorial: " + retVal);
 		return retVal;
 	}
 	
@@ -1643,14 +1712,14 @@ public class NumberTheory {
 	
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return boolean  
 	 * J.J.Tattersall defined the Curzon numbers to be those  n  for which  2n+1  divides  2^n+1.
 	 */
-	public static boolean isCurzon(int aNumber) {		
+	public static boolean isCurzon(int v) {		
 		BigInteger two = BigInteger.TWO;
-		BigInteger a = two.pow(aNumber).add(BigInteger.ONE);
-		BigInteger b = two.multiply(BigInteger.valueOf(aNumber)).add(BigInteger.ONE);
+		BigInteger a = two.pow(v).add(BigInteger.ONE);
+		BigInteger b = two.multiply(BigInteger.valueOf(v)).add(BigInteger.ONE);
 		return a.mod(b) == BigInteger.ZERO;
 	}
 	boolean isCurzon() {
@@ -1659,7 +1728,7 @@ public class NumberTheory {
 	
 	
 
-	public static List<Integer> getPowerfulNumber(int aNumber){
+	public static List<Integer> getPowerfulNumber(int v){
 		return null;
 	}
 	
@@ -1672,15 +1741,15 @@ public class NumberTheory {
 	 *  group of integers modulo n.
 	 *  
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return Integer list of Totatives up to the number.
 	 * {@link https://en.wikipedia.org/wiki/Totative}
 	 */
-	public static List<Integer> getTotatives(int aNumber){
+	public static List<Integer> getTotatives(int v){
 		List<Integer> retList = new LinkedList<>(); //LinkedList? Why not?
 		int counter = 1;
-		while(counter <= aNumber) {
-			if(isCoPrime(aNumber, counter)) {
+		while(counter <= v) {
+			if(isCoPrime(v, counter)) {
 				retList.add(counter);
 			}
 			counter++;
@@ -1693,8 +1762,8 @@ public class NumberTheory {
 	
 	
 
-	public static int getEulersTotient(int aNumber) {
-		return getTotatives(aNumber).size();
+	public static int getEulersTotient(int v) {
+		return getTotatives(v).size();
 	}
 
 	int getEulersTotient() {
@@ -1703,8 +1772,8 @@ public class NumberTheory {
 
 	
 	
-	public static boolean isCyclic(int aNumber) {
-		return isCoPrime(aNumber, getEulersTotient(aNumber));
+	public static boolean isCyclic(int v) {
+		return isCoPrime(v, getEulersTotient(v));
 	}
 	
 	boolean isCyclic() {
@@ -1745,11 +1814,11 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean Is number even?
 	 */
-	public static boolean isEven(int aNumber) {
-		return (aNumber % 2 == 0);
+	public static boolean isEven(int v) {
+		return (v % 2 == 0);
 	}
 	boolean isEven() {
 		return isEven(getTheNumber());
@@ -1759,19 +1828,19 @@ public class NumberTheory {
 	
 	/**
 	 * @author(Jeffrey Schneider)
-	 * @param aNumber
+	 * @param v
 	 * @return BigInteger The double factorial of an integer  'n>0', denoted by  'n!!', 
 	 * 	is the product of all the integers from 1 to  'n'  which have 
 	 * 	the same parity as  'n'.
 	 */
-	public static BigInteger getDoubleFactorial(int aNumber) {		
+	public static BigInteger getDoubleFactorial(int v) {		
 		BigInteger factorial = BigInteger.ONE;
 		int start = 1;
-		if(isEven(aNumber)) {
+		if(isEven(v)) {
 			start = 2;			
 		}
-		System.out.println(start);
-		for(int count = start; count <= aNumber; count+=2) {			
+//		System.out.println(start);
+		for(int count = start; count <= v; count+=2) {			
 			factorial = factorial.multiply(BigInteger.valueOf(count));
 		}
 		return factorial;
@@ -1783,13 +1852,13 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean  Mario Velucchi called a number  'n'  droll 
 	 * 					if the sum of its even prime factors equals 
 	 * 					the sum of its odd prime factors.
 	 */
-	public static boolean isDroll(int aNumber) {				
-		List<Integer> primeFactors = getPrimeFactors(aNumber);
+	public static boolean isDroll(int v) {				
+		List<Integer> primeFactors = getPrimeFactors(v);
 		int evenTotal = 0;
 		int oddTotal = 0;
 		for (Integer integer : primeFactors) {
@@ -1847,17 +1916,17 @@ public class NumberTheory {
 	/**
 	 * @author JeffreySchneider	
 	 *  
-	 * @param aNumber
+	 * @param v
 	 * @return	boolean  Duffinian numbers are defined as numbers that are composite
 	 * 					 and relatively prime to the sum of their divisors. The first 
 	 * 					 such number is 4 because it is composite and the sum of its
 	 * 					 divisors (1, 2 and 4) is 7 and relatively prime to 4. 
 	 * 					 Source: http://voodooguru23.blogspot.com/2018/10/duffinian-numbers.html
 	 */
-	public static boolean isDuffinian(int aNumber) {
+	public static boolean isDuffinian(int v) {
 		//int factorSum = getFactorSum(aNumber);
-		int factorSum = getSigma(aNumber);
-		if(isCoPrime(aNumber, factorSum)){
+		int factorSum = getSigma(v);
+		if(isCoPrime(v, factorSum)){
 			return true;
 		}
 		return false;
@@ -1881,7 +1950,7 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return boolean 
 	 * 
 	 * This is broken.  Floor and ceil don't seem to work.
@@ -1890,8 +1959,8 @@ public class NumberTheory {
 	 *  17428320,27027000,46683000,52141320,71253000,80832960
 	 * 
 	 */
-	public static boolean isHarmonicDivisorNumber(int aNumber) {
-		List<Integer> theList = getFactors(aNumber);
+	public static boolean isHarmonicDivisorNumber(int v) {
+		List<Integer> theList = getFactors(v);
 		double harmMean = getHarmonicMean(theList);
 		//double harmMeanTrunc = Math.floor(harmMean * 100) / 100;
 		if(harmMean  % 1 == 0) //Best way to tell if the harmonic mean is an integer?
@@ -1906,12 +1975,12 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return	boolean  A number divisible by the sum of its digits.
 	 */
-	public static boolean isHarshad(int aNumber) {
-		int summation = getSumOfDigits(getListOfDigits(aNumber));
-		if(aNumber % summation == 0)
+	public static boolean isHarshad(int v) {
+		int summation = getSumOfDigits(getListOfDigits(v));
+		if(v % summation == 0)
 			return true;
 		return false;
 	}
@@ -1922,14 +1991,14 @@ public class NumberTheory {
 	
 	/**
 	 * 
-	 * @param aNumber
+	 * @param v
 	 * @return int
 	 * 
 	 * Check to display this in a spiral form.
 	 * 
 	 */
-	public static int getHogben(int aNumber){
-		return (int) (Math.pow(aNumber, 2.0) - aNumber + 1);
+	public static int getHogben(int v){
+		return (int) (Math.pow(v, 2.0) - v + 1);
 	}
 	int getHogben() {
 		return getHogben(getTheNumber());
@@ -1939,38 +2008,58 @@ public class NumberTheory {
 	
 	/**
 	 * @author JeffreySchneider
-	 * @param aNumber
+	 * @param v
 	 * @return int  The  'n'-th house number  
 	 * 				'h_n'  is a figurate number made by a cube of side  'n+1', 
 	 * 				surmounted by a square pyramidal number with side  'n'.
 	 * 				<code>\[h_n=(8 n^3+21 n^2+19 n+6)/6.\]</code>
 	 * 
 	 */
-	public static int getHouse(int aNumber) {
-		int a = (int) (8 * Math.pow(aNumber, 3.0));
-		int b = (int) (21 * Math.pow(aNumber, 2.0));
-		int c = 19 * aNumber;
+	public static long getHouse(long v) {
+		long a = (long) (8 * Math.pow(v, 3.0));
+		long b = (long) (21 * Math.pow(v, 2.0));
+		long c = 19L * v;
 		return (a + b + c + 6) / 6;
 	}
-	int getHouse() {
+	long getHouse() {
 		return getHouse(getTheNumber());
 	}
 
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param k
+	 * @return boolean 
+	 * The  'n'-th hungry number is the smallest number  'k'  such that in the decimal 
+	 * expansion of  '2^k'  appear the first  'n'  decimal digits of pi
+	 * 
+	 */
 	public static boolean isHungry(int k ) {
 		BigInteger n = BigInteger.TWO.pow(k);
 		String stringN = n.toString();	
-		int length = stringN.length();
-		System.out.println("Length: " + length);
-		String jeff = LocalMath.StringPI().replaceAll("\\.", "");
-		return false;
+		int length = getListOfDigits(k).size();
+		String fullPiVal = LocalMath.StringPI().replaceAll("\\.", "");
+		String testPiVal = fullPiVal.substring(0, length);		
+//		System.out.printf("%s\n %s \n", stringN, testPiVal);		
+		return stringN.contains(testPiVal);	
 	}
+	boolean isHungry() {
+		return isHungry(getTheNumber());
+	}
+	
 
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param int v
+	 * @return boolean A number 'n'  is said to be insolite if it is divisible by the sum and by the product of the squares of its digits. 
+	 * 
+	 */
 	public static boolean isInsolite(int v) {
 		//Is number divisible by the sum and product
 		//  of the squares of its digits.
 		int a = getSumOfSquares(getListOfDigits(v));
 		int b = getProductOfSquares(getListOfDigits(v));
-		System.out.println("Insolite: " + a + " " + b);
 		if(v % a == 0 && v % b == 0)
 			return true;
 		return false;
@@ -1985,7 +2074,7 @@ public class NumberTheory {
 		int a = getSumOfSquares(getListOfDigits(v));
 		while(a != 1) {
 			a = getSumOfSquares(getListOfDigits(a));
-			System.out.println(a);
+//			System.out.println(a);
 			if(theSet.contains(a)) {
 				return false;
 			}else {
@@ -2054,7 +2143,7 @@ public class NumberTheory {
 	 * 
 	 * @author JCSchneider
 	 * @param n
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isFrugal(int n) {
 		int length = String.valueOf(n).length();
@@ -2068,9 +2157,9 @@ public class NumberTheory {
 	
 	/**
 	 * 
-	 *A number  $n$  is called equidigital if the number of digits in its prime 
+	 *A number  'n'  is called equidigital if the number of digits in its prime 
 	 *factorization (including exponents greater than 1) is equal to the number 
-	 *of digits of  $n$.
+	 *of digits of  'n'.
 	 * 
 	 * @author JCSchneider
 	 * @param n
@@ -2093,7 +2182,9 @@ public class NumberTheory {
 	 *  the number of digits of  'n'.
 	 *  
 	 * @param aNumber
-	 * @return
+	 * @return boolean
+	 * 
+	 * @see NumberTheory.#isFrugal()
 	 */
 	public static boolean isEconomical(int n) {
 		int length = String.valueOf(n).length();
@@ -2124,7 +2215,7 @@ public class NumberTheory {
 				theHash.put(integer, 1);
 			}
 		}		
-		System.out.println("Size of theHash: " + theHash.size());
+//		System.out.println("Size of theHash: " + theHash.size());
 		int numberOfNumerals = theHash.size();
 		Iterator<Map.Entry<Integer, Integer>> it = theHash.entrySet().iterator();
 		while(it.hasNext()) {
@@ -2270,7 +2361,7 @@ public class NumberTheory {
 		 perfect powers are any integer that is an integer power of another integer
 		 e.g. 4(2^2) 9(3^2) 27(3^3) 243(3^5) are all perfect powers
 		 Returns a pair of integers [a,b] such that n = a^b.
-		 (If multiple possible values for a and b exist, the pair with the smallest a value is returned)
+		 (If multiple possible values for a and b exist, the pair with the smallest a value is returned) 
 		 */
 		 	if(isPrime(n)) {
 		 		return false;
@@ -2290,6 +2381,41 @@ public class NumberTheory {
 		 return isPerfectPower(getTheNumber());
 	 }
 
+	 
+	 /**
+	  * 
+	  * Still In Progress
+	  * 
+	  * A number  $n$  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
+	  * @param v
+	  * @return
+	  */
+	public static boolean isEnlightened(long v) {
+		String numberString = "";
+		List<Long> theList = Primes.getPrimeFactors(v);		
+		for(Long x : theList) {
+			numberString+= theList.toString();
+		}
+		System.out.println(numberString);		
+		Set<Long> hSet = new HashSet<Long>(theList);
+		String theString = "";
+		System.out.print(v + " " );
+		for(Long x: hSet) {			
+			theString += x.toString();
+		}
+		System.out.println(theString);
+		if( numberString.contains(theString)) 
+			return true;
+		return false;
+		
+//		if( v == 250 || v == 25600 || v == 262144)
+//			return true;
+//		return true;
+		
+	}
+
+	 
+	 
 	
 
 	 

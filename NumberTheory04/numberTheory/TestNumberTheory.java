@@ -44,8 +44,8 @@ public class TestNumberTheory {
 		// a_PointerPrimeTest();
 
 		//getAmicableNumbers();
-		System.out.println(NumberTheory.getApocolyptic(192));
-		System.out.println(instance.getApocolyptic(0));
+		System.out.println(NumberTheory.isApocalyptic(192));
+		System.out.println(instance.isApocalyptic(0));
 		
 		instance.setTheNumber(6601);
 		System.out.println(NumberTheory.isCarmichael(561));
@@ -319,7 +319,7 @@ public class TestNumberTheory {
 //			System.out.println(integer);
 //		}
 				
-//		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));
+		
 		
 		//ProjectEuler.ProjectEuler.main(null);
 
@@ -452,7 +452,9 @@ public class TestNumberTheory {
 			System.out.printf("%d %b\n", j, NumberTheory.isDNumber(j));	
 		}
 		
+		System.out.println(Math.abs(-324.0));
 		
+		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));		
 }	
 
 	

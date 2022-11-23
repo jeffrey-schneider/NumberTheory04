@@ -340,8 +340,8 @@ class NumberTheoryTest {
 		@Test
 		@DisplayName("House Number")
 		public void getHouseNumberSpec() {
-			int expected = 933;
-			int result = NumberTheory.getHouse(8);
+			long expected = 933L;
+			long result = NumberTheory.getHouse(8);
 			assertEquals(expected, result);
 			
 			instance.setTheNumber(10);
@@ -356,13 +356,8 @@ class NumberTheoryTest {
 		}
 		
 		
-		//@Test
-		@DisplayName("Hungry Number")
-		public void getHungryNumberSpec() {
-			assertTrue(NumberTheory.isHungry(7339199));
-			assertTrue(NumberTheory.isHungry(144));
-			assertFalse(NumberTheory.isHungry(145));
-		}
+		
+		
 		
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getAlternatingFactorial}.
@@ -391,7 +386,7 @@ class NumberTheoryTest {
 	@DisplayName("Boolean Tests")
 	class BooleanSpec {
 		@Test
-		@DisplayName("Number tests out to be prime.")
+		@DisplayName("Number tests to be prime.")
 		void testIsPrime() {
 			instance.setTheNumber(17);
 			assertTrue(instance.isPrime());
@@ -401,6 +396,22 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isPrime(15));
 		}
 
+		@Test
+		@DisplayName("Is this a Hungry Number")
+		public void getHungryNumberSpec() {
+			assertTrue(NumberTheory.isHungry(7339199));
+			assertTrue(NumberTheory.isHungry(144));
+			assertTrue(NumberTheory.isHungry(5));
+			assertFalse(NumberTheory.isHungry(145));
+			instance.setTheNumber(2003);
+			assertTrue(instance.isHungry());
+			instance.setTheNumber(17);
+			assertTrue(instance.isHungry());
+			instance.setTheNumber(20);
+			assertFalse(instance.isHungry());
+		}
+		
+		
 		@Test
 		@DisplayName("Is value abundant?")
 		void testIsAbundant() {
@@ -457,7 +468,7 @@ class NumberTheoryTest {
 		// isAutomorphic
 		// 12890625
 		@Test
-		@DisplayName("Is automorphic?")
+		@DisplayName("Is Automorphic?")
 		public void isAutomorphicSpec() {
 			assertTrue(NumberTheory.isAutomorphic((long) 890625));
 			assertFalse(NumberTheory.isAutomorphic((long) 20));
@@ -478,7 +489,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Is admirable? ")
+		@DisplayName("Is Admirable? ")
 		public void admirableNumberSpec() {
 			assertTrue(NumberTheory.isAdmirable(12));
 
@@ -489,7 +500,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Is amenable")
+		@DisplayName("Is Amenable")
 		public void amenableNumberSpec() {
 			assertTrue(NumberTheory.isAmenable(12));
 			NumberTheory instance = new NumberTheory(49);
@@ -511,7 +522,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Is alternating?")
+		@DisplayName("Is Alternating?")
 		public void isAlternatingSpec() {
 			assertTrue(NumberTheory.isAlternating(903));
 			assertFalse(NumberTheory.isAlternating(904));
@@ -523,7 +534,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Is antiperfect?")
+		@DisplayName("Is Antiperfect?")
 		public void isAntiPerfectSpec() {
 			assertTrue(NumberTheory.isAntiPerfect(133857));
 			assertFalse(NumberTheory.isAntiPerfect(44));
@@ -535,7 +546,7 @@ class NumberTheoryTest {
 		}
 
 		@Test
-		@DisplayName("Is arithmetic?")
+		@DisplayName("Is Arithmetic?")
 		public void isArithmeticSpec() {
 			assertTrue(NumberTheory.isArithmetic(56));
 			assertFalse(NumberTheory.isArithmetic(58));
@@ -551,7 +562,7 @@ class NumberTheoryTest {
 		 * divisors are all deficient numbers. Test of isPrimativeAbundant()
 		 */
 		@Test
-		@DisplayName("Is primative abundant?")
+		@DisplayName("Is Primative Abundant?")
 		public void testIsPrimativeAbundant() {
 			instance.setTheNumber(20);
 			assertTrue(instance.isPrimativeAbundant());
@@ -585,15 +596,25 @@ class NumberTheoryTest {
 			assertTrue(instance.isSuperabundant());
 			instance.setTheNumber(25);
 			assertFalse(instance.isSuperabundant());
-
 			assertTrue(NumberTheory.isSuperabundant(360));
 			assertFalse(NumberTheory.isSuperabundant(25));
 		}
 
+		
+		/**
+		 * Test method for {@link numberTheory.NumberTheory#isCarmichael()}.
+		 */
 		@Test
-		@DisplayName("Is carmichael?")
+		@DisplayName("Is Carmichael?")		
 		public void isCarmichaelSpec() {
+			assertTrue(NumberTheory.isCarmichael(8911));
+			assertTrue(NumberTheory.isCarmichael(1729));
+			assertFalse(NumberTheory.isCarmichael(1100));
 			instance.setTheNumber(2821);
+			assertTrue(instance.isCarmichael());
+			instance.setTheNumber(2465);
+			assertTrue(instance.isCarmichael());
+			instance.setTheNumber(8911);
 			assertTrue(instance.isCarmichael());
 		}
 		
@@ -833,6 +854,18 @@ class NumberTheoryTest {
 		}
 		
 		
+		//@Test
+		@DisplayName("In Number Enlightened")
+		public void isEnlightened() {
+			assertTrue(NumberTheory.isEnlightened(250));
+			assertTrue(NumberTheory.isEnlightened(25600));
+			assertTrue(NumberTheory.isEnlightened(262144));
+			assertTrue(NumberTheory.isEnlightened(219488));
+			assertTrue(NumberTheory.isEnlightened(119911));
+			assertTrue(NumberTheory.isEnlightened(2377970784L));
+			assertFalse(NumberTheory.isEnlightened(262145));
+		}
+		
 
 	} // End of boolean tests ---------------------------------------------------------------------------------------------
 
@@ -1051,9 +1084,10 @@ class NumberTheoryTest {
 			assertTrue(instance.isInsolite());
 			assertTrue(NumberTheory.isInsolite(122121216));
 			assertTrue(NumberTheory.isInsolite(1111211136));
-			//assertTrue(NumberTheory.isInsolite(211912113131712));
-			assertFalse(NumberTheory.isInsolite(123));
+			assertFalse(NumberTheory.isInsolite(123));		
 			
+			instance.setTheNumber(1122112);
+			assertTrue(instance.isInsolite());			
 		}
 		
 		
@@ -1148,6 +1182,22 @@ class NumberTheoryTest {
 		public void isEquidigitalSpec() {
 			assertTrue(NumberTheory.isEquidigital(1655));			
 			assertFalse(NumberTheory.isEquidigital(1653));
+		}
+		
+		
+		@Test
+		@DisplayName("Is number apocalyptic?")
+		public void isApocalypticSpec() {
+			assertTrue(NumberTheory.isApocalyptic(157));
+			assertTrue(NumberTheory.isApocalyptic(285));
+			assertFalse(NumberTheory.isApocalyptic(412));
+			
+			instance.setTheNumber(434);
+			assertTrue(instance.isApocalyptic());
+			instance.setTheNumber(2300);
+			assertTrue(instance.isApocalyptic());
+			instance.setTheNumber(2159);
+			assertFalse(instance.isApocalyptic());
 		}
 		
 	}
