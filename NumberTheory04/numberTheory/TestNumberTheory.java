@@ -454,7 +454,11 @@ public class TestNumberTheory {
 		
 		System.out.println(Math.abs(-324.0));
 		
-		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));		
+		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));	
+		
+		
+		//if( v == 250 || v == 25600 || v == 262144)
+		System.out.println("Enlightened:  " + NumberTheory.isEnlightened(250));
 }	
 
 	

@@ -2396,14 +2396,15 @@ public class NumberTheory {
 		for(Long x : theList) {
 			numberString+= theList.toString();
 		}
+		
 		System.out.println(numberString);		
 		Set<Long> hSet = new HashSet<Long>(theList);
 		String theString = "";
-		System.out.print(v + " " );
+		System.out.print("V: " + v + " " );
 		for(Long x: hSet) {			
 			theString += x.toString();
 		}
-		System.out.println(theString);
+		System.out.println("The String = " + theString + " NumberString: " + numberString);
 		if( numberString.contains(theString)) 
 			return true;
 		return false;
