@@ -206,7 +206,7 @@ public class NumberTheory {
 	public static List<Integer> getPrimeFactors(int v) {
 		List<Integer> retVal = new ArrayList<>();
 		int ourNumber = v;
-		for (int i = 2; i < v; i++) {
+		for (int i = 2; i <= v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -220,7 +220,7 @@ public class NumberTheory {
 	public static List<Long> getPrimeFactors(long v) {
 		List<Long> retVal = new ArrayList<>();
 		long ourNumber = v;
-		for (long i = 2; i < v; i++) {
+		for (long i = 2; i <= v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -987,7 +987,8 @@ public class NumberTheory {
 	public static int getAmicableNumber(int v) {
 		int firstDivisorSum = NumberTheory.getAliquotSum(v);
 		int secondDivisorSum = NumberTheory.getAliquotSum(firstDivisorSum);
-		if (secondDivisorSum == v && firstDivisorSum > secondDivisorSum) {
+		//if (secondDivisorSum == v && firstDivisorSum > secondDivisorSum) {
+		if (secondDivisorSum == v ) {
 			return firstDivisorSum;
 		}
 		return -1;
@@ -2187,11 +2188,11 @@ public class NumberTheory {
 	 * @see NumberTheory.#isFrugal()
 	 */
 	public static boolean isEconomical(int n) {
-		int length = String.valueOf(n).length();
-		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
-		str = str.replace("^","").replace("*", "").trim();		
-		int length2 = str.length();		
-		if(length2  > length ) 
+		int nLength = String.valueOf(n).length();
+		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));
+		str = str.replace("^","").replace("*", "").trim();
+		int stringLength = str.length();		
+		if(stringLength == nLength ) 
 			return true;	
 		return false;
 	}
@@ -2386,7 +2387,7 @@ public class NumberTheory {
 	  * 
 	  * Still In Progress
 	  * 
-	  * A number  $n$  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
+	  * A number  'n'  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
 	  * @param v
 	  * @return
 	  */
