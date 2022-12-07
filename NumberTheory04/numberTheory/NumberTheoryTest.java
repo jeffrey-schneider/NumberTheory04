@@ -1,6 +1,5 @@
 package numberTheory;
 
-
 //import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
@@ -291,8 +290,7 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 
-		
-		//40
+		// 40
 		@Test
 		@DisplayName("Euler's Totient")
 		public void getEulersTotientSpec() {
@@ -304,8 +302,7 @@ class NumberTheoryTest {
 			expected = 6;
 			assertEquals(expected, result);
 		}
-		
-		
+
 		@Test
 		@DisplayName("Double Factorial")
 		public void doubleFactorialSpec() {
@@ -313,52 +310,48 @@ class NumberTheoryTest {
 			BigInteger expected = BigInteger.valueOf(945);
 			BigInteger result = NumberTheory.getDoubleFactorial(variable);
 			assertEquals(expected, result);
-			
+
 			instance.setTheNumber(8);
 			expected = BigInteger.valueOf(384);
 			result = instance.getDoubleFactorial();
 			assertEquals(expected, result);
 		}
-		
+
 		@Test
 		@DisplayName("Hogben Number")
 		public void hogbenSpec() {
 			int expected = 359401;
 			int result = NumberTheory.getHogben(600);
 			assertEquals(expected, result);
-			
+
 			instance.setTheNumber(599);
-			expected =  358203;
+			expected = 358203;
 			result = instance.getHogben();
-			assertEquals(expected, result);	
+			assertEquals(expected, result);
 			instance.setTheNumber(5);
 			expected = 21;
 			result = instance.getHogben();
 			assertEquals(expected, result);
 		}
-		
+
 		@Test
 		@DisplayName("House Number")
 		public void getHouseNumberSpec() {
 			long expected = 933L;
 			long result = NumberTheory.getHouse(8);
 			assertEquals(expected, result);
-			
+
 			instance.setTheNumber(10);
 			expected = 1716;
 			result = instance.getHouse();
 			assertEquals(expected, result);
-			
+
 			instance.setTheNumber(599);
 			expected = 287820100;
 			result = instance.getHouse();
 			assertEquals(expected, result);
 		}
-		
-		
-		
-		
-		
+
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getAlternatingFactorial}.
 		 * 3301819
@@ -372,15 +365,15 @@ class NumberTheoryTest {
 			expected = BigInteger.valueOf(101);
 			result = NumberTheory.getAlternatingFactorial(5);
 			assertEquals(expected, result);
-			
+
 			instance.setTheNumber(50);
 			result = instance.getAlternatingFactorial();
 			BigInteger expected2 = new BigInteger("29817972015629302995182567242334801579950768815528034161635577019");
 			assertEquals(expected2, result);
 		}
-		
-		
-	} // End of SimpleSingleValueReturn class ----------------------------------------------------------------------------
+
+	} // End of SimpleSingleValueReturn class
+		// ----------------------------------------------------------------------------
 
 	@Nested
 	@DisplayName("Boolean Tests")
@@ -410,8 +403,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(20);
 			assertFalse(instance.isHungry());
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is value abundant?")
 		void testIsAbundant() {
@@ -447,16 +439,12 @@ class NumberTheoryTest {
 			instance.setTheNumber(150);
 			assertFalse(instance.isCoPrime(295));
 		}
-		
-		
-
-
 
 		@Test
 		@DisplayName("Is Astonishing?")
 		public void isAstonishingSpec() {
 			assertTrue(NumberTheory.isAstonishing(15));
-			//assertTrue(NumberTheory.isAstonishing(216));
+			// assertTrue(NumberTheory.isAstonishing(216));
 			assertFalse(NumberTheory.isAstonishing(20));
 
 			instance.setTheNumber(1353);
@@ -473,8 +461,6 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isAutomorphic((long) 890625));
 			assertFalse(NumberTheory.isAutomorphic((long) 20));
 		}
-
-		
 
 		@Test
 		@DisplayName("Is Canada Number?")
@@ -600,12 +586,11 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isSuperabundant(25));
 		}
 
-		
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#isCarmichael()}.
 		 */
 		@Test
-		@DisplayName("Is Carmichael?")		
+		@DisplayName("Is Carmichael?")
 		public void isCarmichaelSpec() {
 			assertTrue(NumberTheory.isCarmichael(8911));
 			assertTrue(NumberTheory.isCarmichael(1729));
@@ -617,7 +602,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(8911);
 			assertTrue(instance.isCarmichael());
 		}
-		
+
 		@Test
 		@DisplayName("Is Curzon?")
 		public void isCurzonSpec() {
@@ -628,7 +613,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(2119);
 			assertFalse(instance.isCurzon());
 		}
-		
+
 		@Test
 		@DisplayName("Is de Polignac?")
 		public void isDePolignacSpec() {
@@ -639,37 +624,31 @@ class NumberTheoryTest {
 			instance.setTheNumber(13283);
 			assertFalse(instance.isDePolignac());
 		}
-		
-		
-		
+
 		@Test
 		@DisplayName("Is number Droll?")
 		public void isDrollSpec() {
 			assertTrue(NumberTheory.isDroll(72));
 			assertFalse(NumberTheory.isDroll(73));
-			
+
 			instance.setTheNumber(48384);
 			assertTrue(instance.isDroll());
 			instance.setTheNumber(instance.getTheNumber() + 1);
 			assertFalse(instance.isDroll());
 		}
-		
-		
 
 		@Test
 		@DisplayName("Is number Emirp?")
 		public void isEmirpSpec() {
 			assertTrue(Primes.isEmirp(179));
 			assertFalse(Primes.isEmirp(114));
-			
+
 			instance.setTheNumber(10009);
 			assertTrue(instance.isEmirp());
 			instance.setTheNumber(19272);
 			assertFalse(instance.isEmirp());
 		}
-		
-		
-		
+
 		@Test
 		@DisplayName("Is number Economical? Still under construction.")
 		public void iseconomicalSpec() {
@@ -677,8 +656,7 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isEconomical(13));
 			assertFalse(NumberTheory.isEconomical(12));
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is number gapful?")
 		public void isGapfulSpec() {
@@ -687,11 +665,13 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isGapful(5771));
 			assertFalse(NumberTheory.isGapful(7789));
 		}
-		
+
 		@Test
 		@DisplayName("Is Duffinian Number?")
 		public void isDuffinianSpec() {
-			//4, 8, 9, 16, 21, 25, 27, 32, 35, 36, 39, 49, 50, 55, 57, 63, 64, 65, 75, 77, 81, 85, 93, 98, 100, 111, 115, 119, 121, 125, 128, 129, 133, 143, 144, 155, 161, 169, 171, 175, 183, 185, 187, 189, 201, 203, 205, 209, 215, 217, 219
+			// 4, 8, 9, 16, 21, 25, 27, 32, 35, 36, 39, 49, 50, 55, 57, 63, 64, 65, 75, 77,
+			// 81, 85, 93, 98, 100, 111, 115, 119, 121, 125, 128, 129, 133, 143, 144, 155,
+			// 161, 169, 171, 175, 183, 185, 187, 189, 201, 203, 205, 209, 215, 217, 219
 			assertTrue(NumberTheory.isDuffinian(4));
 			assertTrue(NumberTheory.isDuffinian(8));
 			assertFalse(NumberTheory.isDuffinian(10));
@@ -701,11 +681,11 @@ class NumberTheoryTest {
 			assertFalse(instance.isDuffinian());
 			assertTrue(NumberTheory.isDuffinian(25387));
 			instance.setTheNumber(18633);
-			assertTrue(instance.isDuffinian());			
+			assertTrue(instance.isDuffinian());
 		}
-		
-		//115048440 8128 4713984
-		
+
+		// 115048440 8128 4713984
+
 		@Test
 		@DisplayName("Is Harmonic Divisor Number?")
 		public void isHarmonicDivisorNumberSpec() {
@@ -716,8 +696,7 @@ class NumberTheoryTest {
 //			instance.setTheNumber(4713984);
 //			assertTrue(instance.isHarmonicDivisorNumber());
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is number Harshad?")
 		public void isHarshadSpec() {
@@ -727,16 +706,16 @@ class NumberTheoryTest {
 			instance.setTheNumber(41441420);
 			assertTrue(instance.isHarshad());
 		}
-		
+
 		@Test
 		@DisplayName("Is Happy")
-		public void isHappyInt() {		
+		public void isHappyInt() {
 			assertTrue(NumberTheory.isHappy(103));
 			assertTrue(NumberTheory.isHappy(130));
 			assertTrue(NumberTheory.isHappy(3913));
 			assertFalse(NumberTheory.isHappy(110));
 		}
-		
+
 		@Test
 		@DisplayName("Is Happy Spec")
 		public void isHappySpec() {
@@ -745,7 +724,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(3352);
 			assertFalse(instance.isHappy());
 		}
-		
+
 		@Test
 		@DisplayName("Is Cyclic")
 		public void isCyclic() {
@@ -753,7 +732,7 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isCyclic(145));
 			assertFalse(NumberTheory.isCyclic(102));
 		}
-		
+
 		@Test
 		@DisplayName("Is Cyclic Spec")
 		public void isCyclicSpec() {
@@ -765,7 +744,6 @@ class NumberTheoryTest {
 			assertFalse(instance.isCyclic());
 		}
 
-		
 		@Test
 		@DisplayName("Is Powerful")
 		public void isPowerful() {
@@ -778,9 +756,9 @@ class NumberTheoryTest {
 			instance.setTheNumber(864);
 			assertTrue(instance.isPowerful());
 			instance.setTheNumber(674);
-			assertFalse(instance.isPowerful());	
+			assertFalse(instance.isPowerful());
 		}
-		
+
 		@Test
 		@DisplayName("Is Frugal")
 		public void isFrugal() {
@@ -800,7 +778,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(1199);
 			assertFalse(instance.isEvil());
 		}
-		
+
 		@Test
 		@DisplayName("Highly Composite Numbers")
 		public void isHighlyCompositeSpec() {
@@ -814,8 +792,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(30);
 			assertFalse(instance.isHighlyComposite());
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is Pernicious")
 		public void isPernicious() {
@@ -829,8 +806,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(1046);
 			assertFalse(instance.isPernicious());
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is Perfect Power")
 		public void isPerfectPower() {
@@ -843,8 +819,9 @@ class NumberTheoryTest {
 			assertTrue(instance.isPerfectPower());
 			instance.setTheNumber(1025);
 			assertFalse(instance.isPerfectPower());
-			
+
 		}
+
 		@Test
 		@DisplayName("Is Achilles")
 		public void isAchilles() {
@@ -854,9 +831,8 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isAchilles(3088));
 			assertFalse(NumberTheory.isAchilles(2701));
 		}
-		
-		
-		//@Test
+
+		// @Test
 		@DisplayName("In Number Enlightened")
 		public void isEnlightened() {
 			assertTrue(NumberTheory.isEnlightened(250));
@@ -864,12 +840,12 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isEnlightened(262144));
 			assertTrue(NumberTheory.isEnlightened(219488));
 			assertTrue(NumberTheory.isEnlightened(119911));
-			//assertTrue(NumberTheory.isEnlightened(2377970784L));
+			// assertTrue(NumberTheory.isEnlightened(2377970784L));
 			assertFalse(NumberTheory.isEnlightened(262145));
 		}
-		
 
-	} // End of boolean tests ---------------------------------------------------------------------------------------------
+	} // End of boolean tests
+		// ---------------------------------------------------------------------------------------------
 
 	@Nested
 	@DisplayName("List return value tests")
@@ -886,43 +862,43 @@ class NumberTheoryTest {
 			assertIterableEquals(expected, result);
 			result = NumberTheory.getJugglers(9);
 			assertIterableEquals(expected, result);
-		}		
-		
+		}
+
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits(int)}.
 		 */
-		@Test		
+		@Test
 		@DisplayName("Check List of Digits.")
 		void testGetListOfDigitsInt() {
 			List<Integer> expected = new ArrayList<>(Arrays.asList(6, 5, 4, 3, 2, 1));
 			List<Integer> result = NumberTheory.getListOfDigits(654321);
 			assertIterableEquals(expected, result);
 		}
-		
+
 		/**
-		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits(BigInteger)}.
+		 * Test method for
+		 * {@link numberTheory.NumberTheory#getListOfDigits(BigInteger)}.
 		 */
-		@Test		
+		@Test
 		@DisplayName("Check List of Digits.")
 		void testGetListOfDigitsBigInt() {
-			List<Integer> expected = new ArrayList<>(Arrays.asList(9,8,7,6, 5, 4, 3, 2, 1));
+			List<Integer> expected = new ArrayList<>(Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1));
 			BigInteger temp = BigInteger.valueOf(987654321L);
 			List<Integer> result = NumberTheory.getListOfDigits(temp);
 			assertIterableEquals(expected, result);
 		}
-		
+
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits()}.
 		 */
 		@Test
 		void testGetListOfDigits() {
 			instance.setTheNumber(687321);
-			List<Integer> expected = new ArrayList<>(Arrays.asList(6,8,7,3,2,1));
+			List<Integer> expected = new ArrayList<>(Arrays.asList(6, 8, 7, 3, 2, 1));
 			List<Integer> result = instance.getListOfDigits();
 			assertIterableEquals(expected, result);
 		}
-		
-		
+
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getTotatives()}.
 		 */
@@ -933,18 +909,14 @@ class NumberTheoryTest {
 			List<Integer> result = NumberTheory.getTotatives(9);
 			assertIterableEquals(expected, result);
 			expected.clear();
-			
+
 			instance.setTheNumber(75);
-			expected = new ArrayList<>(Arrays.asList(1, 2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 
-					22, 23, 26, 28, 29, 31, 32, 34, 37, 38, 41, 43, 44, 46, 47, 49, 52, 53, 
-					56, 58, 59, 61, 62, 64, 67, 68, 71, 73, 74));
+			expected = new ArrayList<>(Arrays.asList(1, 2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26, 28, 29, 31, 32,
+					34, 37, 38, 41, 43, 44, 46, 47, 49, 52, 53, 56, 58, 59, 61, 62, 64, 67, 68, 71, 73, 74));
 			result = instance.getTotatives();
 			assertIterableEquals(expected, result);
 		}
-		
-		
-		
-		
+
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getCollatz()}.
 		 */
@@ -975,7 +947,7 @@ class NumberTheoryTest {
 			List<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 3, 5));
 			List<Integer> result = instance.getPrimeFactors();
 			assertIterableEquals(expected, result);
-			assertIterableEquals(expected, NumberTheory.getPrimeFactors(theTestValue));
+			assertIterableEquals(expected, Primes.getPrimeFactors(theTestValue));
 		}
 
 		/**
@@ -1011,39 +983,21 @@ class NumberTheoryTest {
 		public void fibonacciSpec() {
 			instance.setTheNumber(10);
 			List<BigInteger> result = instance.getFibonacci();
-			List<BigInteger> expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, 
-					BigInteger.ONE, 
-					BigInteger.ONE,
-					BigInteger.TWO, 
-					BigInteger.valueOf(3),
-					BigInteger.valueOf(5), 
-					BigInteger.valueOf(8),
-					BigInteger.valueOf(13), 
-					BigInteger.valueOf(21),
-					BigInteger.valueOf(34)));
-			
-			//List<BigInteger> expected = new LinkedList<>(Arrays.asList(null))
+			List<BigInteger> expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE,
+					BigInteger.ONE, BigInteger.TWO, BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger.valueOf(8),
+					BigInteger.valueOf(13), BigInteger.valueOf(21), BigInteger.valueOf(34)));
+
+			// List<BigInteger> expected = new LinkedList<>(Arrays.asList(null))
 			assertIterableEquals(expected, result);
 
 			result = NumberTheory.getFibonacciList(17);
-			//expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987));
-			expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, 
-					BigInteger.ONE, 
-					BigInteger.ONE,
-					BigInteger.TWO, 
-					BigInteger.valueOf(3),
-					BigInteger.valueOf(5), 
-					BigInteger.valueOf(8),
-					BigInteger.valueOf(13), 
-					BigInteger.valueOf(21),
-					BigInteger.valueOf(34),
-					BigInteger.valueOf(55),
-					BigInteger.valueOf(89),
-					BigInteger.valueOf(144),
-					BigInteger.valueOf(233),
-					BigInteger.valueOf(377),
-					BigInteger.valueOf(610),
-					BigInteger.valueOf(987)));
+			// expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
+			// 89, 144, 233, 377, 610, 987));
+			expected = new ArrayList<BigInteger>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE, BigInteger.ONE,
+					BigInteger.TWO, BigInteger.valueOf(3), BigInteger.valueOf(5), BigInteger.valueOf(8),
+					BigInteger.valueOf(13), BigInteger.valueOf(21), BigInteger.valueOf(34), BigInteger.valueOf(55),
+					BigInteger.valueOf(89), BigInteger.valueOf(144), BigInteger.valueOf(233), BigInteger.valueOf(377),
+					BigInteger.valueOf(610), BigInteger.valueOf(987)));
 			assertIterableEquals(expected, result);
 		}
 
@@ -1077,8 +1031,7 @@ class NumberTheoryTest {
 					10923, 21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405));
 			assertIterableEquals(expected, result);
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is Insolite Number")
 		public void isInsoliteSpec() {
@@ -1086,14 +1039,12 @@ class NumberTheoryTest {
 			assertTrue(instance.isInsolite());
 			assertTrue(NumberTheory.isInsolite(122121216));
 			assertTrue(NumberTheory.isInsolite(1111211136));
-			assertFalse(NumberTheory.isInsolite(123));		
-			
+			assertFalse(NumberTheory.isInsolite(123));
+
 			instance.setTheNumber(1122112);
-			assertTrue(instance.isInsolite());			
+			assertTrue(instance.isInsolite());
 		}
-		
-		
-		
+
 		@Test
 		@DisplayName("Motzkin Numbers")
 		public void getMotzkinNumbersSpec() {
@@ -1104,60 +1055,53 @@ class NumberTheoryTest {
 			result = instance.getMotzkin();
 			expected = BigInteger.valueOf(1697385471211L);
 		}
-		
-		
-		
-		
-		
-		
-		
+
 		@Test
 		@DisplayName("GCD")
 		public void gcdSpec() {
 			int result = NumberTheory.gcd(10, 15);
 			int expected = 5;
-			assertEquals(expected,result);
+			assertEquals(expected, result);
 			result = NumberTheory.gcd(100, 15);
 			expected = 5;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			instance.setTheNumber(100);
 			result = instance.gcd(15);
 			expected = 5;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			instance.setTheNumber(100);
 			result = instance.gcd(52);
 			expected = 4;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			instance.setTheNumber(54);
 			result = instance.gcd(100);
 			expected = 2;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			expected = 45;
-			assertNotEquals(expected, result);			
+			assertNotEquals(expected, result);
 		}
-		
+
 		@Test
 		@DisplayName("LCM")
 		public void lcmSpec() {
 			int result = NumberTheory.lcm(21, 6);
 			int expected = 42;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			result = NumberTheory.lcm(4, 6);
 			expected = 12;
-			assertEquals(expected,result);
-			
+			assertEquals(expected, result);
+
 			instance.setTheNumber(22);
 			result = instance.lcm(13);
 			expected = 286;
-			assertEquals(expected,result);
+			assertEquals(expected, result);
 		}
 
-		
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#isDeficient()}.
 		 */
@@ -1166,7 +1110,7 @@ class NumberTheoryTest {
 		public void isDeficientSpec() {
 			assertTrue(NumberTheory.isDeficient(13));
 			assertTrue(NumberTheory.isDeficient(796));
-			assertTrue(NumberTheory.isDeficient(571));			
+			assertTrue(NumberTheory.isDeficient(571));
 			assertFalse(NumberTheory.isDeficient(792));
 			instance.setTheNumber(779);
 			assertTrue(instance.isDeficient());
@@ -1175,25 +1119,24 @@ class NumberTheoryTest {
 		}
 
 		/**
-		 * @see {@link://www.numbersaplenty.com/set/equidigital_number/}.
-		 * Test method for {@link numberTheory.NumberTheory#isEquidigital()}.
+		 * @see {@link://www.numbersaplenty.com/set/equidigital_number/}. Test method
+		 *      for {@link numberTheory.NumberTheory#isEquidigital()}.
 		 * 
 		 */
 		@Test
 		@DisplayName("Is number equidigital?")
 		public void isEquidigitalSpec() {
-			assertTrue(NumberTheory.isEquidigital(1655));			
+			assertTrue(NumberTheory.isEquidigital(1655));
 			assertFalse(NumberTheory.isEquidigital(1653));
 		}
-		
-		
+
 		@Test
 		@DisplayName("Is number apocalyptic?")
 		public void isApocalypticSpec() {
 			assertTrue(NumberTheory.isApocalyptic(157));
 			assertTrue(NumberTheory.isApocalyptic(285));
 			assertFalse(NumberTheory.isApocalyptic(412));
-			
+
 			instance.setTheNumber(434);
 			assertTrue(instance.isApocalyptic());
 			instance.setTheNumber(2300);
@@ -1201,9 +1144,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(2159);
 			assertFalse(instance.isApocalyptic());
 		}
-		
+
 	}
-	
-	
 
 }
