@@ -206,7 +206,7 @@ public class NumberTheory {
 	public static List<Integer> getPrimeFactors(int v) {
 		List<Integer> retVal = new ArrayList<>();
 		int ourNumber = v;
-		for (int i = 2; i < v; i++) {
+		for (int i = 2; i <= v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -220,7 +220,7 @@ public class NumberTheory {
 	public static List<Long> getPrimeFactors(long v) {
 		List<Long> retVal = new ArrayList<>();
 		long ourNumber = v;
-		for (long i = 2; i < v; i++) {
+		for (long i = 2; i <= v; i++) {
 			while (ourNumber % i == 0) {
 				retVal.add(i);
 				ourNumber /= i;
@@ -987,7 +987,8 @@ public class NumberTheory {
 	public static int getAmicableNumber(int v) {
 		int firstDivisorSum = NumberTheory.getAliquotSum(v);
 		int secondDivisorSum = NumberTheory.getAliquotSum(firstDivisorSum);
-		if (secondDivisorSum == v && firstDivisorSum > secondDivisorSum) {
+		//if (secondDivisorSum == v && firstDivisorSum > secondDivisorSum) {
+		if (secondDivisorSum == v ) {
 			return firstDivisorSum;
 		}
 		return -1;
@@ -1674,23 +1675,8 @@ public class NumberTheory {
 	
 	
 	
-	/**
-	 * @author JeffreySchneider
-	 * @param v
-	 * @param bNumber
-	 * @return boolean is the gcd of both numbers 1?
-	 */
-	public static boolean isCoPrime(long v, long bNumber) {
-		if( gcd(v, bNumber) == 1) {
-			return true;
-		}
-		return false;
-	}
-	public static boolean isCoPrime(int v, int bNumber) {
-		return isCoPrime((long)v, (long) bNumber);
-	}
 	boolean isCoPrime(int bNumber) {
-		return isCoPrime(getTheNumber(), bNumber); 
+		return Primes.isCoPrime(getTheNumber(), bNumber); 
 	}
 
 	
@@ -1749,7 +1735,7 @@ public class NumberTheory {
 		List<Integer> retList = new LinkedList<>(); //LinkedList? Why not?
 		int counter = 1;
 		while(counter <= v) {
-			if(isCoPrime(v, counter)) {
+			if(Primes.isCoPrime(v, counter)) {
 				retList.add(counter);
 			}
 			counter++;
@@ -1773,7 +1759,7 @@ public class NumberTheory {
 	
 	
 	public static boolean isCyclic(int v) {
-		return isCoPrime(v, getEulersTotient(v));
+		return Primes.isCoPrime(v, getEulersTotient(v));
 	}
 	
 	boolean isCyclic() {
@@ -1926,7 +1912,7 @@ public class NumberTheory {
 	public static boolean isDuffinian(int v) {
 		//int factorSum = getFactorSum(aNumber);
 		int factorSum = getSigma(v);
-		if(isCoPrime(v, factorSum)){
+		if(Primes.isCoPrime(v, factorSum)){
 			return true;
 		}
 		return false;
@@ -2187,11 +2173,11 @@ public class NumberTheory {
 	 * @see NumberTheory.#isFrugal()
 	 */
 	public static boolean isEconomical(int n) {
-		int length = String.valueOf(n).length();
-		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));		
-		str = str.replace("^","").replace("*", "").trim();		
-		int length2 = str.length();		
-		if(length2  > length ) 
+		int nLength = String.valueOf(n).length();
+		String str = simplifiedPrimeFactor(NumberTheory.getPrimeFactors(n));
+		str = str.replace("^","").replace("*", "").trim();
+		int stringLength = str.length();		
+		if(stringLength == nLength ) 
 			return true;	
 		return false;
 	}
@@ -2386,7 +2372,7 @@ public class NumberTheory {
 	  * 
 	  * Still In Progress
 	  * 
-	  * A number  $n$  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
+	  * A number  'n'  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
 	  * @param v
 	  * @return
 	  */

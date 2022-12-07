@@ -251,6 +251,23 @@ boolean isBrilliant() {
 		return Primes.isInterPrime(getTheNumber());
 	}
 
+	public static boolean isCoPrime(int v, int bNumber) {
+		return isCoPrime((long)v, (long) bNumber);
+	}
+
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @param bNumber
+	 * @return boolean is the gcd of both numbers 1?
+	 */
+	public static boolean isCoPrime(long v, long bNumber) {
+		if( NumberTheory.gcd(v, bNumber) == 1) {
+			return true;
+		}
+		return false;
+	}
+
 
 
 	

@@ -439,8 +439,8 @@ class NumberTheoryTest {
 		@Test
 		@DisplayName("Are two numbers co-prime?")
 		public void isCoPrimeSpec() {
-			assertTrue(NumberTheory.isCoPrime(18, 35));
-			assertFalse(NumberTheory.isCoPrime(18, 36));
+			assertTrue(Primes.isCoPrime(18, 35));
+			assertFalse(Primes.isCoPrime(18, 36));
 
 			instance.setTheNumber(13);
 			assertTrue(instance.isCoPrime(31));
