@@ -48,6 +48,7 @@ public class TestNumberTheory {
 
 		// a_PointerPrimeTest();
 
+
 		//getAmicableNumbers();
 		System.out.println("Apocalyptic Numbers");
 		System.out.println(NumberTheory.isApocalyptic(192));
@@ -483,8 +484,27 @@ public class TestNumberTheory {
 		System.out.println("Is 144 hungry? " + NumberTheory.isHungry(144));	
 		
 		
-		//if( v == 250 || v == 25600 || v == 262144)
-		System.out.println("Enlightened:  " + NumberTheory.isEnlightened(250));
+		System.out.println("isEconomical");		
+		System.out.println("1655 " + NumberTheory.isEconomical(1655));
+		System.out.println("3072 " + NumberTheory.isEconomical(3072));
+		System.out.println("12 " + NumberTheory.isEconomical(12));
+		System.out.println("13 " + NumberTheory.isEconomical(13));
+		System.out.println("14 " + NumberTheory.isEconomical(14));
+		System.out.println("997 " + NumberTheory.isEconomical(997));
+		
+		
+		
+//		//if( v == 250 || v == 25600 || v == 262144)
+//		System.out.println("Enlightened: 250    " + NumberTheory.isEnlightened(250));
+//		System.out.println("Enlightened: 25600  " + NumberTheory.isEnlightened(25600));
+//		
+//		
+//		System.out.println("Amicable Numbers");
+//		System.out.println("Is 220 Amicable? " + NumberTheory.getAmicableNumber(220));
+//		System.out.println("Is 284 Amicable? " + NumberTheory.getAmicableNumber(284));
+		
+		
+		
 }	
 
 	

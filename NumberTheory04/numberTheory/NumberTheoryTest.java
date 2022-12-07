@@ -673,7 +673,9 @@ class NumberTheoryTest {
 		@Test
 		@DisplayName("Is number Economical? Still under construction.")
 		public void iseconomicalSpec() {
-			assertTrue(NumberTheory.isEconomical(77));
+			assertTrue(NumberTheory.isEconomical(1655));
+			assertTrue(NumberTheory.isEconomical(13));
+			assertFalse(NumberTheory.isEconomical(12));
 		}
 		
 		
