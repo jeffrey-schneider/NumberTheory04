@@ -24,8 +24,10 @@ public class SpiralDisplay {
                 System.out.println("Please enter center element number: 1 - " + maxCenter);
                 centerN = sc.nextInt();
             }
+            sc.close();
             start();
         }
+        
     }
  
     private static void start(){

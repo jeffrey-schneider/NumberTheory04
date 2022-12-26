@@ -651,12 +651,19 @@ class NumberTheoryTest {
 
 		@Test
 		@DisplayName("Is number Economical? Still under construction.")
-		public void iseconomicalSpec() {
+		public void isEconomicalSpec() {
 			assertTrue(NumberTheory.isEconomical(1655));
 			assertTrue(NumberTheory.isEconomical(13));
 			assertFalse(NumberTheory.isEconomical(12));
 		}
 
+		@Test
+		@DisplayName("Is number Equidigital? ")
+		public void isEquidigitalSpec() {
+			assertTrue(NumberTheory.isEquidigital(64));
+		}
+		
+		
 		@Test
 		@DisplayName("Is number gapful?")
 		public void isGapfulSpec() {
@@ -842,6 +849,8 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isEnlightened(119911));
 			// assertTrue(NumberTheory.isEnlightened(2377970784L));
 			assertFalse(NumberTheory.isEnlightened(262145));
+			instance.setTheNumber(25600);
+			assertTrue(instance.isEnlightened());
 		}
 
 	} // End of boolean tests
@@ -943,9 +952,11 @@ class NumberTheoryTest {
 		@DisplayName("Prime factors")
 		public void testGetPrimeFactors() {
 			int theTestValue = 60;
-			instance.setTheNumber(theTestValue);
+			Primes thePrimeInstance = new Primes();
+			
+			thePrimeInstance.setTheNumber(theTestValue);
 			List<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 3, 5));
-			List<Integer> result = instance.getPrimeFactors();
+			List<Integer> result = thePrimeInstance.getPrimeFactors();
 			assertIterableEquals(expected, result);
 			assertIterableEquals(expected, Primes.getPrimeFactors(theTestValue));
 		}
@@ -1143,6 +1154,57 @@ class NumberTheoryTest {
 			assertTrue(instance.isApocalyptic());
 			instance.setTheNumber(2159);
 			assertFalse(instance.isApocalyptic());
+		}
+		
+		@Test
+		@DisplayName("FiboDiv")
+		public void isFiboDiv() {
+			assertTrue(NumberTheory.isFiboDiv(14));
+			assertTrue(NumberTheory.isFiboDiv(122));
+			assertTrue(NumberTheory.isFiboDiv(12992));
+			assertTrue(NumberTheory.isFiboDiv(14562410));
+		}
+		
+		@Test
+		@DisplayName("Is Number D-Number?")
+		public void isDNumber() {
+			assertTrue(NumberTheory.isDNumber(9));
+			//assertTrue(NumberTheory.isDNumber(7179));
+			//assertTrue(NumberTheory.isDNumber(9411));
+			assertFalse(NumberTheory.isDNumber(7500));
+			instance.setTheNumber(15);
+			assertTrue(instance.isDNumber());
+		}
+		
+		@Test
+		@DisplayName("Gilda")
+		public void isGilda() {
+			assertTrue(NumberTheory.isGilda(29));
+			assertTrue(NumberTheory.isGilda(38006));
+			assertTrue(NumberTheory.isGilda(933138));
+			assertFalse(NumberTheory.isGilda(30));
+			instance.setTheNumber(35422);
+			assertTrue(instance.isGilda());
+		}
+		
+		@Test
+		@DisplayName("Giuga")
+		public void isGiuga() {
+			//30, 858, 1722, 1723, 66198
+			assertTrue(NumberTheory.isGiuga(30));
+			assertTrue(NumberTheory.isGiuga(858));
+			assertTrue(NumberTheory.isGiuga(1722));
+			assertFalse(NumberTheory.isGiuga(1723));
+			instance.setTheNumber(66198);
+			assertTrue(instance.isGiuga());
+		}
+		
+		
+		@Test
+		@DisplayName("Dicksons Method")
+		public void isDickinsonsMethod() {			
+			instance.setTheNumber(6);
+			assertTrue(instance.isDicksonsMethod());
 		}
 
 	}

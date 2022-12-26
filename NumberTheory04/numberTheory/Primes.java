@@ -1,7 +1,11 @@
 package numberTheory;
 
-import java.util.*;
-import java.util.function.BooleanSupplier;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 public class Primes extends NumberTheory {
 
@@ -106,8 +110,6 @@ public class Primes extends NumberTheory {
 	 * @return
 	 */
 	public static boolean isGoodPrime(int v) {
-		boolean retVal = true;
-
 		List<Integer> thePrimeList = new LinkedList<>();
 		if (!isPrime(v)) {
 			return false;
@@ -277,6 +279,19 @@ public class Primes extends NumberTheory {
 		return retVal;
 	}
 
+	public List<Integer> getPrimeFactors() {
+		// TODO Auto-generated method stub
+		return getPrimeFactors(getTheNumber());
+	}
+	
+	public static HashSet<Integer> getDistinctPrimeFactors(int v){
+		List<Integer> theList = getPrimeFactors(v);
+		Set<Integer> theSet = new HashSet<Integer>();
+		theSet.addAll(theList);
+		return (HashSet<Integer>) theSet;
+	}
+	
+	
 	public static boolean isCoPrime(int v, int bNumber) {
 		return isCoPrime((long) v, (long) bNumber);
 	}
@@ -293,5 +308,7 @@ public class Primes extends NumberTheory {
 		}
 		return false;
 	}
+
+	
 
 }

@@ -1,11 +1,7 @@
 package InterviewQuestions;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
-
-import javax.lang.model.element.Element;
 
 public class Questions {
 	private static final DecimalFormat df = new DecimalFormat("#.00");	static int denomination[] = { 500000, 100000, 50000, 10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1};

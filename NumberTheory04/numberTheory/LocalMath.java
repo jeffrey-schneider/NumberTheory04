@@ -1,7 +1,6 @@
 package numberTheory;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -232,6 +231,10 @@ public class LocalMath {
 				sum += 1.0/integer;
 		}
 		return v.size() / sum;
+	}
+	
+	public static double deg2rad(double deg) {
+		return deg * (Math.PI/180.0);
 	}
 	
 	

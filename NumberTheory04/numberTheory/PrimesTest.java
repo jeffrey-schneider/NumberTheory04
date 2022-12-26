@@ -2,9 +2,7 @@ package numberTheory;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -185,5 +183,7 @@ class PrimesTest {
 		instance.setTheNumber( 13120);
 		assertFalse(instance.isM_PointerPrime());		
 	}
+	
+	
 	
 }

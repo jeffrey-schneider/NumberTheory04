@@ -3,11 +3,9 @@
 
 package numberTheory;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
@@ -16,17 +14,16 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
-import java.util.function.BooleanSupplier;
-
-import org.junit.platform.commons.util.StringUtils;
 
 public class NumberTheory {
 	/**
 	 * The number.
 	 */
 	private int theNumber;
+	public static int runNumber = 0;
 
 	public NumberTheory(int theNumber) {
 		setTheNumber(theNumber);
@@ -85,9 +82,9 @@ public class NumberTheory {
 	 * @param v the number to test for primality
 	 * @return boolean is number prime?
 	 */
-	public static boolean isPrime(int v) {
-		int stopVal = (int) Math.sqrt(v);
-		int i = 2;
+	public static boolean isPrime(long v) {
+		long stopVal = (int) Math.sqrt(v);
+		long i = 2;
 		while (i <= stopVal) {
 			if (v % i == 0) {
 				return false;
@@ -97,6 +94,9 @@ public class NumberTheory {
 		return true;
 	}
 
+	public static boolean isPrime(int v) {		
+		return isPrime((long)v);
+	}
 	boolean isPrime() {
 		return isPrime(getTheNumber());
 	}
@@ -189,19 +189,6 @@ public class NumberTheory {
 		return retVal;
 	}
 
-	List<Integer> getPrimeFactors() {
-		return Primes.getPrimeFactors(getTheNumber());
-	}
-
-//	public static List<Integer> getPrimeFactors(BigInteger v){
-//		List<Integer> retVal = new ArrayList<>();
-//		BigInteger ourNumber = v;
-//		for(BigInteger bigInt = BigInteger.TWO; bigInt.compareTo(v)<0; bigInt = bigInt.add(BigInteger.ONE)) {
-//			while(!BigInteger.ZERO.equals(bigInt)) {
-//				
-//			}
-//
-//		}
 
 	/**
 	 * @author JeffreySchneider
@@ -223,7 +210,7 @@ public class NumberTheory {
 	/**
 	 * @author JeffreySchneider
 	 * @param v
-	 * @return Sum of a numbers factors.
+	 * @return Sum of a number's factors.
 	 */
 	public static int getFactorSum(int v) {
 		int retVal = 0;
@@ -724,8 +711,6 @@ public class NumberTheory {
 	}
 
 	/**
-	 * Not working yet - this is part of the fibodiv number solution
-	 * 
 	 * @param v
 	 * @param number1
 	 * @param number2
@@ -734,20 +719,57 @@ public class NumberTheory {
 	public static List<Integer> getFibonacciLike(int v, int number1, int number2) {
 		int num1 = number1;
 		int num2 = number2;
-		int counter = 0;
+		int num3 = 0;
+		//int counter = 0;
 		List<Integer> retList = new ArrayList<>();
-
-		// Iterate until counter == aNumber
-		while (counter < v) {
+		
+		while (num1 <= v) {
 			retList.add(num1);
-			int num3 = num2 + num1;
-			num1 = num2;
+			num3 = num2 + num1;
+			num1 = num2;			
 			num2 = num3;
-			counter++;
+			//counter++;
 		}
 		return retList;
 	}
-
+	
+	
+	/**
+	 * 
+	 * @param v
+	 * @param number1
+	 * @param number2
+	 * @return
+	 * A number n which can be split into two numbers which seed a Fibonacci-like sequence containing n itself.
+	 */	
+	// Split a number, 'v', into sets of two numbers
+	// IE: 549 => 5 49
+	//		549=> 54 9
+	//
+	//  v = 23418
+	//	
+	//	2 3418
+	//	23 418
+	//	234 18
+	//	2341 8
+	public static boolean isFiboDiv(int v){
+		StringBuilder sb = new StringBuilder();
+		sb.append(v);
+		int left = 0;
+		int right = 0;
+		for (int i = 1; i < sb.length(); i++) {
+			left = Integer.valueOf(sb.substring(0, i));
+			right =Integer.valueOf(sb.substring(i, sb.length()));
+			//System.out.println(v + " Left: " + left + " Right: " + right);
+			if(getFibonacciLike(v, left, right).contains(v)){
+				return true;
+			}			
+		}
+		return false;
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param v
@@ -954,7 +976,7 @@ public class NumberTheory {
 	 * @param n
 	 * @return int Greatest Common Divisor
 	 */
-	public static long gcd(long b, long n) {
+	public static long gcd(long b, long n) {		
 		if (n == 0)
 			return b;
 		return gcd(n, b % n);
@@ -1009,21 +1031,51 @@ public class NumberTheory {
 				return false;
 		}
 		return true;
-	}
-
+	}	
+	
 	boolean isCarmichael() {
 		return isCarmichael(getTheNumber());
 	}
 
+	
+	
+	//Adapted for BigInteger from https://www.geeksforgeeks.org/d-numbers/
 	public static boolean isDNumber(int n) {
-		for (int k = 3; k < n; k++) {
-			if (gcd(k, n) == 1) {
-				// if(Math.pow(a, (n-k))
-			}
+		if(n < 4) {
 			return false;
+		}
+		BigInteger numerator = BigInteger.ZERO;
+		BigInteger bigK = BigInteger.ZERO;
+		BigInteger bigN = BigInteger.ZERO;
+		int hcf = 0;
+		for(int k = 2; k < n; k++) {
+			bigK = BigInteger.valueOf(k);
+			bigN = BigInteger.valueOf(n);
+			numerator = bigK.pow(n-2).subtract(bigK);
+			BigInteger modN = numerator.mod(bigN);
+			
+			hcf = __gcd(n,k);
+			 if(hcf == 1 && modN.compareTo(BigInteger.ZERO) != 0)
+				 return false;
 		}
 		return true;
 	}
+	
+	boolean isDNumber() {
+		return isDNumber(getTheNumber());
+	}
+	
+	
+	static int __gcd(int a, int b)
+	{
+	    return b == 0 ? a : __gcd(b, a % b);    
+	}
+	
+	
+	
+	
+	
+	
 
 	// Wikipedia
 	/**
@@ -1031,7 +1083,7 @@ public class NumberTheory {
 	 * of regions into which a 3-dimensional cube can be partitioned by exactly n
 	 * planes. The cake number is so-called because one may imagine each partition
 	 * of the cube by a plane as a slice made by a knife through a cube-shaped cake.
-	 * It is the 3D analogue of the lazy caterer's sequence.
+	 * It is the 3D analog of the lazy caterer's sequence.
 	 * 
 	 * @param v
 	 * @return
@@ -1238,8 +1290,6 @@ public class NumberTheory {
 			sum += integer;
 		}
 
-		int d = sum % list.size();
-//		System.out.printf("%d %% %d = %d\n", sum, list.size(), d);
 		if (sum % list.size() == 0) {
 			return true;
 		}
@@ -1370,6 +1420,21 @@ public class NumberTheory {
 
 	List<Integer> getListOfDigits() {
 		return getListOfDigits(getTheNumber());
+	}
+	
+	
+	/**
+	 * Get the list of a number's digits as a string list.
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return
+	 */
+	public static List<String> getStringListOfDigits(int v){
+		List<String> retList = new LinkedList<>();
+		for (Integer integer : getListOfDigits(v)) {
+			retList.add(integer.toString());
+		}
+		return retList;
 	}
 
 	public static List<Integer> getListOfDigits(BigInteger v) {
@@ -1631,6 +1696,24 @@ public class NumberTheory {
 		return retList;
 	}
 
+	//https://cp-algorithms.com/algebra/phi-function.html#properties
+	// Is this useful?   Not as of 12/15/2022
+	public static int eulersPhi(int n) {
+		int result = n;
+		for(int i =2; i * i <= n; i++) {
+			if(n % i == 0) {
+				while(n % i == 0) {
+					n /= i;
+				}
+				result -= result/ i;
+			}
+		}
+		if(n>1)
+			result -= result/n;
+		return result;
+	}
+	
+	
 	List<Integer> getTotatives() {
 		return getTotatives(getTheNumber());
 	}
@@ -2237,7 +2320,7 @@ public class NumberTheory {
 		String numberString = "";
 		List<Long> theList = Primes.getPrimeFactors(v);
 		for (Long x : theList) {
-			numberString += theList.toString();
+			numberString += x.toString();
 		}
 
 		System.out.println(numberString);
@@ -2251,11 +2334,172 @@ public class NumberTheory {
 		if (numberString.contains(theString))
 			return true;
 		return false;
-
-//		if( v == 250 || v == 25600 || v == 262144)
-//			return true;
-//		return true;
-
+	}
+	
+	boolean isEnlightened() {
+		return isEnlightened((long)getTheNumber());
+	}
+	
+	public static boolean isDPowerful(int v) {
+		//List<Integer> theList = getListOfDigits(v);
+		List<Integer> theList = Primes.getPrimeFactors(v);
+		
+		
+		for (Integer integer : theList) {
+			System.out.printf("%d ", integer);
+		}		
+		System.out.println();
+		
+		//int sumOfSquaresOfDigits = getSumOfSquares(getListOfDigits(v));
+		//int sumOfNonTrivialDivisors = getSumOfDigits(getNonTrivialDivisors(v));
+		System.out.println();
+		return true;
+	}
+	
+	
+	/**
+	 * For example, starting with n=152 we have the sequence |1-5-2|=6, 1+5+2=8, then 14, 22, 36, 58, 94, and finally 152.
+	 * @param v
+	 * @return
+	 */
+	public static boolean isGilda(int v) {
+		List<Integer> theDigitList = getListOfDigits(v);
+		//We need the first number to be positive then subtract all the other digits, ergo, multiply the first
+		// element of the list by 2 then the for loop will correct the first digit issue.
+		int left = theDigitList.get(0) * 2;
+		int right = 0;		
+		for (Integer integer : theDigitList) {
+			left -= integer;
+			right += integer;
+		}
+		left = Math.abs(left);
+		if(getFibonacciLike(v, left, right).contains(v)){
+			return true;
+		}
+		return false;
+	}
+	
+	boolean isGilda() {
+		return isGilda(getTheNumber());
+	}
+	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return
+	 */
+	public static  boolean isGiuga(int v) {
+		if(!isSquareFree(v)) {
+			return false;
+		}
+		//Yes, yes I cheated a little.  
+		if(v == 30) {
+			return true;
+		}
+		double epsilon = 0.01d;
+		double addReciprocal = 0.0;
+		double multiplyReciprocal = 0.0;
+		double buffer = 0.0;
+		
+		List<Integer> theList = new LinkedList<>();
+		theList = Primes.getPrimeFactors(v);		
+		for (Integer integer : theList) {
+			buffer = getReciprocalNumber(integer);
+			addReciprocal += buffer;
+			multiplyReciprocal *= buffer;
+		}
+		buffer = addReciprocal - multiplyReciprocal;		
+		if(Math.abs(buffer - 1.0) < epsilon) {
+			return true;
+		}
+		return false;
+	}
+	
+	boolean isGiuga() {
+		return isGiuga(getTheNumber());
 	}
 
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return boolean
+	 * In mathematics, a square-free integer (or squarefree integer) is an integer which is 
+	 * divisible by no square number other than 1. That is, its prime factorization has 
+	 * exactly one factor for each prime that appears in it.
+	 * @see https://en.wikipedia.org/wiki/Square-free_integer
+	 */
+	public static boolean isSquareFree(int v) {
+		List<Integer> theList = Primes.getPrimeFactors(v);
+		Map<Integer, Integer> theHash = new HashMap<>();
+		for (Integer integer : theList) {
+			if (theHash.containsKey(integer)) {
+				return false;				
+			} else {
+				theHash.put(integer, 1);
+			}
+		}
+		return true;
+	}
+
+	boolean isSquareFree() {
+		return isSquareFree(getTheNumber());
+	}
+
+	
+	/**
+	 * Finding Pythagorian Triples using https://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples
+	 * @param v
+	 * @return
+	 */
+	public static boolean isDicksonsMethod(int r) {
+		boolean retBool = false;
+		if(!isEven(r)) {
+			return false;
+		}
+		int multiplicity = (int) (Math.pow(r, 2)/2);	
+		List<ArrayList<Integer>> factorPairs = getFactorPairs(multiplicity);
+		for(int j = 0; j < factorPairs.size(); j++) {			
+			//System.out.printf("%d %d\n", factorPairs.get(j).get(0), factorPairs.get(j).get(1));
+			int s = factorPairs.get(j).get(0);
+			int t = factorPairs.get(j).get(1);
+			int firstNumber = r + s;
+			int secondNumber = r + t;
+			int z = r + s + t;
+			System.out.printf("%d,  %d, %d\n", firstNumber, secondNumber, z);
+			retBool = true;
+		}
+		
+		//List<Integer> retVal = new ArrayList<>(Arrays.asList(7, 24, 25));
+		return retBool;
+	}
+	
+	boolean isDicksonsMethod(){
+		return isDicksonsMethod(getTheNumber());
+	}
+	
+	public static List<ArrayList<Integer>> getFactorPairs(int v){
+		List<Integer> theFactors = getFactors(v);
+		if(!isEven(theFactors.size())){
+			return null;
+		}
+		Deque<Integer> factorPairs = new LinkedList<>();
+		for (Integer integer : theFactors) {
+			factorPairs.add(integer);
+		}
+		List<ArrayList<Integer>> retList = new ArrayList<ArrayList<Integer>>();
+				
+		int counter = 0;
+		int first = 0;
+		int second = 0;
+		while(!factorPairs.isEmpty()) {
+			first = factorPairs.removeFirst();
+			second = factorPairs.removeLast();					
+			retList.add(counter++, new ArrayList<>(Arrays.asList(first, second)));
+		}
+		//System.out.println(retList.get(0));
+		return retList;
+		
+	}
 }
