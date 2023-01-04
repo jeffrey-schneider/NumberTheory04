@@ -115,7 +115,6 @@ public class Point {
 		double lat1 = Math.toRadians(this.getLatitude());
 		double lat2 = Math.toRadians(point2.getLatitude());
 		double lon1 = Math.toRadians(this.getLongitude());
-		double lon2 = Math.toRadians(point2.getLongitude());
 		double Bx = Math.cos(lat2) * Math.cos(dLon);
 		double By = Math.cos(lat2) * Math.sin(dLon);
 		double midLat = Math.atan2(Math.sin(lat1) + Math.sin(lat2),

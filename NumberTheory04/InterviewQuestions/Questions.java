@@ -4,7 +4,8 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 
 public class Questions {
-	private static final DecimalFormat df = new DecimalFormat("#.00");	static int denomination[] = { 500000, 100000, 50000, 10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1};
+	private static final DecimalFormat df = new DecimalFormat("#.00");	
+	static int denomination[] = { 500000, 100000, 50000, 10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1};
 	
 	public static void makeChange(double v) {
 		double summation = 0.0;

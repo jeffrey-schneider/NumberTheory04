@@ -1202,7 +1202,7 @@ class NumberTheoryTest {
 		
 		@Test
 		@DisplayName("Dicksons Method")
-		public void isDickinsonsMethod() {			
+		public void isDicksonsMethod() {			
 			instance.setTheNumber(6);
 			assertTrue(instance.isDicksonsMethod());
 		}

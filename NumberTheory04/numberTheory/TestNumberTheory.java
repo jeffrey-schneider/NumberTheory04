@@ -1,6 +1,7 @@
 package numberTheory;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -435,8 +436,17 @@ public class TestNumberTheory {
 		
 		
 		System.out.println("In Dicksons Method");
+		List<ArrayList<Integer>> jeff = new ArrayList<ArrayList<Integer>>();
+		
 		for(int j = 2; j <= 100; j += 2) {
-			NumberTheory.isDicksonsMethod(j);
+			jeff = NumberTheory.getDicksonsMethod(j);
+			System.out.println(jeff);
+		}
+		
+		for(int j = 0; j < jeff.size(); j++) {
+			for(int k = 0; k < jeff.size(); k++) {
+				System.out.println(jeff.get(j).get(k));
+			}
 		}
 		
 	}

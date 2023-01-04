@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
@@ -2475,10 +2474,42 @@ public class NumberTheory {
 		return retBool;
 	}
 	
+	public static List<ArrayList<Integer>> getDicksonsMethod(int r){
+		List<ArrayList<Integer>> retVal = new ArrayList<ArrayList<Integer>>();
+		if(!isEven(r)) {
+			return null;
+		}
+		int multiplicity = (int) (Math.pow(r, 2)/2);	
+		List<ArrayList<Integer>> factorPairs = getFactorPairs(multiplicity);
+		for(int j = 0; j < factorPairs.size(); j++) {			
+			//System.out.printf("%d %d\n", factorPairs.get(j).get(0), factorPairs.get(j).get(1));
+			int s = factorPairs.get(j).get(0);
+			int t = factorPairs.get(j).get(1);
+			int firstNumber = r + s;
+			int secondNumber = r + t;
+			int z = r + s + t;
+			//System.out.printf("%d,  %d, %d\n", firstNumber, secondNumber, z);
+			retVal.add(new ArrayList<Integer>(Arrays.asList(firstNumber, secondNumber, z)));
+		}
+		
+		//List<Integer> retVal = new ArrayList<>(Arrays.asList(7, 24, 25));
+		return retVal;
+	}
+	
 	boolean isDicksonsMethod(){
 		return isDicksonsMethod(getTheNumber());
 	}
 	
+	
+	/**
+	 * @author JeffreySchneider
+	 * @param v
+	 * @return  
+	 * 	List of factor pairs, used with:
+	 *  @see #isDicksonsMethod(int aNumber)
+	 *  
+	 *   ie: 18 = ((1, 18), ( 2, 9), (3, 6))
+	 */
 	public static List<ArrayList<Integer>> getFactorPairs(int v){
 		List<Integer> theFactors = getFactors(v);
 		if(!isEven(theFactors.size())){
