@@ -52,6 +52,14 @@ public class N_Choose_K {
 	}
 	
 	
+	/**
+	 * @author JeffreySchneider
+	 * A permutation is an arrangement in a definite order of a number of objects
+	 *  taken some or all at a time.
+	 * @param n
+	 * @param r
+	 * @return
+	 */
 	public static BigInteger permutations(int n, int r) {
 		// n!
 		// divided by ( n - r)!
