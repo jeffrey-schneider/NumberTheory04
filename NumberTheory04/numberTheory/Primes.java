@@ -291,6 +291,13 @@ public class Primes extends NumberTheory {
 		return (HashSet<Integer>) theSet;
 	}
 	
+	public static HashSet<Long> getDistinctPrimeFactors(long v){
+		List<Long> theList = getPrimeFactors(v);
+		Set<Long> theSet = new HashSet<Long>();
+		theSet.addAll(theList);
+		return (HashSet<Long>) theSet;
+	}
+	
 	
 	public static boolean isCoPrime(int v, int bNumber) {
 		return isCoPrime((long) v, (long) bNumber);

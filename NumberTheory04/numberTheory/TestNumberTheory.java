@@ -3,8 +3,11 @@ package numberTheory;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -443,13 +446,97 @@ public class TestNumberTheory {
 			System.out.println(jeff);
 		}
 		
-		for(int j = 0; j < jeff.size(); j++) {
-			for(int k = 0; k < jeff.size(); k++) {
-				System.out.println(jeff.get(j).get(k));
-			}
+		
+		System.out.println("Perrin Numbers");
+		for(int a1 = 0; a1 < 20; a1++) {
+			System.out.printf("%d ", NumberTheory.getPerrin(a1));
 		}
 		
+		System.out.println("\nCunningham numbers");
+		for(int a1 = 0; a1 < 50; a1++) {
+			if(NumberTheory.isCunningham(a1))
+					System.out.printf("%d ", a1);
+		}
+		
+		System.out.println("\nEnlightened Numbers");
+		x = 2500;
+		long xx =  2377970784L;
+		xx = 119911L;
+		System.out.println("Is " + xx + " enlightened? " + NumberTheory.isEnlightened(xx));
+		
+		
+//		System.out.println("\nEsthetic");
+//		for( i = 0; i <= 10000; i++) {
+//			if( NumberTheory.isEsthetic(i)) {
+//				System.out.printf(" %d, ", i);
+//			}
+//		}
+		
+		System.out.println("\nEulerian");
+		n = 9;
+		for(n = 1; n <= 10; n++) {
+			for(int m = 0; m <= n; m++) {		
+				System.out.printf("%d %d %d\n", n, m, NumberTheory.getEulerian(n,m));
+			}
+			System.out.println();
+		}
+		
+		
+		
+		for(n = 20; n <= 50; n++) {
+			List<Integer> newList = new LinkedList<Integer>();
+			newList.addAll(Primes.getDistinctPrimeFactors(x));
+			for (Integer integer : newList) {
+				System.out.printf("%d %d\n", n, integer);
+			}
+			
+			
+		}
+		
+//		System.out.println("\nHoax");
+//		n = 5464;
+//		n = 12880;
+//		//System.out.println(NumberTheory.isHoaxNumber(n));
+//		
+//		for(n=20; n<= 100; n++) {
+//			if(NumberTheory.isHoaxNumber(n)) {
+//				System.out.println("Distinct Prime Factors");
+//				for (Integer arrayList : Primes.getDistinctPrimeFactors(n)) {
+//					System.out.printf("%d ", arrayList);
+//				}				
+//				System.out.println();
+//				System.out.printf("Is %d hoax number? \n", n);
+//			}
+//		}
+		
 	}
+
+
+
+
+
+
+
+	
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -552,8 +639,14 @@ public class TestNumberTheory {
 		System.out.println("13 " + NumberTheory.isEconomical(13));
 		System.out.println("14 " + NumberTheory.isEconomical(14));
 		System.out.println("997 " + NumberTheory.isEconomical(997));
+		System.out.println("108749 " + NumberTheory.isEconomical(108749));
 	}
 
+	
+	static void esthetic() {
+		System.out.println("--isEsthetic");
+		System.out.println("76 " + NumberTheory.isEsthetic(76));
+	}
 	/**
 	 * 
 	 */
@@ -589,5 +682,8 @@ public class TestNumberTheory {
 		v = 23418;
 		System.out.println(NumberTheory.isFiboDiv(v));
 	}
-
+	
+	
+		
+	
 }

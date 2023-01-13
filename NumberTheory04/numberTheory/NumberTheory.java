@@ -14,8 +14,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
+import java.util.TreeSet;
 
 public class NumberTheory {
 	/**
@@ -1421,6 +1423,19 @@ public class NumberTheory {
 		return getListOfDigits(getTheNumber());
 	}
 	
+	public static List<Long> getListOfDigits(long v) {
+		List<Long> retList = new LinkedList<>();
+		// This works right to left.
+		while (v > 0) {
+			long remainder = v % 10;
+			retList.add(remainder);
+			v /= 10;
+		}
+		// Flip the list to get it in the correct order.
+		Collections.reverse(retList);
+		return retList;		
+	}
+	
 	
 	/**
 	 * Get the list of a number's digits as a string list.
@@ -1435,7 +1450,13 @@ public class NumberTheory {
 		}
 		return retList;
 	}
-
+	public static List<String> getStringListOfDigits(long v){
+		List<String> retList = new LinkedList<>();
+		for (Long jeff : getListOfDigits(v)) {
+			retList.add(jeff.toString());
+		}
+		return retList;
+	}
 	public static List<Integer> getListOfDigits(BigInteger v) {
 		List<Integer> retList = new LinkedList<>();
 		// This works right to left.
@@ -2191,6 +2212,7 @@ public class NumberTheory {
 	}
 
 	/**
+	 * @author JCSchneider
 	 * Question: Can this be done without the HashMap?
 	 * 
 	 * A highly composite number (sometimes called anti-prime) is a positive integer
@@ -2305,40 +2327,79 @@ public class NumberTheory {
 		return isPerfectPower(getTheNumber());
 	}
 
+	
+	
+	
+	
+	
 	/**
-	 * 
-	 * Still In Progress
-	 * 
-	 * A number 'n' is said to be enlightened if it begins with the concatenation of
-	 * its distinct prime factors.
-	 * 
+	 * A number  $n$  is said to be enlightened if it begins with the concatenation of its distinct prime factors.
+	 *   For example, 2500 is enlightened since its factorization is 2^2⋅5^4 and indeed its begins with '25'.
+	 *    Read all prime factors into a set to remove duplicates and then compare that set to the digits of the number.
+	 *    Use StringBuilder.
 	 * @param v
 	 * @return
 	 */
-	public static boolean isEnlightened(long v) {
-		String numberString = "";
-		List<Long> theList = Primes.getPrimeFactors(v);
-		for (Long x : theList) {
-			numberString += x.toString();
+	public static boolean isEnlightened(long v) {		
+		//Get list of prime factors
+		List<Long> primeFactors = Primes.getPrimeFactors(v);
+		// Remove the duplicates of prime factors
+		Set<Long> primeSet = new TreeSet<>();
+		primeSet.addAll(primeFactors);
+		//Concatenate the prime factors into a StringBuilder - for easy comparison to the digits of the number.
+		StringBuilder primeFactorSet = new StringBuilder();		
+		for(Long long1 : primeSet) {
+			primeFactorSet.append(long1);
+		}
+		
+		List<String> pdq = NumberTheory.getStringListOfDigits(v);
+		//Concatenate the digits of the number into a StringBuilder - use String.startswith() to determine if the number begins with the prime factors.
+		StringBuilder stringListOfDigits = new StringBuilder();		
+		for (String string : pdq) {
+			stringListOfDigits.append(string);
 		}
 
-		System.out.println(numberString);
-		Set<Long> hSet = new HashSet<Long>(theList);
-		String theString = "";
-		System.out.print("V: " + v + " ");
-		for (Long x : hSet) {
-			theString += x.toString();
-		}
-		System.out.println("The String = " + theString + " NumberString: " + numberString);
-		if (numberString.contains(theString))
-			return true;
-		return false;
+		//Convert the StringBuilders into Strings.
+		String primeFactorSetString = primeFactorSet.toString();
+		String listOfDigitsString = stringListOfDigits.toString();
+		
+		return listOfDigitsString.startsWith(primeFactorSetString);
 	}
 	
 	boolean isEnlightened() {
-		return isEnlightened((long)getTheNumber());
+		return isEnlightened(getTheNumber());
 	}
 	
+	
+	/**
+	 * An esthetic number is a positive integer where every adjacent digit differs from its neighbour by 1.
+	 * @param v
+	 * @return
+	 * 
+	 * Loop through the digits of a number and if any digit - adjacent digit <> 1, return false.
+	 *   Use Math.abs to simplify the equality test.
+	 */
+	public static boolean isEsthetic(int v) {
+		if(v < 10) return false;
+		List<Integer> theList = new ArrayList<>();
+		theList = getListOfDigits(v);		
+		for(int i = 0; i < theList.size() - 1; i++) {
+			if(Math.abs(theList.get(i) - theList.get(i+1)) != 1) {
+				return false;
+			}
+		}
+		return true;		
+	}
+	
+	boolean isEsthetic() {
+		return isEsthetic(getTheNumber());
+	}
+	
+	/**
+	 * Broken
+	 * @param v
+	 * @return
+	 */
 	public static boolean isDPowerful(int v) {
 		//List<Integer> theList = getListOfDigits(v);
 		List<Integer> theList = Primes.getPrimeFactors(v);
@@ -2533,4 +2594,101 @@ public class NumberTheory {
 		return retList;
 		
 	}
+	
+	public static int getPerrin(int v){
+		if(v == 0)
+			return 3;
+		if(v == 1)
+			return 0;
+		if(v== 2)
+			return 2;
+		return getPerrin(v-2) + getPerrin(v - 3);
+			
+		}
+	
+	int getPerrin(){
+		return getPerrin(getTheNumber());
+	}	
+	
+	
+	/**
+	 * Is number a Cunningham number
+	 * @param v
+	 * @return
+	 */
+	static boolean isCunningham(int n)
+	{
+	    return isPower(n - 1) ||
+	           isPower(n + 1);
+	}
+
+	boolean isCunningham() {
+		return isCunningham(getTheNumber());
+	}
+	
+	
+	static boolean isPower(int a)
+	{
+	    if (a == 1)
+	        return true;
+	 
+	    for(int i = 2; i * i <= a; i++)
+	    {
+	       double val = Math.log(a) / Math.log(i);
+	       if ((val - (int)val) < 0.00000001)
+	           return true;
+	    }
+	    return false;
+	}
+
+	
+	/**
+	 * https://www.geeksforgeeks.org/eulerian-number/
+	 * @param n
+	 * @param m
+	 * @return
+	 */
+	public static int getEulerian(int n, int m) {
+		if(m >= n || n == 0)
+			return 0;
+		if (m == 0)
+			return 1;
+		return (n - m) * getEulerian(n - 1, m - 1) +
+	            (m + 1) * getEulerian(n - 1, m);
+	}
+	
+	
+	/**
+	 * A composite number the sum of whose digits is equal to the sum of the digits of its distinct prime factors is called hoax number.
+	 * 
+	 * 	For example,  5464=2^ * 683  is a hoax number since  5+4+6+4=2+6+8+3.
+	 * Steps:
+	 * 1) Convert digits into list of digits.
+	 * 2)  Determine sum of digits
+	 * 3) Get set of distinct prime factors.
+	 * 4)  Convert set to list
+	 * 5)  Determine sum of distinct prime factors
+	 * 6) Does list of digits from step 3 equal set of digits from 5?
+	 *   If so, true
+	 * @param v
+	 * @return
+	 */
+	public static boolean isHoaxNumber(int v) {
+		int sumOfDigits = getSumOfDigits(getListOfDigits(v));		
+		int sumOfPrimeFactors = 0;
+		HashSet<Integer> primeSet = Primes.getDistinctPrimeFactors(v);
+		for (Integer integer : primeSet) {
+			for(Integer digits : (getListOfDigits(integer))) {				
+				sumOfPrimeFactors += digits;
+			}
+		}
+		System.out.printf("%d  %d  %d\n", v, sumOfDigits, sumOfPrimeFactors);
+		if( sumOfDigits == sumOfPrimeFactors) {
+			return true;
+		};
+		return false;
+	}
+	
 }
+
+

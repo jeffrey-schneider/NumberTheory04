@@ -655,6 +655,7 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isEconomical(1655));
 			assertTrue(NumberTheory.isEconomical(13));
 			assertFalse(NumberTheory.isEconomical(12));
+			assertTrue(NumberTheory.isEconomical(108749));
 		}
 
 		@Test
@@ -839,7 +840,7 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isAchilles(2701));
 		}
 
-		// @Test
+		@Test
 		@DisplayName("In Number Enlightened")
 		public void isEnlightened() {
 			assertTrue(NumberTheory.isEnlightened(250));
@@ -851,6 +852,21 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isEnlightened(262145));
 			instance.setTheNumber(25600);
 			assertTrue(instance.isEnlightened());
+		}
+		
+		
+		@Test
+		@DisplayName("Is Number Esthetic")
+		public void isEsthetic(){
+			assertTrue(NumberTheory.isEsthetic(121210));
+			assertTrue(NumberTheory.isEsthetic(121));
+			assertTrue(NumberTheory.isEsthetic(210));
+			assertFalse(NumberTheory.isEsthetic(99));
+			instance.setTheNumber(21012);
+			assertTrue(instance.isEsthetic());
+			instance.setTheNumber(21011);
+			assertFalse(instance.isEsthetic());
+			
 		}
 
 	} // End of boolean tests
@@ -1206,7 +1222,40 @@ class NumberTheoryTest {
 			instance.setTheNumber(6);
 			assertTrue(instance.isDicksonsMethod());
 		}
-
+		
+		@Test
+		@DisplayName("Perrins Numbers")
+		public void getPerrinsNumber() {
+			int result = NumberTheory.getPerrin(45);
+			int expected = 313007;
+			assertEquals(expected, result);
+			instance.setTheNumber(44);
+			result = instance.getPerrin();
+			expected = 236282;
+			assertEquals(expected, result);			
+		}
+		
+		@Test
+		@DisplayName("Cunningham Numbers")
+		public void isCunninghamNumber() {
+			assertTrue(NumberTheory.isCunningham(17));
+			instance.setTheNumber(28);
+			assertTrue(instance.isCunningham());
+		}
+		
+		
+		@Test
+		@DisplayName("Eulerian Numbers")
+		public void getEulerian() {
+			int result = NumberTheory.getEulerian(9, 4);
+			int expected = 156190;
+			assertEquals(expected, result);
+			result = NumberTheory.getEulerian(10, 5);
+			expected = 1310354;
+			assertEquals(expected, result);
+		}
 	}
+	
+	
 
 }
