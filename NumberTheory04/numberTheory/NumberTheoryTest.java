@@ -1243,6 +1243,17 @@ class NumberTheoryTest {
 			assertTrue(instance.isCunningham());
 		}
 		
+		@Test
+		@DisplayName("Hoax Numbers")
+		public void isHoax() {
+			assertTrue(NumberTheory.isHoaxNumber(22));
+			assertTrue(NumberTheory.isHoaxNumber(5464));
+			assertTrue(NumberTheory.isHoaxNumber(32880));
+			assertFalse(NumberTheory.isHoaxNumber(23));
+			instance.setTheNumber(33169);
+			assertTrue(instance.isHoaxNumber());
+		}
+		
 		
 		@Test
 		@DisplayName("Eulerian Numbers")

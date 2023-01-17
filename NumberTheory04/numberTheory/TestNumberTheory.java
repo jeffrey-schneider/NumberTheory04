@@ -52,8 +52,6 @@ public class TestNumberTheory {
 		System.out.println(NumberTheory.isApocalyptic(192));
 		System.out.println(NumberTheory.isApocalyptic(0));
 
-
-
 		System.out.println("Cake Numbers:");
 		int n = 0;
 		while (n < 25) {
@@ -295,9 +293,6 @@ public class TestNumberTheory {
 //			System.out.println(NumberTheory.getHogben(abc));
 //		}
 
-		
-
-		
 		// ProjectEuler.ProjectEuler.main(null);
 
 		System.out.println(LocalMath.BigPI());
@@ -313,12 +308,11 @@ public class TestNumberTheory {
 		}
 
 		System.out.println("Prime Factors Loop");
-		
-		
+
 		Primes thePrimeInstance = new Primes();
-		
+
 		for (int j = 10; j <= 20; j++) {
-			
+
 			thePrimeInstance.setTheNumber(j);
 			System.out.println(j + " " + thePrimeInstance.getPrimeFactors());
 		}
@@ -409,8 +403,6 @@ public class TestNumberTheory {
 		System.out.println(Primes.isSemiPrime(57));
 		System.out.println(Primes.isSemiPrime(73));
 
-		
-
 		System.out.println(Math.abs(-324.0));
 
 		System.out.println("---Hungry Numbers");
@@ -426,175 +418,124 @@ public class TestNumberTheory {
 //		System.out.println("---Amicable Numbers");
 //		System.out.println("Is 220 Amicable? " + NumberTheory.getAmicableNumber(220));
 //		System.out.println("Is 284 Amicable? " + NumberTheory.getAmicableNumber(284));		
-		
+
 //		navigationTest();
 //		fiboDiv();
-		isCarmichaelNumbers(instance);		
+		isCarmichaelNumbers(instance);
 		dNumberTest();
-		dPowerfulTest();		
-		isGildaTest(instance);		
-		isGiugaTest();	
-		
+		dPowerfulTest();
+		isGildaTest(instance);
+		isGiugaTest();
+
 		someWorkInProgress(BigInteger.TWO);
-		
-		
+
 		System.out.println("In Dicksons Method");
 		List<ArrayList<Integer>> jeff = new ArrayList<ArrayList<Integer>>();
-		
-		for(int j = 2; j <= 100; j += 2) {
+
+		for (int j = 2; j <= 100; j += 2) {
 			jeff = NumberTheory.getDicksonsMethod(j);
 			System.out.println(jeff);
 		}
-		
-		
+
 		System.out.println("Perrin Numbers");
-		for(int a1 = 0; a1 < 20; a1++) {
+		for (int a1 = 0; a1 < 20; a1++) {
 			System.out.printf("%d ", NumberTheory.getPerrin(a1));
 		}
-		
+
 		System.out.println("\nCunningham numbers");
-		for(int a1 = 0; a1 < 50; a1++) {
-			if(NumberTheory.isCunningham(a1))
-					System.out.printf("%d ", a1);
+		for (int a1 = 0; a1 < 50; a1++) {
+			if (NumberTheory.isCunningham(a1))
+				System.out.printf("%d ", a1);
 		}
-		
+
 		System.out.println("\nEnlightened Numbers");
 		x = 2500;
-		long xx =  2377970784L;
+		long xx = 2377970784L;
 		xx = 119911L;
 		System.out.println("Is " + xx + " enlightened? " + NumberTheory.isEnlightened(xx));
-		
-		
+
 //		System.out.println("\nEsthetic");
 //		for( i = 0; i <= 10000; i++) {
 //			if( NumberTheory.isEsthetic(i)) {
 //				System.out.printf(" %d, ", i);
 //			}
 //		}
-		
+
 		System.out.println("\nEulerian");
 		n = 9;
-		for(n = 1; n <= 10; n++) {
-			for(int m = 0; m <= n; m++) {		
-				System.out.printf("%d %d %d\n", n, m, NumberTheory.getEulerian(n,m));
+		for (n = 1; n <= 10; n++) {
+			for (int m = 0; m <= n; m++) {
+				System.out.printf("%d %d %d\n", n, m, NumberTheory.getEulerian(n, m));
 			}
 			System.out.println();
 		}
-		
-		
-		
-		for(n = 20; n <= 50; n++) {
-			List<Integer> newList = new LinkedList<Integer>();
-			newList.addAll(Primes.getDistinctPrimeFactors(x));
-			for (Integer integer : newList) {
-				System.out.printf("%d %d\n", n, integer);
+
+		System.out.println("\nHoax Numbers ");
+		for (n = 1; n <= 1200; n++) {
+			if (NumberTheory.isHoaxNumber(n)) {
+				System.out.println(n);
 			}
-			
-			
 		}
 		
-//		System.out.println("\nHoax");
-//		n = 5464;
-//		n = 12880;
-//		//System.out.println(NumberTheory.isHoaxNumber(n));
-//		
-//		for(n=20; n<= 100; n++) {
-//			if(NumberTheory.isHoaxNumber(n)) {
-//				System.out.println("Distinct Prime Factors");
-//				for (Integer arrayList : Primes.getDistinctPrimeFactors(n)) {
-//					System.out.printf("%d ", arrayList);
-//				}				
-//				System.out.println();
-//				System.out.printf("Is %d hoax number? \n", n);
-//			}
-//		}
+		System.out.println("\nReverse BigInteger ");
+		BigInteger test = BigInteger.valueOf(123456);
+		System.out.println(NumberTheory.reverseBigInteger(test));
 		
+		System.out.println("Let's do the iccanobiF");
+		System.out.println("IccanobiF List(17): " + NumberTheory.geticcanobiFList(17));
+				
+
 	}
-
-
-
-
-
-
-
-	
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/**
 	 * @param v
 	 */
 	static void someWorkInProgress(BigInteger v) {
 		int x;
-		//In progress
+		// In progress
 		x = 5464;
-		List<Integer> thisList = Primes.getListOfDigits(v);		
+		List<Integer> thisList = Primes.getListOfDigits(v);
 		int summaryDigits = NumberTheory.getSumOfDigits(Primes.getListOfDigits(x));
-		
+
 		HashSet<Integer> thisSet = Primes.getDistinctPrimeFactors(x);
 		List<Integer> anotherList = new LinkedList<Integer>();
 		anotherList.addAll(thisSet);
 		int summaryPrimeFactors = NumberTheory.getSumOfDigits(anotherList);
-		
+
 		System.out.printf("Summary: %d  %d ", summaryDigits, summaryPrimeFactors);
 		System.out.println();
 	}
-
-
 
 	/**
 	 * 
 	 */
 	static void isGiugaTest() {
 		System.out.println("Giuga Test One");
-		int[] theArray = {30, 858, 1722, 1723, 66198};
-		for(int i1 = 0; i1 < theArray.length; i1++) {
+		int[] theArray = { 30, 858, 1722, 1723, 66198 };
+		for (int i1 = 0; i1 < theArray.length; i1++) {
 			System.out.println(theArray[i1] + " " + NumberTheory.isGiuga(theArray[i1]));
 		}
-		
+
 		System.out.println("Giuga Test Two");
 		for (int j = 850; j < 870; j++) {
-			if(NumberTheory.isGiuga(j))
+			if (NumberTheory.isGiuga(j))
 				System.out.println(j);
 		}
 		System.out.println();
 	}
-
-
 
 	/**
 	 * @param instance
 	 */
 	static void isGildaTest(NumberTheory instance) {
 		System.out.println("---Gilda Numbers:");
-		int[] i1 = {29, 30, 49, 78, 110, 152, 220, 314, 38006, 933138};
+		int[] i1 = { 29, 30, 49, 78, 110, 152, 220, 314, 38006, 933138 };
 		for (int j : i1) {
 			System.out.println("Is " + j + " Gilda?" + NumberTheory.isGilda(j));
 		}
 		instance.setTheNumber(35422);
 		System.out.println("\nIs " + instance.getTheNumber() + " Gilda?" + instance.isGilda());
 	}
-
-	
 
 	/**
 	 * @param instance
@@ -608,20 +549,19 @@ public class TestNumberTheory {
 		System.out.println(instance.isCarmichael());
 	}
 
-	
 	/**
 	 * 
 	 */
 	static void dNumberTest() {
 		System.out.println("---DNumber");
-		for(int i = 9; i < 300; i++) {
-			if(NumberTheory.isDNumber(i)) {
-			System.out.print(i + " " );
+		for (int i = 9; i < 300; i++) {
+			if (NumberTheory.isDNumber(i)) {
+				System.out.print(i + " ");
 			}
 		}
 		System.out.println();
 	}
-	
+
 	static void dPowerfulTest() {
 		System.out.println("---DPowerful");
 		int i = 3459872;
@@ -642,22 +582,22 @@ public class TestNumberTheory {
 		System.out.println("108749 " + NumberTheory.isEconomical(108749));
 	}
 
-	
 	static void esthetic() {
 		System.out.println("--isEsthetic");
 		System.out.println("76 " + NumberTheory.isEsthetic(76));
 	}
+
 	/**
 	 * 
 	 */
 	static void navigationTest() {
 		System.out.println("\nLet's play with Navigation!");
 		Point KansasCity = new Point(-94.581213, 39.099912, "Kansas City");
-		Point StLouis = new Point(-90.200203, 38.627089, "St. Louis");		
-		System.out.print(KansasCity.getLocation() + " to " + StLouis.getLocation() + " Distance: "); 
-		System.out.print(KansasCity.distance(StLouis)+ " kilometers. ");
+		Point StLouis = new Point(-90.200203, 38.627089, "St. Louis");
+		System.out.print(KansasCity.getLocation() + " to " + StLouis.getLocation() + " Distance: ");
+		System.out.print(KansasCity.distance(StLouis) + " kilometers. ");
 		System.out.println(" Initial Bearing: " + KansasCity.initialBearing(StLouis));
-		
+
 		System.out.println();
 		Point source = new Point(-85.3094, 35.0458, "Chattanooga");
 		Point target = new Point(-86.7816, 36.1627, "Nashville");
@@ -667,7 +607,7 @@ public class TestNumberTheory {
 		System.out.println("Final Bearing: " + source.finalBearing(target));
 		Point midPoint = source.midpoint(target);
 		System.out.println(midPoint.getLocation() + " " + midPoint.getLongitude() + " " + midPoint.getLatitude());
-		
+
 		Point endPoint = source.getEndPoint(313.0, 182.0);
 		System.out.println("End point " + endPoint);
 	}
@@ -682,8 +622,5 @@ public class TestNumberTheory {
 		v = 23418;
 		System.out.println(NumberTheory.isFiboDiv(v));
 	}
-	
-	
-		
-	
+
 }

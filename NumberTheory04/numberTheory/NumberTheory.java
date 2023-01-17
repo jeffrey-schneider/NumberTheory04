@@ -2663,7 +2663,7 @@ public class NumberTheory {
 	 * 
 	 * 	For example,  5464=2^ * 683  is a hoax number since  5+4+6+4=2+6+8+3.
 	 * Steps:
-	 * 1) Convert digits into list of digits.
+	 * \n1) Convert digits into list of digits.
 	 * 2)  Determine sum of digits
 	 * 3) Get set of distinct prime factors.
 	 * 4)  Convert set to list
@@ -2674,21 +2674,90 @@ public class NumberTheory {
 	 * @return
 	 */
 	public static boolean isHoaxNumber(int v) {
-		int sumOfDigits = getSumOfDigits(getListOfDigits(v));		
-		int sumOfPrimeFactors = 0;
-		HashSet<Integer> primeSet = Primes.getDistinctPrimeFactors(v);
-		for (Integer integer : primeSet) {
-			for(Integer digits : (getListOfDigits(integer))) {				
-				sumOfPrimeFactors += digits;
+		if (!Primes.isPrime(v)) {
+			int sumOfDigits = 0;
+			int sumOfPrimeDigits = 0;
+			List<Integer> numbersDigitList = new LinkedList<>();
+			List<Integer> numbersPrimeFactorsDigitList = new LinkedList<>();
+
+			numbersDigitList = NumberTheory.getListOfDigits(v);
+			for (Integer integer : numbersDigitList) {
+				sumOfDigits += integer;
 			}
-		}
-		System.out.printf("%d  %d  %d\n", v, sumOfDigits, sumOfPrimeFactors);
-		if( sumOfDigits == sumOfPrimeFactors) {
-			return true;
-		};
+
+			HashSet<Integer> convertSet = Primes.getDistinctPrimeFactors(v);
+			List<Integer> numbersPrimeFactorsList = new LinkedList<>();
+			numbersPrimeFactorsList.addAll(convertSet);
+			for (Integer integer : numbersPrimeFactorsList) {
+				numbersPrimeFactorsDigitList = NumberTheory.getListOfDigits(integer);
+				for (Integer littleInteger : numbersPrimeFactorsDigitList) {
+					sumOfPrimeDigits += littleInteger;
+				}
+			}
+			return (sumOfDigits == sumOfPrimeDigits);
+		}		
 		return false;
 	}
 	
+	boolean isHoaxNumber() {
+		return isHoaxNumber(getTheNumber());
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param v
+	 * @return BigInteger List of {@link=
+	 *         https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to
+	 *         aNumber.
+	 * Does not work yet
+	 * 
+	 * 1, 1, 2, 3, 5, 8, 13, 39, 124, 514, 836, 1053, 4139, 12815, 61135, 104937, 792517, 1454698
+	 */	
+	public static List<BigInteger> geticcanobiFList(int v) {
+		BigInteger num1 = BigInteger.ZERO;
+		BigInteger num2 = BigInteger.ONE;
+		int counter = 0;
+		List<BigInteger> retList = new ArrayList<>();
+
+		// Iterate until counter == aNumber
+		if ( v == 0 )
+			retList.add(num1);
+		else if( v == 1)
+			retList.add(num1);
+		else if ( v == 2)
+			retList.add(num1.add(num2));
+		else {
+			retList.add(num1);
+			retList.add(num2);
+			for(int i = 3; i<= v; i++) {
+				//BigInteger x = reverseBigInteger(num1);
+				BigInteger x = num1;
+				BigInteger y = reverseBigInteger(num2);
+				retList.add(y);
+				BigInteger temp = num2;
+				num2 = x.add(y);
+				num1 = temp;
+			}
+		}
+		return retList;
+	}
+
+	
+	/**
+	 * http://www.java2s.com/example/java-utility-method/biginteger-reverse/reverse-biginteger-n-48089.html
+	 * @param v
+	 * @return
+	 */
+	public static BigInteger reverseBigInteger(BigInteger v) {
+		String s = v.toString();
+		StringBuilder sb = new StringBuilder(s);
+		return new BigInteger(sb.reverse().toString());
+	}
+
 }
+	
+
 
 
