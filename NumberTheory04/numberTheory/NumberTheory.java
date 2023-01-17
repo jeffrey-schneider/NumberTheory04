@@ -2732,8 +2732,8 @@ public class NumberTheory {
 			retList.add(num1);
 			retList.add(num2);
 			for(int i = 3; i<= v; i++) {
-				//BigInteger x = reverseBigInteger(num1);
-				BigInteger x = num1;
+				BigInteger x = reverseBigInteger(num1);
+				//BigInteger x = num1;
 				BigInteger y = reverseBigInteger(num2);
 				retList.add(y);
 				BigInteger temp = num2;
