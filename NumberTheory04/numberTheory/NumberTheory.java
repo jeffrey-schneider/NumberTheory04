@@ -943,6 +943,22 @@ public class NumberTheory {
 	int getAmicableNumber() {
 		return getAmicableNumber(getTheNumber());
 	}
+	
+	public static Integer getBetrothedNumber(int v) {
+		if(isPrime(v)) {
+			return null;
+		}
+		int thisNumber = getSumOfList(getNonTrivialDivisors(v));		
+		int thatNumber = getSumOfList(getNonTrivialDivisors(thisNumber));
+		if(thatNumber == v)
+			return thisNumber;
+		else
+			return null;		
+	}
+	
+	Integer getBetrothedNumber() {
+		return getBetrothedNumber(getTheNumber());
+	}
 
 	/**
 	 * @author JeffreySchneider
@@ -1391,14 +1407,12 @@ public class NumberTheory {
 	 * 
 	 */
 	public static List<Integer> getNonTrivialDivisors(int v) {
-		List<Integer> retList = new ArrayList<>();
-		retList = getFactors(v);
+		LinkedList<Integer> retList = new LinkedList<Integer>();
+		retList.addAll(getFactors(v));
 		Collections.sort(retList);
-		int Length = retList.size();
-		retList.remove(Length - 1);
-		retList.remove(0);
+		retList.removeLast();
+		retList.removeFirst();
 		return retList;
-
 	}
 
 	/**
@@ -2708,43 +2722,40 @@ public class NumberTheory {
 	/**
 	 * 
 	 * @param v
-	 * @return BigInteger List of {@link=
-	 *         https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to
-	 *         aNumber.
-	 * Does not work yet
-	 * 
-	 * 1, 1, 2, 3, 5, 8, 13, 39, 124, 514, 836, 1053, 4139, 12815, 61135, 104937, 792517, 1454698
-	 */	
-	public static List<BigInteger> geticcanobiFList(int v) {
-		BigInteger num1 = BigInteger.ZERO;
-		BigInteger num2 = BigInteger.ONE;
-		int counter = 0;
-		List<BigInteger> retList = new ArrayList<>();
-
-		// Iterate until counter == aNumber
-		if ( v == 0 )
-			retList.add(num1);
-		else if( v == 1)
-			retList.add(num1);
-		else if ( v == 2)
-			retList.add(num1.add(num2));
-		else {
-			retList.add(num1);
-			retList.add(num2);
-			for(int i = 3; i<= v; i++) {
-				BigInteger x = reverseBigInteger(num1);
-				//BigInteger x = num1;
-				BigInteger y = reverseBigInteger(num2);
-				retList.add(y);
-				BigInteger temp = num2;
-				num2 = x.add(y);
-				num1 = temp;
-			}
-		}
-		return retList;
-	}
-
-	
+	 * @return BigInteger List of {@link=https://oeis.org/A001129}
+	 * 		Iccanobif numbers: reverse digits of two previous terms and add.
+	 * @see: {@link=https://www.geeksforgeeks.org/program-to-find-first-n-iccanobif-numbers/         
+	 *         
+	 **/	 
+    
+	 static List<BigInteger>  iccanobiFNumbers(int v) {
+		 List<BigInteger> theList = new LinkedList<>();		 
+		 BigInteger first = BigInteger.ZERO;
+		 BigInteger second = BigInteger.ONE;
+		 if(v == 0) {
+			 theList.add(BigInteger.ZERO);
+		 }else if ( v == 1){
+			 theList.add(first);
+		 }else if(v == 2) {
+			 theList.add(second);
+		 }else {
+			 for(int i = 3; i <= v; i++) {
+				 BigInteger x = reverseBigInteger(first);
+				 BigInteger y = reverseBigInteger(second);
+				 theList.add(x.add(y));
+				 BigInteger temp = second;
+				 second = x.add(y);
+				 first = temp;				 
+			 }
+		 }
+		 return theList;				 
+	 }
+	 
+	 List<BigInteger> iccanobiFNumbers(){
+		 return iccanobiFNumbers(getTheNumber());
+	 }
+	 
+	 	
 	/**
 	 * http://www.java2s.com/example/java-utility-method/biginteger-reverse/reverse-biginteger-n-48089.html
 	 * @param v
@@ -2754,6 +2765,15 @@ public class NumberTheory {
 		String s = v.toString();
 		StringBuilder sb = new StringBuilder(s);
 		return new BigInteger(sb.reverse().toString());
+	}
+	
+
+	public static int getSumOfList(List<Integer> v) {
+		int sum = 0;
+		for(Integer i: v) {
+			sum += i;
+		}
+		return sum;
 	}
 
 }

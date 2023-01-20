@@ -481,9 +481,21 @@ public class TestNumberTheory {
 		BigInteger test = BigInteger.valueOf(123456);
 		System.out.println(NumberTheory.reverseBigInteger(test));
 		
-		System.out.println("Let's do the iccanobiF");
-		System.out.println("IccanobiF List(17): " + NumberTheory.geticcanobiFList(17));
+		System.out.println("Let's do the iccanobiF");				
+	     
+        List<BigInteger> theFibList = NumberTheory.iccanobiFNumbers(30);
+        for (BigInteger bigInteger : theFibList) {
+			System.out.printf("%d ", bigInteger);
+		}
+        System.out.println();
 				
+        
+        System.out.println("Betrothed: ");
+        x = 48;
+        System.out.println(NumberTheory.getBetrothedNumber(x)); 
+        
+        	
+        
 
 	}
 

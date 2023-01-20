@@ -1265,6 +1265,59 @@ class NumberTheoryTest {
 			expected = 1310354;
 			assertEquals(expected, result);
 		}
+		
+		@Test
+		@DisplayName("Betrothed Numbers")
+		public void getBetrothed() {
+			int result = NumberTheory.getBetrothedNumber(1050);
+			int expected = 1925;
+			assertEquals(expected, result);
+			instance.setTheNumber(9504);
+			result = instance.getBetrothedNumber();
+			expected = 20735;
+			assertEquals(expected, result);
+		}
+		
+		@Test
+		@DisplayName("iccanobiF List")
+		public void iccanobiFSpec() {
+			instance.setTheNumber(30);
+			List<BigInteger> result2 = instance.iccanobiFNumbers();
+			List<BigInteger> result = NumberTheory.iccanobiFNumbers(30);
+			List<BigInteger> expected = new ArrayList<>(Arrays.asList(BigInteger.valueOf(1), 
+					BigInteger.valueOf(2), 
+					BigInteger.valueOf(3), 
+					BigInteger.valueOf(5), 
+					BigInteger.valueOf(8), 
+					BigInteger.valueOf(13), 
+					BigInteger.valueOf(39), 
+					BigInteger.valueOf(124), 
+					BigInteger.valueOf(514), 
+					BigInteger.valueOf(836), 
+					BigInteger.valueOf(1053), 
+					BigInteger.valueOf(4139), 
+					BigInteger.valueOf(12815), 
+					BigInteger.valueOf(61135), 
+					BigInteger.valueOf(104937), 
+					BigInteger.valueOf(792517), 
+					BigInteger.valueOf(1454698), 
+					BigInteger.valueOf(9679838), 
+					BigInteger.valueOf(17354310), 
+					BigInteger.valueOf(9735140), 
+					BigInteger.valueOf(1760750), 
+					BigInteger.valueOf(986050), 
+					BigInteger.valueOf(621360), 
+					BigInteger.valueOf(113815), 
+					BigInteger.valueOf(581437), 
+					BigInteger.valueOf(1252496), 
+					BigInteger.valueOf(7676706), 
+					BigInteger.valueOf(13019288)));
+			
+			assertIterableEquals(expected, result);
+			assertEquals(28, result.size());
+			assertIterableEquals(expected, result2);
+			assertEquals(28, result2.size());
+		}
 	}
 	
 	
