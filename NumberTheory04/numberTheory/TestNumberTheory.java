@@ -2,10 +2,12 @@ package numberTheory;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -494,7 +496,26 @@ public class TestNumberTheory {
         x = 48;
         System.out.println(NumberTheory.getBetrothedNumber(x)); 
         
-        	
+        System.out.println("\nPolite: ");
+        x = 256;
+        System.out.println(NumberTheory.getPoliteness(x));
+        System.out.println(NumberTheory.isImpolite(x));
+        
+        System.out.println("Honaker numbers:");        
+        System.out.println(NumberTheory.isHonakerPrime(1041));
+        int[] integerArray = { 131, 263, 457, 1039, 1049, 1091, 1301, 1361, 1433, 1571, 1913, 1933, 2141, 2221, 2273, 2441, 2591, 2663, 2707, 2719, 2729, 2803, 3067, 3137, 3229, 3433, 3559, 3631, 4091, 4153, 4357, 4397, 4703, 4723, 4903, 5009, 5507, 5701, 5711, 5741, 5801, 5843, 5927, 6301, 6311, 6343, 6353, 6553, 6563, 6653, 6737, 6827, 6971, 7013, 7213, 7283, 7411, 7481, 7523, 7741, 8011, 8821, 9103, 10247, 10429, 10559};
+        for (Integer j : integerArray) {
+			System.out.printf("%d %b\n", j , NumberTheory.isHonakerPrime(j));
+		}
+        
+        
+        
+        /**Working on this */
+        System.out.println("Inconsummate Numbers");
+        for(i = 840; i <= 900; i++) {
+        	int sumOfVDigits = NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
+        	System.out.println(sumOfVDigits);
+        }
         
 
 	}

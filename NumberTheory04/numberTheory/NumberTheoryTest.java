@@ -1318,6 +1318,42 @@ class NumberTheoryTest {
 			assertIterableEquals(expected, result2);
 			assertEquals(28, result2.size());
 		}
+		
+		@Test
+		@DisplayName("isPolite")		
+		public void isPolite() {
+			assertFalse(NumberTheory.isImpolite(12));
+			instance.setTheNumber(12);
+			assertFalse(instance.isImpolite());
+			assertTrue(NumberTheory.isImpolite(2048));
+		}
+		
+		@Test
+		@DisplayName("isHonakerPrime")
+		public void isHonakerPrime() {
+			assertTrue(NumberTheory.isHonakerPrime(131));
+			assertTrue(NumberTheory.isHonakerPrime(47623));	
+			assertFalse(NumberTheory.isHonakerPrime(137));
+			assertNull(NumberTheory.isHonakerPrime(132));
+			instance.setTheNumber(34471);
+			assertTrue(instance.isHonakerPrime());
+			instance.setTheNumber(197);
+			assertFalse(instance.isHonakerPrime());
+			instance.setTheNumber(134);
+			assertNull(instance.isHonakerPrime());			
+		}
+		
+		@Test
+		@DisplayName("Is Idoneal Number?")
+		public void isIdoneal() {
+			assertTrue(NumberTheory.isIdoneal(177));
+			assertFalse(NumberTheory.isIdoneal(31));
+			instance.setTheNumber(60);
+			assertTrue(instance.isIdoneal());
+			instance.setTheNumber(59);
+			assertFalse(instance.isIdoneal());
+			
+		}
 	}
 	
 	

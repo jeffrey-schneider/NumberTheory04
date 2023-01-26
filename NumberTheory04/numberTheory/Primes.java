@@ -1,6 +1,7 @@
 package numberTheory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -316,6 +317,22 @@ public class Primes extends NumberTheory {
 		return false;
 	}
 
-	
 
+	/**
+	 * @author JCSchneider
+	 * @param v
+	 * @return HashMap of prime numbers from 1 to v
+	 * 
+	 * @see NumberTheory.isHonakerPrime()
+	 */
+	public static HashMap<Integer,Integer> getPrimeList(int v){
+		HashMap<Integer, Integer> retVal = new HashMap<>();
+		int counter = 0;
+		for(int i = 1; i <= v; i++) {
+			if(isPrime(i)) {
+				retVal.put(counter++, i);				
+			}
+		}
+		return retVal;
+	}
 }

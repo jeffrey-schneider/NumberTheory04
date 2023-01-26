@@ -14,10 +14,13 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class NumberTheory {
 	/**
@@ -2755,7 +2758,115 @@ public class NumberTheory {
 		 return iccanobiFNumbers(getTheNumber());
 	 }
 	 
-	 	
+	 
+	 
+	 /**
+	  * A number is said polite if it can be expressed as the sum of at least two consecutive natural numbers.
+	  * 
+	  * @param v
+	  * @return
+	  */
+	 static boolean isImpolite(int v) {
+		 if(getPoliteness(v) == 0)
+			 return true;
+		 return false;
+	 }
+	 
+	 boolean isImpolite() {
+		 return isImpolite(getTheNumber());
+	 }
+	 //https://www.geeksforgeeks.org/find-politeness-number/
+	 static int getPoliteness(int n)
+	  {
+	    int count = 0;
+	 
+	    // sqrt(2*n) as max length
+	    // will be when the sum
+	    // starts from 1
+	    // which follows the
+	    // equation n^2 - n - (2*sum) = 0
+	    for (int i = 2; i <= Math.sqrt(2 * n); i++) {
+	      int a;
+	      if ((2 * n) % i != 0)
+	        continue;
+	      a = 2 * n;
+	      a /= i;
+	      a -= (i - 1);
+	      if (a % 2 != 0)
+	        continue;
+	      a /= 2;
+	      if (a > 0) {
+	        count++;
+	      }
+	    }
+	    return count;
+	  }
+	 
+	 int getPolitness() {
+		 return getPoliteness(getTheNumber());
+	 }
+	 
+	 
+	 /**
+	  * @author JCSchneider
+	  * The number 131 is the 32nd prime number. It is a Honaker prime because the sum 
+	  * of its digits (1+3+1) equals the sum of the digits of the index in the list of primes (3+2).
+	  *  
+	  * @param v
+	  * @return
+	  */
+	 public static Boolean isHonakerPrime(int v){
+		 if (!isPrime(v)) {
+			 return null;			 
+		 }
+		 
+		HashMap<Integer, Integer> abc = Primes.getPrimeList(v);
+		int theIndex = 0;
+		for(Entry<Integer, Integer> entry : abc.entrySet()) {
+			if(entry.getValue().equals(v)) {
+				theIndex = entry.getKey();
+			}
+		}
+		int sumOfIndexDigits = getSumOfDigits(getListOfDigits(theIndex));
+		int sumOfVDigits = getSumOfDigits(getListOfDigits(v));
+		if (sumOfIndexDigits == sumOfVDigits)
+			return true;
+		return false;		 
+	 }
+	 
+	Boolean isHonakerPrime() {
+		return isHonakerPrime(getTheNumber());
+	}
+	 
+
+	/**
+	 * @author - https://www.geeksforgeeks.org/idoneal-numbers/
+	 * @param v
+	 * @return boolean
+	 * 
+	 * Idoneal Number is a number N if and only if it cannot be written as ab + bc + ca for a > b > c > 0.
+	 * 
+	 * Big O(n^3)
+	 * 
+	 */
+	public static boolean isIdoneal(int v) {
+		//Iterate for all 
+		// triples pairs(a, b, c)
+		for(int a = 1; a <= v; a++) {
+			for(int b = a +1; b <= v; b++) {
+				for(int c = b + 1; c <= v; c++) {
+					if(a * b+b * c+c * a == v)
+						return false;
+				}
+			}
+		}
+		return true;
+	}
+	 
+	boolean isIdoneal() {
+		return isIdoneal(getTheNumber());
+	}
+	
 	/**
 	 * http://www.java2s.com/example/java-utility-method/biginteger-reverse/reverse-biginteger-n-48089.html
 	 * @param v
@@ -2776,6 +2887,8 @@ public class NumberTheory {
 		return sum;
 	}
 
+	
+	
 }
 	
 
