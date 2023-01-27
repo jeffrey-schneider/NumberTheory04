@@ -514,7 +514,9 @@ public class TestNumberTheory {
         System.out.println("Inconsummate Numbers");
         for(i = 840; i <= 900; i++) {
         	int sumOfVDigits = NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
-        	System.out.println(sumOfVDigits);
+        	double something = i / sumOfVDigits;
+        	System.out.printf("%d %d %10.2f", i, sumOfVDigits, something );
+        	System.out.println();
         }
         
 
