@@ -8,8 +8,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -506,21 +509,43 @@ public class TestNumberTheory {
         int[] integerArray = { 131, 263, 457, 1039, 1049, 1091, 1301, 1361, 1433, 1571, 1913, 1933, 2141, 2221, 2273, 2441, 2591, 2663, 2707, 2719, 2729, 2803, 3067, 3137, 3229, 3433, 3559, 3631, 4091, 4153, 4357, 4397, 4703, 4723, 4903, 5009, 5507, 5701, 5711, 5741, 5801, 5843, 5927, 6301, 6311, 6343, 6353, 6553, 6563, 6653, 6737, 6827, 6971, 7013, 7213, 7283, 7411, 7481, 7523, 7741, 8011, 8821, 9103, 10247, 10429, 10559};
         for (Integer j : integerArray) {
 			System.out.printf("%d %b\n", j , NumberTheory.isHonakerPrime(j));
+		}      
+        
+        // NumberTheory.getInconsummate();
+        
+        
+        int[] vv = {796, 805};
+        
+        for (int j : vv) {
+        	System.out.printf("%d %d\n", j, NumberTheory.getGenerator(j));	
 		}
         
-        
-        
-        /**Working on this */
-        System.out.println("Inconsummate Numbers");
-        for(i = 840; i <= 900; i++) {
-        	int sumOfVDigits = NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
-        	double something = i / sumOfVDigits;
-        	System.out.printf("%d %d %10.2f", i, sumOfVDigits, something );
-        	System.out.println();
+        HashMap<Integer, Integer> junctionHash = new HashMap<>();
+        System.out.println("\n Junction Numbers ");
+		for (n = 1; n <= 1200; n++) {
+			System.out.printf("%d %d\n", n, NumberTheory.getGenerator(n));
+			junctionHash.put(n, NumberTheory.getGenerator(n));
+		}
+		
+		Map<Integer, Long>duplicatedValues = junctionHash.values().stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		for(Entry<Integer, Long> entry : duplicatedValues.entrySet()) {
+			if(entry.getValue() > 1) {
+				System.out.println(entry.getKey() + " " + entry.getValue());
+			}
         }
+		for(int key: junctionHash.keySet()) {
+			if(junctionHash.get(key).equals(818)) {
+				System.out.println(key);
+			}
+		}
+		
+		System.out.println();
         
-
+        
+  
 	}
+
+	
 
 	/**
 	 * @param v

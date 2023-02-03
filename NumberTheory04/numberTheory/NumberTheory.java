@@ -2866,6 +2866,85 @@ public class NumberTheory {
 	boolean isIdoneal() {
 		return isIdoneal(getTheNumber());
 	}
+
+	public static void getInconsummate() {
+		int i;
+		/**Working on this */
+        System.out.println("Inconsummate Numbers");
+        /**
+         * WHY ISN'T THIS WORKING???
+         * 
+         * 
+         * To find these numbers, we need to create a HashMap of all integers (up to some sizable value) and the value of that number 
+         * divided by its sum of digits.  If the dividend is an integer, add it to the HashMap's keys and change
+         * add 1 to the value.  
+         * 
+         * Then I will try to add all numbers from 1 to the same sizable value to the HashMap but inserting a zero into the value
+         * if the key has not been added before.  
+         * 
+         * Then, a tally of all the values = 0 will give me the Inconsummate Numbers
+         */
+        HashMap<Integer, Double> primaryHash = new HashMap<>();
+        HashMap<Integer, Integer> secondaryHash = new HashMap<>();
+        double divided = 0.0; 
+        final int ENDPOINT = 1000;
+        for(i = 1; i <= ENDPOINT; i++) {
+        	if(!primaryHash.containsKey(i)) {
+        		divided = (double) i/ NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
+        		primaryHash.put(i, divided);
+        	}
+        }
+        
+        for(i = 1; i<= ENDPOINT; i++) {
+        	secondaryHash.put(i, 0);
+        }
+    
+        // Note: secondaryHash key is number, value is repeat number
+        //Take all the entries from primaryHash and insert them into secondaryHash
+        for(Map.Entry<Integer, Double> entry : primaryHash.entrySet()) {
+        	if(entry.getValue() % 1 == 0) {
+        		int jeffrey = entry.getValue().intValue();
+        		if(secondaryHash.containsKey(jeffrey)) {
+            		secondaryHash.put(jeffrey, secondaryHash.get(jeffrey)+1);
+            	}else {
+            		secondaryHash.put(jeffrey, 0);
+            	}
+        	//	System.out.println(entry.getKey() + " " + entry.getValue().intValue());
+        	}
+        }
+        
+//        if(secondaryHash.containsKey(i)) {
+//        		secondaryHash.put(i, secondaryHash.get(i)+1);
+//        	}else {
+//        		secondaryHash.put(i, 0);
+//        	}
+//	
+
+        //How many times is valueA from primaryHash in secondaryHash's key 
+        for(Map.Entry<Integer, Double> entry : primaryHash.entrySet()) {
+        	if(entry.getValue() % 1 == 0) {
+        		int keyA = entry.getKey();
+        		int valueA = entry.getValue().intValue();
+        		//System.out.println(entry.getKey() + " " + entry.getValue());
+        //		System.out.printf("%d %d\n", keyA, valueA);
+        		if(secondaryHash.containsKey(valueA)) {
+        			secondaryHash.put(valueA, secondaryHash.get(valueA)+1);
+        		}
+        	}
+        }
+        
+        
+        for(Map.Entry<Integer, Integer> entry : secondaryHash.entrySet()) {
+        	System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        System.out.println("Fin " + primaryHash.size());
+	}
+	
+	
+	public static int getGenerator(int v) {
+		return getSumOfDigits(getListOfDigits(v)) + v;		
+	}
+	
 	
 	/**
 	 * http://www.java2s.com/example/java-utility-method/biginteger-reverse/reverse-biginteger-n-48089.html
