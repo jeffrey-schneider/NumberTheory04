@@ -294,9 +294,6 @@ public class TestNumberTheory {
 //			System.out.printf("%d  %b\n", c[i], NumberTheory.isHarmonicDivisorNumber(c[i]));	
 //		}
 
-//		for (int abc = 1; abc < 20; abc++) {
-//			System.out.println(NumberTheory.getHogben(abc));
-//		}
 
 		// ProjectEuler.ProjectEuler.main(null);
 
@@ -520,30 +517,33 @@ public class TestNumberTheory {
         	System.out.printf("%d %d\n", j, NumberTheory.getGenerator(j));	
 		}
         
-        HashMap<Integer, Integer> junctionHash = new HashMap<>();
-        System.out.println("\n Junction Numbers ");
-		for (n = 1; n <= 1200; n++) {
-			System.out.printf("%d %d\n", n, NumberTheory.getGenerator(n));
-			junctionHash.put(n, NumberTheory.getGenerator(n));
+        
+        System.out.println("Junction Numbers ");
+        List<Integer> junctionNumbers = NumberTheory.getJunctionNumbers(109);
+        for (Integer integer : junctionNumbers) {
+			System.out.println(integer);
 		}
 		
-		Map<Integer, Long>duplicatedValues = junctionHash.values().stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		for(Entry<Integer, Long> entry : duplicatedValues.entrySet()) {
-			if(entry.getValue() > 1) {
-				System.out.println(entry.getKey() + " " + entry.getValue());
-			}
-        }
-		for(int key: junctionHash.keySet()) {
-			if(junctionHash.get(key).equals(818)) {
-				System.out.println(key);
+		       
+        
+		System.out.println("Kaprekar Number");
+		for(int j = 1; j <= 1000; j++) {
+			if(NumberTheory.isKaprekar(j)) {
+				System.out.println(j);
 			}
 		}
 		
-		System.out.println();
-        
-        
+		
+		
+	 
   
-	}
+		
+		System.out.println("Fin");
+	}//end of main
+
+
+
+	
 
 	
 
@@ -647,6 +647,9 @@ public class TestNumberTheory {
 		System.out.println("76 " + NumberTheory.isEsthetic(76));
 	}
 
+	
+	
+	
 	/**
 	 * 
 	 */

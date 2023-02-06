@@ -1354,6 +1354,25 @@ class NumberTheoryTest {
 			assertFalse(instance.isIdoneal());
 			
 		}
+		
+		@Test
+		@DisplayName("Junction Numbers")
+		public void JunctionNumbers() {
+			List<Integer> result = NumberTheory.getJunctionNumbers(109);
+			List<Integer> expected = new ArrayList<>(Arrays.asList(101, 103, 105, 107, 109, 111, 113, 115, 117));
+			assertIterableEquals(expected, result);
+			instance.setTheNumber(109);
+			result = instance.getJunctionNumbers();
+			assertIterableEquals(expected, result);			
+		}
+		
+		@Test
+		@DisplayName("Kaprekar Numbers")
+		public void KaprekarNumbers() {
+			assertTrue(NumberTheory.isKaprekar(703L));
+			assertTrue(NumberTheory.isKaprekar(648648L));
+			
+		}
 	}
 	
 	
