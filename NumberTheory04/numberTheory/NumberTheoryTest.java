@@ -1373,6 +1373,18 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isKaprekar(648648L));
 			
 		}
+		
+		@Test
+		@DisplayName("Return a list of Leyland sequence.")
+		public void testGetLeyland() {
+			instance.setTheNumber(10);
+			List<Long> expected = new ArrayList<>(Arrays.asList(8L, 17L, 32L, 54L, 57L, 145L, 368L, 512L, 1649L, 6250L));
+			List<Long> result = instance.getLeyland();
+			assertIterableEquals(expected, result);
+			result = NumberTheory.getLeyland(9);
+			expected = new ArrayList<>(Arrays.asList(8L, 17L, 32L, 54L, 57L, 145L, 368L, 512L, 1649L));
+			assertIterableEquals(expected, result);
+		}
 	}
 	
 	

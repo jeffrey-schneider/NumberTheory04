@@ -533,8 +533,12 @@ public class TestNumberTheory {
 			}
 		}
 		
-		
-		
+		System.out.println("Leyland: ");
+		List<Long> leyland = NumberTheory.getLeyland(10);
+		for (Long longN : leyland) {
+			System.out.printf("%d ", longN);
+		}
+		System.out.println();
 	 
   
 		

@@ -3033,5 +3033,36 @@ public class NumberTheory {
         // compare with original number
         return false;
     }
+    
+    
+    /**
+     * https://www.geeksforgeeks.org/leyland-number/
+     * @param v
+     * Time complexity O(n*nlogn+nlogn)
+     */
+    public static List<Long> getLeyland(int v) {
+    	int counter = 0;
+    	Long v2 = Long.valueOf(v);
+    	List<Long> ans = new ArrayList<>();
+    	//outer loop
+    	for(long x = 2; x <= v2; x++) {
+    		for(long y = 2; y <= x; y++) {
+    			long temp = (int)Math.pow(x, y) + (int)Math.pow(y, x);
+    			if(temp >= 0 && counter < v) {
+    				ans.add(temp);
+    				counter++;
+    			}    			
+    		}
+    	}
+    	
+    	Collections.sort(ans);
+    	return ans;
+    }
+    
+    List<Long> getLeyland(){
+    	return getLeyland(getTheNumber());
+    }
+    
+ 
 
 }

@@ -335,4 +335,14 @@ public class Primes extends NumberTheory {
 		}
 		return retVal;
 	}
+	
+	
+	
+	public static void getLonelyNumber(int v){
+		HashMap<Integer, Integer> retVal = new HashMap<>();
+		int counter = 0;
+		for(int j = 0; j <= v; j++) {
+			
+		}
+	}
 }
