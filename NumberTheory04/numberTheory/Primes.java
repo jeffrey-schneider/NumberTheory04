@@ -339,10 +339,13 @@ public class Primes extends NumberTheory {
 	
 	
 	public static void getLonelyNumber(int v){
-		HashMap<Integer, Integer> retVal = new HashMap<>();
-		int counter = 0;
-		for(int j = 0; j <= v; j++) {
-			
+		List<Integer> thePrimeList = new LinkedList<>();
+		//Create a list of prime numbers up to 3 times v
+		for(int j = 2; j <= v * 3; j++) {
+			if(isPrime(j)) {
+				thePrimeList.add(j);				
+			}			
 		}
+			
 	}
 }
