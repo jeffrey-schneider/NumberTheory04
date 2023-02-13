@@ -1,12 +1,14 @@
 package numberTheory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Primes extends NumberTheory {
 
@@ -281,25 +283,23 @@ public class Primes extends NumberTheory {
 	}
 
 	public List<Integer> getPrimeFactors() {
-		// TODO Auto-generated method stub
 		return getPrimeFactors(getTheNumber());
 	}
-	
-	public static HashSet<Integer> getDistinctPrimeFactors(int v){
+
+	public static HashSet<Integer> getDistinctPrimeFactors(int v) {
 		List<Integer> theList = getPrimeFactors(v);
 		Set<Integer> theSet = new HashSet<Integer>();
 		theSet.addAll(theList);
 		return (HashSet<Integer>) theSet;
 	}
-	
-	public static HashSet<Long> getDistinctPrimeFactors(long v){
+
+	public static HashSet<Long> getDistinctPrimeFactors(long v) {
 		List<Long> theList = getPrimeFactors(v);
 		Set<Long> theSet = new HashSet<Long>();
 		theSet.addAll(theList);
 		return (HashSet<Long>) theSet;
 	}
-	
-	
+
 	public static boolean isCoPrime(int v, int bNumber) {
 		return isCoPrime((long) v, (long) bNumber);
 	}
@@ -317,7 +317,6 @@ public class Primes extends NumberTheory {
 		return false;
 	}
 
-
 	/**
 	 * @author JCSchneider
 	 * @param v
@@ -325,27 +324,75 @@ public class Primes extends NumberTheory {
 	 * 
 	 * @see NumberTheory.isHonakerPrime()
 	 */
-	public static HashMap<Integer,Integer> getPrimeList(int v){
+	public static HashMap<Integer, Integer> getPrimeList(int v) {
 		HashMap<Integer, Integer> retVal = new HashMap<>();
 		int counter = 0;
-		for(int i = 1; i <= v; i++) {
-			if(isPrime(i)) {
-				retVal.put(counter++, i);				
+		for (int i = 1; i <= v; i++) {
+			if (isPrime(i)) {
+				retVal.put(counter++, i);
 			}
 		}
 		return retVal;
 	}
-	
-	
-	
-	public static void getLonelyNumber(int v){
+
+	public static List<Integer> getLonelyNumber(int endNumber) {
+		List<Integer> retVal = new LinkedList<>();
+		retVal.add(0);
+		int v = 23;		
+		int newRecord = 0;
+		int diff = 0;
+		while(v <= endNumber) {
+			int prevPrime = getPreviousPrime(v);
+			int nextPrime = getNextPrime(v);
+			diff = Math.min(v - prevPrime, nextPrime - v);
+			if(diff > newRecord) {
+				newRecord = diff;
+				retVal.add(v);
+			}
+			v++;
+		}
+		return retVal;
+	}
+
+	/**
+	 * @param v 
+	 * @return
+	 */
+	public static int getPreviousPrime(int v) {
+		int prevPrime;
 		List<Integer> thePrimeList = new LinkedList<>();
-		//Create a list of prime numbers up to 3 times v
-		for(int j = 2; j <= v * 3; j++) {
-			if(isPrime(j)) {
-				thePrimeList.add(j);				
-			}			
+		// Create a list of prime numbers up to  v
+		thePrimeList.add(0);
+		for (int j = 2; j <= v * 2; j++) {
+			if (isPrime(j)) {
+				thePrimeList.add(j);
+			}
+		}
+		List result = thePrimeList.stream().filter(s -> s < v).collect(Collectors.toList());
+		prevPrime = (int) result.get(result.size() -1);
+		
+		return prevPrime;
+	}
+		
+		/**
+		 * @param v 
+		 * @return
+		 */
+		public static int getNextPrime(int v) {
+			int nextPrime;
+			List<Integer> thePrimeList = new LinkedList<>();
+			// Create a list of prime numbers from v to 2 times v			
+			for (int j = v; j <= v * 2; j++) {
+				if (isPrime(j)) {
+					thePrimeList.add(j);
+				}
+			}
+			List result = thePrimeList.stream().filter(s -> s > v).collect(Collectors.toList());
+			nextPrime = (int) result.get(0);
+			return nextPrime;
 		}
 			
-	}
+		
+		
+		
 }

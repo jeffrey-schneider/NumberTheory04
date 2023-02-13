@@ -540,7 +540,13 @@ public class TestNumberTheory {
 		}
 		System.out.println();
 	 
-  
+		System.out.println("Lonely Number");
+		List<Integer> lonelyNumberList = new LinkedList<>();
+		lonelyNumberList.addAll(Primes.getLonelyNumber(20000));
+		
+		for (Integer integer : lonelyNumberList) {
+			System.out.println(integer);
+		}
 		
 		System.out.println("Fin");
 	}//end of main

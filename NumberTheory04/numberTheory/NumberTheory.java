@@ -2936,7 +2936,6 @@ public class NumberTheory {
 	public static List<Integer> getJunctionNumbers(int v) {
 		int n;
 		HashMap<Integer, Integer> junctionHash = new HashMap<>();
-		System.out.println("\n Junction Numbers ");
 		for (n = 1; n <= v; n++) {
 			// System.out.printf("%d %d\n", n, NumberTheory.getGenerator(n));
 			junctionHash.put(n, NumberTheory.getGenerator(n));
