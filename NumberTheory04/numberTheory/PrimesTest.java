@@ -1,12 +1,12 @@
 package numberTheory;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 
 /**
  * @author JeffreySchneider
@@ -38,8 +38,7 @@ class PrimesTest {
 		instance.setTheNumber(84);
 		assertFalse(instance.isSemiPrime());
 	}
-	
-	
+
 	@Test
 	@DisplayName("Is Brilliant Number?")
 	public void isBrilliantSpec() {
@@ -50,7 +49,7 @@ class PrimesTest {
 		assertTrue(instance.isBrilliant());
 		instance.setTheNumber(25352);
 		assertFalse(instance.isBrilliant());
-		
+
 	}
 
 	/**
@@ -69,7 +68,7 @@ class PrimesTest {
 		assertTrue(instance.isEmirpimeses());
 		instance.setTheNumber(6465);
 		assertFalse(instance.isEmirpimeses());
-		
+
 	}
 
 	/**
@@ -116,9 +115,9 @@ class PrimesTest {
 		instance.setTheNumber(347);
 		assertTrue(instance.isGoodPrime());
 		instance.setTheNumber(258);
-		assertFalse(instance.isGoodPrime());		
+		assertFalse(instance.isGoodPrime());
 	}
-	
+
 	@Test
 	@DisplayName("Is interprime?")
 	public void isInterPrimeSpec() {
@@ -141,8 +140,7 @@ class PrimesTest {
 		instance.setTheNumber(1101);
 		assertFalse(instance.isInterPrime());
 	}
-	
-	
+
 	@Test
 	@DisplayName("Is SemiPrime")
 	public void isSemiPrime() {
@@ -155,7 +153,7 @@ class PrimesTest {
 		instance.setTheNumber(1050);
 		assertFalse(instance.isSemiPrime());
 	}
-	
+
 	@Test
 	@DisplayName("A_Pointer Prime")
 	public void isA_PointerPrime() {
@@ -163,13 +161,13 @@ class PrimesTest {
 		assertTrue(Primes.isA_PointerPrime(3221));
 		assertTrue(Primes.isA_PointerPrime(149033));
 		assertFalse(Primes.isA_PointerPrime(294));
-		
+
 		instance.setTheNumber(161123);
 		assertTrue(instance.isA_PointerPrime());
 		instance.setTheNumber(121508);
-		assertFalse(instance.isA_PointerPrime());		
+		assertFalse(instance.isA_PointerPrime());
 	}
-	
+
 	@Test
 	@DisplayName("M_Pointer Prime")
 	public void isM_PointerPrime() {
@@ -177,13 +175,66 @@ class PrimesTest {
 		assertTrue(Primes.isM_PointerPrime(1123));
 		assertTrue(Primes.isM_PointerPrime(13121117));
 		assertFalse(Primes.isM_PointerPrime(294));
-		
+
 		instance.setTheNumber(12113);
 		assertTrue(instance.isM_PointerPrime());
-		instance.setTheNumber( 13120);
-		assertFalse(instance.isM_PointerPrime());		
+		instance.setTheNumber(13120);
+		assertFalse(instance.isM_PointerPrime());
+	}
+
+	@Test
+	@DisplayName("Get Next Prime")
+	public void nextPrime() {
+		int expected = 199;
+		int result = Primes.getNextPrime(198);
+		assertEquals(expected, result);
+		expected = 1193;
+		result = Primes.getNextPrime(1187);
+		assertEquals(expected, result);
 	}
 	
+	@Test
+	@DisplayName("Get Next Prime Inclusive")
+	public void nextPrimeInclusive() {
+		//Return the number if it is prime
+		int expected = 199;
+		int result = Primes.getNextPrimeInclusive(199);
+		assertEquals(expected, result);
+		expected = 1187;
+		result = Primes.getNextPrimeInclusive(1187);
+		assertEquals(expected, result);
+		//Return next prime number if v is not prime
+		expected = 1193;
+		result = Primes.getNextPrimeInclusive(1188);
+		assertEquals(expected, result);
+	}
+
+	@Test
+	@DisplayName("Get Previous Prime Inclusive")
+	public void previousPrimeInclusive() {
+		//Return the number if it is prime
+		int expected = 199;
+		int result = Primes.getPreviousPrimeInclusive(210);
+		assertEquals(expected, result);
+		expected = 1187;
+		result = Primes.getPreviousPrimeInclusive(1187);
+		assertEquals(expected, result);
+		//Return next prime number if v is not prime
+		expected = 1733;
+		result = Primes.getPreviousPrimeInclusive(1740);
+		assertEquals(expected, result);
+	}
+	@Test
+	@DisplayName("Get Previous Prime")
+	public void previousPrime() {
+		int expected = 199;
+		int result = Primes.getPreviousPrime(210);
+		assertEquals(expected, result);
+		expected = 1181;
+		result = Primes.getPreviousPrime(1187);
+		assertEquals(expected, result);
+	}
+
 	
-	
+
 }

@@ -15,25 +15,38 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.Objects;
-import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
+
+/**
+ * Provides a working library (and object) that contains Schneider's Number Theory methods. 
+ * 
+ * It was started as a working exercise to try new programming techniques and has evolved to something more.
+ * 
+ * @author JCSchneider
+ *
+ */
 public class NumberTheory {
 	/**
 	 * The number.
 	 */
-	private int theNumber;
-	public static int runNumber = 0;
+	private int theNumber;	
 
+	/**
+	 * Class constructor specifying the number to be used by the object.
+	 * @param theNumber
+	 */
 	public NumberTheory(int theNumber) {
 		setTheNumber(theNumber);
 	}
 
+	/**
+	 * Empty class constructor
+	 */
 	public NumberTheory() {
 	}
 
@@ -50,13 +63,14 @@ public class NumberTheory {
 	/**
 	 * Sets theNumber.
 	 * 
-	 * @param theNumber theNumber
+	 * @param theNumber theNumber that will be used for object oriented programming. 
 	 */
 	public void setTheNumber(int theNumber) {
 		this.theNumber = theNumber;
 	}
 
 	/**
+	 * This is a method calculating the square of a number
 	 * @author JeffreySchneider
 	 * @param v the number to square
 	 * @return the square of a number
@@ -70,9 +84,10 @@ public class NumberTheory {
 	}
 
 	/**
+	 * This is a method to calculate the cube of a number.
 	 * @author JeffreySchneider
 	 * @param v the number to cube
-	 * @return int the cube of the number
+	 * @return the cube of the number
 	 */
 	public static int getCube(int v) {
 		return (int) Math.pow(v, 3);
@@ -83,9 +98,10 @@ public class NumberTheory {
 	}
 
 	/**
+	 * Returns boolean is long number prime?
 	 * @author JeffreySchneider
 	 * @param v the number to test for primality
-	 * @return boolean is number prime?
+	 * @return Is number prime?
 	 */
 	public static boolean isPrime(long v) {
 		long stopVal = (int) Math.sqrt(v);
@@ -136,6 +152,7 @@ public class NumberTheory {
 	}
 
 	/**
+	 * 
 	 * @author JeffreySchneider
 	 * @param v
 	 * @return list of jugglers sequence for the number
@@ -163,7 +180,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v int number
 	 * @return Integer list of factors.
 	 */
 	public static List<Integer> getFactors(int v) {
@@ -196,6 +213,8 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code In number theory, the aliquot sum s(n) of a positive integer n 
+	 * is the sum of all proper divisors of n, that is, all divisors of n other than n itself.}
 	 * @author JeffreySchneider
 	 * @param v
 	 * @return Integer sum of factors
@@ -213,8 +232,9 @@ public class NumberTheory {
 	}
 
 	/**
+	 * Returns sum of a number's factors.
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v int number
 	 * @return Sum of a number's factors.
 	 */
 	public static int getFactorSum(int v) {
@@ -229,6 +249,13 @@ public class NumberTheory {
 		return getFactorSum(getTheNumber());
 	}
 
+	
+	/**
+	 * {@code A proper divisor of a natural number is the divisor that is strictly less than the number. 
+		For example, number 20 has 5 proper divisors: 1, 2, 4, 5, 10, and the divisor summation is: 1 + 2 + 4 + 5 + 10 = 22.} 
+	 * @param v int number
+	 * @return Integer list of proper divisors of v.
+	 */
 	public static List<Integer> getProperDivisors(int v) {
 		List<Integer> retVal = new ArrayList<>();
 		for (int i = 1; i < v; i++) {
@@ -243,8 +270,16 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {code In number theory, an abundant number or excessive number 
+	 * is a number for which the sum of its proper divisors is greater 
+	 * than the number. The integer 12 is the first abundant number. 
+	 * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. 
+	 * 
+	 * The amount by which the sum exceeds the number is the abundance.
+	 * 
+	 *  } 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v int number
 	 * @return Difference of aliquot sum and the number.
 	 *         {@link numberTheory.NumberTheory#getAliquotSum()}}
 	 */
@@ -257,9 +292,13 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {code In number theory, an abundant number or excessive number 
+	 * is a number for which the sum of its proper divisors is greater 
+	 * than the number. The integer 12 is the first abundant number. 
+	 * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. }
 	 * 
-	 * @param v
-	 * @return
+	 * @param v int number
+	 * @return Is number abundant?
 	 */
 	public static boolean isAbundant(int v) {
 		return getAliquotSum(v) > v;
@@ -270,9 +309,18 @@ public class NumberTheory {
 	}
 
 	/**
+	 * 
+	 * {code In number theory, a deficient number or defective number is a number n 
+	 * for which the sum of divisors of n is less than 2n. Equivalently, it is a number 
+	 * for which the sum of proper divisors (or aliquot sum) is less than n. For example, 
+	 * the proper divisors of 8 are 1, 2, and 4, and their sum is less than 8, so 8 is deficient.
+	 * 
+	 * Denoting by σ(n) the sum of divisors, the value 2n − σ(n) is called the number's 
+	 * deficiency. In terms of the aliquot sum s(n), the deficiency is n − s(n).}
+	 * 
 	 * @author JeffreySchneider
-	 * @param v
-	 * @return
+	 * @param v an integer
+	 * @return Is the number deficient?
 	 */
 	public static boolean isDeficient(int v) {
 		return getAliquotSum(v) < v;
@@ -283,8 +331,13 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code Britannica.com says  
+	 * a positive integer that is equal to the sum of its proper divisors. The smallest 
+	 * perfect number is 6, which is the sum of 1, 2, and 3. 
+	 * Other perfect numbers are 28, 496, and 8,128.}
+	 * 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v integer number to test
 	 * @return boolean is number perfect?
 	 *         {@link numberTheory.NumberTheory#getAbundace()}}
 	 */
@@ -300,8 +353,16 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code Reversed number is a number written in arabic numerals but the order of 
+	 * digits is reversed. The first digit becomes last and vice versa. 
+	 * For example, if the main hero had 1245 strawberries in the tragedy, 
+	 * he has 5421 of them now. 
+	 * Note that all the leading zeros are omitted. That means if the number ends with
+	 *  a zero, the zero is lost by reversing (e.g. 1200 gives 21). Also note that the 
+	 *  reversed number never has any trailing zeros.}
 	 * 
-	 * @param v
+	 * @param v the integer to be reversed
+	 * 
 	 * @return int the number reversed
 	 */
 	public static int getReverseNumber(int v) {
@@ -325,8 +386,11 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
-	 * @param v
+	 * {@code The reciprocal of a number is this fraction flipped upside down. In other words, 
+	 * the reciprocal has the original fraction's bottom number—or denominator—on top and the top 
+	 * number—or numerator—on the bottom. So the reciprocal of 6 is 1/6 because 6 = 6/1 and 1/6 is
+	 * the inverse of 6/1.}
+	 * @param v the integer
 	 * @return double One divided by the number.
 	 */
 	public static double getReciprocalNumber(int v) {
@@ -338,8 +402,9 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code Base 16 numbering system }
 	 * 
-	 * @param v
+	 * @param v integer to be converted.
 	 * @return String hex value of number.
 	 */
 	public static String getHex(int v) {
@@ -360,6 +425,7 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code Base 8 numbering system }
 	 * 
 	 * @param v
 	 * @return String octal value of number.
@@ -382,7 +448,7 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
+	 * {@code Base 2 numbering system }
 	 * @param v
 	 * @return String binary value of number.
 	 */
@@ -394,6 +460,12 @@ public class NumberTheory {
 		return getBinary(getTheNumber());
 	}
 
+	
+	/**
+	 * {@code The symbol Σ (sigma) is generally used to denote a sum of multiple terms.}
+	 * @param v double to get the sigma of
+	 * @return sigma of a number
+	 */
 	public static int getSigma(double v) {
 		if (v == 1) {
 			return 1;
@@ -412,8 +484,9 @@ public class NumberTheory {
 	}
 
 	/**
+	 * {@code In mathematics, a superabundant number (sometimes abbreviated as SA) is a certain kind of natural number.}
 	 * 
-	 * @param v number to check for superabundancy
+	 * @param v integer
 	 * @return boolean is number superabundant?
 	 */
 	public static boolean isSuperabundant(int v) {
@@ -3060,8 +3133,34 @@ public class NumberTheory {
     
     List<Long> getLeyland(){
     	return getLeyland(getTheNumber());
+    }   
+ 
+    
+    /**
+     * 
+     * @param n
+     */
+    public static void getHyperperfect(int n) {
+    	int k = 1;
+    	int hyperperfect = 1 + k * (getAliquotSum(n) - 1);
+    	System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
     }
     
- 
+    
+    public static void getLuckyNumber(int stopper){
+    	List<Integer> firstList = new ArrayList<>();    	
+    	for(int i = 1; i <= stopper; i++) {
+    		firstList.add(i);
+    	}
+    	for (Integer integer : firstList) {
+			System.out.printf("%d ", integer);
+		}
+    }
+    
+    
+    
+    public static boolean isKatadrome(int v) {
+    	return true;
+    }
 
 }

@@ -548,6 +548,14 @@ public class TestNumberTheory {
 			System.out.println(integer);
 		}
 		
+		
+		System.out.println("Hyperperfect Numbers");
+		NumberTheory.getHyperperfect(301);
+		
+		
+		System.out.println("Lucky Numbers:");
+		NumberTheory.getLuckyNumber(50);
+		
 		System.out.println("Fin");
 	}//end of main
 
@@ -656,6 +664,8 @@ public class TestNumberTheory {
 		System.out.println("--isEsthetic");
 		System.out.println("76 " + NumberTheory.isEsthetic(76));
 	}
+
+	
 
 	
 	
