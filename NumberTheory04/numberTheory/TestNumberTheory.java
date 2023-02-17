@@ -334,6 +334,10 @@ public class TestNumberTheory {
 		System.out.println();
 
 		System.out.println("Greatest Common Divisor:");
+		long bb = Long.valueOf(20);
+		long cc = Long.valueOf(33);
+		
+		System.out.println("GCD of 20 and 33: " + NumberTheory.gcd(bb, cc));
 		System.out.println("GCD of 10 and 15: " + NumberTheory.gcd(10, 15));
 		System.out.println("GCD of 100 and 15: " + NumberTheory.gcd(100, 15));
 		System.out.println("GCD of 100 and 52: " + NumberTheory.gcd(100, 52));
@@ -554,7 +558,11 @@ public class TestNumberTheory {
 		
 		
 		System.out.println("Lucky Numbers:");
-		NumberTheory.getLuckyNumber(50);
+		List<Integer> luckyList = NumberTheory.getLuckyNumber(5000);
+		for (Integer integer : luckyList) {
+			System.out.printf("%d, ", integer);
+		}
+		System.out.println();
 		
 		System.out.println("Fin");
 	}//end of main

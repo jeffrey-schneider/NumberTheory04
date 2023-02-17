@@ -270,7 +270,7 @@ public class NumberTheory {
 	}
 
 	/**
-	 * {code In number theory, an abundant number or excessive number 
+	 * {@code In number theory, an abundant number or excessive number 
 	 * is a number for which the sum of its proper divisors is greater 
 	 * than the number. The integer 12 is the first abundant number. 
 	 * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. 
@@ -1062,10 +1062,12 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
-	 * @param b
-	 * @param n
-	 * @return int Greatest Common Divisor
+	 * {@code Greatest Common Divisor
+	 * The greatest common factor/divisor (GCF/GCD) of a set of numbers is the largest factor that all the numbers share.
+	 *  }
+	 * @param b long
+	 * @param n long
+	 * @return long Greatest Common Divisor of both numbers.
 	 */
 	public static long gcd(long b, long n) {
 		if (n == 0)
@@ -1079,6 +1081,10 @@ public class NumberTheory {
 		return (int) gcd(a, c);
 	}
 
+	public static <E> E gcd(E b, E n) {
+		return (E) gcd(b, n);
+	}
+	
 	int gcd(int n) {
 		return gcd(getTheNumber(), n);
 
@@ -3147,17 +3153,71 @@ public class NumberTheory {
     }
     
     
-    public static void getLuckyNumber(int stopper){
-    	List<Integer> firstList = new ArrayList<>();    	
-    	for(int i = 1; i <= stopper; i++) {
-    		firstList.add(i);
+    /**
+     * Lucky numbers are those numbers which survive a sieving process which is similar to the Eratosthenes sieve that can be used to compute
+     *  the prime numbers.
+     *  Let us declare that 1 is a lucky number and let us start with a sieve containing only the odd numbers:
+     *  \[1,\ 3,\ 5,\ 7,\ 9,\ 11,\ 13,\ 15,\ 17,\ 19,\ 21,\ 23,\ 25,\dots\]
+     *  The first number greater than 1 is 3, so we declare 3 lucky and we delete from the sieve all the numbers 
+     *  in a position which is a multiple of 3, i.e., 5, 11, 17, 23, and so on. We are left with
+     *  \[1,\ 3,\ 7,\ 9,\ 13,\ 15,\ 19,\ 21,\ 25,\dots\]
+     *  The first new survivor is 7, so we declare 7 lucky and we delete from the sieve all the numbers in a 
+     *  position which is a multiple of 7, i.e., 19, 39, and so on. The next lucky number is thus 9 and continuing 
+     *  this ideal process we could identify all the lucky numbers.  
+     *  
+     *  https://www.numbersaplenty.com/set/lucky_number/
+     *  
+     *  @author JCSchneider
+     *  
+     * @param int stopValue
+     * @return	List of integers defined as Lucky Numbers.
+     */
+    public static List<Integer> getLuckyNumber(int stopValue){
+    	List<Integer> retVal = new ArrayList<>();
+    	retVal.add(1);				//Force the first lucky number in
+    	int nextSurvivingNumber = 1;
+    	int passNumber = 1;
+    	
+    	List<Integer> theList = new ArrayList<>();    	
+    	for(int i = 1; i <= stopValue; i++) {
+    		theList.add(i);
     	}
-    	for (Integer integer : firstList) {
-			System.out.printf("%d ", integer);
+    	
+    	//2 is not a lucky number.
+    	nextSurvivingNumber = 2;
+    	theList = getSievedList(theList, nextSurvivingNumber);
+    	System.out.println();
+    	
+		while (passNumber < theList.size()) {
+			nextSurvivingNumber = theList.get(passNumber++);
+			retVal.add(nextSurvivingNumber);
+			theList = getSievedList(theList, nextSurvivingNumber);
 		}
+    	return retVal;
     }
     
     
+    /**
+     * Returns a list sieving out the sieveFactor's element.
+     * IE:  theList, 7. Removes the multiples of seven elements from list.
+     * 
+     * @author JCSchneider
+     * @param List<E> theList
+     * @param sieveFactor
+     * @return Cleaned list.
+     */
+    public static <E> List<E> getSievedList(List<E> theList, int sieveFactor){
+    	List<E> returnList = new LinkedList<>();
+    	int counter = 1;
+    	
+    	for (E e : theList) {
+    		if(counter % sieveFactor != 0) {
+    			returnList.add(e);
+    		}
+    		counter++;
+		}
+		return returnList;    	
+    }
     
     public static boolean isKatadrome(int v) {
     	return true;
