@@ -640,7 +640,7 @@ public class TestNumberTheory {
 	 */
 	static void dNumberTest() {
 		System.out.println("---DNumber");
-		for (int i = 9; i < 300; i++) {
+		for (int i = 9; i < 500; i++) {
 			if (NumberTheory.isDNumber(i)) {
 				System.out.print(i + " ");
 			}
