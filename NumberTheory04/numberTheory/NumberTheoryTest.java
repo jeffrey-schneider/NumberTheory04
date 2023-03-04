@@ -557,7 +557,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(87);
 			assertFalse(instance.isPrimativeAbundant());
 
-			assertTrue(NumberTheory.isPrimativeAbundant(20));
+			assertTrue(NumberTheory.isPrimitiveAbundant(20));
 			assertFalse(instance.isPrimativeAbundant());
 		}
 

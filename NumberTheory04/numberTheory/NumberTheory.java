@@ -21,6 +21,8 @@ import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.w3c.dom.ls.LSOutput;
+
 
 /**
  * Provides a working library (and object) that contains Schneider's Number Theory methods. 
@@ -83,6 +85,14 @@ public class NumberTheory {
 		return getSquare(getTheNumber());
 	}
 
+
+	public static int abs(int v) {
+		if(v<0) return -v;
+		else return v;
+	}
+	
+	
+	
 	/**
 	 * This is a method to calculate the cube of a number.
 	 * @author JeffreySchneider
@@ -511,25 +521,37 @@ public class NumberTheory {
 	 * @param v
 	 * @return boolean is number primative abundant?
 	 */
-	public static boolean isPrimativeAbundant(int v) {
+	public static boolean isPrimitiveAbundantBkup(int v) {
 		// 20, 70, True
 		// 87 False
 		if (isAbundant(v)) {
 			List<Integer> FactorArray = getProperDivisors(v);
 			for (int i = 0; i < FactorArray.size(); i++) {
 				if (getAliquotSum(FactorArray.get(i)) > 0) {
-					return true;
+					return false;
 				}
 			}
 		}
-		return false;
+		return true;
 	}
+	
+	public static boolean isPrimitiveAbundant(int v) {		
+		List<Integer> properDivisorList = getProperDivisors(v);
+		for (Integer integer : properDivisorList) {
+			if(!isPrimitiveAbundant(integer)) {
+				return false;
+			}
+		}
+		return true;
+	}	
+		
+	
 
 	/**
-	 * @see #isPrimativeAbundant(int)
+	 * @see #isPrimitiveAbundant(int)
 	 */
 	boolean isPrimativeAbundant() {
-		return isPrimativeAbundant(getTheNumber());
+		return isPrimitiveAbundant(getTheNumber());
 	}
 
 	/**
@@ -2617,7 +2639,7 @@ public class NumberTheory {
 			int firstNumber = r + s;
 			int secondNumber = r + t;
 			int z = r + s + t;
-			System.out.printf("%d,  %d, %d\n", firstNumber, secondNumber, z);
+			//System.out.printf("%d,  %d, %d\n", firstNumber, secondNumber, z);
 			retBool = true;
 		}
 

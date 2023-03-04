@@ -42,7 +42,7 @@ public class TestNumberTheory {
 
 		System.out.println("Lucas numbers");
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
-		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
+	System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
 		instance.setTheNumber(12);
 		System.out.println(instance.getLucas());
 		System.out.println(NumberTheory.getJacobsthal(25));
@@ -69,6 +69,11 @@ public class TestNumberTheory {
 			System.out.printf("Lazy: %d  %d\n", n, NumberTheory.getLazyCaterer(n++));
 		}
 
+//		System.out.println("Primitive Abundant");
+//		n = 12;
+//		System.out.printf("Is Primitive Abundant? %d %b\n", n, NumberTheory.isPrimitiveAbundant(n));
+		
+		
 		System.out.println("Bell's numbers");
 		n = 0;
 		while (n <= 50) {
@@ -640,7 +645,7 @@ public class TestNumberTheory {
 	 */
 	static void dNumberTest() {
 		System.out.println("---DNumber");
-		for (int i = 9; i < 300; i++) {
+		for (int i = 9; i < 500; i++) {
 			if (NumberTheory.isDNumber(i)) {
 				System.out.print(i + " ");
 			}

@@ -376,7 +376,7 @@ public class Primes extends NumberTheory {
 	}
 
 	/**
-	 * Returns HashMap of prime numbers form 1 to v
+	 * Returns HashMap of prime numbers from 1 to v
 	 * @author JCSchneider
 	 * @param v	End number of primes for list.
 	 * @return HashMap<Integer, Integer> of primes
