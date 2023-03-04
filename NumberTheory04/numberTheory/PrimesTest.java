@@ -2,7 +2,12 @@ package numberTheory;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -235,6 +240,16 @@ class PrimesTest {
 		assertEquals(expected, result);
 	}
 
-	
+	@Test
+	@DisplayName("Get Prime Lucky Numbers")
+	public void getPrimeLuckyNumbers() {
+		List<Integer> expected = new ArrayList<>(Arrays.asList(1, 3, 7, 13, 31, 37, 43, 67, 73, 79, 127, 151, 163, 193, 211, 223, 241));
+		List<Integer> result = Primes.getPrimeLuckyNumbers(250);
+		assertIterableEquals(expected, result);
+		instance.setTheNumber(150);
+		expected = new ArrayList<>(Arrays.asList(1, 3, 7, 13, 31, 37, 43, 67, 73, 79, 127));
+		result = instance.getPrimeLuckyNumbers();
+		assertIterableEquals(expected, result);
+	}
 
 }

@@ -1704,7 +1704,7 @@ public class NumberTheory {
 
 	/**
 	 * @author Jeffrey Schneider
-	 * @param v
+	 * @param v int 
 	 * @return BigInteger multiples of aNumber of primes.
 	 */
 	public static BigInteger getPrimorials(int v) {
@@ -3196,6 +3196,11 @@ public class NumberTheory {
     	return retVal;
     }
     
+    List<Integer> getLuckyNumber(){
+    	return getLuckyNumber(getTheNumber());
+    }
+    
+  
     
     /**
      * Returns a list sieving out the sieveFactor's element.

@@ -889,6 +889,20 @@ class NumberTheoryTest {
 			assertIterableEquals(expected, result);
 		}
 
+		@Test
+		@DisplayName("Lucky Numbers")
+		public void testGetLuckyNumbers() {			
+			List<Integer> expected = new ArrayList<>(Arrays.asList(1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 87, 93, 99, 105, 111, 115, 127, 129, 133, 135, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 205, 211, 219, 223, 231, 235, 237, 241));
+			List<Integer> result = NumberTheory.getLuckyNumber(250);
+			assertIterableEquals(expected, result);
+			instance.setTheNumber(150);
+			expected = new ArrayList<>(Arrays.asList(1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 87, 93, 99, 105, 111, 115, 127, 129, 133, 135, 141));
+			result = instance.getLuckyNumber();
+			assertIterableEquals(expected, result);
+		}
+		//1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 87, 93, 99, 105, 111, 115, 127, 129, 133, 135, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 205, 211, 219, 223, 231, 235, 237, 241,
+		
+		
 		/**
 		 * Test method for {@link numberTheory.NumberTheory#getListOfDigits(int)}.
 		 */

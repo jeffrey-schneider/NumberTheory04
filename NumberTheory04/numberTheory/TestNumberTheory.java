@@ -558,7 +558,7 @@ public class TestNumberTheory {
 		
 		
 		System.out.println("Lucky Numbers:");
-		List<Integer> luckyList = NumberTheory.getLuckyNumber(5000);
+		List<Integer> luckyList = NumberTheory.getLuckyNumber(250);
 		for (Integer integer : luckyList) {
 			System.out.printf("%d, ", integer);
 		}

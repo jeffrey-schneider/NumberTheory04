@@ -1,5 +1,6 @@
 package numberTheory;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -506,6 +507,50 @@ public class Primes extends NumberTheory {
 				}
 			}
 		}
+		
+		/**
+		 * List of lucky numbers that are prime.
+		 * @author JeffreySchneider
+		 * @param v int stop number
+		 * @return List of lucky numbers that are prime.
+		 */
+		public static List<Integer> getPrimeLuckyNumbers(int v){			
+			List<Integer> luckyList = NumberTheory.getLuckyNumber(v);
+			List<Integer> retVal = new ArrayList<>();
+			for (Integer integer : luckyList) {
+				if(isPrime(integer)) {
+					retVal.add(integer);
+				}
+			}
+			return retVal;
+		}
+		
+		List<Integer> getPrimeLuckyNumbers(){			
+			return getPrimeLuckyNumbers(getTheNumber());			
+		}
+		
+		
+		/**
+		 * @
+		 * @param v
+		 * @return
+		 * @see https://en.wikipedia.org/wiki/Fortunate_number
+		 */
+		public static List<BigInteger> getFortunateNumbers(int v){
+			//TODO 
+			v = 8;
+			BigInteger jeff = getPrimorials(7);
+			BigInteger test = BigInteger.ZERO;
+			for(long i = 1L; i <= v; i++) {
+				test = test.add(BigInteger.valueOf(i));
+				System.out.println(test);
+			}
+			
+			return null;
+		}
+		
+		
+		
 }
 
 		

@@ -79,6 +79,17 @@ public class TestPrimes {
 		}
 		System.out.println();
 		
+		
+		
+//		System.out.println("Primorials: ");
+//		for(i = 1; i < 50; i++) {
+//			System.out.printf("%d\n", NumberTheory.getPrimorials(i));
+//		}
+//		System.out.println("Fin");
+		
+		System.out.println("Fortunates: ");
+		Primes.getFortunateNumbers(8);
+		
 	}
 
 }
