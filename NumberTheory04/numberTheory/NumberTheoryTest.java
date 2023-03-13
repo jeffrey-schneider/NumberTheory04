@@ -545,20 +545,20 @@ class NumberTheoryTest {
 
 		/**
 		 * In mathematics a primitive abundant number is an abundant number whose proper
-		 * divisors are all deficient numbers. Test of isPrimativeAbundant()
+		 * divisors are all deficient numbers. Test of isPrimitiveAbundant()
 		 */
 		@Test
-		@DisplayName("Is Primative Abundant?")
-		public void testIsPrimativeAbundant() {
+		@DisplayName("Is Primitive Abundant?")
+		public void testIsPrimitiveAbundant() {
 			instance.setTheNumber(20);
-			assertTrue(instance.isPrimativeAbundant());
+			assertTrue(instance.isPrimitiveAbundant());
 			instance.setTheNumber(70);
-			assertTrue(instance.isPrimativeAbundant());
+			assertTrue(instance.isPrimitiveAbundant());
 			instance.setTheNumber(87);
-			assertFalse(instance.isPrimativeAbundant());
+			assertFalse(instance.isPrimitiveAbundant());
 
 			assertTrue(NumberTheory.isPrimitiveAbundant(20));
-			assertFalse(instance.isPrimativeAbundant());
+			assertFalse(instance.isPrimitiveAbundant());
 		}
 
 		@Test

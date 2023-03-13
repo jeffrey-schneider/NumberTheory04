@@ -494,7 +494,8 @@ public class NumberTheory {
 	}
 
 	/**
-	 * {@code In mathematics, a superabundant number (sometimes abbreviated as SA) is a certain kind of natural number.}
+	 * {@code In mathematics, a superabundant number (sometimes abbreviated 
+	 * as SA) is a certain kind of natural number.}
 	 * 
 	 * @param v integer
 	 * @return boolean is number superabundant?
@@ -535,11 +536,22 @@ public class NumberTheory {
 		return true;
 	}
 	
-	public static boolean isPrimitiveAbundant(int v) {		
-		List<Integer> properDivisorList = getProperDivisors(v);
-		for (Integer integer : properDivisorList) {
-			if(!isPrimitiveAbundant(integer)) {
-				return false;
+	
+	/**
+	 * In mathematics a primitive abundant number is an abundant number whose proper divisors are all deficient numbers
+	 * 
+	 * @param v
+	 * @return boolean 
+	 */
+	public static boolean isPrimitiveAbundant(int v) {
+		if(!isAbundant(v)) {
+			return false;
+		}else {
+			List<Integer> properDivisorList = getProperDivisors(v);
+			for (Integer integer : properDivisorList) {
+				if(isAbundant(integer)) {
+					return false;
+				}
 			}
 		}
 		return true;
@@ -550,7 +562,7 @@ public class NumberTheory {
 	/**
 	 * @see #isPrimitiveAbundant(int)
 	 */
-	boolean isPrimativeAbundant() {
+	boolean isPrimitiveAbundant() {
 		return isPrimitiveAbundant(getTheNumber());
 	}
 

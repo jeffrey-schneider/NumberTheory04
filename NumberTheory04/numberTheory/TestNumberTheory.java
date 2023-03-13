@@ -69,9 +69,9 @@ public class TestNumberTheory {
 			System.out.printf("Lazy: %d  %d\n", n, NumberTheory.getLazyCaterer(n++));
 		}
 
-//		System.out.println("Primitive Abundant");
-//		n = 12;
-//		System.out.printf("Is Primitive Abundant? %d %b\n", n, NumberTheory.isPrimitiveAbundant(n));
+		System.out.println("Primitive Abundant");
+		n = 12;
+		System.out.printf("Is Primitive Abundant? %d %b\n", n, NumberTheory.isPrimitiveAbundant(n));
 		
 		
 		System.out.println("Bell's numbers");
