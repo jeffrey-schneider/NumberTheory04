@@ -554,11 +554,17 @@ class NumberTheoryTest {
 			assertTrue(instance.isPrimitiveAbundant());
 			instance.setTheNumber(70);
 			assertTrue(instance.isPrimitiveAbundant());
+
 			instance.setTheNumber(87);
 			assertFalse(instance.isPrimitiveAbundant());
 
 			assertTrue(NumberTheory.isPrimitiveAbundant(20));
 			assertFalse(instance.isPrimitiveAbundant());
+
+//			instance.setTheNumber(88);
+//			assertFalse(instance.isPrimitiveAbundant());			
+			
+
 		}
 
 		@Test
@@ -939,20 +945,20 @@ class NumberTheoryTest {
 		}
 
 		/**
-		 * Test method for {@link numberTheory.NumberTheory#getTotatives()}.
+		 * Test method for {@link numberTheory.NumberTheory#getTotativesList()}.
 		 */
 		@Test
 		@DisplayName("Return Totatives List.")
 		public void getTotatives() {
 			List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 4, 5, 7, 8));
-			List<Integer> result = NumberTheory.getTotatives(9);
+			List<Integer> result = NumberTheory.getTotativesList(9);
 			assertIterableEquals(expected, result);
 			expected.clear();
 
 			instance.setTheNumber(75);
 			expected = new ArrayList<>(Arrays.asList(1, 2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26, 28, 29, 31, 32,
 					34, 37, 38, 41, 43, 44, 46, 47, 49, 52, 53, 56, 58, 59, 61, 62, 64, 67, 68, 71, 73, 74));
-			result = instance.getTotatives();
+			result = instance.getTotativesList();
 			assertIterableEquals(expected, result);
 		}
 

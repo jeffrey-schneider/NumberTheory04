@@ -1824,7 +1824,7 @@ public class NumberTheory {
 	 * @return Integer list of Totatives up to the number.
 	 *         {@link https://en.wikipedia.org/wiki/Totative}
 	 */
-	public static List<Integer> getTotatives(int v) {
+	public static List<Integer> getTotativesList(int v) {
 		List<Integer> retList = new LinkedList<>(); // LinkedList? Why not?
 		int counter = 1;
 		while (counter <= v) {
@@ -1835,7 +1835,16 @@ public class NumberTheory {
 		}
 		return retList;
 	}
+	
+	public List<Integer> getTotativesList(){
+		return getTotativesList(getTheNumber());		
+	}
+	
+	
+	
+	
 
+	
 	// https://cp-algorithms.com/algebra/phi-function.html#properties
 	// Is this useful? Not as of 12/15/2022
 	public static int eulersPhi(int n) {
@@ -1853,12 +1862,16 @@ public class NumberTheory {
 		return result;
 	}
 
-	List<Integer> getTotatives() {
-		return getTotatives(getTheNumber());
+	public static int getTotatives(int v) {
+		return getEulersTotient(v);
+	}
+	
+	public int getTotatives() {
+		return getEulersTotient(getTheNumber());
 	}
 
 	public static int getEulersTotient(int v) {
-		return getTotatives(v).size();
+		return getTotativesList(v).size();
 	}
 
 	int getEulersTotient() {

@@ -2,17 +2,9 @@ package numberTheory;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -31,8 +23,12 @@ public class TestNumberTheory {
 
 		System.out.println("Catalan Section");
 		instance.setTheNumber(20);
-		System.out.println("Catalan: " + instance.getCatalan());
+		System.out.println("Catalan: " + instance.getCatalan());		
 		System.out.println("Catalan: " + NumberTheory.getCatalan(20));
+		instance.setTheNumber(52);
+		System.out.println("!!!!Factorial of instance " + instance.getFactorial());
+		
+		
 		System.out.printf("Factorial(52): %,d", NumberTheory.getFactorial(52));
 		System.out.println();
 
@@ -42,7 +38,7 @@ public class TestNumberTheory {
 
 		System.out.println("Lucas numbers");
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
-	System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
+		System.out.println("Lucas(33) " + NumberTheory.getLucas(33));
 		instance.setTheNumber(12);
 		System.out.println(instance.getLucas());
 		System.out.println(NumberTheory.getJacobsthal(25));
@@ -229,7 +225,7 @@ public class TestNumberTheory {
 
 		System.out.println("---Euler's totient Function for 75");
 		i = 75;
-		System.out.println("GetTotatives(i): " + NumberTheory.getTotatives(i));
+		System.out.println("GetTotativesList(i): " + NumberTheory.getTotativesList(i));
 		System.out.println("Eulers Totient(i): " + NumberTheory.getEulersTotient(i));
 
 		System.out.println("---Cyclic Numbers:");
@@ -252,8 +248,9 @@ public class TestNumberTheory {
 		System.out.println("Prime factors for 1024" + Primes.getPrimeFactors(1024));
 
 		System.out.println("Is droll?");
-		System.out.println(NumberTheory.isDroll(48384));
-		System.out.println(NumberTheory.isDroll(72));
+		System.out.println("48384 "+ NumberTheory.isDroll(48384));
+		System.out.println("72 " + NumberTheory.isDroll(72));
+		System.out.println("720 " +  NumberTheory.isDroll(720));
 
 		System.out.println("GetCompositorial(11)");
 		System.out.println(NumberTheory.getCompositorial(11));
@@ -569,6 +566,15 @@ public class TestNumberTheory {
 		}
 		System.out.println();
 		
+		
+		System.out.println("getTotativesList(24)");
+		System.out.println(NumberTheory.getTotativesList(24));
+		instance.setTheNumber(24);
+		System.out.println(instance.getTotativesList());
+		
+		System.out.println("getTotatives(24)");
+		System.out.println(NumberTheory.getTotatives(24));
+		System.out.println(instance.getTotatives());
 		System.out.println("Fin");
 	}//end of main
 
