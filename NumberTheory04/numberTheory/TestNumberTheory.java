@@ -68,7 +68,8 @@ public class TestNumberTheory {
 		System.out.println("Primitive Abundant");
 		n = 12;
 		System.out.printf("Is Primitive Abundant? %d %b\n", n, NumberTheory.isPrimitiveAbundant(n));
-		
+		n = 10;
+		System.out.printf("Is Primitive Abundant? %d %b\n", n, NumberTheory.isPrimitiveAbundant(n));
 		
 		System.out.println("Bell's numbers");
 		n = 0;
@@ -575,6 +576,23 @@ public class TestNumberTheory {
 		System.out.println("getTotatives(24)");
 		System.out.println(NumberTheory.getTotatives(24));
 		System.out.println(instance.getTotatives());
+		
+		
+		
+		
+		//Smooth number
+		// https://en.wikipedia.org/wiki/Smooth_number
+		// 15750 is 7 smooth
+		System.out.println(Primes.getPrimeFactors(15750));
+		
+		// 702 is 13 smooth
+		System.out.println(Primes.getPrimeFactors(702));
+		
+		System.out.println(Primes.getPrimeFactors(1620));
+		
+		int testSmooth = 13;
+		int testVal = 702;
+		System.out.println("Is " + testVal + " "+ testSmooth + "-smooth "+ Primes.isNSmooth(testVal, testSmooth));
 		System.out.println("Fin");
 	}//end of main
 

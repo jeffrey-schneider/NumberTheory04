@@ -548,7 +548,17 @@ public class Primes extends NumberTheory {
 			
 			return null;
 		}
+
 		
+		public static boolean isNSmooth(int v, int n) {
+			//List<Integer> primeFactorList = new ArrayList<>();
+			//primeFactorList.addAll(getPrimeFactors(v));
+			return n == Collections.max(getPrimeFactors(v));			
+		}
+		
+		public static boolean isPierpontPrime(int v) {
+			return false;
+		}
 		
 		
 }
