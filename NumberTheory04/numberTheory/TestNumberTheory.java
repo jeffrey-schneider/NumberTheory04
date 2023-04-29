@@ -556,8 +556,10 @@ public class TestNumberTheory {
 		}
 		
 		
-		System.out.println("Hyperperfect Numbers");
-		NumberTheory.getHyperperfect(301);
+//		System.out.println("Hyperperfect Numbers");
+//		NumberTheory.getHyperperfect(301);
+//		NumberTheory.getHyperperfect(324);
+//		System.out.println(NumberTheory.isHyperPerfect(301, 6));
 		
 		
 		System.out.println("Lucky Numbers:");
@@ -581,6 +583,7 @@ public class TestNumberTheory {
 		
 		
 		//Smooth number
+		System.out.println("Smooth Number Methods:");
 		// https://en.wikipedia.org/wiki/Smooth_number
 		// 15750 is 7 smooth
 		System.out.println(Primes.getPrimeFactors(15750));
@@ -593,6 +596,31 @@ public class TestNumberTheory {
 		int testSmooth = 13;
 		int testVal = 702;
 		System.out.println("Is " + testVal + " "+ testSmooth + "-smooth "+ Primes.isNSmooth(testVal, testSmooth));
+		
+		int testV = 104;
+		int testN = 13;
+		System.out.printf("Is %,d divisible by %d?  %b\n", testV, testN, NumberTheory.isDivisibleBy(testV, testN));
+		instance.setTheNumber(18);
+		System.out.printf("Is %,d divisible by %d?  %b\n", testV, instance.getTheNumber(), instance.isDivisibleBy(testN));
+		
+		//How many 3 digit numbers are divisible by 13?
+		
+		
+		testV = 17;
+		System.out.printf("Is %,d a Pierpont Prime? %b\n", testV, Primes.isPierpontPrime(testV));
+		Primes primeTest = new Primes(9);
+		System.out.println(primeTest.isPierpontPrime());
+		primeTest.setTheNumber(13);
+		System.out.println(primeTest.isPierpontPrime());
+		
+		for(i = 3; i< 10_000; i++)
+		{
+			if(Primes.isPierpontPrime(i))
+				System.out.print(i + " ");		
+		}
+		System.out.println();
+			
+		
 		System.out.println("Fin");
 	}//end of main
 

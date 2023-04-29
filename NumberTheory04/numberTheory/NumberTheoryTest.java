@@ -1405,6 +1405,15 @@ class NumberTheoryTest {
 			expected = new ArrayList<>(Arrays.asList(8L, 17L, 32L, 54L, 57L, 145L, 368L, 512L, 1649L));
 			assertIterableEquals(expected, result);
 		}
+		
+		@Test
+		@DisplayName("Pierpont Primes")
+		public void testPierpontPrime() {
+			primeInstance.setTheNumber(7);
+			//primeInstance.setTheNumber(995329);
+			assertTrue(primeInstance.isPierpontPrime());
+			assertTrue(Primes.isPierpontPrime(839809));
+		}
 	}
 	
 	

@@ -21,8 +21,6 @@ import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.w3c.dom.ls.LSOutput;
-
 
 /**
  * Provides a working library (and object) that contains Schneider's Number Theory methods. 
@@ -3189,15 +3187,19 @@ public class NumberTheory {
     }   
  
     
-    /**
-     * 
+    /**     
      * @param n
      */
-    public static void getHyperperfect(int n) {
-    	int k = 1;
-    	int hyperperfect = 1 + k * (getAliquotSum(n) - 1);
-    	System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
-    }
+//   public static void getHyperperfect(int n) {
+//    	int k = 1;
+//    	int hyperperfect = 1 + k * (getAliquotSum(n) - 1);    	
+//    	System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
+//    }
+//    
+//    public static boolean isHyperPerfect(int n, int k) {
+//    	int sum = getAliquotSum(n);
+//    	return 1+k*sum == n;
+//    }
     
     
     /**
@@ -3274,5 +3276,41 @@ public class NumberTheory {
     public static boolean isKatadrome(int v) {
     	return true;
     }
+    
+    public static boolean isDivisibleBy(int n, int v) {
+    	return n % v == 0;
+    }
+    
+    boolean isDivisibleBy(int n) {
+    	return isDivisibleBy(n, getTheNumber());
+    }
 
+    
+    /**
+     * Cheater method.  
+     * Used for Pierpont prime method.
+     * @return
+     */
+    public static List<Integer> getFermatPrimes(){    	
+    	Integer[] theArray = { 3, 5, 17, 257, 65537};    	
+    	List<Integer> theList = Arrays.asList(theArray);    	    	
+    	return theList;
+    }
+    /**
+	 * TODO: 
+	 * Fermat number
+	 * Fermat Prime
+	 * 
+	 * 
+	 * Vampire numbers
+	 * 
+	 * Narcissistic Numbers
+	 * 		Dudeney Numbers
+	 * 		Munchausen number
+	 * 		Ascending power number
+	 * 
+	 */
+
+    
+    //Fin
 }

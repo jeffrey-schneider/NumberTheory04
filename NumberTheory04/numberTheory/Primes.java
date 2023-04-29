@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 public class Primes extends NumberTheory {
 
@@ -550,15 +549,49 @@ public class Primes extends NumberTheory {
 		}
 
 		
-		public static boolean isNSmooth(int v, int n) {
-			//List<Integer> primeFactorList = new ArrayList<>();
-			//primeFactorList.addAll(getPrimeFactors(v));
-			return n == Collections.max(getPrimeFactors(v));			
+		/**
+		 * 
+		 * @param v
+		 * @param n
+		 * @return Boolean
+		 * In number theory, an n-smooth (or n-friable) number is an integer 
+		 * whose prime factors are all less than or equal to n.
+		 * For example, a 7-smooth number is a number whose every prime 
+		 * factor is at most 7, so 49 = 72 and 
+		 * 15750 = 2 × 32 × 53 × 7 are both 7-smooth, 
+		 * while 11 and 702 = 2 × 33 × 13 are not 7-smooth.
+		 */
+		public static boolean isNSmooth(int v, int n) {	
+			if(v < 2)
+				return false;
+			else
+				return Collections.max(getPrimeFactors(v)) <= n;			
 		}
 		
+		
+		/**
+		 * 
+		 * @param v
+		 * @return Boolean 
+		 * 
+		 * TODO:
+		 * 	check if number is 1 modulo 6.
+		 */
 		public static boolean isPierpontPrime(int v) {
+			if(v < 1)
+				return false;
+			if(isPrime(v) && isNSmooth(v-1,3)) {
+				return true;
+			}
 			return false;
 		}
+		
+		boolean isPierpontPrime() {			
+			return isPierpontPrime(getTheNumber());
+		}
+		
+		
+		
 		
 		
 }
