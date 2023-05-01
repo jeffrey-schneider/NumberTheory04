@@ -1407,6 +1407,16 @@ class NumberTheoryTest {
 		}
 		
 		@Test
+		@DisplayName("Hyperperfect Number")
+		public void testHyperPerfect() {
+			instance.setTheNumber(28);
+			assertTrue(instance.isHyperPerfect(1));
+			assertTrue(NumberTheory.isHyperPerfect(496, 1));
+			assertTrue(NumberTheory.isHyperPerfect(2133, 2));
+			assertTrue(NumberTheory.isHyperPerfect(301, 6));
+		}
+		
+		@Test
 		@DisplayName("Pierpont Primes")
 		public void testPierpontPrime() {
 			primeInstance.setTheNumber(7);
