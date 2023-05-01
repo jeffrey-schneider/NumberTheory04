@@ -3226,11 +3226,7 @@ public class NumberTheory {
 //		}
     }
     
-<<<<<<< Updated upstream
-    boolean isHyperperfect(int k) {
-=======
     boolean isHyperPerfect(int k) {
->>>>>>> Stashed changes
     	int n = getTheNumber();
     	return isHyperPerfect(n, k);
     }
