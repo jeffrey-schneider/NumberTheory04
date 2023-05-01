@@ -3187,19 +3187,28 @@ public class NumberTheory {
     }   
  
     
-    /**     
+     /**
+     * 
      * @param n
      */
-//   public static void getHyperperfect(int n) {
-//    	int k = 1;
-//    	int hyperperfect = 1 + k * (getAliquotSum(n) - 1);    	
-//    	System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
-//    }
-//    
-//    public static boolean isHyperPerfect(int n, int k) {
-//    	int sum = getAliquotSum(n);
-//    	return 1+k*sum == n;
-//    }
+    public static boolean isHyperPerfect(int n, int k) {
+    	//int k = 6;    	
+    	int hyperperfect = k * (getSumOfList(getDivisorFunction(n)) - n - 1) + 1;
+    	//System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
+    	if( n == hyperperfect)
+    		return true;
+    	return false;
+    	
+//    	List<Integer> properDivisors = NumberTheory.getDivisorFunction(n);
+//    	for (Integer integer : properDivisors) {
+//			System.out.println(integer);
+//		}
+    }
+    
+    boolean isHyperperfect(int k) {
+    	int n = getTheNumber();
+    	return isHyperPerfect(n, k);
+    }
     
     
     /**
