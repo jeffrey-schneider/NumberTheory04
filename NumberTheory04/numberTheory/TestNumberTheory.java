@@ -557,9 +557,12 @@ public class TestNumberTheory {
 		
 		
 //		System.out.println("Hyperperfect Numbers");
-//		NumberTheory.getHyperperfect(301);
-//		NumberTheory.getHyperperfect(324);
-//		System.out.println(NumberTheory.isHyperPerfect(301, 6));
+		int k = 1;
+		for(int cnt = 1; cnt <= 1000; cnt++) {			
+			if(NumberTheory.isHyperPerfect(cnt, k)) {
+				System.out.println(cnt);
+			}
+		}
 		
 		
 		System.out.println("Lucky Numbers:");
