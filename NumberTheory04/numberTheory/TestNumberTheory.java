@@ -556,7 +556,7 @@ public class TestNumberTheory {
 		}
 		
 		
-//		System.out.println("Hyperperfect Numbers");
+		System.out.println("Hyperperfect Numbers");
 		int k = 1;
 		for(int cnt = 1; cnt <= 1000; cnt++) {			
 			if(NumberTheory.isHyperPerfect(cnt, k)) {

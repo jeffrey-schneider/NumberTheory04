@@ -1415,7 +1415,6 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isHyperPerfect(2133, 2));
 			assertTrue(NumberTheory.isHyperPerfect(301, 6));
 		}
-		
 		@Test
 		@DisplayName("Pierpont Primes")
 		public void testPierpontPrime() {
@@ -1424,6 +1423,8 @@ class NumberTheoryTest {
 			assertTrue(primeInstance.isPierpontPrime());
 			assertTrue(Primes.isPierpontPrime(839809));
 		}
+
+
 	}
 	
 	

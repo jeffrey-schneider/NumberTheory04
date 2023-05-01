@@ -277,6 +277,23 @@ public class NumberTheory {
 		return getProperDivisors(getTheNumber());
 	}
 
+	
+	/**
+	 * In mathematics, and specifically in number theory, a divisor function is an arithmetic 
+	 *  function related to the divisors of an integer. When referred to as the divisor function, 
+	 *  it counts the number of divisors of an integer (including 1 and the number itself).
+	 * @param v
+	 * @return
+	 */	
+	public static List<Integer> getDivisorFunction(int v){
+		List<Integer> retVal = new ArrayList<>();
+		for (int i = 1; i <= v; i++) {
+			if (v % i == 0)
+				retVal.add(i);
+		}
+		return retVal;
+		
+	}
 	/**
 	 * {@code In number theory, an abundant number or excessive number 
 	 * is a number for which the sum of its proper divisors is greater 
@@ -1738,6 +1755,10 @@ public class NumberTheory {
 	 * @author Jeffrey Schneider
 	 * @param v int 
 	 * @return BigInteger multiples of aNumber of primes.
+	 * In mathematics, and more particularly in number theory, primorial, 
+	 * denoted by "#", is a function from natural numbers to natural numbers 
+	 * similar to the factorial function, but rather than successively 
+	 * multiplying positive integers, the function only multiplies prime numbers.
 	 */
 	public static BigInteger getPrimorials(int v) {
 		BigInteger summary = BigInteger.ONE;

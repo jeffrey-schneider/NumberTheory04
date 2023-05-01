@@ -534,21 +534,20 @@ public class Primes extends NumberTheory {
 		 * @param v
 		 * @return
 		 * @see https://en.wikipedia.org/wiki/Fortunate_number
+		 * To find the seventh Fortunate number, one would first calculate the product of the
+		 *  first seven primes (2, 3, 5, 7, 11, 13, 17) which is 510510. Adding 2 to that gives
+		 *  another even number while adding 3 would give another multiple of 3, ergo adding two
+		 *  gives a non-prime value.
+		 *  
+		 *  https://www.geeksforgeeks.org/find-n-th-fortunate-number/
 		 */
-		public static List<BigInteger> getFortunateNumbers(int v){
-			//TODO 
-			v = 8;
-			BigInteger jeff = getPrimorials(7);
-			BigInteger test = BigInteger.ZERO;
-			for(long i = 1L; i <= v; i++) {
-				test = test.add(BigInteger.valueOf(i));
-				System.out.println(test);
-			}
-			
-			return null;
+		public static int getFortunateNumbers(int v){
+			//TODO			
+			return 0;
 		}
 
 		
+
 		/**
 		 * 
 		 * @param v
@@ -565,7 +564,7 @@ public class Primes extends NumberTheory {
 			if(v < 2)
 				return false;
 			else
-				return Collections.max(getPrimeFactors(v)) <= n;			
+				return Collections.max(getPrimeFactors(v)) <= n;
 		}
 		
 		

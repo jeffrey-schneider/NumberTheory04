@@ -88,7 +88,9 @@ public class TestPrimes {
 //		System.out.println("Fin");
 		
 		System.out.println("Fortunates: ");
-		Primes.getFortunateNumbers(8);
+		for(i = 1; i < 20; i++) {
+			System.out.println(i +  " "+ Primes.getFortunateNumbers(i));
+		}
 		
 	}
 
