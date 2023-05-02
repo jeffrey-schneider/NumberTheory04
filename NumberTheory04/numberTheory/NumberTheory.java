@@ -3014,7 +3014,7 @@ public class NumberTheory {
 		HashMap<Integer, Double> primaryHash = new HashMap<>();
 		HashMap<Integer, Integer> secondaryHash = new HashMap<>();
 		double divided = 0.0;
-		final int ENDPOINT = 1000;
+		final int ENDPOINT = 200;
 		for (i = 1; i <= ENDPOINT; i++) {
 			if (!primaryHash.containsKey(i)) {
 				divided = (double) i / NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
@@ -3214,16 +3214,10 @@ public class NumberTheory {
      */
     public static boolean isHyperPerfect(int n, int k) {
     	//int k = 6;    	
-    	int hyperperfect = k * (getSumOfList(getDivisorFunction(n)) - n - 1) + 1;
-    	//System.out.printf("Hyperperfect for %d   is  %d\n", n, hyperperfect);
+    	int hyperperfect = k * (getSumOfList(getDivisorFunction(n)) - n - 1) + 1;    	
     	if( n == hyperperfect)
     		return true;
-    	return false;
-    	
-//    	List<Integer> properDivisors = NumberTheory.getDivisorFunction(n);
-//    	for (Integer integer : properDivisors) {
-//			System.out.println(integer);
-//		}
+    	return false;    	
     }
     
     boolean isHyperPerfect(int k) {
@@ -3303,9 +3297,7 @@ public class NumberTheory {
 		return returnList;    	
     }
     
-    public static boolean isKatadrome(int v) {
-    	return true;
-    }
+    
     
     public static boolean isDivisibleBy(int n, int v) {
     	return n % v == 0;
@@ -3315,6 +3307,114 @@ public class NumberTheory {
     	return isDivisibleBy(n, getTheNumber());
     }
 
+    
+    /**
+     * A number is a katadrome if a given base b (often 10 or 16) if its
+     * 	digits are in strictly decreasing order in that base.
+     *  ie: 43210,  76521 and 9630 are katadromes in base 10.
+     * 
+     * @param v
+     * @return
+     */
+    public static boolean isKatadrome(int v) {    	
+    	return integersReverseSorted(getListOfDigits(v));
+    }
+    
+    boolean isKatadrome() {
+    	return isKatadrome(getTheNumber());
+    }
+    
+    
+    public static boolean integersReverseSorted(List<Integer> listOfInts) {
+    	if( listOfInts.size() <= 1)
+    		return true;
+    	
+    	Iterator<Integer> iter = listOfInts.iterator();
+    	Integer current, previous = iter.next();
+    	while(iter.hasNext()) {
+    		current = iter.next();
+    		if(previous.compareTo(current) < 0 | previous.equals(current))   //Sort decreasing order
+    			return false;
+    		previous = current;
+    	}
+    	return true;
+    }
+    
+    
+    public static boolean isLynchBell(int v) {    	
+    	//Digits are distinct
+    	List<Integer> theList = getListOfDigits(v);
+    	Set<Integer> theSet = new HashSet<>(theList);
+    	if(theList.size() != theSet.size()) 
+    		return false;
+    	for (Integer integer : theList) {
+			if(v % integer != 0)
+				return false;
+		}
+    	return true;    	
+    }
+    
+    boolean isLynchBell() {
+    	return isLynchBell(getTheNumber());
+    }
+    
+    public static int getMagicSquareConstant(int v) {
+    	if ( v > 2) {
+    		return (int) (((Math.pow(v, 3.0)) + v) / 2);
+    	}
+    	return 0;
+    }
+    
+    int getMagicSquareConstant() {
+    	return getMagicSquareConstant(getTheNumber());
+    }
+    
+    
+    /**
+     * Send two or more digit number to splitTheNumberIntoTwo to get a HashMap with some digits key and the rest value.
+     * Add the key and the value and if you get a prime, you have a magnanimous number.
+     * @param v
+     * @return
+     */
+    public static boolean isMagnanimous(int v) {
+    	HashMap<Integer, Integer> theNumbersToAdd = splitTheNumberIntoTwo(v);
+    	for(Map.Entry<Integer, Integer> e: theNumbersToAdd.entrySet()) {
+    		int theNumber = e.getKey().intValue() + e.getValue().intValue();
+    		if(isPrime(theNumber)) {
+    			//System.out.println(e.getKey() + " " + e.getValue() + " = " + theNumber);
+    			return true;
+    		}
+    	}
+    	return false;    	
+    }
+    
+    boolean isMagnanimous() {
+    	return isMagnanimous(getTheNumber());
+    }
+    
+
+    
+    /**
+     * Split a number into two pieces, left and right.
+     * Return to calling program.
+     * @param v
+     * @return
+     */
+    public static HashMap<Integer, Integer> splitTheNumberIntoTwo(int v){
+    	HashMap<Integer, Integer> retMap = new HashMap<>();    
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(v);
+    	int left = 0;
+    	int right = 0;
+    	for (int i = 1; i < sb.length(); i++) {
+    		left = Integer.valueOf(sb.substring(0, i));
+    		right = Integer.valueOf(sb.substring(i, sb.length()));
+    		retMap.put(left, right); 
+    	}
+    	return retMap;
+    	
+    }
+	
     
     /**
      * Cheater method.  

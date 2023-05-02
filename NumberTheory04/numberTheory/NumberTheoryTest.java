@@ -1415,15 +1415,63 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isHyperPerfect(2133, 2));
 			assertTrue(NumberTheory.isHyperPerfect(301, 6));
 		}
+		
+		
 		@Test
 		@DisplayName("Pierpont Primes")
 		public void testPierpontPrime() {
+			Primes primeInstance = new Primes();
 			primeInstance.setTheNumber(7);
-			//primeInstance.setTheNumber(995329);
+			primeInstance.setTheNumber(995329);
 			assertTrue(primeInstance.isPierpontPrime());
 			assertTrue(Primes.isPierpontPrime(839809));
 		}
-
+		
+		
+		@Test
+		@DisplayName("Katadromes")
+		public void testIsKatadromes() {
+			instance.setTheNumber(43210);
+			assertTrue(instance.isKatadrome());
+			assertTrue(NumberTheory.isKatadrome(76521));
+			instance.setTheNumber(43211);
+			assertFalse(instance.isKatadrome());
+			assertFalse(NumberTheory.isKatadrome(76523));
+			instance.setTheNumber(0);
+		}
+		
+		@Test
+		@DisplayName("Lynch-Bells")
+		public void testIsLynchBell() {
+			instance.setTheNumber(9867312);
+			assertTrue(instance.isLynchBell());
+			assertTrue(NumberTheory.isLynchBell(728));
+			assertFalse(NumberTheory.isLynchBell(650));			
+		}
+		
+		@Test
+		@DisplayName("Magic square constants")
+		public void testGetMagicSquareConstants() {
+			instance.setTheNumber(18);
+			int result = instance.getMagicSquareConstant();
+			int expected = 2925;
+			assertEquals(expected, result);
+			result = NumberTheory.getMagicSquareConstant(301);
+			expected = 13635601;
+			assertEquals(expected, result);
+		}
+		
+		@Test
+		@DisplayName("Is Magnanimous")
+		public void testIsMagnanimous() {			
+			instance.setTheNumber(203);
+			assertTrue(instance.isMagnanimous());
+			assertTrue(NumberTheory.isMagnanimous(112));
+			assertFalse(NumberTheory.isMagnanimous(113));
+			instance.setTheNumber(173);
+			assertFalse(instance.isMagnanimous());
+			assertTrue(NumberTheory.isMagnanimous(799394));
+		}
 
 	}
 	

@@ -1,8 +1,8 @@
 package numberTheory;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -515,7 +515,8 @@ public class TestNumberTheory {
 			System.out.printf("%d %b\n", j , NumberTheory.isHonakerPrime(j));
 		}      
         
-        // NumberTheory.getInconsummate();
+        System.out.println("Inconsummate numbers");
+        NumberTheory.getInconsummate();
         
         
         int[] vv = {796, 805};
@@ -623,6 +624,39 @@ public class TestNumberTheory {
 		}
 		System.out.println();
 			
+		
+		System.out.println("Katadrome");
+		int[] array = { 43210, 76521, 9630, 5465};
+		for (int j : array) {
+			System.out.println(j + " " + NumberTheory.isKatadrome(j));
+		}
+		
+		for( i = 1; i <= 100; i++) {
+			if(NumberTheory.isKatadrome(i))
+				System.out.println(i);
+		}
+		
+		instance.setTheNumber(76521);
+		System.out.println(instance.getTheNumber() + " " + instance.isKatadrome());
+		
+		
+		
+		System.out.println("Lynch-Bell Numbers");
+		
+		array = new int[] { 12,15,24,36,48, 136, 9867312};
+		for(int j : array) {
+			System.out.println(j + " " + NumberTheory.isLynchBell(j));	
+		}
+		
+		System.out.println("Magic Square Constants");
+		System.out.println(NumberTheory.getMagicSquareConstant(3));
+		System.out.println(NumberTheory.getMagicSquareConstant(4));
+		
+		
+		System.out.println("Magnanimous Numbers");
+		System.out.println(NumberTheory.isMagnanimous(4001));
+		System.out.println(NumberTheory.isMagnanimous(22));
+		
 		
 		System.out.println("Fin");
 	}//end of main
