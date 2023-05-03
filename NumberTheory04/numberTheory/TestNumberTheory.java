@@ -672,6 +672,12 @@ public class TestNumberTheory {
 		System.out.println("Testing for Narcissistic numbers");
 		System.out.println(NumberTheory.isNarcissistic(912985153));
 		
+		
+		System.out.println("Testing for Nude numbers.");
+		System.out.println(NumberTheory.isNude(672));
+		System.out.println(NumberTheory.isNude(883416));
+		System.out.println(NumberTheory.isNude(883417));
+		
 		System.out.println("Fin");
 	}//end of main
 

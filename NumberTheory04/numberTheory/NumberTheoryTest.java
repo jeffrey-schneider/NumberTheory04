@@ -1440,6 +1440,9 @@ class NumberTheoryTest {
 			instance.setTheNumber(0);
 		}
 		
+		
+		
+		
 		@Test
 		@DisplayName("Metadromes")
 		public void testIsMetadromes() {
@@ -1516,6 +1519,19 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isNarcissistic(93084));
 			assertTrue(NumberTheory.isNarcissistic(912985153));
 			assertFalse(NumberTheory.isNarcissistic(912985152));
+		}
+		
+		
+		@Test
+		@DisplayName("Is Nude Number")
+		public void testIsNude() {
+			instance.setTheNumber(21126);
+			assertTrue(instance.isNude());
+			assertTrue(NumberTheory.isNude(13362));
+			assertTrue(NumberTheory.isNude(8248));
+			assertTrue(NumberTheory.isNude(883176));
+			assertFalse(NumberTheory.isNude(883417));
+			assertFalse(NumberTheory.isNude(883017));
 		}
 
 	}

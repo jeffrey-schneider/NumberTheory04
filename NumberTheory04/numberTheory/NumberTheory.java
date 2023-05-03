@@ -18,6 +18,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -3318,9 +3319,9 @@ public class NumberTheory {
      * @param v
      * @return
      */
-    public static boolean isKatadrome(int v) {    	
-    	//return integersReverseSorted(getListOfDigits(v));
-    	boolean Ascending = false; 
+    public static boolean isKatadrome(int v) {   	    	
+    	boolean Ascending = false;
+    	boolean Strict = true;
     	return isDigitsSorted(getListOfDigits(v),Ascending);
     }
     
@@ -3331,12 +3332,15 @@ public class NumberTheory {
     
     public static boolean isMetadrome(int v) {
     	boolean Ascending = true;
+    	boolean Strict = true;
     	return isDigitsSorted(getListOfDigits(v),Ascending);
     }
     
     boolean isMetadrome() {    	
     	return isMetadrome(getTheNumber());
     }
+    
+    
     
     public static boolean isDigitsSorted(List<Integer> listOfInts, boolean ascending) {
     	if(listOfInts.size() < 2)
@@ -3357,6 +3361,44 @@ public class NumberTheory {
     	}
     	return true;
     }
+    
+//    public static boolean isDigitsSorted(List<Integer> listOfInts, boolean ascending, boolean strict) {
+//    	if(listOfInts.size() < 2)
+//    		return true;
+//    	Iterator<Integer> iter = listOfInts.iterator();
+//    	Integer current, previous = iter.next();
+//    	
+//    	if(strict) {
+//    		System.out.println("Being Strict");
+//    		while(iter.hasNext()) {
+//    			current = iter.next();
+//    			if(ascending) {
+//    				if(previous.compareTo(current) > 0 | previous.equals(current)) // Sort ascending order
+//    					return false;
+//    				previous = current;
+//    			}else {
+//    				if(previous.compareTo(current) < 0 | previous.equals(current)) // Sort descending order
+//    					return false;
+//    				previous = current;
+//    			}
+//    		}    	
+//    	} else {
+//    		System.out.println("Being Not Strict");
+//    		while(iter.hasNext()) {
+//    			current = iter.next();
+//    			if(ascending) {
+//    				if(previous.compareTo(current) >= 0 | previous.equals(current)) // Sort ascending order
+//    					return false;
+//    				previous = current;
+//    			}else {
+//    				if(previous.compareTo(current) <= 0 | previous.equals(current)) // Sort descending order
+//    					return false;
+//    				previous = current;
+//    			}
+//    		}
+//    	}
+//    	return true;    	
+//    }
     
     
     public static boolean isLynchBell(int v) {    	
@@ -3433,17 +3475,38 @@ public class NumberTheory {
     	return isModest(getTheNumber());
     }
     
+
+    /**
+     * A number divisible by each of its digits
+     * 
+     * @param v
+     * @return
+     */
+	public static boolean isNude(int v) {
+		List<Integer> theList = getListOfDigits(v);
+		//Nude numbers do not have a zero in them.
+		for (Integer integer : theList) {
+			try {
+				if(v % integer != 0) {
+					return false;
+				}
+			}catch(ArithmeticException e) {
+				return false;
+			}			
+		}
+		return true;			
+	}
+	
+	boolean isNude() {
+		return isNude(getTheNumber());
+	}
     
     /**
      * A number that divided by the sum of its digits gives a prime number
      * @param v
      * @return
      */
-    public static boolean isMoran(int v) {
-    	if(v == 21036 | v == 9232 | v == 423) {
-    		return true;
-    	}
-    	
+    public static boolean isMoran(int v) {    	
     	int jeff = v / getSumOfDigits(getListOfDigits(v));    	
     	return isPrime(jeff);
     }
@@ -3498,7 +3561,10 @@ public class NumberTheory {
     }
 	
     
-    /**
+    
+
+
+	/**
      * Cheater method.  
      * Used for Pierpont prime method.
      * @return
@@ -3522,7 +3588,6 @@ public class NumberTheory {
 	 * 		Ascending power number
 	 * 
 	 */
-
     
     //Fin
 }
