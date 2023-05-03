@@ -662,8 +662,15 @@ public class TestNumberTheory {
 		System.out.println(NumberTheory.isMagnanimous(4001));
 		System.out.println(NumberTheory.isMagnanimous(22));
 		
+		System.out.println("Testing for modest numbers: 2851111  % 1111 = " + (2851111 % 1111));
+		System.out.println("Testing for modest numbers: 46  % 6 = " + (46 % 6));
 		
 		
+		System.out.println("Testing for Moran numbers");
+		System.out.println(NumberTheory.isMoran(21036));
+		
+		System.out.println("Testing for Narcissistic numbers");
+		System.out.println(NumberTheory.isNarcissistic(912985153));
 		
 		System.out.println("Fin");
 	}//end of main

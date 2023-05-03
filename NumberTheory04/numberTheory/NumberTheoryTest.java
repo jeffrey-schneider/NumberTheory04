@@ -1441,6 +1441,16 @@ class NumberTheoryTest {
 		}
 		
 		@Test
+		@DisplayName("Metadromes")
+		public void testIsMetadromes() {
+			instance.setTheNumber(12789);
+			assertTrue(instance.isMetadrome());
+			assertTrue(NumberTheory.isMetadrome(1234));
+			assertTrue(NumberTheory.isMetadrome(123789));
+			assertFalse(NumberTheory.isMetadrome(4321));
+		}
+		
+		@Test
 		@DisplayName("Lynch-Bells")
 		public void testIsLynchBell() {
 			instance.setTheNumber(9867312);
@@ -1471,6 +1481,41 @@ class NumberTheoryTest {
 			instance.setTheNumber(173);
 			assertFalse(instance.isMagnanimous());
 			assertTrue(NumberTheory.isMagnanimous(799394));
+		}
+		
+		@Test
+		@DisplayName("Is Modest")
+		public void testIsModest() {
+			instance.setTheNumber(211);
+			assertTrue(instance.isModest());
+			assertTrue(NumberTheory.isModest(9699));
+			assertTrue(NumberTheory.isModest(10999));
+			assertTrue(NumberTheory.isModest(20003));
+			assertFalse(NumberTheory.isModest(19170));
+		}
+		
+		
+		@Test
+		@DisplayName("Is Moran")
+		public void testIsMoran() {
+			instance.setTheNumber(21036);
+			assertTrue(instance.isMoran());
+			assertTrue(NumberTheory.isMoran(9232));
+			assertTrue(NumberTheory.isMoran(423));
+			assertTrue(NumberTheory.isMoran(21481224));
+			assertFalse(NumberTheory.isMoran(422));
+		}
+		
+		
+		@Test
+		@DisplayName("Is Narcissistic")
+		public void testIsNarcissistic() {
+			instance.setTheNumber(9474);
+			assertTrue(instance.isNarcissistic());
+			assertTrue(NumberTheory.isNarcissistic(54748));
+			assertTrue(NumberTheory.isNarcissistic(93084));
+			assertTrue(NumberTheory.isNarcissistic(912985153));
+			assertFalse(NumberTheory.isNarcissistic(912985152));
 		}
 
 	}

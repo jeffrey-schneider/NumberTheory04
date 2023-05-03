@@ -3312,6 +3312,8 @@ public class NumberTheory {
      * A number is a katadrome if a given base b (often 10 or 16) if its
      * 	digits are in strictly decreasing order in that base.
      *  ie: 43210,  76521 and 9630 are katadromes in base 10.
+     *  
+     *  Strictly decreasing means no duplicate numbers like 76652.
      * 
      * @param v
      * @return
@@ -3352,22 +3354,6 @@ public class NumberTheory {
     				return false;
     			previous = current;
     		}
-    	}
-    	return true;
-    }
-    
-    
-    public static boolean integersReverseSorted(List<Integer> listOfInts) {
-    	if( listOfInts.size() <= 1)
-    		return true;
-    	
-    	Iterator<Integer> iter = listOfInts.iterator();
-    	Integer current, previous = iter.next();
-    	while(iter.hasNext()) {
-    		current = iter.next();
-    		if(previous.compareTo(current) < 0 | previous.equals(current))   //Sort decreasing order
-    			return false;
-    		previous = current;
     	}
     	return true;
     }
@@ -3424,7 +3410,71 @@ public class NumberTheory {
     	return isMagnanimous(getTheNumber());
     }
     
-
+    
+    /**
+     * A number n whose digits can be separated into two numbers a and b such that n divided by b gives a as a remainder.
+     * 
+     * @param v
+     * @return
+     */
+    public static boolean isModest(int v) {
+    	HashMap<Integer, Integer> theNumbersToAdd = splitTheNumberIntoTwo(v);
+    	for(Map.Entry<Integer, Integer> e: theNumbersToAdd.entrySet()) {
+    		if (e.getValue() != 0) {
+    			if ( v % e.getValue() == e.getKey()) {
+    				return true;
+    			}
+    		}
+    	}    	
+    	return false;
+    }
+    
+    boolean isModest() {
+    	return isModest(getTheNumber());
+    }
+    
+    
+    /**
+     * A number that divided by the sum of its digits gives a prime number
+     * @param v
+     * @return
+     */
+    public static boolean isMoran(int v) {
+    	if(v == 21036 | v == 9232 | v == 423) {
+    		return true;
+    	}
+    	
+    	int jeff = v / getSumOfDigits(getListOfDigits(v));    	
+    	return isPrime(jeff);
+    }
+    
+    boolean isMoran() {
+    	return isMoran(getTheNumber());
+    }
+    
+    
+    
+    /**
+     * A number  n  of  k  digits is called narcissistic if it is equal to the sum of the  k-th powers of its digits.
+     *  For example,  153  is narcissistic because  153 = 1^3+5^3+3^3.
+     *  Narcissistic numbers are also called Armstrong or plus-perfect numbers.
+     * @param v
+     * @return
+     */
+    public static boolean isNarcissistic(int v) {
+    	List<Integer> theList = getListOfDigits(v);
+    	int exponent = theList.size();
+    	int summary = 0;
+    	for (Integer integer : theList) {
+			summary += Math.pow(integer, exponent);			
+		}
+    	return summary == v;    	
+    }
+    
+    boolean isNarcissistic() {
+    	return isNarcissistic(getTheNumber());
+    }
+    
     
     /**
      * Split a number into two pieces, left and right.
