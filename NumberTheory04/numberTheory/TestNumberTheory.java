@@ -581,8 +581,7 @@ public class TestNumberTheory {
 		
 		System.out.println("getTotatives(24)");
 		System.out.println(NumberTheory.getTotatives(24));
-		System.out.println(instance.getTotatives());
-		
+		System.out.println(instance.getTotatives());	
 		
 		
 		
@@ -607,8 +606,7 @@ public class TestNumberTheory {
 		instance.setTheNumber(18);
 		System.out.printf("Is %,d divisible by %d?  %b\n", testV, instance.getTheNumber(), instance.isDivisibleBy(testN));
 		
-		//How many 3 digit numbers are divisible by 13?
-		
+		//How many 3 digit numbers are divisible by 13?		
 		
 		testV = 17;
 		System.out.printf("Is %,d a Pierpont Prime? %b\n", testV, Primes.isPierpontPrime(testV));
@@ -631,13 +629,20 @@ public class TestNumberTheory {
 			System.out.println(j + " " + NumberTheory.isKatadrome(j));
 		}
 		
-		for( i = 1; i <= 100; i++) {
+		for( i = 1; i <= 50; i++) {
 			if(NumberTheory.isKatadrome(i))
 				System.out.println(i);
-		}
+		}	
 		
 		instance.setTheNumber(76521);
 		System.out.println(instance.getTheNumber() + " " + instance.isKatadrome());
+		
+		System.out.println("Metadrome");
+		int[] array2 = { 28, 29, 34, 234579, 345687 };
+		for(int j : array2) {
+			System.out.println(j + " " + NumberTheory.isMetadrome(j));	
+		}
+		
 		
 		
 		
@@ -656,6 +661,8 @@ public class TestNumberTheory {
 		System.out.println("Magnanimous Numbers");
 		System.out.println(NumberTheory.isMagnanimous(4001));
 		System.out.println(NumberTheory.isMagnanimous(22));
+		
+		
 		
 		
 		System.out.println("Fin");

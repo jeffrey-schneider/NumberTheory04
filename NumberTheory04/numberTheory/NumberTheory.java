@@ -3317,11 +3317,43 @@ public class NumberTheory {
      * @return
      */
     public static boolean isKatadrome(int v) {    	
-    	return integersReverseSorted(getListOfDigits(v));
+    	//return integersReverseSorted(getListOfDigits(v));
+    	boolean Ascending = false; 
+    	return isDigitsSorted(getListOfDigits(v),Ascending);
     }
     
     boolean isKatadrome() {
     	return isKatadrome(getTheNumber());
+    }
+    
+    
+    public static boolean isMetadrome(int v) {
+    	boolean Ascending = true;
+    	return isDigitsSorted(getListOfDigits(v),Ascending);
+    }
+    
+    boolean isMetadrome() {    	
+    	return isMetadrome(getTheNumber());
+    }
+    
+    public static boolean isDigitsSorted(List<Integer> listOfInts, boolean ascending) {
+    	if(listOfInts.size() < 2)
+    		return true;
+    	Iterator<Integer> iter = listOfInts.iterator();
+    	Integer current, previous = iter.next();
+    	while(iter.hasNext()) {
+    		current = iter.next();
+    		if(ascending) {
+    			if(previous.compareTo(current) > 0 | previous.equals(current)) // Sort ascending order
+    				return false;
+    			previous = current;
+    		}else {
+    			if(previous.compareTo(current) < 0 | previous.equals(current)) // Sort descending order
+    				return false;
+    			previous = current;
+    		}
+    	}
+    	return true;
     }
     
     
