@@ -1533,6 +1533,21 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isNude(883417));
 			assertFalse(NumberTheory.isNude(883017));
 		}
+		
+		
+		@Test
+		@DisplayName("Is Poulet")
+		public void testIsPoulet() {
+			instance.setTheNumber(1105);
+			assertTrue(instance.isPoulet());
+			assertFalse(NumberTheory.isPoulet(342));
+			assertTrue(NumberTheory.isPoulet(341));
+			assertTrue(NumberTheory.isPoulet(561));
+			assertTrue(NumberTheory.isPoulet(6601));
+			assertTrue(NumberTheory.isPoulet(5461));
+			assertTrue(NumberTheory.isPoulet(6135585));
+			assertFalse(NumberTheory.isPoulet(6140160));
+		}
 
 	}
 	

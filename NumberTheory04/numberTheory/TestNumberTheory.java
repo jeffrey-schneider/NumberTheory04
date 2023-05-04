@@ -676,7 +676,15 @@ public class TestNumberTheory {
 		System.out.println("Testing for Nude numbers.");
 		System.out.println(NumberTheory.isNude(672));
 		System.out.println(NumberTheory.isNude(883416));
-		System.out.println(NumberTheory.isNude(883417));
+		System.out.println(NumberTheory.isNude(883417));		
+		
+		
+		System.out.println("Testing for Poulet numbers.");
+		int[] abc = {341, 561, 1105, 6601, 4681, 4682, 6135585, 612};
+		for (int j : abc) {
+			System.out.println(j + " " + NumberTheory.isPoulet(j));
+		}
+		
 		
 		System.out.println("Fin");
 	}//end of main

@@ -3540,6 +3540,26 @@ public class NumberTheory {
     
     
     /**
+     * According to Fermat's little theorem if  'p'  is an odd prime number then  '2^{p-1}-1'  (or, equivalently,  '2^p-2') is divisible by  'p'.
+     * @param v
+     * @return
+     */
+    public static boolean isPoulet(int v) { 
+    	if(v % 2 == 0)
+    		return false;
+    	BigInteger bigIntResult = BigInteger.TWO.pow(v);
+    	BigInteger subtractTwo = bigIntResult.subtract(BigInteger.TWO);    	
+//    	System.out.println(v + " " +  bigIntResult + " " + subtractTwo.mod(BigInteger.valueOf(v)) + " " + 
+//    			subtractTwo.mod(BigInteger.valueOf(v)).equals(BigInteger.ZERO));   	  	
+    	return subtractTwo.mod(BigInteger.valueOf(v)).equals(BigInteger.valueOf(0));
+    }
+    
+    boolean isPoulet() {
+    	return isPoulet(getTheNumber());
+    }
+   
+    
+    /**
      * Split a number into two pieces, left and right.
      * Return to calling program.
      * @param v
@@ -3556,9 +3576,10 @@ public class NumberTheory {
     		right = Integer.valueOf(sb.substring(i, sb.length()));
     		retMap.put(left, right); 
     	}
-    	return retMap;
-    	
+    	return retMap;    	
     }
+    
+    
 	
     
     
