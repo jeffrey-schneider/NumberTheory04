@@ -3,6 +3,7 @@
 
 package numberTheory;
 
+import java.util.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
-import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -29,17 +29,20 @@ import java.util.stream.Collectors;
  * It was started as a working exercise to try new programming techniques and has evolved to something more.
  * 
  * @author JCSchneider
- *
+ * @date: May 2023
  */
 public class NumberTheory {
 	/**
 	 * The number.
+	 * @author JeffreySchneider
+	 * @version 1.0.52
+	 * 
 	 */
 	private int theNumber;	
 
 	/**
 	 * Class constructor specifying the number to be used by the object.
-	 * @param theNumber
+	 * 
 	 */
 	public NumberTheory(int theNumber) {
 		setTheNumber(theNumber);
@@ -85,6 +88,11 @@ public class NumberTheory {
 	}
 
 
+	/**
+	 * @author JeffreySchneider
+	 * @param integer v 
+	 * @return the absolute value of v.
+	 */
 	public static int abs(int v) {
 		if(v<0) return -v;
 		else return v;
@@ -137,6 +145,9 @@ public class NumberTheory {
 	 * @param v the number to generate collatz sequence from
 	 * @return list of collatz sequence.
 	 * @see https://en.wikipedia.org/wiki/Collatz_conjecture#:~:text=The%20Collatz%20conjecture%20is%20one,every%20positive%20integer%20into%201.
+	 * {@code }
+	 * 
+	 * 
 	 */
 	public static List<Integer> getCollatz(int v) {
 		List<Integer> retVal = new ArrayList<>();
@@ -384,7 +395,7 @@ public class NumberTheory {
 	 * For example, if the main hero had 1245 strawberries in the tragedy, 
 	 * he has 5421 of them now. 
 	 * Note that all the leading zeros are omitted. That means if the number ends with
-	 *  a zero, the zero is lost by reversing (e.g. 1200 gives 21). Also note that the 
+	 *  a zero, the zero is lost by reversing (for example  1200 gives 21). Also note that the 
 	 *  reversed number never has any trailing zeros.}
 	 * 
 	 * @param v the integer to be reversed
@@ -409,6 +420,18 @@ public class NumberTheory {
 	 */
 	int getReverseNumber() {
 		return getReverseNumber(getTheNumber());
+	}
+	
+	
+	/**
+	 * 
+	 * @param n BigInteger needing to be reversed.
+	 * @return
+	 */
+	public static BigInteger reverse(BigInteger n) {
+		String s = n.toString();
+		StringBuilder sb = new StringBuilder(s);
+		return new BigInteger(sb.reverse().toString());
 	}
 
 	/**
@@ -642,12 +665,13 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
+	 * <CODE>A Carol number is an integer of the form 4n – 2(n+1) – 1. An
+	 *   equivalent formula is (2n-1)2 – 2.
+	 * </CODE>
 	 * @param v Return the v'th carol number.
 	 * @return integer
 	 * 
-	 *         A Carol number is an integer of the form 4n – 2(n+1) – 1. An
-	 *         equivalent formula is (2n-1)2 – 2.
+	 *         
 	 */
 	public static int getCarol(int v) {
 		double carolA = Math.pow(4.0, Double.valueOf(v));
@@ -1049,7 +1073,7 @@ public class NumberTheory {
 	 * @return Integer
 	 * 
 	 *         Two numbers $(m,n)$ form an amicable pair if the sum of proper
-	 *         divisors of one number equals the other, i.e., if $\sigma(n)-n = m$
+	 *         divisors of one number equals the other, to be specific, if $\sigma(n)-n = m$
 	 *         and $\sigma(m)-m = n$.
 	 * 
 	 *         {@link https://www.numbersaplenty.com/set/amicable_number/}
@@ -1221,6 +1245,7 @@ public class NumberTheory {
 	 * planes. The cake number is so-called because one may imagine each partition
 	 * of the cube by a plane as a slice made by a knife through a cube-shaped cake.
 	 * It is the 3D analog of the lazy caterer's sequence.
+	 * </CODE>
 	 * 
 	 * @param v
 	 * @return
@@ -1233,6 +1258,12 @@ public class NumberTheory {
 		return getCakeNumber(getTheNumber());
 	}
 
+	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
 	public static int getLazyCaterer(int v) {
 		return (v * v + v + 2) / 2;
 	}
@@ -1664,7 +1695,7 @@ public class NumberTheory {
 	/**
 	 * 
 	 * Canada numbers are those 'n' such that the sum of the squares of the digits
-	 * of 'n' is equal to the sum of the non-trivial divisors of 'n', i.e.
+	 * of 'n' is equal to the sum of the non-trivial divisors of 'n', to be specific 
 	 * '\sigma(n)-n-1'. For example, 581, whose divisors are 1, 7, 83 and 581, is a
 	 * Canada number because {@code <code>5^2+8^2+1^2=7+83</code>}.
 	 * 
@@ -1693,7 +1724,7 @@ public class NumberTheory {
 	 * @return boolean
 	 * 
 	 *         {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
-	 * i.e., it is at equal distance from previous prime and next prime.</code>}
+	 * to be specific , it is at equal distance from previous prime and next prime.</code>}
 	 */
 	public static boolean isBalancedPrime(int v) {
 		// If aNumber isn't prime, don't go any further.
@@ -2373,7 +2404,7 @@ public class NumberTheory {
 	 *         integer.
 	 * 
 	 *         A number n is called highly composite if it has more divisors than
-	 *         any smaller number, i.e., if it sets a new record in the number of
+	 *         any smaller number, to be specific , if it sets a new record in the number of
 	 *         divisors.
 	 * 
 	 * @param v
@@ -2458,7 +2489,7 @@ public class NumberTheory {
 	public static boolean isPerfectPower(int n) {
 		/*
 		 * Tests whether an integer n is a perfect power, perfect powers are any integer
-		 * that is an integer power of another integer e.g. 4(2^2) 9(3^2) 27(3^3)
+		 * that is an integer power of another integer for example  4(2^2) 9(3^2) 27(3^3)
 		 * 243(3^5) are all perfect powers Returns a pair of integers [a,b] such that n
 		 * = a^b. (If multiple possible values for a and b exist, the pair with the
 		 * smallest a value is returned)
@@ -3233,10 +3264,10 @@ public class NumberTheory {
      *  Let us declare that 1 is a lucky number and let us start with a sieve containing only the odd numbers:
      *  \[1,\ 3,\ 5,\ 7,\ 9,\ 11,\ 13,\ 15,\ 17,\ 19,\ 21,\ 23,\ 25,\dots\]
      *  The first number greater than 1 is 3, so we declare 3 lucky and we delete from the sieve all the numbers 
-     *  in a position which is a multiple of 3, i.e., 5, 11, 17, 23, and so on. We are left with
+     *  in a position which is a multiple of 3, to be specific , 5, 11, 17, 23, and so on. We are left with
      *  \[1,\ 3,\ 7,\ 9,\ 13,\ 15,\ 19,\ 21,\ 25,\dots\]
      *  The first new survivor is 7, so we declare 7 lucky and we delete from the sieve all the numbers in a 
-     *  position which is a multiple of 7, i.e., 19, 39, and so on. The next lucky number is thus 9 and continuing 
+     *  position which is a multiple of 7, to be specific , 19, 39, and so on. The next lucky number is thus 9 and continuing 
      *  this ideal process we could identify all the lucky numbers.  
      *  
      *  https://www.numbersaplenty.com/set/lucky_number/
@@ -3311,8 +3342,8 @@ public class NumberTheory {
     
     /**
      * A number is a katadrome if a given base b (often 10 or 16) if its
-     * 	digits are in strictly decreasing order in that base.
-     *  ie: 43210,  76521 and 9630 are katadromes in base 10.
+     * 	digits are in strictly decreasing order in that base ie: 43210, 
+     *  76521 and 9630 are katadromes in base 10.
      *  
      *  Strictly decreasing means no duplicate numbers like 76652.
      * 
@@ -3559,9 +3590,64 @@ public class NumberTheory {
     }
    
     
+    public static void getPerfectPowers(int limit, int exponentLimit) {
+    	//TODO:
+    	SortedSet<Integer> theSet = new TreeSet<>();
+    	for(int m=2; m < limit; m++) {
+    		for(int k=1; k < exponentLimit; k++) {
+    			theSet.add((int) Math.pow(m, k));
+    		}
+    	}
+    	Iterator<Integer> i = theSet.iterator();
+    	while(i.hasNext())
+    		System.out.println(i.next());
+    	
+    }
+    
+    /**
+     * 
+     * @param v  End 
+     * @param startV
+     * @return List Pronic list from startV to v
+     */
+    public static List<Integer> getPronic(int v, int startV) {
+    	List<Integer> theList = new ArrayList<>();
+    
+    	if(startV <= v) {    	
+    		for(int i = startV; i <= v; i++) {
+    			theList.add(i*(i+1));
+    		}
+    	}else {
+    		theList.add(0);
+    	}
+    	return theList;
+    }
+    
+    /**
+     * 
+     * @param v
+     * @return int  the single pronic value  
+     */
+    public static int getPronic(int v){
+    	List<Integer> retVal = getPronic(v,v);
+    	return retVal.get(0);
+    }
+    
+    int getPronic() {    	
+    	return getPronic(getTheNumber());
+    }
+    
+    
+    public static boolean isRare(int v) {
+    	return true;
+    }
+    
+    
     /**
      * Split a number into two pieces, left and right.
-     * Return to calling program.
+     * Returns a list of permutations.  
+     * ie: 3455 returns HashMap of {3 455}, {34 55}, {345, 5}
+     *  
      * @param v
      * @return
      */

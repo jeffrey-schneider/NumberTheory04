@@ -1548,6 +1548,17 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isPoulet(6135585));
 			assertFalse(NumberTheory.isPoulet(6140160));
 		}
+		
+		@Test
+		@DisplayName("Pronic")
+		public void testGetPronic() {
+			instance.setTheNumber(100);
+			int result = instance.getPronic();
+			int expected = 10100;
+			assertEquals(expected, result);
+			result = NumberTheory.getPronic(100);
+			assertEquals(expected, result);
+		}
 
 	}
 	

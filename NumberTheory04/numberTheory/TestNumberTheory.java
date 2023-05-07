@@ -685,6 +685,17 @@ public class TestNumberTheory {
 			System.out.println(j + " " + NumberTheory.isPoulet(j));
 		}
 		
+		System.out.println("Testing Perfect Primes");
+		System.out.println("In process");
+		//NumberTheory.getPerfectPowers(20,30);
+		
+		List<Integer> pronicList = NumberTheory.getPronic(100, 40);
+		for (Integer integer : pronicList) {
+			System.out.println(integer);
+		}
+		
+		int pronicInt = NumberTheory.getPronic(100);
+		System.out.println(pronicInt);
 		
 		System.out.println("Fin");
 	}//end of main

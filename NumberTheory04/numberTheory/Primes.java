@@ -13,8 +13,7 @@ import java.util.Stack;
 public class Primes extends NumberTheory {
 
 	/**
-	 * Single argument constructor
-	 * @param theNumber
+	 * Single argument constructor	 * 
 	 */
 	public Primes(int theNumber) {
 		super(theNumber);
@@ -32,7 +31,9 @@ public class Primes extends NumberTheory {
 	 *         product of exactly two prime numbers.
 	 * @author JCSchneider
 	 * @param v an integer
-	 * @return boolean the number is semi-prime.
+	 * @return boolean this number is semi-prime.
+	 * 
+	 * @see #getPrimeFactors()
 	 */
 	public static boolean isSemiPrime(int v) {
 		List<Integer> anotherList = Primes.getPrimeFactors(v);
@@ -49,8 +50,10 @@ public class Primes extends NumberTheory {
 	 *         
 	 * @author JCSchneider
 	 * @param v an integer
-	 * @return Is the number is brilliant?
+	 * @return Is this number is brilliant?
 	 * 
+	 * @see #getPrimeFactors()
+	 * @see Primes#isSemiPrime()
 	 */
 	public static boolean isBrilliant(int v) {
 		List<Integer> theList = Primes.getPrimeFactors(v);
@@ -84,7 +87,10 @@ public class Primes extends NumberTheory {
 	 * 
 	 * @author JCSchneider
 	 * @param v an integer
-	 * @return Is the number emirpimeses?
+	 * @return Is this number emirpimeses?
+	 * 
+	 * @see #isSemiPrime()
+	 * @see NumberTheory#getReverseNumber()
 	 */
 	public static boolean isEmirpimeses(int v) {
 		return isSemiPrime(v) && isSemiPrime(getReverseNumber(v));
@@ -99,7 +105,10 @@ public class Primes extends NumberTheory {
 	 *         prime or a product of two primes (also called a semiprime).
 	 * @author JeffreySchneider
 	 * @param v an integer
-	 * @return Is the number a Chen prime?
+	 * @return Is this number a Chen prime?
+	 * 
+	 * @see NumberTheory#isPrime()
+	 * @see #isSemiPrime()
 	 */
 	public static boolean isChenPrime(int v) {
 		if (isPrime(v)) {
@@ -120,8 +129,8 @@ public class Primes extends NumberTheory {
 	 * list.
 	 * 
 	 * @author JeffreySchneider
-	 * @param v
-	 * @return
+	 * @param v	the number to check
+	 * @return boolean 
 	 */
 	public static boolean isGoodPrime(int v) {
 		List<Integer> thePrimeList = new LinkedList<>();
@@ -158,10 +167,13 @@ public class Primes extends NumberTheory {
 	/**
 	 * An emirp (prime spelled backwards) is a prime number that
 	 *         results in a different prime when its decimal digits are reversed.
-	 *         This definition excludes the related palindrome primes.
+	 *         This definition excludes this related palindrome primes.
 	 * @author JeffreySchneider
 	 * @param v an integer
 	 * @return Is number an emirp?
+	 * 
+	 * @see #isPrime()
+	 * @see NumberTheory#getReverseNumber()
 	 */
 	public static boolean isEmirp(int v) {
 		return (NumberTheory.isPrime(v) && NumberTheory.isPrime(NumberTheory.getReverseNumber(v)));
@@ -175,10 +187,10 @@ public class Primes extends NumberTheory {
 	 * {@code A prime number  'p'  is called a-pointer if the next prime number can be obtained 
 	 * adding  'p'  to its sum of digits (here the 'a' stands for additive).
 	 * For example, 293 is an a-pointer prime since the next prime is equal to 293 + 2 + 9 + 3 = 307.}
-	 * 
-	 * 
 	 * @param v an integer
-	 * @return Is the number an A-Pointer prime?
+	 * @return Is this number an A-Pointer prime?
+	 * 
+	 * @see NumberTheory#isPrime()
 	 */
 	public static boolean isA_PointerPrime(int v) {
 		if (!NumberTheory.isPrime(v)) {
@@ -211,7 +223,9 @@ public class Primes extends NumberTheory {
 	 * adding  'p'  to its product of digits (here the 'm' stands for multiplicative).
 	 * For example, 1231 is a m-pointer prime since the next prime is equal to 1231 + 1 ⋅ 2 ⋅ 3 ⋅ 1= 1237.}
 	 * @param v  an integer
-	 * @return Is the number an M-Pointer prime?
+	 * @return Is this number an M-Pointer prime?
+	 * 
+	 * @see NumberTheory#isPrime()
 	 */
 	public static boolean isM_PointerPrime(int v) {
 		if (!NumberTheory.isPrime(v)) {
@@ -247,7 +261,9 @@ public class Primes extends NumberTheory {
 	 * 
 	 * @author JeffreySchneider
 	 * @param v an integer
-	 * @return  Is the number an interprime?
+	 * @return  Is this number an interprime?
+	 * 
+	 * @see NumberTheory#isPrime()
 	 */
 	public static boolean isInterPrime(int v) {
 		if (isPrime(v)) {
@@ -320,7 +336,8 @@ public class Primes extends NumberTheory {
 	/**
 	 * Returns a HashSet of integers, a number's distinct prime factors.
 	 * @param v an integer
-	 * @return List of distinct integer prime factors. 
+	 * @return List of distinct integer prime factors.
+	 * @see #getPrimeFactors() 
 	 */
 	public static HashSet<Integer> getDistinctPrimeFactors(int v) {
 		List<Integer> theList = getPrimeFactors(v);
@@ -333,7 +350,8 @@ public class Primes extends NumberTheory {
 	/**
 	 * Returns a HashSet of longs, a number's distinct prime factors.
 	 * @param v an long
-	 * @return List of distinct long prime factors. 
+	 * @return List of distinct long prime factors.
+	 * @see #getPrimeFactors() 
 	 */
 	public static HashSet<Long> getDistinctPrimeFactors(long v) {
 		List<Long> theList = getPrimeFactors(v);
@@ -366,6 +384,8 @@ public class Primes extends NumberTheory {
 	 * @param v a long
 	 * @param bNumber the second long number used to calculate Greatest Common Divisor  
 	 * @return Are the two numbers co-prime?
+	 * 
+	 * @see NumberTheory#gcd()
 	 */
 	public static boolean isCoPrime(long v, long bNumber) {
 		if (NumberTheory.gcd(v, bNumber) == 1) {
@@ -378,7 +398,7 @@ public class Primes extends NumberTheory {
 	 * Returns HashMap of prime numbers from 1 to v
 	 * @author JCSchneider
 	 * @param v	End number of primes for list.
-	 * @return HashMap<Integer, Integer> of primes
+	 * @return HashMap HashMap of primes
 	 * 
 	 * @see NumberTheory.isHonakerPrime()
 	 */
@@ -397,13 +417,16 @@ public class Primes extends NumberTheory {
 	/**
 	 * Returns a list of lonely numbers:
 	 * 
-	 * {@code A number  <italic>n</italic>  is called lonely if its distance to closest prime sets a new record. 
+	 * {@code A number  <i>n</i>  is called lonely if its distance to closest prime sets a new record. 
 	 * For example, 0 is the first lonely number and has distance 2 from the first prime. 
 	 * The second lonely number is 23, which has a minimal distance 4, since the surrounding 
 	 * primes are 17 and 29. 
 	 * The third is 120 which has minimal distance 7, being sandwiched between the primes 113 and 127.}
-	 * @param int endNumber
-	 * @return integer list of lonely numbers. 
+	 * @param integer endNumber
+	 * @return integer list of lonely numbers.
+	 * 
+	 *  @see #getPreviousPrime()
+	 *  @see #getNextPrime()
 	 */
 	public static List<Integer> getLonelyNumber(int endNumber) {
 		List<Integer> retVal = new LinkedList<>();
@@ -428,10 +451,9 @@ public class Primes extends NumberTheory {
 
 	/**
 	 * @author JCSchneider
-	 * @param v
-	 * @return int 
-	 * Use {@link Primes#getPreviousPrime(int)} to find the prime number before <b>v</b>
-	 * @see "This uses {@link Primes#getNeighborPrime(int, boolean, boolean) as primary method."
+	 * @param v The number.
+	 * @return integer Finds the prime number <b><i>before</i> v</b>
+	 *  
 	 */
 	public static int getPreviousPrime(int v) {
 		return getNeighborPrime(v, false, false);
@@ -439,9 +461,9 @@ public class Primes extends NumberTheory {
 	
 	/**
 	 * @author JCSchneider
-	 * @param v
-	 * @return Next prime number
-	 * Use {@link Primes#getNextPrime(int)} to find the prime number after <b>v</b>
+	 * @param v The number.
+	 * @return integer Finds the prime number <b><i>after</i> v</b>
+	 * 
 	 * @see "This uses {@link Primes#getNeighborPrime(int, boolean, boolean) as primary method."
 	 */
 	public static int getNextPrime(int v) {
@@ -450,7 +472,7 @@ public class Primes extends NumberTheory {
 	
 	/**
 	 * @author JCSchneider
-	 * @param v
+	 * @param v The number from which to start.
 	 * @return Previous Prime Number, v if prime
 	 * Use {@link Primes#getPreviousPrimeInclusive(int)} to find the prime number before <b>v</b>. Returns <b>v</b> if prime.
 	 * @see "This uses {@link Primes#getNeighborPrime(int, boolean, boolean) as primary method."
@@ -461,7 +483,7 @@ public class Primes extends NumberTheory {
 	
 	/**
 	 * @author JCSchneider
-	 * @param v
+	 * @param v The number from which to start.
 	 * @return Next prime number, v if prime
 	 * 
 	 * 
@@ -476,7 +498,7 @@ public class Primes extends NumberTheory {
 
 	/**
 		 * @author JeffreySchneider
-		 * @param v
+		 * @param v The number from which to start.
 		 * @param returnNextPrime   Boolean - True: Return the next prime  False: Return the previous prime
 		 * @param returnNumberIfPrime Boolean - True: Return v if prime   False: look for next number
 		 * @return
@@ -510,8 +532,11 @@ public class Primes extends NumberTheory {
 		/**
 		 * List of lucky numbers that are prime.
 		 * @author JeffreySchneider
-		 * @param v int stop number
+		 * @param v integer stop number
 		 * @return List of lucky numbers that are prime.
+		 * 
+		 * @see NumberTheory#getLuckyNumber()
+		 * @see NumberTheory#isPrime()
 		 */
 		public static List<Integer> getPrimeLuckyNumbers(int v){			
 			List<Integer> luckyList = NumberTheory.getLuckyNumber(v);
@@ -530,8 +555,8 @@ public class Primes extends NumberTheory {
 		
 		
 		/**
-		 * @
-		 * @param v
+		 * 
+		 * @param v The Number
 		 * @return
 		 * @see https://en.wikipedia.org/wiki/Fortunate_number
 		 * To find the seventh Fortunate number, one would first calculate the product of the
@@ -550,8 +575,8 @@ public class Primes extends NumberTheory {
 
 		/**
 		 * 
-		 * @param v
-		 * @param n
+		 * @param v the integer
+		 * @param n the n-smooth integer
 		 * @return Boolean
 		 * In number theory, an n-smooth (or n-friable) number is an integer 
 		 * whose prime factors are all less than or equal to n.
@@ -559,6 +584,8 @@ public class Primes extends NumberTheory {
 		 * factor is at most 7, so 49 = 72 and 
 		 * 15750 = 2 × 32 × 53 × 7 are both 7-smooth, 
 		 * while 11 and 702 = 2 × 33 × 13 are not 7-smooth.
+		 * 
+		 * @see #getPrimeFactors()
 		 */
 		public static boolean isNSmooth(int v, int n) {	
 			if(v < 2)
@@ -570,7 +597,7 @@ public class Primes extends NumberTheory {
 		
 		/**
 		 * 
-		 * @param v
+		 * @param v The number
 		 * @return Boolean 
 		 * 
 		 * TODO:
@@ -588,11 +615,6 @@ public class Primes extends NumberTheory {
 		boolean isPierpontPrime() {			
 			return isPierpontPrime(getTheNumber());
 		}
-		
-		
-		
-		
-		
 }
 
 		
