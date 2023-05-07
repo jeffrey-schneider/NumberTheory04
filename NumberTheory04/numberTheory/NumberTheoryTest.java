@@ -1559,6 +1559,21 @@ class NumberTheoryTest {
 			result = NumberTheory.getPronic(100);
 			assertEquals(expected, result);
 		}
+		
+		
+		@Test
+		@DisplayName("Deceptive")
+		public void testIsDeceptive() {
+			instance.setTheNumber(7471);
+			assertTrue(instance.isDeceptive());
+			assertTrue(NumberTheory.isDeceptive(91));
+			assertTrue(NumberTheory.isDeceptive(259));
+			assertTrue(NumberTheory.isDeceptive(451));
+			assertTrue(NumberTheory.isDeceptive(8401));
+			assertFalse(NumberTheory.isDeceptive(260));
+		}
+		
+	
 
 	}
 	

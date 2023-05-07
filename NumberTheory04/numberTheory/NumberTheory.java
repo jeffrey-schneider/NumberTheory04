@@ -3626,7 +3626,8 @@ public class NumberTheory {
     /**
      * 
      * @param v
-     * @return int  the single pronic value  
+     * @return int  the single pronic value
+     * TODO  
      */
     public static int getPronic(int v){
     	List<Integer> retVal = getPronic(v,v);
@@ -3638,10 +3639,52 @@ public class NumberTheory {
     }
     
     
+    //TODO
     public static boolean isRare(int v) {
     	return true;
     }
     
+    
+    /**
+     * OpenAI's GPT-3.5-based language model, ChatGPT. Accessed on 05/06/2023
+     * @param v
+     * @return
+     */
+    public static boolean isDeceptiveWrong(int v) {
+    	String numString = Integer.toString(v);
+    	int sum = 0;
+    	for(int i = 0; i<numString.length(); i++) {
+    		int digit = Integer.parseInt(String.valueOf(numString.charAt(i)));
+    		sum += Math.pow(digit, i+1);
+    	}
+    	return sum == v;
+    }
+    
+    public static boolean isDeceptive(int v) {    	
+    	BigInteger divisor = BigInteger.valueOf(v);
+    	BigInteger test = getRepUnit(v-1);
+    	//System.out.println(test + "/" + divisor);
+    	BigInteger bi[] = test.divideAndRemainder(divisor);
+    	return bi[1].equals(BigInteger.ZERO);
+    }
+    
+    boolean isDeceptive() {
+    	return isDeceptive(getTheNumber());
+    }
+    
+    /**
+     * Lets use a string to create a repunit.  Feels like cheating, doesn't it?
+     * @param v
+     * @return
+     */
+    public static BigInteger getRepUnit(int v) {    	
+    	String repeatString = "1".repeat(v);
+    	return new BigInteger(repeatString);
+    }
+    
+    
+    
+ 
     
     /**
      * Split a number into two pieces, left and right.

@@ -697,6 +697,10 @@ public class TestNumberTheory {
 		int pronicInt = NumberTheory.getPronic(100);
 		System.out.println(pronicInt);
 		
+		
+		System.out.println("Testing Deceptive:");
+		x = 259;
+		System.out.println(x + " " + NumberTheory.isDeceptive(x));
 		System.out.println("Fin");
 	}//end of main
 
