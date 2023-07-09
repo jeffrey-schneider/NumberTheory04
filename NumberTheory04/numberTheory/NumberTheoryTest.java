@@ -1130,6 +1130,13 @@ class NumberTheoryTest {
 
 			expected = 45;
 			assertNotEquals(expected, result);
+			
+			List<Integer> gcdList = new ArrayList<>(Arrays.asList(10, 15, 50, 1750));
+			result = NumberTheory.findGCD(gcdList);
+			expected = 5;
+			assertEquals(expected, result);
+			
+			
 		}
 
 		@Test
@@ -1241,6 +1248,17 @@ class NumberTheoryTest {
 		public void isDicksonsMethod() {			
 			instance.setTheNumber(6);
 			assertTrue(instance.isDicksonsMethod());
+		}
+		
+		@Test
+		@DisplayName("Saint Exupery")
+		public void getSaintExupery() {
+			instance.setTheNumber(20);
+			List<Long> expected = new ArrayList<>(Arrays.asList(60L, 480L, 780L, 1620L, 2040L, 3840L, 4200L, 6240L, 7500L, 12180L, 12960L, 14760L, 15540L, 16320L, 20580L, 21060L, 30720L, 33600L, 40260L, 43740L, 49920L, 55080L, 60000L, 65520L, 66780L, 92820L, 97500L, 113400L, 118080L, 124320L, 189840L, 199980L, 322080L, 354960L, 619020L, 1021020L));
+			List<Long> result = instance.getSaintExupery();
+			assertIterableEquals(expected, result);
+			result = NumberTheory.getSaintExupery(20);
+			assertIterableEquals(expected, result);
 		}
 		
 		@Test
@@ -1532,8 +1550,7 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isNude(883176));
 			assertFalse(NumberTheory.isNude(883417));
 			assertFalse(NumberTheory.isNude(883017));
-		}
-		
+		}		
 		
 		@Test
 		@DisplayName("Is Poulet")
@@ -1560,6 +1577,31 @@ class NumberTheoryTest {
 			assertEquals(expected, result);
 		}
 		
+		@Test
+		@DisplayName(" Is Pronic")
+		public void testIsPronic() {
+			instance.setTheNumber(355812);
+			assertTrue(instance.isPronic());
+			assertTrue(NumberTheory.isPronic(30450));
+			assertTrue(NumberTheory.isPronic(6));
+			assertFalse(NumberTheory.isPronic(620));
+		}
+		
+		@Test
+		@DisplayName("Pronic List")
+		public void testGetPronicList() {			
+			List<Integer> result = NumberTheory.getPronic(20, 25);
+			List<Integer> expected = new ArrayList<>(Arrays.asList(420, 462, 506, 552, 600, 650));			
+			assertIterableEquals(expected, result);
+			instance.setTheNumber(20);
+			int expected2 = 420;
+			int result2 = instance.getPronic();
+			assertEquals(expected2, result2);
+			expected2 = 650;
+			result2 = NumberTheory.getPronic(25);
+			assertEquals(expected2, result2);			
+		}
+		
 		
 		@Test
 		@DisplayName("Deceptive")
@@ -1573,8 +1615,46 @@ class NumberTheoryTest {
 			assertFalse(NumberTheory.isDeceptive(260));
 		}
 		
-	
-
+		@Test
+		@DisplayName("Sastry")
+		public void testIsSastry() {
+			instance.setTheNumber(13224);
+			assertTrue(instance.isSastry());
+			instance.setTheNumber(instance.getTheNumber() + 1);
+			assertFalse(instance.isSastry());
+			assertTrue(NumberTheory.isSastry(2975208L));
+			assertTrue(NumberTheory.isSastry(715L));
+			assertTrue(NumberTheory.isSastry(996225356413048L));
+		}
+		
+		@Test
+		@DisplayName("Sphenic")
+		public void testIsSphenic() {
+			instance.setTheNumber(3642);
+			assertTrue(instance.isSphenic());
+			assertTrue(NumberTheory.isSphenic(3111));
+			assertTrue(NumberTheory.isSphenic(2715));
+			assertTrue(NumberTheory.isSphenic(2233));
+			assertFalse(NumberTheory.isSphenic(3622));
+		}
+		
+		@Test
+		@DisplayName("Rare Numbers")
+		public void testIsRare() {
+			assertTrue(NumberTheory.isRare(65L));
+			assertTrue(NumberTheory.isRare(281089082L));
+			assertTrue(NumberTheory.isRare(816984566129618L));
+			assertFalse(NumberTheory.isRare(66L));  //repdigit cannot be rare
+			assertFalse(NumberTheory.isRare(85l));	
+		}
+		
+		@Test
+		@DisplayName("PalPrimes")
+		public void testIsPalPrime() {
+			assertTrue(NumberTheory.isPalPrime(101));
+			assertTrue(NumberTheory.isPalPrime(1114111));
+			assertTrue(NumberTheory.isPalPrime(143787341));
+		}
 	}
 	
 	

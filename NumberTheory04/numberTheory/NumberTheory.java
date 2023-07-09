@@ -5,20 +5,7 @@ package numberTheory;
 
 import java.util.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
-import java.util.Stack;
-import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -29,7 +16,7 @@ import java.util.stream.Collectors;
  * It was started as a working exercise to try new programming techniques and has evolved to something more.
  * 
  * @author JCSchneider
- * @date: May 2023
+ * Date: May 2023
  */
 public class NumberTheory {
 	/**
@@ -42,6 +29,7 @@ public class NumberTheory {
 
 	/**
 	 * Class constructor specifying the number to be used by the object.
+	 * @param theNumber the number to be tested
 	 * 
 	 */
 	public NumberTheory(int theNumber) {
@@ -67,7 +55,7 @@ public class NumberTheory {
 	/**
 	 * Sets theNumber.
 	 * 
-	 * @param theNumber theNumber that will be used for object oriented programming. 
+	 * @param theNumber number that will be used for object oriented programming 
 	 */
 	public void setTheNumber(int theNumber) {
 		this.theNumber = theNumber;
@@ -90,7 +78,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param integer v 
+	 * @param v the number to process 
 	 * @return the absolute value of v.
 	 */
 	public static int abs(int v) {
@@ -143,11 +131,7 @@ public class NumberTheory {
 	/**
 	 * @author JeffreySchneider
 	 * @param v the number to generate collatz sequence from
-	 * @return list of collatz sequence.
-	 * @see https://en.wikipedia.org/wiki/Collatz_conjecture#:~:text=The%20Collatz%20conjecture%20is%20one,every%20positive%20integer%20into%201.
-	 * {@code }
-	 * 
-	 * 
+	 * @return list of collatz sequence.	  
 	 */
 	public static List<Integer> getCollatz(int v) {
 		List<Integer> retVal = new ArrayList<>();
@@ -173,10 +157,12 @@ public class NumberTheory {
 
 	/**
 	 * 
+	 * https://en.wikipedia.org/wiki/Juggler_sequence
+	 * 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number to process
 	 * @return list of jugglers sequence for the number
-	 * @see https://en.wikipedia.org/wiki/Juggler_sequence
+	 *  
 	 */
 	public static List<Integer> getJugglers(int v) {
 		double factr = 0.0;
@@ -200,7 +186,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v int number
+	 * @param v the number
 	 * @return Integer list of factors.
 	 */
 	public static List<Integer> getFactors(int v) {
@@ -219,7 +205,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number 
 	 * @return Long list of a number's factors.
 	 */
 	public static List<Long> getFactors(long v) {
@@ -236,7 +222,7 @@ public class NumberTheory {
 	 * {@code In number theory, the aliquot sum s(n) of a positive integer n 
 	 * is the sum of all proper divisors of n, that is, all divisors of n other than n itself.}
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return Integer sum of factors
 	 */
 	public static int getAliquotSum(int v) {
@@ -254,7 +240,7 @@ public class NumberTheory {
 	/**
 	 * Returns sum of a number's factors.
 	 * @author JeffreySchneider
-	 * @param v int number
+	 * @param  v the number
 	 * @return Sum of a number's factors.
 	 */
 	public static int getFactorSum(int v) {
@@ -273,7 +259,7 @@ public class NumberTheory {
 	/**
 	 * {@code A proper divisor of a natural number is the divisor that is strictly less than the number. 
 		For example, number 20 has 5 proper divisors: 1, 2, 4, 5, 10, and the divisor summation is: 1 + 2 + 4 + 5 + 10 = 22.} 
-	 * @param v int number
+	 * @param v the number
 	 * @return Integer list of proper divisors of v.
 	 */
 	public static List<Integer> getProperDivisors(int v) {
@@ -294,8 +280,8 @@ public class NumberTheory {
 	 * In mathematics, and specifically in number theory, a divisor function is an arithmetic 
 	 *  function related to the divisors of an integer. When referred to as the divisor function, 
 	 *  it counts the number of divisors of an integer (including 1 and the number itself).
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return list of divisors
 	 */	
 	public static List<Integer> getDivisorFunction(int v){
 		List<Integer> retVal = new ArrayList<>();
@@ -316,9 +302,10 @@ public class NumberTheory {
 	 * 
 	 *  } 
 	 * @author JeffreySchneider
-	 * @param v int number
+	 * @param v the number
 	 * @return Difference of aliquot sum and the number.
-	 *         {@link numberTheory.NumberTheory#getAliquotSum()}}
+	 * 
+	 * {@link numberTheory.NumberTheory#getAliquotSum()}
 	 */
 	public static int getAbundance(int v) {
 		return getAliquotSum(v) - v;
@@ -329,12 +316,12 @@ public class NumberTheory {
 	}
 
 	/**
-	 * {code In number theory, an abundant number or excessive number 
+	 *{@code In number theory, an abundant number or excessive number 
 	 * is a number for which the sum of its proper divisors is greater 
 	 * than the number. The integer 12 is the first abundant number. 
 	 * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. }
 	 * 
-	 * @param v int number
+	 * @param v the number
 	 * @return Is number abundant?
 	 */
 	public static boolean isAbundant(int v) {
@@ -347,7 +334,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * {code In number theory, a deficient number or defective number is a number n 
+	 * {@code In number theory, a deficient number or defective number is a number n 
 	 * for which the sum of divisors of n is less than 2n. Equivalently, it is a number 
 	 * for which the sum of proper divisors (or aliquot sum) is less than n. For example, 
 	 * the proper divisors of 8 are 1, 2, and 4, and their sum is less than 8, so 8 is deficient.
@@ -374,23 +361,22 @@ public class NumberTheory {
 	 * Other perfect numbers are 28, 496, and 8,128.}
 	 * 
 	 * @author JeffreySchneider
-	 * @param v integer number to test
+	 * @param  v integer number to test
 	 * @return boolean is number perfect?
-	 *         {@link numberTheory.NumberTheory#getAbundace()}}
+	 * @see #getAbundance(int) getAbundance
+	 * 
 	 */
 	public static boolean isPerfect(int v) {
 		return getAbundance(v) == 0;
 	}
 
-	/**
-	 * @see #isPerfect(int)
-	 */
+	
 	boolean isPerfect() {
 		return isPerfect(getTheNumber());
 	}
 
 	/**
-	 * {@code Reversed number is a number written in arabic numerals but the order of 
+	 * {@code Reversed number is a number written in Arabic numerals but the order of 
 	 * digits is reversed. The first digit becomes last and vice versa. 
 	 * For example, if the main hero had 1245 strawberries in the tragedy, 
 	 * he has 5421 of them now. 
@@ -414,19 +400,28 @@ public class NumberTheory {
 		return rev;
 	}
 
-	/**
-	 * @see #getReverseNumber(int)
-	 * 
-	 */
+	public static long getReverseNumber(long v) {
+		long num = v;
+		long rev = 0L;
+		long digit = 0L;
+		while(num > 0) {
+			digit = num % 10L;
+			rev = rev * 10L + digit;
+			num /= 10L;
+		}
+		return rev;
+	}
+	
 	int getReverseNumber() {
 		return getReverseNumber(getTheNumber());
 	}
 	
 	
+	
 	/**
-	 * 
+	 * @author ???
 	 * @param n BigInteger needing to be reversed.
-	 * @return
+	 * @return reversed number
 	 */
 	public static BigInteger reverse(BigInteger n) {
 		String s = n.toString();
@@ -439,7 +434,7 @@ public class NumberTheory {
 	 * the reciprocal has the original fraction's bottom number—or denominator—on top and the top 
 	 * number—or numerator—on the bottom. So the reciprocal of 6 is 1/6 because 6 = 6/1 and 1/6 is
 	 * the inverse of 6/1.}
-	 * @param v the integer
+	 * @param v the number
 	 * @return double One divided by the number.
 	 */
 	public static double getReciprocalNumber(int v) {
@@ -476,7 +471,7 @@ public class NumberTheory {
 	/**
 	 * {@code Base 8 numbering system }
 	 * 
-	 * @param v
+	 * @param v the number 
 	 * @return String octal value of number.
 	 */
 	public static String getOctal(int v) {
@@ -498,7 +493,7 @@ public class NumberTheory {
 
 	/**
 	 * {@code Base 2 numbering system }
-	 * @param v
+	 * @param v the number
 	 * @return String binary value of number.
 	 */
 	public static String getBinary(int v) {
@@ -536,7 +531,7 @@ public class NumberTheory {
 	 * {@code In mathematics, a superabundant number (sometimes abbreviated 
 	 * as SA) is a certain kind of natural number.}
 	 * 
-	 * @param v integer
+	 * @param v the number
 	 * @return boolean is number superabundant?
 	 */
 	public static boolean isSuperabundant(int v) {
@@ -558,7 +553,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean is number primative abundant?
 	 */
 	public static boolean isPrimitiveAbundantBkup(int v) {
@@ -577,9 +572,11 @@ public class NumberTheory {
 	
 	
 	/**
-	 * In mathematics a primitive abundant number is an abundant number whose proper divisors are all deficient numbers
+	 * <p>In mathematics a primitive abundant number is an abundant number whose 
+	 * proper divisors are all deficient numbers
+	 * </p>
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean 
 	 */
 	public static boolean isPrimitiveAbundant(int v) {
@@ -612,6 +609,7 @@ public class NumberTheory {
 	 * called repfigit (repetitive fibonacci-like digit) numbers.
 	 * 
 	 * @author JeffreySchneider
+	 * @param v the number
 	 * @return boolean: is the number a Keith number?
 	 */
 	public static boolean isAKeithNumber(Integer v) {
@@ -646,12 +644,14 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JeffreySchneider
-	 * @param v
-	 * @return boolean Is number Kynea?
-	 * 
-	 *         Kynea numbers are near-squares of the form
+	 * <p> Kynea numbers are near-squares of the form
 	 *         '(2^k+1)^2-2=4^k+2^{k+1}-1'.
+	 * </p>
+	 * 
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return boolean Is number Kynea? 
+	 * 
 	 */
 	public static int getKynea(Integer v) {
 		double kyneaA = Math.pow(4.0, Double.valueOf(v));
@@ -664,30 +664,14 @@ public class NumberTheory {
 		return getKynea(getTheNumber());
 	}
 
+	
+
 	/**
-	 * <CODE>A Carol number is an integer of the form 4n – 2(n+1) – 1. An
-	 *   equivalent formula is (2n-1)2 – 2.
-	 * </CODE>
-	 * @param v Return the v'th carol number.
-	 * @return integer
+	 * Return long factorial from v parameter
 	 * 
-	 *         
-	 */
-	public static int getCarol(int v) {
-		double carolA = Math.pow(4.0, Double.valueOf(v));
-		double carolB = Math.pow(2.0, (Double.valueOf(v) + 1.0));
-		double carolFinal = carolA - carolB - 1.0;
-		return (int) carolFinal;
-	}
-
-	int getCarol() {
-		return getCarol(getTheNumber());
-	}
-
-	/**
-	 * @author JeffreySchneider Return long factorial from v parameter
-	 * @param v
-	 * @return
+	 * @author JeffreySchneider 
+	 * @param v the number
+	 * @return long factorial
 	 */
 	public static long getLittleFactorial(int v) {
 		long factorial = 1;
@@ -698,9 +682,11 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JeffreySchneider Return BigInteger factorial from v parameter.
-	 * @param v
-	 * @return
+	 * Return BigInteger factorial from v parameter.
+	 * 
+	 * @author JeffreySchneider 
+	 * @param v the number
+	 * @return the factorial of v
 	 */
 	public static BigInteger getFactorial(int v) {
 		BigInteger factorial = BigInteger.ONE;
@@ -717,8 +703,8 @@ public class NumberTheory {
 	/**
 	 * BigInteger for loop
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return the factorial of v
 	 */
 	public static BigInteger getFactorial(BigInteger v) {
 		BigInteger factorial = BigInteger.ONE;
@@ -729,8 +715,14 @@ public class NumberTheory {
 	}
 
 	/**
+	 * <p>In combinatorial mathematics, the Catalan numbers are a sequence of natural
+	 *  numbers that occur in various counting problems, often involving recursively 
+	 *  defined objects. They are named after the French-Belgian mathematician 
+	 *  Eugène Charles Catalan.
+	 *  </p>
+	 * 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return BigInteger v'th catalan number
 	 */
 	public static BigInteger getCatalan(int v) {
@@ -746,12 +738,12 @@ public class NumberTheory {
 	}
 
 	/**
+	 * https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to aNumber.
 	 * 
-	 * @param v
-	 * @return BigInteger List of {@link=
-	 *         https://en.wikipedia.org/wiki/Fibonacci_number} numbers up to
-	 *         aNumber.
-	 * 
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return BigInteger List 
+	 *         
 	 */
 	public static List<BigInteger> getFibonacciList(int v) {
 		BigInteger num1 = BigInteger.ZERO;
@@ -775,9 +767,9 @@ public class NumberTheory {
 	}
 
 	/**
-	 * From: {@link=https://www.geeksforgeeks.org/motzkin-number/}
+	 * From: https://www.geeksforgeeks.org/motzkin-number/
 	 * 
-	 * @param v
+	 * @param n the number
 	 * @return BigInteger Motzkin number
 	 */
 	public static BigInteger getMotzkin(int n) {
@@ -863,10 +855,12 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @param v
-	 * @param number1
-	 * @param number2
-	 * @return
+	 * Used to generate fibonacci-like sequences.  Lucas numbers, etc.  
+	 * Lucas numbers start with 2 and then 1 whereas Fibonacci numbers start with 0 and 1.
+	 * @param v the number determining how many numbers are desired
+	 * @param number1 the first number of sequence
+	 * @param number2 the second number of sequence
+	 * @return list of fibonacci-like numbers
 	 */
 	public static List<Integer> getFibonacciLike(int v, int number1, int number2) {
 		int num1 = number1;
@@ -886,10 +880,8 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
-	 * @param v
-	 * @param number1
-	 * @param number2
+	 * @author JeffreySchneider
+	 * @param v the number to be split into two numbers	 
 	 * @return A number n which can be split into two numbers which seed a
 	 *         Fibonacci-like sequence containing n itself.
 	 */
@@ -920,8 +912,24 @@ public class NumberTheory {
 	}
 
 	/**
+	 * <p>
+	 * The <b>Lucas sequence</b> is an integer sequence named after the mathematician 
+	 * François Édouard Anatole Lucas (1842–1891), who studied both that sequence and 
+	 * the closely related Fibonacci sequence. Individual numbers in the Lucas sequence 
+	 * are known as Lucas numbers. 
+	 * Lucas numbers and Fibonacci numbers form complementary instances of Lucas sequences.
+	 * The Lucas sequence has the same recursive relationship as the Fibonacci sequence, 
+	 * where each term is the sum of the two previous terms, but with different starting 
+	 * values.
+	 * This produces a sequence where the ratios of successive terms approach the golden ratio, 
+	 * and in fact the terms themselves are roundings of integer powers of the golden ratio.
 	 * 
-	 * @param v
+	 * The sequence also has a variety of relationships with the Fibonacci numbers, like the 
+	 * fact that adding any two Fibonacci numbers two terms apart in the Fibonacci sequence 
+	 * results in the Lucas number in between.
+	 * </p>
+	 * @author JeffreySchneider
+	 * @param v the number
 	 * @return Integer list of the Lucas sequence up to v.
 	 */
 	public static List<Integer> getLucas(int v) {
@@ -946,10 +954,12 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JCSchneider The sequence of Pell numbers starts with 0 and 1, and
+	 * <p>The sequence of Pell numbers starts with 0 and 1, and
 	 *         then each Pell number is the sum of twice the previous Pell number
 	 *         and the Pell number before that.
-	 * @param v
+	 * </p>
+	 * @author JCSchneider 
+	 * @param v the number
 	 * @return Integer list of pell numbers up to and including v.
 	 */
 	public static List<Integer> getPellList2(int v) {
@@ -970,7 +980,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return BigInteger List of Pell Numbers up to and including v.
 	 */
 	public static List<BigInteger> getPellList(int v) {
@@ -1000,10 +1010,11 @@ public class NumberTheory {
 	}
 
 	/**
+	 * https://en.wikipedia.org/wiki/Jacobsthal_number
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return Integer list of Jacobsthal numbers
-	 *         {@link https://en.wikipedia.org/wiki/Jacobsthal_number}
+	 *         
 	 */
 	public static List<Integer> getJacobsthal(int v) {
 		int num1 = 0;
@@ -1028,10 +1039,12 @@ public class NumberTheory {
 	/**
 	 * How to print a HashMap... How to use a 'for' BigInteger loop.
 	 * 
-	 * @param v
-	 * @return
-	 * @deprecated Save to show how to code a BigInteger for loop.
+	 * @param v the number
+	 * @return no valid return
+	 * @deprecated
+	 *  Saved to show how to code a BigInteger for loop.
 	 */
+	@Deprecated
 	public static boolean getAlternatingFactorialbkup(int v) {
 		HashMap<BigInteger, BigInteger> theList = new HashMap<>();
 		theList.put(BigInteger.ONE, BigInteger.ONE);
@@ -1049,9 +1062,9 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @see https://planetmath.org/alternatingfactorial
-	 * @param v
-	 * @return
+	 * https://planetmath.org/alternatingfactorial
+	 * @param v the number
+	 * @return alternating factorial value
 	 */
 	public static BigInteger getAlternatingFactorial(int v) {
 		HashMap<Integer, BigInteger> theList = new HashMap<>();
@@ -1068,15 +1081,16 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JeffreySchneider
-	 * @param v
-	 * @return Integer
-	 * 
-	 *         Two numbers $(m,n)$ form an amicable pair if the sum of proper
+	 * <p>Two numbers $(m,n)$ form an amicable pair if the sum of proper
 	 *         divisors of one number equals the other, to be specific, if $\sigma(n)-n = m$
 	 *         and $\sigma(m)-m = n$.
+	 *         https://www.numbersaplenty.com/set/amicable_number/
+	 * 			</p>
 	 * 
-	 *         {@link https://www.numbersaplenty.com/set/amicable_number/}
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return Integer
+	 * 
 	 */
 	public static int getAmicableNumber(int v) {
 		int firstDivisorSum = NumberTheory.getAliquotSum(v);
@@ -1092,6 +1106,19 @@ public class NumberTheory {
 		return getAmicableNumber(getTheNumber());
 	}
 
+	/**
+	 * <p>
+	 * Betrothed numbers or quasi-amicable numbers are two positive integers such 
+	 * that the sum of the proper divisors of either number is one more than the value
+	 * of the other number. In other words, (m, n) are a pair of betrothed numbers 
+	 * if s(m) = n + 1 and s(n) = m + 1, where s(n) is the aliquot sum of n: an equivalent
+	 *  condition is that σ(m) = σ(n) = m + n + 1, where σ denotes the sum-of-divisors function.
+	 *  </p>
+	 *  
+	 * @author JeffreySchneider
+	 * @param v the number to search for betrothed number
+	 * @return the betrothed number
+	 */
 	public static Integer getBetrothedNumber(int v) {
 		if (isPrime(v)) {
 			return null;
@@ -1110,8 +1137,8 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param base
-	 * @param exponent
+	 * @param base the number to be raised to an exponent value
+	 * @param exponent the exponent
 	 * @return String BigInteger raised to exponent point.
 	 */
 	public static String getBigIntegerPower(int base, int exponent) {
@@ -1121,8 +1148,11 @@ public class NumberTheory {
 	}
 
 	/**
+	 * <p>A number of the form  $2^n$  is called apocalyptic if its digits 
+	 * contain "666" as a substring.
+	 * </p>
 	 * @author JeffreySchneider
-	 * @param exponent
+	 * @param exponent the number to test
 	 * @return {@code True} A number n such that the pattern 666 is contained among
 	 *         the digits of 2^n.
 	 */
@@ -1139,8 +1169,8 @@ public class NumberTheory {
 	 * {@code Greatest Common Divisor
 	 * The greatest common factor/divisor (GCF/GCD) of a set of numbers is the largest factor that all the numbers share.
 	 *  }
-	 * @param b long
-	 * @param n long
+	 * @param b the first number
+	 * @param n the second number
 	 * @return long Greatest Common Divisor of both numbers.
 	 */
 	public static long gcd(long b, long n) {
@@ -1163,6 +1193,20 @@ public class NumberTheory {
 		return gcd(getTheNumber(), n);
 
 	}
+	
+	/**
+	 * https://www.geeksforgeeks.org/java-program-for-gcd-of-more-than-two-or-array-numbers/
+	 * 
+	 * @param intList
+	 * @return integer
+	 */
+	static int findGCD(List<Integer> intList) {
+		int result = intList.get(0);
+		for(int i = 1; i < intList.size(); i++) {
+			result = gcd(intList.get(i), result);
+		}
+		return result;
+	}
 
 	public static int lcm(int a, int b) {
 		return a * (b / gcd(a, b));
@@ -1177,7 +1221,7 @@ public class NumberTheory {
 	 * @param b   first number
 	 * @param exp exponent
 	 * @param n   third number
-	 * @return
+	 * @return	ah, er, um....
 	 */
 	public static int power(int b, int exp, int n) {
 		if (exp == 0)
@@ -1191,10 +1235,10 @@ public class NumberTheory {
 
 	/**
 	 * @author https://www.javatpoint.com/carmichael-numbers-in-java
-	 * @param v
-	 * @return boolean
+	 * @param v the number
+	 * @return is number a Carmichael number?
 	 * 
-	 * @see{https://en.wikipedia.org/wiki/Carmichael_number}
+	 * <a href="https://en.wikipedia.org/wiki/Carmichael_number"></a>
 	 */
 	public static boolean isCarmichael(int v) {
 		for (int b = 2; b <= v; b++) {
@@ -1208,7 +1252,13 @@ public class NumberTheory {
 		return isCarmichael(getTheNumber());
 	}
 
+	
 	// Adapted for BigInteger from https://www.geeksforgeeks.org/d-numbers/
+	/**
+	 * 
+	 * @param n the number
+	 * @return isDNumber?
+	 */
 	public static boolean isDNumber(int n) {
 		if (n < 4) {
 			return false;
@@ -1234,21 +1284,22 @@ public class NumberTheory {
 		return isDNumber(getTheNumber());
 	}
 
+	
 	static int __gcd(int a, int b) {
 		return b == 0 ? a : __gcd(b, a % b);
 	}
 
 	// Wikipedia
 	/**
-	 * <CODE> In mathematics, the cake number, denoted by Cn, is the maximum number
+	 * <pre> In mathematics, the cake number, denoted by Cn, is the maximum number
 	 * of regions into which a 3-dimensional cube can be partitioned by exactly n
 	 * planes. The cake number is so-called because one may imagine each partition
 	 * of the cube by a plane as a slice made by a knife through a cube-shaped cake.
 	 * It is the 3D analog of the lazy caterer's sequence.
-	 * </CODE>
+	 * </pre>
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return the cake number
 	 */
 	public static int getCakeNumber(int v) {
 		return (int) ((1.0 / 6.0) * (Math.pow(v, 3) + 5 * v + 6));
@@ -1257,12 +1308,33 @@ public class NumberTheory {
 	int getCakeNumber() {
 		return getCakeNumber(getTheNumber());
 	}
+	
+	/**
+	 * <pre> A Carol number is an integer of the form 4n – 2(n+1) – 1. An
+	 *   equivalent formula is (2n-1)2 – 2.
+	 * </pre>
+	 * 
+	 * @param v the number 
+	 * @return integer
+	 * 
+	 *         
+	 */
+	public static int getCarol(int v) {
+		double carolA = Math.pow(4.0, Double.valueOf(v));
+		double carolB = Math.pow(2.0, (Double.valueOf(v) + 1.0));
+		double carolFinal = carolA - carolB - 1.0;
+		return (int) carolFinal;
+	}
+
+	int getCarol() {
+		return getCarol(getTheNumber());
+	}
 
 	
 	/**
-	 * 
-	 * @param v
-	 * @return
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return boolean
 	 */
 	public static int getLazyCaterer(int v) {
 		return (v * v + v + 2) / 2;
@@ -1272,6 +1344,11 @@ public class NumberTheory {
 		return getLazyCaterer(getTheNumber());
 	}
 
+	/**
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return Array of bell numbers
+	 */
 	public static BigInteger getBellNumber(int v) {
 		BigInteger[][] bell = new BigInteger[v + 1][v + 1];
 		bell[0][0] = BigInteger.ONE;
@@ -1289,7 +1366,7 @@ public class NumberTheory {
 
 	/**
 	 * https://www.geeksforgeeks.org/admirable-numbers/
-	 * 
+	 * @param v the number to test 
 	 * @return is the number admirable?
 	 */
 
@@ -1324,13 +1401,13 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/amenable-numbers/
 	 * 
-	 * @param v
+	 * @param n the number
 	 * @return is number Amenable
 	 */
-	public static boolean isAmenable(int v) {
+	public static boolean isAmenable(int n) {
 		// return true if N is of the form
 		// 4K or 4K+1
-		return (v % 4 == 0 || (v - 1) % 4 == 0);
+		return (n % 4 == 0 || (n - 1) % 4 == 0);
 	}
 
 	boolean isAmenable() {
@@ -1339,7 +1416,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param d
+	 * @param d the number
 	 * @return if d = 2 return 22 if d = 3 return 333 if d = 4 return 4444
 	 */
 	private static String intToString(int d) {
@@ -1353,13 +1430,13 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/super-d-numbers/
 	 * 
-	 * @param v
+	 * @param n the number
 	 * @return boolean - is number SuperD?
 	 */
-	public static boolean isSuperD(int v) {
+	public static boolean isSuperD(int n) {
 		for (int d = 2; d < 10; d++) {
 			String subString = intToString(d);
-			if (String.valueOf((d * Math.pow(v, d))).contains(subString)) {
+			if (String.valueOf((d * Math.pow(n, d))).contains(subString)) {
 				return true;
 			}
 		}
@@ -1373,7 +1450,7 @@ public class NumberTheory {
 	/**
 	 * Used for Alternating Numbers
 	 * 
-	 * @param s
+	 * @param s the numbers
 	 * @return boolean
 	 * @see #isAlternating()
 	 */
@@ -1391,7 +1468,7 @@ public class NumberTheory {
 	/**
 	 * Used for Alternating Numbers
 	 * 
-	 * @param s
+	 * @param s the numbers
 	 * @return boolean
 	 * @see #isAlternating()
 	 */
@@ -1410,7 +1487,7 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/alternating-numbers/
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean
 	 */
 	public static boolean isAlternating(int v) {
@@ -1429,7 +1506,7 @@ public class NumberTheory {
 	 * A number n is said to be anti-perfect if it is equal to the sum of the
 	 * reverses of its proper divisors.
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean
 	 */
 	public static boolean isAntiPerfect(int v) {
@@ -1473,7 +1550,7 @@ public class NumberTheory {
 	 * two parts, a and b, such that N is equal to the sum of the integers from a to
 	 * b and a + b = N where ‘+’ denotes concatenation.
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean
 	 */
 	public static boolean isAstonishing(int v) {
@@ -1538,8 +1615,8 @@ public class NumberTheory {
 
 	/**
 	 * @author Jeffrey Schneider
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number automorphic
 	 */
 	public static boolean isAutomorphic(long v) {
 		long squared = (long) Math.pow(v, 2.0);
@@ -1552,7 +1629,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return List list of non-trivial (not the number and not the number 1)
 	 *         divisors
 	 * 
@@ -1568,7 +1645,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return List list of the digits in a number
 	 */
 	public static List<Integer> getListOfDigits(int v) {
@@ -1605,8 +1682,8 @@ public class NumberTheory {
 	 * Get the list of a number's digits as a string list.
 	 * 
 	 * @author JeffreySchneider
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return string list of a number's digits
 	 */
 	public static List<String> getStringListOfDigits(int v) {
 		List<String> retList = new LinkedList<>();
@@ -1651,7 +1728,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aList
+	 * @param aList the list to process
 	 * @return int sum of the squares of a list of numbers
 	 */
 	public static int getSumOfSquares(List<Integer> aList) {
@@ -1673,7 +1750,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param aList
+	 * @param aList the list to process
 	 * @return int sum of a numbers digits.
 	 */
 	public static int getSumOfDigits(List<Integer> aList) {
@@ -1700,7 +1777,7 @@ public class NumberTheory {
 	 * Canada number because {@code <code>5^2+8^2+1^2=7+83</code>}.
 	 * 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return boolean is number a Canada Number?
 	 * 
 	 * @see #getNonTrivialDivisors(int)
@@ -1720,7 +1797,7 @@ public class NumberTheory {
 
 	/**
 	 * @author Jeffrey Schneider
-	 * @param v
+	 * @param v the number
 	 * @return boolean
 	 * 
 	 *         {@code <code>A prime is said to be balanced if it is the average of the two surrounding primes, 
@@ -1767,11 +1844,37 @@ public class NumberTheory {
 		}
 	}
 
-	// https://oeis.org/wiki/Centered_polygonal_numbers
+	
+	/**
+	 * <p>The centered polygonal numbers are a class of series of figurate numbers,
+	 *  each formed by a central dot, surrounded by polygonal layers of dots with 
+	 *  a constant number of sides. Each side of a polygonal layer contains one 
+	 *  more dot than each side in the previous layer; so starting from the second 
+	 *  polygonal layer, each layer of a centered v-gonal number contains v more 
+	 *  dots than the previous layer.
+	 *  https://oeis.org/wiki/Centered_polygonal_numbers
+	 *  </p>
+	 *  
+	 * @param sideNumber  number of sides 
+	 * @param v indicates v-gonal layer
+	 * @return centered polygonal number
+	 */
 	public static int getCenteredPolygonalNumber(int sideNumber, int v) {
 		return (int) sideNumber * v * (v + 1) / 2 + 1;
 	}
 
+	
+	/**
+	 * <p>
+	 * In mathematics, a polygonal number is a number represented as dots or pebbles arranged in the shape of a regular polygon. The dots are thought of as 
+	 * alphas (units). These are one type of 2-dimensional figurate numbers.
+	 * 
+	 * https://en.wikipedia.org/wiki/Polygonal_number#:~:text=In%20mathematics%2C%20a%20polygonal%20number,of%202%2Ddimensional%20figurate%20numbers.
+	 * </p>
+	 * @param S number of sides
+	 * @param N indicates v-gonal layer
+	 * @return double
+	 */
 	public static double getPolygonalNumber(int S, int N) {
 		int sMinusTwo = S - 2;
 		int sMinusFour = S - 4;
@@ -1784,13 +1887,16 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author Jeffrey Schneider
-	 * @param v int 
-	 * @return BigInteger multiples of aNumber of primes.
-	 * In mathematics, and more particularly in number theory, primorial, 
+	 * <p> In mathematics, and more particularly in number theory, primorial, 
 	 * denoted by "#", is a function from natural numbers to natural numbers 
 	 * similar to the factorial function, but rather than successively 
 	 * multiplying positive integers, the function only multiplies prime numbers.
+	 * </p>
+	 * 
+	 * @author Jeffrey Schneider
+	 * @param v the number int 
+	 * @return BigInteger multiples of aNumber of primes.
+	 *
 	 */
 	public static BigInteger getPrimorials(int v) {
 		BigInteger summary = BigInteger.ONE;
@@ -1808,16 +1914,19 @@ public class NumberTheory {
 
 	// n * 2^n + 1
 	/**
+	 * <p>The  $n$-th Cullen number is equal to  $n\cdot2^n+1$.
+	 * Cullen numbers have been studied because they are seldom prime. 
+	 * They are prime for  $n$  = 1, 141, 4713, 5795, 6611, 18496, 32292, 32469, 
+	 * 59656, 90825, 262419...
+	 * </p>
 	 * @author JCSchneider
-	 * @param v
+	 * @param v the number
 	 * @return BigInteger getCullen()
 	 */
 	public static BigInteger getCullen(int v) {
 		BigInteger n = BigInteger.valueOf(v);
 		BigInteger exponent = BigInteger.TWO.pow(v);
-		BigInteger retVal = n.multiply(exponent).add(BigInteger.ONE);
-		// retVal = BigInteger.valueOf(aNumber).multiply(partC);
-		// return (int) (aNumber * Math.pow(2, aNumber) + 1);
+		BigInteger retVal = n.multiply(exponent).add(BigInteger.ONE);		
 		return retVal;
 	}
 
@@ -1832,8 +1941,8 @@ public class NumberTheory {
 	/**
 	 * Not sure if this works.... 09/30/2022
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return BigInteger 
 	 */
 	public static BigInteger getCompositorial(int v) {
 		BigInteger fact = getFactorial(v);
@@ -1844,10 +1953,12 @@ public class NumberTheory {
 	}
 
 	/**
-	 * 
-	 * @param v
-	 * @return boolean J.J.Tattersall defined the Curzon numbers to be those n for
+	 * <p>J.J.Tattersall defined the Curzon numbers to be those n for
 	 *         which 2n+1 divides 2^n+1.
+	 * </p>
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return boolean 
 	 */
 	public static boolean isCurzon(int v) {
 		BigInteger two = BigInteger.TWO;
@@ -1865,15 +1976,19 @@ public class NumberTheory {
 	}
 
 	/**
+	 * <p>
 	 * In number theory, a totative of a given positive integer n is an integer k
 	 * such that 0 < k ≤ n and k is coprime to n. Euler's totient function φ(n)
 	 * counts the number of totatives of n. The totatives under multiplication
 	 * modulo n form the multiplicative group of integers modulo n.
+	 *
+	 * https://en.wikipedia.org/wiki/Totative 
+	 *  </p>
 	 * 
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return Integer list of Totatives up to the number.
-	 *         {@link https://en.wikipedia.org/wiki/Totative}
+	 *        
 	 */
 	public static List<Integer> getTotativesList(int v) {
 		List<Integer> retList = new LinkedList<>(); // LinkedList? Why not?
@@ -1921,6 +2036,20 @@ public class NumberTheory {
 		return getEulersTotient(getTheNumber());
 	}
 
+	/**
+	 * <p> 
+	 * In number theory, Euler's totient function counts the positive integers up to a given integer n that are 
+	 relatively prime to n. It is written using the Greek letter phi as 
+	 \varphi (n) or
+	 \phi (n), 
+	  and may also be called Euler's phi function. In other words, 
+	  it is the number of integers k in the range 1 ≤ k ≤ n for which the greatest 
+	  common divisor gcd(n, k) is equal to 1.
+	  The integers k of this form are sometimes referred to as totatives of n.
+	  </p>
+	 * @param v
+	 * @return Eulers totient
+	 */
 	public static int getEulersTotient(int v) {
 		return getTotativesList(v).size();
 	}
@@ -1929,6 +2058,20 @@ public class NumberTheory {
 		return getEulersTotient(getTheNumber());
 	}
 
+	
+	/**
+	 * <p>A number  $n$  is a cyclic number if  $n$  and  $\phi(n)$  have no common prime factors.
+	 * It follows from the definition of  $\phi(n)$  that all prime numbers are cyclic, that the 
+	 * only even cyclic number is 2, and that all cyclic numbers are squarefree.
+	 * 
+	 * It is known that the divisors of Carmichael numbers are all odd cyclic numbers. G.P. Michon 
+	 * has conjectured that the the converse also holds, i.e., for each odd cyclic number  $c$  
+	 * there are infinite Carmichael numbers which are divisible by  $c$.
+	 * </p>
+	 *@author JeffreySchneider
+	 * @param v
+	 * @return boolean
+	 */
 	public static boolean isCyclic(int v) {
 		return Primes.isCoPrime(v, getEulersTotient(v));
 	}
@@ -1937,11 +2080,12 @@ public class NumberTheory {
 		return isCyclic(getTheNumber());
 	}
 
-	/**
-	 * 
-	 * @param n
-	 * @return boolean A de Polignac number is an odd number 'n' that cannot be
+	/** 
+	 * <p> A de Polignac number is an odd number 'n' that cannot be
 	 *         expressed as 'n=2^k+p', for 'p' prime.
+	 * </p>
+	 * @param n the number
+	 * @return is de Polignac? 
 	 */
 	public static boolean isDePolignac(int n) {
 		if (!isEven(n)) {
@@ -1965,7 +2109,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return boolean Is number even?
 	 */
 	public static boolean isEven(int v) {
@@ -1977,11 +2121,13 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author(Jeffrey Schneider)
-	 * @param v
-	 * @return BigInteger The double factorial of an integer 'n>0', denoted by
+	 * <p>The double factorial of an integer 'n>0', denoted by
 	 *         'n!!', is the product of all the integers from 1 to 'n' which have
 	 *         the same parity as 'n'.
+	 * </p>
+	 * @author(Jeffrey Schneider)
+	 * @param v the number
+	 * @return double factorial 
 	 */
 	public static BigInteger getDoubleFactorial(int v) {
 		BigInteger factorial = BigInteger.ONE;
@@ -2001,10 +2147,13 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JeffreySchneider
-	 * @param v
-	 * @return boolean Mario Velucchi called a number 'n' droll if the sum of its
+	 * <p>
+	 * Mario Velucchi called a number 'n' droll if the sum of its
 	 *         even prime factors equals the sum of its odd prime factors.
+	 * </p>
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return is the number Droll?
 	 */
 	public static boolean isDroll(int v) {
 		List<Integer> primeFactors = Primes.getPrimeFactors(v);
@@ -2026,9 +2175,8 @@ public class NumberTheory {
 		return isDroll(getTheNumber());
 	}
 
-	boolean isEconomical() {
-		return isEconomical(getTheNumber());
-	}
+	
+	
 
 	boolean isEmirp() {
 		return Primes.isEmirp(getTheNumber());
@@ -2036,7 +2184,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param i
+	 * @param i the number
 	 * @return boolean L.Colucci calls a number 'n' of at least 3 digits a gapful
 	 *         number if 'n' is divisible by the number formed by the first and last
 	 *         digit of 'n'.
@@ -2061,7 +2209,7 @@ public class NumberTheory {
 	/**
 	 * @author JeffreySchneider
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return boolean Duffinian numbers are defined as numbers that are composite
 	 *         and relatively prime to the sum of their divisors. The first such
 	 *         number is 4 because it is composite and the sum of its divisors (1, 2
@@ -2091,7 +2239,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return boolean
 	 * 
 	 *         This is broken. Floor and ceil don't seem to work. Broken for:
@@ -2114,7 +2262,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return boolean A number divisible by the sum of its digits.
 	 */
 	public static boolean isHarshad(int v) {
@@ -2130,7 +2278,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return int
 	 * 
 	 *         Check to display this in a spiral form.
@@ -2146,7 +2294,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return int The 'n'-th house number 'h_n' is a figurate number made by a cube
 	 *         of side 'n+1', surmounted by a square pyramidal number with side 'n'.
 	 *         <code>\[h_n=(8 n^3+21 n^2+19 n+6)/6.\]</code>
@@ -2165,7 +2313,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param k
+	 * @param k the number
 	 * @return boolean The 'n'-th hungry number is the smallest number 'k' such that
 	 *         in the decimal expansion of '2^k' appear the first 'n' decimal digits
 	 *         of pi
@@ -2187,7 +2335,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param int v
+	 * @param v the number
 	 * @return boolean A number 'n' is said to be insolite if it is divisible by the
 	 *         sum and by the product of the squares of its digits.
 	 * 
@@ -2278,7 +2426,7 @@ public class NumberTheory {
 	 * number list length to the length of numbers in the passed argument.
 	 * 
 	 * @author JCSchneider
-	 * @param n
+	 * @param n the number
 	 * @return boolean
 	 */
 	public static boolean isFrugal(int n) {
@@ -2298,7 +2446,7 @@ public class NumberTheory {
 	 * digits of 'n'.
 	 * 
 	 * @author JCSchneider
-	 * @param n
+	 * @param n the number
 	 * @return boolean
 	 */
 	public static boolean isEquidigital(int n) {
@@ -2313,14 +2461,17 @@ public class NumberTheory {
 
 	/**
 	 *
+	 * <p>
 	 * A number 'n' is called economical if the number of digits in its prime
 	 * factorization (including exponents greater than 1) is not greater than the
 	 * number of digits of 'n'.
+	 *  
+	 * </p>
 	 * 
-	 * @param aNumber
+	 * @param n the number to test
 	 * @return boolean
 	 * 
-	 * @see NumberTheory.#isFrugal()
+	 * @see #isFrugal(int)
 	 */
 	public static boolean isEconomical(int n) {
 		int nLength = String.valueOf(n).length();
@@ -2332,6 +2483,11 @@ public class NumberTheory {
 		return false;
 	}
 
+	boolean isEconomical() {
+		return isEconomical(getTheNumber());
+	}
+	
+	
 	/**
 	 * This method takes a list of prime factors and changes it from: 2, 2, 2, 2, 2,
 	 * 5, 5 to 2^5*5^2 to be used with isFrugal().
@@ -2376,7 +2532,7 @@ public class NumberTheory {
 	 * 
 	 * For example, 23=(10111)_2 is evil since the sum of its binary digits is 4.
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return {@code true} if the number is evil.
 	 */
 	public static boolean isEvil(int v) {
@@ -2407,7 +2563,7 @@ public class NumberTheory {
 	 *         any smaller number, to be specific , if it sets a new record in the number of
 	 *         divisors.
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return {@code boolean}
 	 * 
 	 */
@@ -2445,8 +2601,8 @@ public class NumberTheory {
 	 * For example, '21=(10101)_2' is pernicious since it contains 3 ones and 3 is a
 	 * prime number.
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number pernicious
 	 */
 	public static boolean isPernicious(int v) {
 		String retVal = Integer.toBinaryString(v);
@@ -2465,8 +2621,8 @@ public class NumberTheory {
 	 * A number which is powerful but not a perfect power, like 72 = 2^3 ⋅ 3^2.
 	 * 
 	 * @author JCSchneider
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number achilles
 	 */
 	public static boolean isAchilles(int v) {
 		if (isPowerful(v) && !isPerfectPower(v))
@@ -2483,8 +2639,8 @@ public class NumberTheory {
 	 * suffice.
 	 * 
 	 * @author JCSchneider
-	 * @param n
-	 * @return
+	 * @param n the number
+	 * @return is number perfect power
 	 */
 	public static boolean isPerfectPower(int n) {
 		/*
@@ -2518,8 +2674,8 @@ public class NumberTheory {
 	 * factors into a set to remove duplicates and then compare that set to the
 	 * digits of the number. Use StringBuilder.
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number enlightened
 	 */
 	public static boolean isEnlightened(long v) {
 		// Get list of prime factors
@@ -2557,11 +2713,12 @@ public class NumberTheory {
 	 * An esthetic number is a positive integer where every adjacent digit differs
 	 * from its neighbour by 1.
 	 * 
-	 * @param v
-	 * @return
+	 * Loop through the digits of a number and if any digit - adjacent digit
+	 *  <> 1, return false. Use Math.abs to simplify the equality test.
 	 * 
-	 *         Loop through the digits of a number and if any digit - adjacent digit
-	 *         <> 1, return false. Use Math.abs to simplify the equality test.
+	 * @param v the number
+	 * @return boolean
+	 *        
 	 */
 	public static boolean isEsthetic(int v) {
 		if (v < 10)
@@ -2583,8 +2740,10 @@ public class NumberTheory {
 	/**
 	 * Broken
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number D Powerful
+	 * 
+	 * TODO:
 	 */
 	public static boolean isDPowerful(int v) {
 		// List<Integer> theList = getListOfDigits(v);
@@ -2605,8 +2764,8 @@ public class NumberTheory {
 	 * For example, starting with n=152 we have the sequence |1-5-2|=6, 1+5+2=8,
 	 * then 14, 22, 36, 58, 94, and finally 152.
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number gilda
 	 */
 	public static boolean isGilda(int v) {
 		List<Integer> theDigitList = getListOfDigits(v);
@@ -2633,8 +2792,8 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number giuga
 	 */
 	public static boolean isGiuga(int v) {
 		if (!isSquareFree(v)) {
@@ -2668,13 +2827,15 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JeffreySchneider
-	 * @param v
-	 * @return boolean In mathematics, a square-free integer (or squarefree integer)
+	 * In mathematics, a square-free integer (or squarefree integer)
 	 *         is an integer which is divisible by no square number other than 1.
 	 *         That is, its prime factorization has exactly one factor for each
 	 *         prime that appears in it.
-	 * @see https://en.wikipedia.org/wiki/Square-free_integer
+	 *  https://en.wikipedia.org/wiki/Square-free_integer
+	 *  
+	 * @author JeffreySchneider
+	 * @param v the number
+	 * @return boolean 
 	 */
 	public static boolean isSquareFree(int v) {
 		List<Integer> theList = Primes.getPrimeFactors(v);
@@ -2697,8 +2858,8 @@ public class NumberTheory {
 	 * Finding Pythagorian Triples using
 	 * https://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples
 	 * 
-	 * @param v
-	 * @return
+	 * @param r the number
+	 * @return does number pass dicksons test
 	 */
 	public static boolean isDicksonsMethod(int r) {
 		boolean retBool = false;
@@ -2718,7 +2879,6 @@ public class NumberTheory {
 			//System.out.printf("%d,  %d, %d\n", firstNumber, secondNumber, z);
 			retBool = true;
 		}
-
 		// List<Integer> retVal = new ArrayList<>(Arrays.asList(7, 24, 25));
 		return retBool;
 	}
@@ -2752,7 +2912,7 @@ public class NumberTheory {
 
 	/**
 	 * @author JeffreySchneider
-	 * @param v
+	 * @param v the number
 	 * @return List of factor pairs, used with:
 	 * @see #isDicksonsMethod(int aNumber)
 	 * 
@@ -2800,7 +2960,7 @@ public class NumberTheory {
 	/**
 	 * Is number a Cunningham number
 	 * 
-	 * @param v
+	 * @param n the number
 	 * @return
 	 */
 	static boolean isCunningham(int n) {
@@ -2826,9 +2986,9 @@ public class NumberTheory {
 	/**
 	 * https://www.geeksforgeeks.org/eulerian-number/
 	 * 
-	 * @param n
-	 * @param m
-	 * @return
+	 * @param n the first number
+	 * @param m the second number
+	 * @return is number Eulerian
 	 */
 	public static int getEulerian(int n, int m) {
 		if (m >= n || n == 0)
@@ -2848,8 +3008,8 @@ public class NumberTheory {
 	 * distinct prime factors 6) Does list of digits from step 3 equal set of digits
 	 * from 5? If so, true
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is the number a hoax number
 	 */
 	public static boolean isHoaxNumber(int v) {
 		if (!Primes.isPrime(v)) {
@@ -2883,7 +3043,7 @@ public class NumberTheory {
 
 	/**
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return BigInteger List of {@link=https://oeis.org/A001129} Iccanobif
 	 *         numbers: reverse digits of two previous terms and add.
 	 * @see: {@link=https://www.geeksforgeeks.org/program-to-find-first-n-iccanobif-numbers/
@@ -2921,7 +3081,7 @@ public class NumberTheory {
 	 * A number is said polite if it can be expressed as the sum of at least two
 	 * consecutive natural numbers.
 	 * 
-	 * @param v
+	 * @param v the number
 	 * @return
 	 */
 	static boolean isImpolite(int v) {
@@ -2965,12 +3125,14 @@ public class NumberTheory {
 	}
 
 	/**
-	 * @author JCSchneider The number 131 is the 32nd prime number. It is a Honaker
-	 *         prime because the sum of its digits (1+3+1) equals the sum of the
-	 *         digits of the index in the list of primes (3+2).
+	 * The number 131 is the 32nd prime number. It is a Honaker
+	 *  prime because the sum of its digits (1+3+1) equals the sum of the
+	 *  digits of the index in the list of primes (3+2).
+	 *         
+	 * @author JCSchneider 
 	 * 
-	 * @param v
-	 * @return
+	 * @param v the number
+	 * @return is number honaker prime? Null if number is not prime.
 	 */
 	public static Boolean isHonakerPrime(int v) {
 		if (!isPrime(v)) {
@@ -2996,14 +3158,13 @@ public class NumberTheory {
 	}
 
 	/**
+	 * Idoneal Number is a number N if and only if it cannot be written as
+	 *   ab + bc + ca for a > b > c > 0.
+	 * 
+	 *   Big O(n^3)
 	 * @author - https://www.geeksforgeeks.org/idoneal-numbers/
-	 * @param v
+	 * @param v the number
 	 * @return boolean
-	 * 
-	 *         Idoneal Number is a number N if and only if it cannot be written as
-	 *         ab + bc + ca for a > b > c > 0.
-	 * 
-	 *         Big O(n^3)
 	 * 
 	 */
 	public static boolean isIdoneal(int v) {
@@ -3103,12 +3264,17 @@ public class NumberTheory {
 	}
 
 	/**
+	 *  
+	 * A number 'n' is a junction number if it can be written as 'x+ sod(x)'
+	 *  for at least two 'x', where 'sod' denotes the sum of digits. For
+	 *  example, '818' is a junction number because it has two generators,
+	 *  '796' and '805'.
+	 *         
 	 * @author JCSchneider
 	 * 
-	 *         A number 'n' is a junction number if it can be written as 'x+ sod(x)'
-	 *         for at least two 'x', where 'sod' denotes the sum of digits. For
-	 *         example, '818' is a junction number because it has two generators,
-	 *         '796' and '805'.
+	 *         
+	 * @param v the number
+	 * @return  is this a junction number
 	 */
 	public static List<Integer> getJunctionNumbers(int v) {
 		int n;
@@ -3138,15 +3304,23 @@ public class NumberTheory {
 	/**
 	 * http://www.java2s.com/example/java-utility-method/biginteger-reverse/reverse-biginteger-n-48089.html
 	 * 
-	 * @param v
-	 * @return
+	 * @param n the number
+	 * @return reverse the digits of the number
 	 */
-	public static BigInteger reverseBigInteger(BigInteger v) {
-		String s = v.toString();
+	public static BigInteger reverseBigInteger(BigInteger n) {
+		String s = n.toString();
 		StringBuilder sb = new StringBuilder(s);
 		return new BigInteger(sb.reverse().toString());
 	}
 
+	
+	/**
+	 * Summation the elements of a list.
+	 * 
+	 * @author JeffreySchneider
+	 * @param v list of numbers to process
+	 * @return summary value of list
+	 */
 	public static int getSumOfList(List<Integer> v) {
 		int sum = 0;
 		for (Integer i : v) {
@@ -3155,7 +3329,39 @@ public class NumberTheory {
 		return sum;
 	}
 
-	// https://introcs.cs.princeton.edu/java/23recursion/Partition.java.html
+
+	/** 
+	 * <p>
+	 * Print out all partitions of a positive integer N. In number theory,
+	 *  a partition of N is a way to write it as a sum of positive integers.
+	 *  
+	 *  Two sums that differ only in the order of their terms are considered
+	 *  the same partition.
+	 *  
+	 *  https://introcs.cs.princeton.edu/java/23recursion/Partition.java.html
+	 *
+	 *  % java Partition 4<br>  
+	 *  4<br>  
+	 *  3 1<br>
+	 *  2 2<br>
+	 *  2 1 1<br>
+	 *  1 1 1 1<br>
+	 *
+	 *  % java Partition 6<br>
+	 *  6<br>
+	 *  5 1<br>
+	 *  4 2<br>
+	 *  4 1 1<br>
+	 *  3 3<br>
+	 *  3 2 1<br>
+	 *  3 1 1 1<br>
+	 *  2 2 2<br>
+	 *  2 2 1 1<br>
+	 *  2 1 1 1 1<br>
+	 *  1 1 1 1 1 1<br>
+	 *  </p>
+	 */
+	
 	public static void partition(int n) {
 		partition(n, n, "");
 	}
@@ -3171,8 +3377,18 @@ public class NumberTheory {
 	}
 	
 	
-	//https://www.geeksforgeeks.org/kaprekar-number/
-	// Returns true if n is a Kaprekar number, else false
+	
+	
+	/**
+	 * A Kaprekar number is a number whose square when divided into two parts and such 
+	 * that sum of parts is equal to the original number and none of the parts 
+	 * has value 0. (Source : Wiki)
+	 * 
+	 * https://www.geeksforgeeks.org/kaprekar-number/
+	 * 
+	 * @param n  the number
+	 * @return  boolean
+	 */
     public static boolean isKaprekar(long n)
     {
         if (n == 1)
@@ -3213,8 +3429,10 @@ public class NumberTheory {
     
     /**
      * https://www.geeksforgeeks.org/leyland-number/
-     * @param v
      * Time complexity O(n*nlogn+nlogn)
+     * @param v the number
+     * @return list of leyland numbers less than v.
+     * 
      */
     public static List<Long> getLeyland(int v) {
     	int counter = 0;
@@ -3242,7 +3460,9 @@ public class NumberTheory {
     
      /**
      * 
-     * @param n
+     * @param n first number 
+     * @param k second number
+     * @return
      */
     public static boolean isHyperPerfect(int n, int k) {
     	//int k = 6;    	
@@ -3262,10 +3482,10 @@ public class NumberTheory {
      * Lucky numbers are those numbers which survive a sieving process which is similar to the Eratosthenes sieve that can be used to compute
      *  the prime numbers.
      *  Let us declare that 1 is a lucky number and let us start with a sieve containing only the odd numbers:
-     *  \[1,\ 3,\ 5,\ 7,\ 9,\ 11,\ 13,\ 15,\ 17,\ 19,\ 21,\ 23,\ 25,\dots\]
+     *  \[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, ...\]
      *  The first number greater than 1 is 3, so we declare 3 lucky and we delete from the sieve all the numbers 
      *  in a position which is a multiple of 3, to be specific , 5, 11, 17, 23, and so on. We are left with
-     *  \[1,\ 3,\ 7,\ 9,\ 13,\ 15,\ 19,\ 21,\ 25,\dots\]
+     *  \[1, 3, 7, 9, 13, 15, 19, 21, 25, ...\]
      *  The first new survivor is 7, so we declare 7 lucky and we delete from the sieve all the numbers in a 
      *  position which is a multiple of 7, to be specific , 19, 39, and so on. The next lucky number is thus 9 and continuing 
      *  this ideal process we could identify all the lucky numbers.  
@@ -3274,7 +3494,7 @@ public class NumberTheory {
      *  
      *  @author JCSchneider
      *  
-     * @param int stopValue
+     * @param stopValue the number to stop at
      * @return	List of integers defined as Lucky Numbers.
      */
     public static List<Integer> getLuckyNumber(int stopValue){
@@ -3308,12 +3528,14 @@ public class NumberTheory {
   
     
     /**
+     * <p>
      * Returns a list sieving out the sieveFactor's element.
      * IE:  theList, 7. Removes the multiples of seven elements from list.
+     * </p>
      * 
      * @author JCSchneider
-     * @param List<E> theList
-     * @param sieveFactor
+     * @param  theList list to process
+     * @param sieveFactor the number
      * @return Cleaned list.
      */
     public static <E> List<E> getSievedList(List<E> theList, int sieveFactor){
@@ -3341,14 +3563,16 @@ public class NumberTheory {
 
     
     /**
+     * <P>
      * A number is a katadrome if a given base b (often 10 or 16) if its
      * 	digits are in strictly decreasing order in that base ie: 43210, 
      *  76521 and 9630 are katadromes in base 10.
      *  
      *  Strictly decreasing means no duplicate numbers like 76652.
+     * </P>
      * 
-     * @param v
-     * @return
+     * @param v the number
+     * @return boolean
      */
     public static boolean isKatadrome(int v) {   	    	
     	boolean Ascending = false;
@@ -3464,8 +3688,8 @@ public class NumberTheory {
     /**
      * Send two or more digit number to splitTheNumberIntoTwo to get a HashMap with some digits key and the rest value.
      * Add the key and the value and if you get a prime, you have a magnanimous number.
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number magnanimous
      */
     public static boolean isMagnanimous(int v) {
     	HashMap<Integer, Integer> theNumbersToAdd = splitTheNumberIntoTwo(v);
@@ -3487,8 +3711,8 @@ public class NumberTheory {
     /**
      * A number n whose digits can be separated into two numbers a and b such that n divided by b gives a as a remainder.
      * 
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number modest
      */
     public static boolean isModest(int v) {
     	HashMap<Integer, Integer> theNumbersToAdd = splitTheNumberIntoTwo(v);
@@ -3510,8 +3734,8 @@ public class NumberTheory {
     /**
      * A number divisible by each of its digits
      * 
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number nude(divisible by each of its digits)
      */
 	public static boolean isNude(int v) {
 		List<Integer> theList = getListOfDigits(v);
@@ -3534,8 +3758,8 @@ public class NumberTheory {
     
     /**
      * A number that divided by the sum of its digits gives a prime number
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number moran
      */
     public static boolean isMoran(int v) {    	
     	int jeff = v / getSumOfDigits(getListOfDigits(v));    	
@@ -3552,8 +3776,8 @@ public class NumberTheory {
      * A number  n  of  k  digits is called narcissistic if it is equal to the sum of the  k-th powers of its digits.
      *  For example,  153  is narcissistic because  153 = 1^3+5^3+3^3.
      *  Narcissistic numbers are also called Armstrong or plus-perfect numbers.
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number narcissistic
      */
     public static boolean isNarcissistic(int v) {
     	List<Integer> theList = getListOfDigits(v);
@@ -3572,8 +3796,8 @@ public class NumberTheory {
     
     /**
      * According to Fermat's little theorem if  'p'  is an odd prime number then  '2^{p-1}-1'  (or, equivalently,  '2^p-2') is divisible by  'p'.
-     * @param v
-     * @return
+     * @param v the number
+     * @return is number poulet
      */
     public static boolean isPoulet(int v) { 
     	if(v % 2 == 0)
@@ -3600,17 +3824,43 @@ public class NumberTheory {
     	}
     	Iterator<Integer> i = theSet.iterator();
     	while(i.hasNext())
-    		System.out.println(i.next());
-    	
+    		System.out.println(i.next());    	
     }
     
     /**
+     * If the center two factors are one apart, it is pronic
      * 
-     * @param v  End 
-     * @param startV
+     * Example given: 
+     * 650 = [1, 2, 5, 10, 13, 25, 26, 50, 65, 130, 325, 650]
+     * 	25 + 1 = 26, ergo Pronic
+     * 
+     * 620 [1, 2, 4, 5, 10, 20, 31, 62, 124, 155, 310, 620]
+     *  20 + 1 <> 31, ergo is Not Pronic
+     *  
+     * @param v the number
+     * @return is number pronic
+     */
+    public static boolean isPronic(int v) {
+    	List<Integer> factorList = getFactors(v);
+    	int halfway = (factorList.size() / 2) - 1;
+    	int a = factorList.get(halfway);
+    	int b = factorList.get(halfway + 1);    	
+    	return a + 1 == b;
+    		
+    }    
+    
+    boolean isPronic() {
+    	return isPronic(getTheNumber());
+    }
+    
+    
+    /**
+     * 
+     * @param v ending number 
+     * @param startV starting number
      * @return List Pronic list from startV to v
      */
-    public static List<Integer> getPronic(int v, int startV) {
+    public static List<Integer> getPronic(int startV, int v ) {
     	List<Integer> theList = new ArrayList<>();
     
     	if(startV <= v) {    	
@@ -3625,7 +3875,7 @@ public class NumberTheory {
     
     /**
      * 
-     * @param v
+     * @param v the number
      * @return int  the single pronic value
      * TODO  
      */
@@ -3639,16 +3889,60 @@ public class NumberTheory {
     }
     
     
-    //TODO
-    public static boolean isRare(int v) {
-    	return true;
+    /**
+     * https://www.geeksforgeeks.org/program-to-check-whether-a-number-is-proth-number-or-not/
+     * @param n the number
+     * @return is number a power of two
+     */
+    public static boolean isPowerOfTwo(int n) {
+    	return n != 0 && ((n & (n-1)) == 0);    	
+    }
+    
+    public static boolean isProthNumber(int n) {
+    	int k = 1;
+        while (k < (n / k)) {
+ 
+            // check if k divides n or not
+            if (n % k == 0) {
+ 
+                // Check if n/k is power of 2 or not
+                if (isPowerOfTwo(n / k))
+                    return true;
+            }
+ 
+            // update k to next odd number
+            k = k + 2;
+        }
+ 
+        // If we reach here means
+        // there exists no value of K
+        // Such that k is odd number
+        // and n/k is a power of 2 greater than k
+        return false;
+    }
+    
+    
+    /**
+     * Shyam Sunder Gupta calls a number  'n'  rare if  'n+r'  and  'n-r'  are both squares, where  r does not equal n  and r is the reversal of  n.
+     * @param v
+     * @return  is number a rare number?
+     */
+    public static boolean isRare(long v) {
+    	long theReversedNumber = getReverseNumber(v);
+    	if(theReversedNumber == v) {
+    		return false;
+    	}
+    	long added = v + theReversedNumber;
+    	long subtracted = v - theReversedNumber;
+    	return (Math.sqrt(added) % 1 == 0 && Math.sqrt(subtracted) %1 ==0);    	
     }
     
     
     /**
      * OpenAI's GPT-3.5-based language model, ChatGPT. Accessed on 05/06/2023
-     * @param v
+     * @param v the number
      * @return
+     * Does not work. Wrong definition of Deceptive Numbers
      */
     public static boolean isDeceptiveWrong(int v) {
     	String numString = Integer.toString(v);
@@ -3674,8 +3968,8 @@ public class NumberTheory {
     
     /**
      * Lets use a string to create a repunit.  Feels like cheating, doesn't it?
-     * @param v
-     * @return
+     * @param v the number
+     * @return repunit of the number
      */
     public static BigInteger getRepUnit(int v) {    	
     	String repeatString = "1".repeat(v);
@@ -3683,6 +3977,94 @@ public class NumberTheory {
     }
     
     
+    /**
+     * Java code for sphenic numbers sourced from ChatGPT, a large language model trained by OpenAT
+     * Source: https://github.com/openai/gpt-3-examples/blob/main/examples/java/sphenic-numbers.java
+     * 
+     * @param n the number
+     * @return is number sphenic
+     */
+    public static boolean isSphenic(int n) {
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0 && isPrime(i)) {
+                count++;
+                if (count > 3) {
+                    return false;
+                }
+            }
+        }
+        return count == 3;
+    }
+    
+    
+    boolean isSphenic() {
+    	return isSphenic(getTheNumber());
+    }
+    
+   
+    /**
+     * A number  'n'  is a Sastry number if concatenated with  'n+1'  it gives a square.
+     *  For example, 183 is a Sastry number because 183184 is the square of 428.
+     * @param v the number
+     * @return is number sastry
+     */
+    public static boolean isSastry(Long v) {
+    	BigInteger res[];
+    	BigInteger firstHalf = new BigInteger(v.toString());
+    	String newNumberString = v + firstHalf.add(BigInteger.ONE).toString();
+    	//System.out.println(v + ":"  + newNumberString);
+    	BigInteger newNumber = new BigInteger(newNumberString);
+    	try {
+    		res = newNumber.sqrtAndRemainder();    		
+    		//System.out.println("Root: " + res[0] + " Remainder: " + res[1]);
+    		return res[1] == BigInteger.ZERO;
+    	}
+    	catch(ArithmeticException e) {
+    		System.out.println(e);
+    	}
+		return false;    	 
+    }
+    
+    public static boolean isSastry(Integer v) {    	
+    	return isSastry(v.longValue());		    	 
+    }
+    
+    boolean isSastry() {
+    	Integer xyz = getTheNumber();    	
+    	return isSastry(xyz.longValue());
+    }
+
+    /**
+     * A number  `n`  is called Saint-Exupery number if it is the product of the three sides of Pythagorean triangle.
+     * 
+     * @author JeffreySchneider
+     * @param v the number to process
+	 * @return list of saint exupery numbers less than v
+	 */
+	public static List<Long> getSaintExupery(int v) {		
+		//System.out.println("In Dicksons Method");
+		List<ArrayList<Integer>> pythagTriple = new ArrayList<ArrayList<Integer>>();
+		SortedSet<Long> SaintExuperySet = new TreeSet<>();
+
+		for (int j = 2; j <= v; j += 2) {
+			pythagTriple = NumberTheory.getDicksonsMethod(j);			
+			for(int k = 0; k < pythagTriple.size(); k++) {
+				long pythagMultiple = 1;
+				for(int l =0; l < pythagTriple.get(k).size(); l++) {
+					pythagMultiple *= pythagTriple.get(k).get(l);
+				}
+				SaintExuperySet.add(pythagMultiple);
+				//System.out.println(pythagTriple.get(k)+ " " + pythagMultiple);
+			}			 
+		}
+		List<Long> retList = new ArrayList<>(SaintExuperySet);
+		return retList;
+	}    
+	
+	List<Long> getSaintExupery(){
+		return getSaintExupery(getTheNumber());
+	}
     
  
     
@@ -3691,8 +4073,8 @@ public class NumberTheory {
      * Returns a list of permutations.  
      * ie: 3455 returns HashMap of {3 455}, {34 55}, {345, 5}
      *  
-     * @param v
-     * @return
+     * @param v the number
+     * @return hashmap of the number split into two.
      */
     public static HashMap<Integer, Integer> splitTheNumberIntoTwo(int v){
     	HashMap<Integer, Integer> retMap = new HashMap<>();    
@@ -3709,15 +4091,37 @@ public class NumberTheory {
     }
     
     
-	
+    public static boolean isPalindromic(long v) {    	
+    	List<String> s1 = getStringListOfDigits(v);
+    	Stack<String> s1Stack = new Stack<>();
+    	s1Stack.addAll(s1);
+    	Queue<String> s1Queue = new LinkedList<>();
+    	s1Queue.addAll(s1);
+    	
+    	while(!s1Stack.isEmpty()) {
+    		String a = s1Stack.pop();
+    		String b = s1Queue.poll();
+    		//System.out.println(a + " " + b);    		
+    		if(!a.equals(b)){
+    			return false;
+    		}    		
+    	}
+    	return true;    	
+    }
+    
+    public static boolean isPalPrime(int v) {
+    	return (isPrime(v) && isPalindromic(v));
+    }
     
     
+    
+
 
 
 	/**
      * Cheater method.  
      * Used for Pierpont prime method.
-     * @return
+     * @return list of fermat primes
      */
     public static List<Integer> getFermatPrimes(){    	
     	Integer[] theArray = { 3, 5, 17, 257, 65537};    	

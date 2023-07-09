@@ -1,10 +1,13 @@
 package numberTheory;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class TestNumberTheory {
 	public static void main(String[] args) {
@@ -346,6 +349,14 @@ public class TestNumberTheory {
 		System.out.println("GCD of 100 and 52: " + NumberTheory.gcd(100, 52));
 		instance.setTheNumber(100);
 		System.out.println("GCD of 100 and 54: " + instance.gcd(54));
+		
+		
+		List<Integer> theList1 = new ArrayList<>(Arrays.asList(10, 15, 50, 8));
+		int gcdList = NumberTheory.findGCD(theList1);
+		for (Integer integer : theList1) {
+			System.out.print(integer + " ");
+		}
+		System.out.println(" GCD of list: " + gcdList);
 
 		System.out.println("LCM of 21 and 6: " + NumberTheory.lcm(21, 6));
 		System.out.println("LCM of 4 and 6: " + NumberTheory.lcm(4, 6));
@@ -438,14 +449,17 @@ public class TestNumberTheory {
 
 		someWorkInProgress(BigInteger.TWO);
 
-		System.out.println("In Dicksons Method");
-		List<ArrayList<Integer>> jeff = new ArrayList<ArrayList<Integer>>();
-
-		for (int j = 2; j <= 100; j += 2) {
-			jeff = NumberTheory.getDicksonsMethod(j);
-			System.out.println(jeff);
+		
+		System.out.println("Saint Exupery");
+		List<Long> SaintExuperyList = NumberTheory.getSaintExupery(20);
+		for (Long long1 : SaintExuperyList) {
+			System.out.print(long1 + " " );
 		}
-
+		
+		
+		
+		
+		
 		System.out.println("Perrin Numbers");
 		for (int a1 = 0; a1 < 20; a1++) {
 			System.out.printf("%d ", NumberTheory.getPerrin(a1));
@@ -701,8 +715,57 @@ public class TestNumberTheory {
 		System.out.println("Testing Deceptive:");
 		x = 259;
 		System.out.println(x + " " + NumberTheory.isDeceptive(x));
+		
+		
+		System.out.println("Testing Pronic Numbers");
+		x = 600;  //650  355812, 357006  are pronic
+		
+		int[] xArray = {6, 650, 355812, 357006, 620 }; //620 is not pronic
+		for (int j : xArray) {
+			System.out.println(+ j + " " + NumberTheory.getFactors(j) + " " + NumberTheory.isPronic(j));	
+		}
+		xArray = null;
+		
+		
+		System.out.println("Testing Proth Numbers");
+		List<Integer> xList = Arrays.asList(3, 4, 6, 8, 5, 9, 12, 13, 17, 25, 33, 417,448, 449,481,513,801);
+		for (Integer integer : xList) {			
+			System.out.println(integer + " " + NumberTheory.isProthNumber(integer));
+		}
+		
+		
+		System.out.println();
+		System.out.println("Testing Sphenic Numbers");
+		List<Integer> xList2 = Arrays.asList(30,42,66,70,78,282,285,286,287);
+		for (Integer integer : xList2) {			
+			System.out.println(integer + " " + NumberTheory.isSphenic(integer));
+		}
+		
+		
+		System.out.println("Sastry Numbers");
+		System.out.println(NumberTheory.isSastry(184L));		
+		System.out.println(NumberTheory.isSastry(996225356413048L));
+		
+		System.out.println("IsRare");
+		List<Long> longList = Arrays.asList(65L, 621770L, 66L, 281089082L);
+		for(Long longNumber : longList) {
+			System.out.print(longNumber + " " );
+			System.out.println(NumberTheory.isRare(longNumber));
+		}		
+		
+		System.out.println(NumberTheory.getRepUnit(10));
+		System.out.println(NumberTheory.isPalindromic(7821287l));
+		System.out.println(NumberTheory.isPalPrime(1114111));
 		System.out.println("Fin");
 	}//end of main
+
+
+
+
+
+
+
+	
 
 
 
@@ -810,6 +873,8 @@ public class TestNumberTheory {
 		System.out.println("76 " + NumberTheory.isEsthetic(76));
 	}
 
+	
+	
 	
 
 	
