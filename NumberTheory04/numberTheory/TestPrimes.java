@@ -92,6 +92,10 @@ public class TestPrimes {
 			System.out.println(i +  " "+ Primes.getFortunateNumbers(i));
 		}
 		
+		System.out.println("Next Prime");
+		i = 11117123;
+		i=37379;
+		System.out.println(Primes.getNextPrime(i));
 	}
 
 }

@@ -756,6 +756,17 @@ public class TestNumberTheory {
 		System.out.println(NumberTheory.getRepUnit(10));
 		System.out.println(NumberTheory.isPalindromic(7821287l));
 		System.out.println(NumberTheory.isPalPrime(1114111));
+		
+		
+		System.out.println("isOrmiston");
+		System.out.println(NumberTheory.isOrmiston(11117123));
+		
+		System.out.println("isOrmiston run two");
+		System.out.println(NumberTheory.isOrmiston(10));
+		
+		System.out.println("isOrmiston run three");
+		System.out.println(NumberTheory.isOrmiston(1913));
+		
 		System.out.println("Fin");
 	}//end of main
 
