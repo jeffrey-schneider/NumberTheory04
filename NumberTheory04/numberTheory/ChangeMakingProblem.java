@@ -2,6 +2,10 @@ package numberTheory;
 
 import java.util.Arrays;
 
+/**
+ * @author MM mushfiqazeri@gmail.com 
+ *
+ */
 public class ChangeMakingProblem {
     public static void main(String[] args) {
         int[] coins = {1, 5, 10, 25, 100, 500, 1000, 2000, 5000, 10000}; // Available coin denominations
@@ -13,6 +17,12 @@ public class ChangeMakingProblem {
         printCoinsUsed(result, coins);
     }
     
+    /**
+     * 
+     * @param coins
+     * @param amount
+     * @return
+     */
     public static int[] makeChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1]; // Array to store the minimum number of coins for each amount
         int[] usedCoins = new int[amount + 1]; // Array to track the coins used
@@ -32,6 +42,11 @@ public class ChangeMakingProblem {
         return usedCoins;
     }
     
+    /**
+     * 
+     * @param usedCoins
+     * @param coins
+     */
     public static void printCoinsUsed(int[] usedCoins, int[] coins) {
         int amount = usedCoins.length - 1;
         while (amount > 0) {

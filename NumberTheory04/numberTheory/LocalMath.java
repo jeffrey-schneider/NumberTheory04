@@ -12,10 +12,19 @@ import java.util.List;
  */
 public class LocalMath {
 
+	/**
+	 * 
+	 * @return BigDecimal representation of PI
+	 */
 	public static final BigDecimal BigPI() {
 		BigDecimal bd = new BigDecimal(StringPI());
 		return bd;
 	}
+	
+	/**
+	 * 
+	 * @return String representation of PI
+	 */
 	public static final String StringPI() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("3.141592653589793238462643383279502884197169399375");
@@ -106,11 +115,20 @@ public class LocalMath {
 		return sb.toString();
 	}
 
+/**
+ * @return BigDecimal representation of Eulers
+ * 
+ */
 	public static final BigDecimal BigEulers() {
 		BigDecimal bd = new BigDecimal(StringEulers());
 		return bd;
 	}
+	
 
+	/**
+	 * @return String representation of Eulers
+	 * 
+	 */
 	public static final String StringEulers() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("2.71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516");
@@ -224,6 +242,11 @@ public class LocalMath {
 	}
 	
 	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
 	public static  double harmonicMean(List<Integer> v) {
 		double sum = 0.0;
 		
@@ -233,10 +256,12 @@ public class LocalMath {
 		return v.size() / sum;
 	}
 	
+	/**
+	 * 
+	 * @param deg
+	 * @return
+	 */
 	public static double deg2rad(double deg) {
 		return deg * (Math.PI/180.0);
-	}
-	
-	
-	
+	}	
 }

@@ -2,10 +2,12 @@ package numberTheory;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -758,14 +760,31 @@ public class TestNumberTheory {
 		System.out.println(NumberTheory.isPalPrime(1114111));
 		
 		
-		System.out.println("isOrmiston");
-		System.out.println(NumberTheory.isOrmiston(11117123));
 		
-		System.out.println("isOrmiston run two");
-		System.out.println(NumberTheory.isOrmiston(10));
+		System.out.println("\n\nisOrmiston");
+		List<Integer> intList = Arrays.asList(1913, 1931, 18379, 18397, 19013, 19031, 25013, 25031, 34613, 34631, 35617);
+		HashMap<Integer, Integer> theAnswers = new HashMap<>();		
+		for(Integer intNumber : intList) {
+			theAnswers.putAll(NumberTheory.getOrmiston(intNumber));			
+		}
 		
-		System.out.println("isOrmiston run three");
-		System.out.println(NumberTheory.isOrmiston(1913));
+		Iterator<Map.Entry<Integer, Integer>> itr2 = theAnswers.entrySet().iterator();
+		while(itr2.hasNext()) {
+			Map.Entry<Integer, Integer> entry = itr2.next();
+			if(entry.getValue() != null)
+				System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+		}
+	
+		
+		String convertMe = "1200";
+		String converted = "";
+		int baseFrom = 10;
+		int baseTo = 2;
+		
+		for(int abcd = 2; abcd <= 18; abcd++) {
+			converted = NumberTheory.convertFromBaseToBase(convertMe, baseFrom, abcd);
+			System.out.printf("%s converted from base: %d to base: %d is %s\n", convertMe, baseFrom, abcd, converted);
+		}
 		
 		System.out.println("Fin");
 	}//end of main

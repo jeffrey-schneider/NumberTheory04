@@ -6,7 +6,13 @@ import java.util.Map;
 
 //OpenAI. "Java Code to Convert Arabic Numbers to Roman Numerals" (2023). Retrieved from https://github.com/openai/gpt-3.5-turbo
 
+/**
+ * 
+ * @author MM mushfiqazeri@gmail.com
+ *
+ */
 public class ArabicToRoman {
+	
     public static void main(String[] args) {
         int number = 3542; // Specify the Arabic number to convert
         

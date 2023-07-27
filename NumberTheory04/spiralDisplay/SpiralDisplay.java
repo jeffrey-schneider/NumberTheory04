@@ -6,7 +6,7 @@ import java.util.Scanner;
 // MM <mushfiqazeri@gmail.com>
 
 /**
- * @author MM <mushfiqazeri@gmail.com>
+ * @author MM mushfiqazeri@gmail.com
  */
 public class SpiralDisplay {
     private static int row, col, matrix[][], maxCenter, centerN;

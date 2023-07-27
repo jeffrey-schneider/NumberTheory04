@@ -9,8 +9,10 @@ import static org.junit.Assert.assertNotEquals;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -1654,6 +1656,28 @@ class NumberTheoryTest {
 			assertTrue(NumberTheory.isPalPrime(101));
 			assertTrue(NumberTheory.isPalPrime(1114111));
 			assertTrue(NumberTheory.isPalPrime(143787341));
+		}
+		
+		
+		@Test
+		@DisplayName("Ormiston Pairs")
+		public void testGetOrmiston() {
+			HashMap<Integer,Integer> expectedMap = new HashMap<>();
+			expectedMap.put(1913, 1931);
+			HashMap<Integer, Integer> resultMap = NumberTheory.getOrmiston(1913);			
+			Assert.assertNotNull("Provided map is null;", expectedMap);
+			Assert.assertNotNull("Resultant map is null;", resultMap);
+			Assert.assertEquals("Size mismatch for maps; ", expectedMap.size(), resultMap.size());
+			Assert.assertTrue("Missing key in resultant map:", resultMap.keySet().containsAll(expectedMap.keySet()));
+			
+			instance.setTheNumber(1913);			
+			HashMap<Integer, Integer> resultMap2 = instance.getOrmiston();			
+			Assert.assertNotNull("Provided map is null;", expectedMap);
+			Assert.assertNotNull("Resultant map is null;", resultMap2);
+			Assert.assertEquals("Size mismatch for maps; ", expectedMap.size(), resultMap2.size());
+			Assert.assertTrue("Missing key in resultant map:", resultMap2.keySet().containsAll(expectedMap.keySet()));
+			
+			
 		}
 	}
 	
