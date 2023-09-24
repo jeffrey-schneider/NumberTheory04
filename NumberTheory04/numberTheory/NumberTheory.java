@@ -842,7 +842,8 @@ public class NumberTheory {
 	public static BigInteger getFibonacci(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException("Enter a positive number.");
-		} else if (n == 0 || n == 1) {
+		} 
+		if (n == 0 || n == 1) {
 			return BigInteger.valueOf(n);
 		}
 
@@ -1138,8 +1139,7 @@ public class NumberTheory {
 		int thatNumber = getSumOfList(getNonTrivialDivisors(thisNumber));
 		if (thatNumber == v)
 			return thisNumber;
-		else
-			return null;
+		return null;
 	}
 
 	Integer getBetrothedNumber() {
@@ -1394,13 +1394,13 @@ public class NumberTheory {
 				if (i == (v / i)) {
 					if (sigmaN - 2 * i == 2 * v)
 						return true;
-				} else {
-					if (sigmaN - 2 * i == 2 * v)
-						return true;
-					if (sigmaN - 2 * (v / i) == 2 * v)
-						return true;
+				}				
+				if (sigmaN - 2 * i == 2 * v)
+					return true;
+				if (sigmaN - 2 * (v / i) == 2 * v)
+					return true;
 				}
-			}
+			
 		}
 		// Check 1 since 1 is also a divisor
 		if (sigmaN - 2 * 1 == 2 * v)
@@ -1831,9 +1831,9 @@ public class NumberTheory {
 			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
-			} else {
-				counter--;
-			}
+			} 
+			counter--;
+			
 		}
 
 		// Find the first prime number greater than aNumber.
@@ -1843,19 +1843,18 @@ public class NumberTheory {
 			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
-			} else {
-				counter++;
 			}
+			counter++;			
 		}
+		
 		// If aNumber is the same distance between the upper and lower numbers,
 		// you have a balanced prime.
 		int up = theList.get(0);
 		int dn = theList.get(1);
 		if (v - up == dn - v) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;		
 	}
 
 	/**
@@ -2378,9 +2377,9 @@ public class NumberTheory {
 //			System.out.println(a);
 			if (theSet.contains(a)) {
 				return false;
-			} else {
-				theSet.add(a);
-			}
+			} 
+			theSet.add(a);
+			
 		}
 		return true;
 	}
@@ -2857,9 +2856,9 @@ public class NumberTheory {
 		for (Integer integer : theList) {
 			if (theHash.containsKey(integer)) {
 				return false;
-			} else {
-				theHash.put(integer, 1);
-			}
+			} 
+			theHash.put(integer, 1);
+			
 		}
 		return true;
 	}
