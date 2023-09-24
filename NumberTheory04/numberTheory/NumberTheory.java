@@ -86,9 +86,8 @@ public class NumberTheory {
 	 */
 	public static int abs(int v) {
 		if (v < 0)
-			return -v;
-		else
-			return v;
+			return -v;		
+		return v;
 	}
 
 	/**
@@ -587,18 +586,18 @@ public class NumberTheory {
 	 * 
 	 * @param v the number
 	 * @return boolean
+	 * line 593 was 'else' but is it needed?
 	 */
 	public static boolean isPrimitiveAbundant(int v) {
 		if (!isAbundant(v)) {
 			return false;
-		} else {
-			List<Integer> properDivisorList = getProperDivisors(v);
-			for (Integer integer : properDivisorList) {
-				if (isAbundant(integer)) {
-					return false;
-				}
+		} 
+		List<Integer> properDivisorList = getProperDivisors(v);
+		for (Integer integer : properDivisorList) {
+			if (isAbundant(integer)) {
+				return false;
 			}
-		}
+		}		
 		return true;
 	}
 
