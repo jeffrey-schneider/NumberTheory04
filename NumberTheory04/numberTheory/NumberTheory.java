@@ -4107,6 +4107,8 @@ public class NumberTheory {
 
 	/**
 	 * Cheater method. Used for Pierpont prime method.
+	 *
+	 * @TODO
 	 * 
 	 * @return list of fermat primes
 	 */
@@ -4116,8 +4118,15 @@ public class NumberTheory {
 		return theList;
 	}
 
+	
+	
+	/*******************************************************/
+	//https://en.wikipedia.org/wiki/Practical_number
+	public static boolean isPractical(int v) {
+		return true;
+	}
+	
 	/**
-	 * Fini!!<br>
 	 * 
 	 * Ormiston primes are defined as a number whose next prime is a anagram of the	number.
 	 * Example: 1913 is prime. The next prime number is 1931 which is a anagram.
@@ -4130,9 +4139,7 @@ public class NumberTheory {
 	 * @see <a href="https://www.numbersaplenty.com/set/Ormiston_pair/" target="_top">https://www.numbersaplenty.com/set/Ormiston_pair/</a>
 	 * @since 1.0.53  (07/25/2023)
 	 */
-	public static HashMap<Integer, Integer> getOrmiston(int v) {			
-		// 
-		
+	public static HashMap<Integer, Integer> getOrmiston(int v) {		
 	 	HashMap<Integer, Integer> retMap = new HashMap<>();
 		retMap.put(v, null);
 		 if (isPrime(v)) { 									 //If v is not prime, don't continue
@@ -4160,13 +4167,11 @@ public class NumberTheory {
 	        }
 		 return retMap;	        
 	}
-	
-	
+		
 	public HashMap<Integer, Integer> getOrmiston() {
 		return getOrmiston(getTheNumber());
 	}
 	
-
 	/**
 	 * Used by getOrmiston
 	 * @param nums
