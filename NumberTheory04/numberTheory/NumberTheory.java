@@ -1760,6 +1760,8 @@ public class NumberTheory {
 		int lastDigit = theList.get(length);
 		int[] retVal = { firstDigit, lastDigit };
 		return retVal;
+		
+		
 	}
 
 	/**
