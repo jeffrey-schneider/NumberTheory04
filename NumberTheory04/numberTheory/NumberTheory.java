@@ -187,6 +187,28 @@ public class NumberTheory {
 	List<Integer> getJugglers() {
 		return getJugglers(getTheNumber());
 	}
+	
+	// https://www.quora.com/How-do-I-calculate-4-1-5-without-using-a-calculator
+	// Calculating pow(number, 1.5);
+	public static List<BigInteger> getJugglersBigInteger(int v){
+		BigInteger counter = BigInteger.valueOf(v);
+		List<BigInteger> retVal = new ArrayList<>();
+		retVal.add(BigInteger.valueOf(v));				
+		while(!BigInteger.ONE.equals(counter)) {
+			if(!counter.mod(new BigInteger("2")).equals(BigInteger.ZERO)) {		
+				BigInteger cube = counter.pow(3);				
+				counter = cube.sqrt();
+			}else {				
+				counter = counter.sqrt();
+			}
+			retVal.add(counter);			
+		}
+		return retVal;
+	}
+	
+	List<BigInteger> getJugglersBigInteger(){
+		return getJugglersBigInteger(getTheNumber());
+	}
 
 	/**
 	 * @author JeffreySchneider
@@ -1737,6 +1759,8 @@ public class NumberTheory {
 		int lastDigit = theList.get(length);
 		int[] retVal = { firstDigit, lastDigit };
 		return retVal;
+		
+		
 	}
 
 	/**
