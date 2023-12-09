@@ -86,7 +86,7 @@ public class NumberTheory {
 	 */
 	public static int abs(int v) {
 		if (v < 0)
-			return -v;		
+			return -v;
 		return v;
 	}
 
@@ -585,19 +585,18 @@ public class NumberTheory {
 	 * </p>
 	 * 
 	 * @param v the number
-	 * @return boolean
-	 * line 593 was 'else' but is it needed?
+	 * @return boolean line 593 was 'else' but is it needed?
 	 */
 	public static boolean isPrimitiveAbundant(int v) {
 		if (!isAbundant(v)) {
 			return false;
-		} 
+		}
 		List<Integer> properDivisorList = getProperDivisors(v);
 		for (Integer integer : properDivisorList) {
 			if (isAbundant(integer)) {
 				return false;
 			}
-		}		
+		}
 		return true;
 	}
 
@@ -842,7 +841,7 @@ public class NumberTheory {
 	public static BigInteger getFibonacci(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException("Enter a positive number.");
-		} 
+		}
 		if (n == 0 || n == 1) {
 			return BigInteger.valueOf(n);
 		}
@@ -1051,8 +1050,8 @@ public class NumberTheory {
 	 * 
 	 * @param v the number
 	 * @return no valid return
-	 * @deprecated Saved to show how to code a BigInteger for loop.
-	 * @Retention(RetentionPolicy.SOURCE)
+	 * @deprecated Saved to show how to code a BigInteger for
+	 *             loop. @Retention(RetentionPolicy.SOURCE)
 	 */
 	@Deprecated
 	public static boolean getAlternatingFactorialbkup(int v) {
@@ -1394,13 +1393,13 @@ public class NumberTheory {
 				if (i == (v / i)) {
 					if (sigmaN - 2 * i == 2 * v)
 						return true;
-				}				
+				}
 				if (sigmaN - 2 * i == 2 * v)
 					return true;
 				if (sigmaN - 2 * (v / i) == 2 * v)
 					return true;
-				}
-			
+			}
+
 		}
 		// Check 1 since 1 is also a divisor
 		if (sigmaN - 2 * 1 == 2 * v)
@@ -1831,9 +1830,9 @@ public class NumberTheory {
 			if (isPrime(counter)) {
 				theList.add(counter);
 				break;
-			} 
+			}
 			counter--;
-			
+
 		}
 
 		// Find the first prime number greater than aNumber.
@@ -1844,9 +1843,9 @@ public class NumberTheory {
 				theList.add(counter);
 				break;
 			}
-			counter++;			
+			counter++;
 		}
-		
+
 		// If aNumber is the same distance between the upper and lower numbers,
 		// you have a balanced prime.
 		int up = theList.get(0);
@@ -1854,7 +1853,7 @@ public class NumberTheory {
 		if (v - up == dn - v) {
 			return true;
 		}
-		return false;		
+		return false;
 	}
 
 	/**
@@ -2377,9 +2376,9 @@ public class NumberTheory {
 //			System.out.println(a);
 			if (theSet.contains(a)) {
 				return false;
-			} 
+			}
 			theSet.add(a);
-			
+
 		}
 		return true;
 	}
@@ -2856,9 +2855,9 @@ public class NumberTheory {
 		for (Integer integer : theList) {
 			if (theHash.containsKey(integer)) {
 				return false;
-			} 
+			}
 			theHash.put(integer, 1);
-			
+
 		}
 		return true;
 	}
@@ -4116,121 +4115,127 @@ public class NumberTheory {
 		return theList;
 	}
 
-	
-	
 	/*******************************************************/
-	//https://en.wikipedia.org/wiki/Practical_number
+	// https://en.wikipedia.org/wiki/Practical_number
 	public static boolean isPractical(int v) {
 		return true;
 	}
-	
+
 	/**
 	 * 
-	 * Ormiston primes are defined as a number whose next prime is a anagram of the	number.
-	 * Example: 1913 is prime. The next prime number is 1931 which is a anagram.
-	 * The key holds the number, the value is the pairing value.
-	 * Key: 1913 Value: 1931
-	 * We must create a list of combinations of the number that are greater than the number.
+	 * Ormiston primes are defined as a number whose next prime is a anagram of the
+	 * number. Example: 1913 is prime. The next prime number is 1931 which is a
+	 * anagram. The key holds the number, the value is the pairing value. Key: 1913
+	 * Value: 1931 We must create a list of combinations of the number that are
+	 * greater than the number.
+	 * 
 	 * @author JeffreySchneider
 	 * @param v The integer to explore.
 	 * @return HashMap, The key holds the number, the value is the pairing value.
-	 * @see <a href="https://www.numbersaplenty.com/set/Ormiston_pair/" target="_top">https://www.numbersaplenty.com/set/Ormiston_pair/</a>
-	 * @since 1.0.53  (07/25/2023)
+	 * @see <a href="https://www.numbersaplenty.com/set/Ormiston_pair/" target=
+	 *      "_top">https://www.numbersaplenty.com/set/Ormiston_pair/</a>
+	 * @since 1.0.53 (07/25/2023)
 	 */
-	public static HashMap<Integer, Integer> getOrmiston(int v) {		
-	 	HashMap<Integer, Integer> retMap = new HashMap<>();
+	public static HashMap<Integer, Integer> getOrmiston(int v) {
+		HashMap<Integer, Integer> retMap = new HashMap<>();
 		retMap.put(v, null);
-		 if (isPrime(v)) { 									 //If v is not prime, don't continue
-	            int nextPrime = Primes.getNextPrime(v);	  	 //Find the next prime number relative to v         
-	            List<Integer> partsOfV = getListOfDigits(v); // We need to store the number's combinations in a list:
-	            List<List<Integer>> permutations = permute(partsOfV);
-	            TreeSet<Integer> theSet = new TreeSet<>();	 //Stores all permutations of v.
+		if (isPrime(v)) { // If v is not prime, don't continue
+			int nextPrime = Primes.getNextPrime(v); // Find the next prime number relative to v
+			List<Integer> partsOfV = getListOfDigits(v); // We need to store the number's combinations in a list:
+			List<List<Integer>> permutations = permute(partsOfV);
+			TreeSet<Integer> theSet = new TreeSet<>(); // Stores all permutations of v.
 
-	            for (List<Integer> list : permutations) {
-	                StringBuilder sb = new StringBuilder();
-	                Integer retVal = 0;
-	                for (Integer integer : list) {
-	                    sb.append(integer);
-	                }
-	                retVal = Integer.parseInt(sb.toString());
-	                theSet.add(retVal);
-	            }	            
-	            
-	            SortedSet<Integer> tailSet = new TreeSet<>(); // tailSet will store a sorted set with all the values greater than our number + 1.	            
-	            tailSet = theSet.tailSet(v+1);				  // Do not include v.
-	            //System.out.printf("The number: %d and its next prime: %d\n", v, nextPrime );  //Debugging 
-	            if (tailSet.contains(nextPrime)) {           //if the next prime is in the tailSet, change the return hashMap's value to the nextPrime.
-	            	retMap.replace(v, nextPrime);	            	
-	            }	            	            
-	        }
-		 return retMap;	        
+			for (List<Integer> list : permutations) {
+				StringBuilder sb = new StringBuilder();
+				Integer retVal = 0;
+				for (Integer integer : list) {
+					sb.append(integer);
+				}
+				retVal = Integer.parseInt(sb.toString());
+				theSet.add(retVal);
+			}
+
+			SortedSet<Integer> tailSet = new TreeSet<>(); // tailSet will store a sorted set with all the values greater
+															// than our number + 1.
+			tailSet = theSet.tailSet(v + 1); // Do not include v.
+			// System.out.printf("The number: %d and its next prime: %d\n", v, nextPrime );
+			// //Debugging
+			if (tailSet.contains(nextPrime)) { // if the next prime is in the tailSet, change the return hashMap's value
+												// to the nextPrime.
+				retMap.replace(v, nextPrime);
+			}
+		}
+		return retMap;
 	}
-		
+
 	public HashMap<Integer, Integer> getOrmiston() {
 		return getOrmiston(getTheNumber());
 	}
-	
+
 	/**
 	 * Used by getOrmiston
+	 * 
 	 * @param nums
 	 * @return
-	 * @since 1.0.53  (07/25/2023)
+	 * @since 1.0.53 (07/25/2023)
 	 */
-	public static List<List<Integer>> permute(List<Integer> nums){
+	public static List<List<Integer>> permute(List<Integer> nums) {
 		List<List<Integer>> result = new ArrayList<>();
-		permuteHelper(0, nums, result);		
+		permuteHelper(0, nums, result);
 		return result;
 	}
-	
+
 	/**
 	 * Used by getOrmiston
+	 * 
 	 * @param start
 	 * @param nums
 	 * @param result
-	 * @since 1.0.53  (07/25/2023)
+	 * @since 1.0.53 (07/25/2023)
 	 */
 	private static void permuteHelper(int start, List<Integer> nums, List<List<Integer>> result) {
-        if (start == nums.size()) {
-            ArrayList<Integer> list = new ArrayList<>();
-            for (int num : nums) {
-                list.add(num);
-            }
-            result.add(list);
-            return;
-        }
+		if (start == nums.size()) {
+			ArrayList<Integer> list = new ArrayList<>();
+			for (int num : nums) {
+				list.add(num);
+			}
+			result.add(list);
+			return;
+		}
 
-        for (int i = start; i < nums.size(); i++) {
-            swap(nums, i, start);
-            permuteHelper(start + 1, nums, result);
-            swap(nums, i, start);
-        }
-    }
-	
+		for (int i = start; i < nums.size(); i++) {
+			swap(nums, i, start);
+			permuteHelper(start + 1, nums, result);
+			swap(nums, i, start);
+		}
+	}
+
 	/**
 	 * Used by getOrmiston()
+	 * 
 	 * @param nums
 	 * @param i
 	 * @param j
-	 * @since 1.0.53  (07/25/2023)
+	 * @since 1.0.53 (07/25/2023)
 	 */
-	 private static void swap(List<Integer> nums, int i, int j) {
-	        int temp = nums.get(i);
-	        nums.set(i, nums.get(j));
-	        nums.set(j, temp);
-	    }
+	private static void swap(List<Integer> nums, int i, int j) {
+		int temp = nums.get(i);
+		nums.set(i, nums.get(j));
+		nums.set(j, temp);
+	}
 
-	 /**
-	  * 
-	  * @param str
-	  * @param fromBase
-	  * @param toBase
-	  * @return
-	  * @since 1.0.53 (07/26/2023)
-	  */
-	 public static String convertFromBaseToBase(String str, int fromBase, int toBase) {
-		    return Integer.toString(Integer.parseInt(str, fromBase), toBase);
-		}
-	
+	/**
+	 * 
+	 * @param str
+	 * @param fromBase
+	 * @param toBase
+	 * @return
+	 * @since 1.0.53 (07/26/2023)
+	 */
+	public static String convertFromBaseToBase(String str, int fromBase, int toBase) {
+		return Integer.toString(Integer.parseInt(str, fromBase), toBase);
+	}
+
 	/**
 	 * TODO: Fermat number Fermat Prime
 	 * 
