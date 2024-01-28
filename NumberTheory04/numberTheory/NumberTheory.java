@@ -4229,6 +4229,15 @@ public class NumberTheory {
         }
     }
 	
+	private static <T> void swap(List<T> elements, int a, int b) {
+		if (elements == null || a < 0 || b < 0 || a >= elements.size() || b >= elements.size()) {
+            throw new IllegalArgumentException("Invalid array or indices");
+        }
+		T tmp = elements.get(a);
+		elements.set(a, elements.get(b));
+		elements.set(b, tmp);
+	}
+	
 	/**
 	 * Used by getOrmiston()
 	 * @param nums
@@ -4248,7 +4257,7 @@ public class NumberTheory {
 	  * @return
 	  * @since 1.0.53 (07/26/2023)
 	  */
-	 public static String convertFromBaseToBase(String str, int fromBase, int toBase) {
+	 public static String convertFromBaseToBase02(String str, int fromBase, int toBase) {
 		    return Integer.toString(Integer.parseInt(str, fromBase), toBase);
 		}
 	
