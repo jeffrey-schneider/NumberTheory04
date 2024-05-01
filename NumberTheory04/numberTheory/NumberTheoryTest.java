@@ -1675,10 +1675,23 @@ class NumberTheoryTest {
 			Assert.assertNotNull("Provided map is null;", expectedMap);
 			Assert.assertNotNull("Resultant map is null;", resultMap2);
 			Assert.assertEquals("Size mismatch for maps; ", expectedMap.size(), resultMap2.size());
-			Assert.assertTrue("Missing key in resultant map:", resultMap2.keySet().containsAll(expectedMap.keySet()));
-			
+			Assert.assertTrue("Missing key in resultant map:", resultMap2.keySet().containsAll(expectedMap.keySet()));			
+		}
+	
+	
+		@Test
+		@DisplayName("Friedman Numbers")
+		public void testFriedmanNumbers() {
+			assertTrue(NumberTheory.isFriedmanNumber(25));
+			assertTrue(NumberTheory.isFriedmanNumber(121));
+			assertFalse(NumberTheory.isFriedmanNumber(100));
+			//findFriedmanNumbers
+			List<Integer> result = NumberTheory.findFriedmanNumbers(130);
+			List<Integer> expected = new ArrayList<>(Arrays.asList(25,121,125,126,127,128));			
+			assertIterableEquals(expected, result);
 			
 		}
+		
 	}
 	
 	

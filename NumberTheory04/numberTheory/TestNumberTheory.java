@@ -1,4 +1,6 @@
 package numberTheory;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -785,7 +787,19 @@ public class TestNumberTheory {
 			converted = NumberTheory.convertFromBaseToBase(convertMe, baseFrom, abcd);
 			System.out.printf("%s converted from base: %d to base: %d is %s\n", convertMe, baseFrom, abcd, converted);
 		}
-		
+	
+		//Friedman numbers:
+		int limit = 1000; // Change this to the desired limit
+        List<Integer> friedmanNumbers = NumberTheory.findFriedmanNumbers(limit);
+        System.out.println("Friedman numbers up to " + limit + ":");
+        for (Integer number : friedmanNumbers) {
+            System.out.println(number);
+        }	
+        
+        System.out.println(NumberTheory.isFriedmanNumber(25));
+        
+        
+        
 		System.out.println("Fin");
 	}//end of main
 
