@@ -4260,7 +4260,85 @@ public class NumberTheory {
 	 public static String convertFromBaseToBase02(String str, int fromBase, int toBase) {
 		    return Integer.toString(Integer.parseInt(str, fromBase), toBase);
 		}
+
 	
+	 /**
+	  * From chatgpt3.5
+	  */
+	 public static List<Integer> findFriedmanNumbers(int limit){
+		 List<Integer> friedmanNumbers = new ArrayList<>();
+		 for(int i = 1; i<= limit; i++) {
+			 if(isFriedmanNumber(i)) {
+				 friedmanNumbers.add(i);
+			 }
+		 }
+		 return friedmanNumbers;
+	 }
+
+	public static boolean isFriedmanNumber(int n) {
+		// TODO Auto-generated method stub
+		String digits = Integer.toString(n);
+		int numDigits = digits.length();
+		int[] permDigits = new int[numDigits];
+		for(int i = 0; i < numDigits; i++) {
+			permDigits[i] = Character.getNumericValue(digits.charAt(i));			
+		}
+		return permuteAndCheck(n, permDigits, 1, 0, numDigits);
+	}
+
+	/**
+	 * ChatGPT addressing the following question:
+	 * 	User	Java implementation solving Friedman numbers
+	 * @param n
+	 * @param permDigits
+	 * @param val
+	 * @param index
+	 * @param numDigits
+	 * @return
+	 */
+	private static boolean permuteAndCheck(int n, int[] permDigits, int val, int index, int numDigits) {
+		// TODO Auto-generated method stub
+		if(index == numDigits)
+			return val == n;
+		
+		for(int i = 0; i<numDigits; i++) {
+			if(permDigits[i] != -1) {
+				int nextVal = val;
+				switch(index) {
+				case 1:
+					nextVal += permDigits[i];
+					break;
+				case 2:
+					nextVal -= permDigits[i];
+					break;
+				case 3:
+					nextVal *= permDigits[i];
+					break;
+				case 4:
+					if(permDigits[i] == 0 || (nextVal % permDigits[i] != 0))
+						continue;  //Prevent division by 0 or non-integer results
+					nextVal /= permDigits[i];
+					break;					
+				}
+				int temp = permDigits[i];
+				permDigits[i] = -1; //mark digit as used
+				if(permuteAndCheck(n, permDigits,nextVal, index + 1, numDigits)) {
+					return true;
+				}
+				permDigits[i] = temp; //Backtrack				
+			}
+		}
+		return false;
+	}
+			
+		
+	
+	
+	
+	 
+	 
+	 
+	 
 	/**
 	 * TODO: Fermat number Fermat Prime
 	 * 
