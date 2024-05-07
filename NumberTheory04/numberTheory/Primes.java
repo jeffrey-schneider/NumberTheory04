@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
+import java.util.function.BooleanSupplier;
 
 /**
  * 
@@ -660,6 +661,20 @@ public class Primes extends NumberTheory {
 		boolean isPierpontPrime() {			
 			return isPierpontPrime(getTheNumber());
 		}
+
+		public static boolean isPrimeList(List<Integer> testList) {
+			// TODO Auto-generated method stub
+			for (Integer integer : testList) {
+				if(!isPrime(integer))
+					return false;
+			}
+			return true;
+		}
+
+		
+		
+		
+		
 		
 }
 

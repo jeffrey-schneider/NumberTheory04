@@ -251,5 +251,15 @@ class PrimesTest {
 		result = instance.getPrimeLuckyNumbers();
 		assertIterableEquals(expected, result);
 	}
+	
+	@Test
+	@DisplayName("Twin Primes")
+	public void getPrimeList() {
+		List<Integer> testList = new ArrayList<>(Arrays.asList(29,31));
+		assertTrue(Primes.isPrimeList(testList));
+		testList.clear();
+		testList = new ArrayList<>(Arrays.asList(223,227,229));
+		assertTrue(Primes.isPrimeList(testList));
+	}
 
 }
