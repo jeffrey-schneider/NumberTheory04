@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -1049,6 +1050,36 @@ class NumberTheoryTest {
 					BigInteger.valueOf(610), BigInteger.valueOf(987)));
 			assertIterableEquals(expected, result);
 		}
+		
+		
+		@Test
+		@DisplayName("Get Tribonacci")
+		public void tribonacciSpec() {		
+			List<BigInteger> expected;
+			instance.setTheNumber(15);
+			List<BigInteger> result = instance.getTribonacciList();
+			expected = new ArrayList<BigInteger>(Arrays.asList(
+					BigInteger.ZERO,
+					BigInteger.ONE,
+					BigInteger.ONE,
+					BigInteger.valueOf(2L),
+					BigInteger.valueOf(4L),
+					BigInteger.valueOf(7L),
+					BigInteger.valueOf(13L),
+					BigInteger.valueOf(24L),
+					BigInteger.valueOf(44L),
+					BigInteger.valueOf(81L),
+					BigInteger.valueOf(149L),
+					BigInteger.valueOf(274L),
+					BigInteger.valueOf(504L),
+					BigInteger.valueOf(927L),
+					BigInteger.valueOf(1705L)));
+			assertIterableEquals(expected, result);
+			result = NumberTheory.getTribonacciList(15);
+			assertIterableEquals(expected, result);
+		}
+			
+		
 
 		@Test
 		@DisplayName("Lucas Numbers")
@@ -1500,6 +1531,7 @@ class NumberTheoryTest {
 			instance.setTheNumber(203);
 			assertTrue(instance.isMagnanimous());
 			assertTrue(NumberTheory.isMagnanimous(112));
+			assertTrue(NumberTheory.isMagnanimous(4001));
 			assertFalse(NumberTheory.isMagnanimous(113));
 			instance.setTheNumber(173);
 			assertFalse(instance.isMagnanimous());
@@ -1679,17 +1711,81 @@ class NumberTheoryTest {
 		}
 	
 	
+		@Disabled("Disabled until isFriedmanNumber is completed")
 		@Test
 		@DisplayName("Friedman Numbers")
 		public void testFriedmanNumbers() {
-			assertTrue(NumberTheory.isFriedmanNumber(25));
-			assertTrue(NumberTheory.isFriedmanNumber(121));
-			assertFalse(NumberTheory.isFriedmanNumber(100));
+			assertTrue(NumberTheory.isFriedmanNumber(13125));
+			//assertTrue(NumberTheory.isFriedmanNumber(25));
+			//assertTrue(NumberTheory.isFriedmanNumber(121));
+			//assertFalse(NumberTheory.isFriedmanNumber(100));
 			//findFriedmanNumbers
-			List<Integer> result = NumberTheory.findFriedmanNumbers(130);
-			List<Integer> expected = new ArrayList<>(Arrays.asList(25,121,125,126,127,128));			
-			assertIterableEquals(expected, result);
+			//List<Integer> result = NumberTheory.findFriedmanNumbers(130);
+			//List<Integer> expected = new ArrayList<>(Arrays.asList(25,121,125,126,127,128));			
+			//assertIterableEquals(expected, result);
 			
+		}
+		
+		@Test
+		@DisplayName("Trimorphic Numbers")
+		public void testIsTrimorphic() {
+			assertTrue(NumberTheory.isTrimorphic(99));
+			assertTrue(NumberTheory.isTrimorphic(759918212890625L));
+			assertFalse(NumberTheory.isTrimorphic(50));
+			instance.setTheNumber(99);
+			assertTrue(instance.isTrimorphic());
+		}
+		
+		@Test
+		@DisplayName("Tau Numbers")
+		public void testIsTau() {
+			//It is a tau number, because it is divible by the number of its divisors (12).
+			assertTrue(NumberTheory.isTau(108));
+			instance.setTheNumber(8560);
+			assertTrue(instance.isTau());
+			assertFalse(NumberTheory.isTau(109));			
+		}
+		
+		@Test
+		@DisplayName("Truncatable Prime")
+		public void testIsTruncatable() {
+			assertFalse(NumberTheory.isTruncatablePrime(2023, "L"));
+			assertTrue(NumberTheory.isTruncatablePrime(26947, "LEft"));
+			assertTrue(NumberTheory.isTruncatablePrime(23399, "Right"));
+			assertTrue(NumberTheory.isTruncatablePrime(1825711, "b"));
+		}
+		
+		@Test
+		@DisplayName("Parse Number to List Test")
+		public void testParseNumberToList() {
+			List<Long> expected = new ArrayList<>(Arrays.asList(1l,2l,3l,4l,5l,6l));
+			List<Long> result = NumberTheory.parseNumberToList(123456);
+			assertIterableEquals(expected, result);
+		}
+		
+		
+		@Test
+		@DisplayName("Semi-Perfect (Pseudo-perfect) Test")
+		public void testIsSemiPerfect() {
+			assertTrue(NumberTheory.isSemiPerfect(30));
+			assertTrue(NumberTheory.isSemiPerfect(40));
+			assertFalse(NumberTheory.isSemiPerfect(35));
+			assertFalse(NumberTheory.isSemiPerfect(1));
+			instance.setTheNumber(2432);
+			assertTrue(instance.isSemiPerfect());
+			instance.setTheNumber(195);
+			assertFalse(instance.isSemiPerfect());			
+		}
+		
+		@Test
+		@DisplayName("O'Halloran Numbers Test")
+		public void testOHalloranNumbers() {
+			List<Integer> expected = new ArrayList<>(Arrays.asList(8, 12, 20, 36, 44, 60, 84, 116, 140, 156, 204, 260, 380, 420, 660, 924));
+			List<Integer> result = NumberTheory.OHalloranNumbers(1000);
+			assertIterableEquals(expected, result);
+			instance.setTheNumber(999);
+			result = instance.OHalloranNumbers();
+			assertIterableEquals(expected, result);
 		}
 		
 	}

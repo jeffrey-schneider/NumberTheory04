@@ -39,9 +39,16 @@ public class TestNumberTheory {
 		System.out.printf("Factorial(52): %,d", NumberTheory.getFactorial(52));
 		System.out.println();
 
-		System.out.println("Let's do the Fibonacci");
+		System.out.println("Let's do the Fibonacci List");
 		System.out.println("Fibonacci List(17): " + NumberTheory.getFibonacciList(17));
 		System.out.println("Fibonacci(17): " + Primes.getFibonacci(17));
+		
+		
+		System.out.println("Let's do the Tribonacci List");
+		System.out.println("Tribonacci List(56): " + NumberTheory.getTribonacciList(56));
+		instance.setTheNumber(15);
+		System.out.println("Tribonacci List(): " + instance.getTribonacciList());
+		
 
 		System.out.println("Lucas numbers");
 		System.out.println("Negative exponent(Math.pow(4.0, -1.0): " + Math.pow(4.0, -1.0));
@@ -799,8 +806,19 @@ public class TestNumberTheory {
         System.out.println(NumberTheory.isFriedmanNumber(25));
         
         
+        System.out.println("Is 99 a trimorphic number?");
+        System.out.println(NumberTheory.isTrimorphic(759918212890625L));
+        
+        System.out.println(NumberTheory.isTruncatablePrime(1825711, "both"));
+        
+        System.out.println(NumberTheory.parseNumberToList(123456));
+        
+        int count = 40;
+        System.out.printf("Is %,d semiperfect? %b", count, NumberTheory.isSemiPerfect(count));
+        
         
 		System.out.println("Fin");
+		
 	}//end of main
 
 
@@ -959,5 +977,7 @@ public class TestNumberTheory {
 		v = 23418;
 		System.out.println(NumberTheory.isFiboDiv(v));
 	}
+	
+	
 
 }

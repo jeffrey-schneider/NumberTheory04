@@ -6,11 +6,12 @@ package numberTheory;
 import java.util.*;
 import java.math.BigInteger;
 import java.util.Map.Entry;
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Provides a working library (and object) that contains Schneider's Number
+ * Provides a working library (and/or object) that contains Schneider's Number
  * Theory methods.
  * 
  * It was started as a working exercise to try new programming techniques and
@@ -787,10 +788,34 @@ public class NumberTheory {
 		}
 		return retList;
 	}
-
+	
 	List<BigInteger> getFibonacci() {
 		return getFibonacciList(getTheNumber());
 	}
+	
+	public static List<BigInteger> getTribonacciList(int v) {
+		BigInteger num1 = BigInteger.ZERO;
+		BigInteger num2 = BigInteger.ONE;
+		BigInteger num3 = BigInteger.ONE;
+		int counter = 0;
+		List<BigInteger> retList = new ArrayList<>();
+		//Iterate until counter == v
+		while(counter < v) {
+			retList.add(num1);
+			BigInteger temp = num2.add(num1);
+			BigInteger num4 = num3.add(temp);
+			num1 = num2;
+			num2 = num3;
+			num3 = num4;
+			counter++;
+		}
+		return retList;
+	}
+	
+	List<BigInteger> getTribonacciList(){
+		return getTribonacciList(getTheNumber());
+	}
+	
 
 	/**
 	 * From: https://www.geeksforgeeks.org/motzkin-number/
@@ -4276,7 +4301,7 @@ public class NumberTheory {
 	 }
 
 	public static boolean isFriedmanNumber(int n) {
-		// TODO Auto-generated method stub
+		// TODO Fix this thing....
 		String digits = Integer.toString(n);
 		int numDigits = digits.length();
 		int[] permDigits = new int[numDigits];
@@ -4330,14 +4355,245 @@ public class NumberTheory {
 		}
 		return false;
 	}
-			
+
+	/**
+	 * A number n such that n^3 ends with the digits of n.
+	 * 
+	 * Is n the last digits of n^3?
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean isTrimorphic(long v) {	
+		String theNumber = String.valueOf(v);
+		int lengthOfString = theNumber.length();
 		
+		//BigInteger bigV = BigInteger.valueOf(v);		
+		BigInteger cubed = BigInteger.valueOf(v).pow(3);
+		
+		String cubeNumber = cubed.toString();		
+		String lastDigits = cubeNumber.substring(cubeNumber.length() - lengthOfString);
+		return theNumber.equals(lastDigits);
+	}
+
+	boolean isTrimorphic() {
+		return isTrimorphic(getTheNumber());
+	}
+
+	/**
+	 * A tau number is an integer n that is divisible by the count of its divisors.
+	 * 
+	 * @param v
+	 * @return boolean
+	 */
+	public static boolean isTau(int v) {
+		List<Integer> i = getFactors(v);
+		int sizeOf = i.size();
+		for (Integer integer : i) {
+			if(sizeOf == integer)
+				return true;
+		}
+		return false;
+	}
+				
+	boolean isTau() {
+		return isTau(getTheNumber());
+	}
 	
 	
 	
+	public static List<Long> parseNumberToList(long v){
+		return parseNumberToList(v, "none");
+	}
+	/**
+	 * Used for isTruncatablePrime()
+	 * 
+	 * @param v
+	 * @param direction, Left, Right or Both
+	 * @return
+	 */
+	public static List<Long> parseNumberToList(long v, String direction){
+		String dir = direction.substring(0,1).toUpperCase();
+		
+		String numStr = Long.toString(v);
+		List<Long> resultList = new ArrayList<>();
+		int length = numStr.length();
+		
+		if(dir.equals("R")) {			
+			for(int i = 1; i <= length; i++) {
+				resultList.add(Long.parseLong(numStr.substring(0,i)));
+			}
+			return resultList;
+		}
+		if(dir.equals("L")) {			
+			for (int i = 1; i <= length; i++) {
+	            resultList.add(Long.parseLong(numStr.substring(numStr.length() - i)));
+	        }
+			return resultList;
+		}
+		
+		if(dir.equals("B")) {
+			int start = 0;
+			int end = length - 1;
+			
+			while(start <= end) {
+				resultList.add(Long.parseLong(numStr.substring(start, end+1)));
+				start++;
+				end--;
+			}
+			return resultList;
+		}
+		
+		int start = 0;		
+		for(int i = 1; i<= length; i++) {			
+			resultList.add(Long.parseLong(numStr.substring(start,start+1)));
+			start++;
+		}
+		return resultList;
+				
+	}
+	
+	public static boolean isTruncatablePrime(long v, String direction) {
+		//if direction equals LEFT  	26947
+		// if direction equals RIGHT	23399
+		// if direction equals BOTH		1825711 
+		String dir = direction.substring(0,1).toUpperCase();
+		List<Long> theNumbers = getListOfDigits(v);
+		List<Long> resultList;
+		
+		//If the number contains the digit 0, return false;
+		for (Long long1 : theNumbers) {
+			if(long1 == 0)
+				return false;
+		}
+		
+		if(dir.equals("L")) {
+			resultList = parseNumberToList(v,"LEFT");
+			for (Long long1 : resultList) {
+				if(!isPrime(long1))
+					return false;
+			}
+			return true;
+		}
+		if(dir.equals("R")) {
+			resultList = parseNumberToList(v,"RIGHT");
+			for (Long long1 : resultList) {
+				if(!isPrime(long1))
+					return false;
+			}
+			return true;
+		}
+		
+		//The following doesn't work
+		// 1825711 should remove both outer numbers before testing:
+		// 1825711, 82571, 257, and 5 are all prime.
+		
+		if(dir.equals("B"))
+			resultList=Collections.emptyList();
+			resultList = parseNumberToList(v,"Both");
+			for(Long long1 : resultList) {
+				if(!isPrime(long1))
+					return false;
+			}
+		return true;
+	}
+
+	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean isSemiPerfect(int v) {
+		if(!(v > 1)) {
+			return false;
+		}
+		List<Integer> numbers = getFactors(v);
+		int target = v;
+		List<List<Integer>> combinations = findCombinations(numbers, target);
+		//Since the combinations list will always include the number, look for combinations size greater than 1.
+        if (combinations.size() > 1)
+        	return true;
+        return false;
+	}
+	
+	boolean isSemiPerfect() {
+		return isSemiPerfect(getTheNumber());
+	}
+	
+	
+	/**
+	 * Used for isSemiPerfect()
+	 * @param numbers
+	 * @param target
+	 * @return
+	 */
+	public static List<List<Integer>> findCombinations(List<Integer> numbers, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Collections.sort(numbers);
+        findCombinationsHelper(numbers, target, 0, new ArrayList<>(), result);
+        return result;
+    }
+	
+	/**
+	 * Used for isSemiPerfect()
+	 * @param numbers
+	 * @param target
+	 * @param startIndex
+	 * @param currentCombination
+	 * @param result
+	 */
+	private static void findCombinationsHelper(List<Integer> numbers, int target, int startIndex, List<Integer> currentCombination, List<List<Integer>> result) {
+        if (target == 0) {
+            result.add(new ArrayList<>(currentCombination));
+            return;
+        }
+        for (int i = startIndex; i < numbers.size(); i++) {
+            if (target - numbers.get(i) >= 0) {
+                currentCombination.add(numbers.get(i));
+                findCombinationsHelper(numbers, target - numbers.get(i), i + 1, currentCombination, result); // Pass i+1 to ensure each number is used only once
+                currentCombination.remove(currentCombination.size() - 1);
+            }
+        }
+    }
+
+	
+	/**
+	 *	O'Halloran numbers: even integers which cannot be the surface area of a cuboid with integer-length sides.
+	 *  inspired by https://rosettacode.org/wiki/O%27Halloran_numbers 
+	 * @param v
+	 * @return
+	 */
+	public static List<Integer> OHalloranNumbers(int v) {
+		List<Integer> retVal = new ArrayList<>();
+		int maximumArea = v;
+		int halfMaximumArea = v / 2;
+		boolean[] ohalloranNumbers = new boolean[halfMaximumArea];
+		Arrays.fill(ohalloranNumbers, true);
+				
+		for ( int length = 1; length < maximumArea; length++ ) {
+		    for ( int width = 1; width < halfMaximumArea; width++ ) {
+		        for ( int height = 1; height < halfMaximumArea; height++ ) {
+		            int halfArea = length * width + length * height + width * height;
+		            if ( halfArea < halfMaximumArea ) {
+		                ohalloranNumbers[halfArea] = false;
+		            }
+		        }
+		    }
+		}
+		
+		for (int i = 3; i < ohalloranNumbers.length; i++) {
+			if(ohalloranNumbers[i])
+				retVal.add(i * 2);
+		}
+		return retVal;
+	}
 	 
+	List<Integer> OHalloranNumbers(){
+		return OHalloranNumbers(getTheNumber());
+	}
 	 
-	 
+
 	 
 	/**
 	 * TODO: Fermat number Fermat Prime
