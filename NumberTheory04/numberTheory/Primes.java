@@ -672,6 +672,29 @@ public class Primes extends NumberTheory {
 		}
 
 		
+		public static List<Integer> getSextuplePrimes(int startNum, int endNum) {
+			List<Integer> retVal = new ArrayList<>();
+			for(int counter = startNum; counter <= endNum; counter++) {
+				if(counter % 2 != 0) {				//ignore even numbers			
+					if(isPrime(counter - 4) &&
+						isPrime(counter) &&
+						isPrime(counter + 2) &&
+				         isPrime(counter + 6) &&
+				         isPrime(counter+8) &&
+				         isPrime(counter+12)) {
+							retVal.add(counter-4);
+							retVal.add(counter);
+							retVal.add(counter+2);
+							retVal.add(counter+6);
+							retVal.add(counter+8);
+							retVal.add(counter+12);
+					}
+				}
+			}
+			return retVal;
+		}
+
+		
 		
 		
 		

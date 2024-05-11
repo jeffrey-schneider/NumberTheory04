@@ -534,7 +534,54 @@ public class NumberTheory {
 	String getBinary() {
 		return getBinary(getTheNumber());
 	}
+	
+	/**
+	 * Converts a number into selected base
+	 * @param wholeNumber
+	 * @param base
+	 * @return
+	 */
+	public static String convertToBase(int wholeNumber, int base) {
+        StringBuilder result = new StringBuilder();
+        
+        while (wholeNumber > 0) {
+            int remainder = wholeNumber % base;
+            result.insert(0, remainder); // Insert remainder at the beginning of the string
+            wholeNumber /= base;
+        }
+        
+        if (result.length() == 0) {
+            result.append(0); // If the input is 0, the result should be "0" in base 5
+        }        
+        return result.toString();
+    }
+	
+	String convertToBase(int base) {
+		return convertToBase(getTheNumber(), base);
+	}
 
+	/**
+	 * From: https://www.youtube.com/watch?v=P8d-t7OG_ek
+	 * @param v
+	 * @param base
+	 * @return
+	 */
+	public static int getValueInBase(int v, int base) {
+		int res=0;
+		int pow = 0;
+		int rem;
+		while(v>0) {
+			rem = v % base;
+			res += rem*Math.pow(10, pow);
+			v = v/base;
+			pow += 1;
+		}
+		return res;
+	}
+	
+	int getValueInBase(int b) {
+		return getValueInBase(getTheNumber(), b);
+	}
 	/**
 	 * {@code The symbol Σ (sigma) is generally used to denote a sum of multiple terms.}
 	 * 
@@ -3247,7 +3294,55 @@ public class NumberTheory {
 		return isIdoneal(getTheNumber());
 	}
 
-	public static void getInconsummate() {
+
+	
+	public static void getInconsummate(int v) {
+		System.out.println("Inconsummate Numbers");
+		List<Integer> jeff = new ArrayList<>();
+		for(int i= 1; i<=15000; i++) {
+			jeff.add(i);
+		}
+		
+		for(int i = 1; i < 15000; i++) {			
+			double divided = (double)NumberTheory.getSumOfDigits(NumberTheory.getListOfDigits(i));
+			double penni = i / divided;
+			double modPenni = penni % 1;
+			//System.out.printf("i: %d / %f = %f %f\n", i, divided, penni, modPenni);
+			if(modPenni == 0) {
+				System.out.println(penni);
+				jeff.add((int) penni);
+				
+			}				
+		}
+		System.out.println(jeff.size());
+		List<Integer> dups = listDuplicatesUsingMap(jeff);
+		for (Integer integer : dups) {
+			System.out.println(integer);
+		}
+	}
+	
+	/**
+	 * https://www.baeldung.com/java-list-find-duplicates
+	 * 
+	 * @param list
+	 * @return
+	 */
+	public static List<Integer> listDuplicatesUsingMap(List<Integer> list){
+		List<Integer> duplicates = new ArrayList<>();
+		Map<Integer, Integer> frequencyMap = new HashMap<>();
+		for(Integer number : list) {
+			frequencyMap.put(number,  frequencyMap.getOrDefault(number,  0) + 1);
+		}
+		for(int number: frequencyMap.keySet()) {
+			if(frequencyMap.get(number) !=1) {
+				duplicates.add(number);
+			}
+		}
+		return duplicates;
+	}
+	
+	
+	public static void getInconsummate02() {
 		int i;
 		/** Working on this */
 		System.out.println("Inconsummate Numbers");
@@ -4592,7 +4687,9 @@ public class NumberTheory {
 	List<Integer> OHalloranNumbers(){
 		return OHalloranNumbers(getTheNumber());
 	}
-	 
+
+	
+	
 
 	 
 	/**

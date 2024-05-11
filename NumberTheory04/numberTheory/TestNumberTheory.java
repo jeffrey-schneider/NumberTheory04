@@ -541,7 +541,7 @@ public class TestNumberTheory {
 		}      
         
         System.out.println("Inconsummate numbers");
-        NumberTheory.getInconsummate();
+//        NumberTheory.getInconsummate();
         
         
         int[] vv = {796, 805};
@@ -814,8 +814,31 @@ public class TestNumberTheory {
         System.out.println(NumberTheory.parseNumberToList(123456));
         
         int count = 40;
-        System.out.printf("Is %,d semiperfect? %b", count, NumberTheory.isSemiPerfect(count));
+        System.out.printf("Is %,d semiperfect? %b\n", count, NumberTheory.isSemiPerfect(count));
         
+        System.out.println("convertToBase(999,34)  " + NumberTheory.convertToBase(999, 34));
+        
+        System.out.println("convertToBase(634,8) //634 in base 8 " + NumberTheory.convertToBase(634, 8));
+        
+        System.out.println("getValueInBase(634,8) //634 in base 8 " + NumberTheory.getValueInBase(634, 8));
+        System.out.println("getValueInBase(999, 34) "+  NumberTheory.getValueInBase(999, 34));
+        
+        System.out.println("parseint(634,8) " + Integer.parseInt("634", 8));
+        System.out.println("toString(999,34) " + Integer.toString(999,34));
+        
+        
+        NumberTheory.getInconsummate(100);
+        
+        
+//        List<Integer> samples = new ArrayList<>();
+//        for (int i1 = 1; i1 <= 1000; i1++) {
+//        	samples.add(i1);
+//        }
+//        samples.add(42);
+//        List<Integer> possibleDups = NumberTheory.listDuplicatesUsingMap(samples);
+//        for (Integer integer : possibleDups) {
+//			System.out.println(integer);
+//		}
         
 		System.out.println("Fin");
 		

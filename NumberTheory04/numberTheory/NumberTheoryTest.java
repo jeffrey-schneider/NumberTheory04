@@ -1788,6 +1788,37 @@ class NumberTheoryTest {
 			assertIterableEquals(expected, result);
 		}
 		
+		
+		@Test
+		@DisplayName("Convert to base")
+		public void testConvertToBase() {
+			String result = NumberTheory.convertToBase(45, 8); 
+			String expected = "55";
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(999);
+			result = instance.convertToBase(34);
+			expected = "2913";
+			assertEquals(expected, result);
+		}
+		
+		@Test
+		@DisplayName("Get Value in Base")
+		public void testgetValueInBase() {
+			int result = NumberTheory.getValueInBase(45, 8); 
+			int expected = 55;
+			assertEquals(expected, result);
+			
+			instance.setTheNumber(999);
+			result = instance.getValueInBase(34);
+			expected = 2913;
+			assertEquals(expected, result);
+		}
+		
+		
+		
+		
+		
 	}
 	
 	

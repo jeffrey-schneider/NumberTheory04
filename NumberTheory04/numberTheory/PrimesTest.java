@@ -261,5 +261,13 @@ class PrimesTest {
 		testList = new ArrayList<>(Arrays.asList(223,227,229));
 		assertTrue(Primes.isPrimeList(testList));
 	}
+	
+	@Test
+	@DisplayName("Sextuplet Primes")
+	public void getSextupletList() {
+		List<Integer> expected = new ArrayList<>(Arrays.asList(16057, 16061, 16063, 16067, 16069, 16073));
+		List<Integer> result = Primes.getSextuplePrimes(200,16100);
+		assertIterableEquals(expected, result);
+	}
 
 }
