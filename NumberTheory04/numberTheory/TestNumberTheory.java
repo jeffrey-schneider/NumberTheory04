@@ -817,7 +817,7 @@ public class TestNumberTheory {
         System.out.printf("Is %,d semiperfect? %b", count, NumberTheory.isSemiPerfect(count));
         
         
-		System.out.println("Fin");
+		System.out.println("\nFin");
 		
 	}//end of main
 
